@@ -1,0 +1,4 @@
+C:\Users\jvelez\Desktop\Jenna's Stuff\GitHub\praeses-poc\Praeses_PoC\App\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
+C:\Users\jvelez\Desktop\Jenna's Stuff\GitHub\praeses-poc\Praeses_PoC\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\jvelez\Desktop\Jenna's Stuff\GitHub\praeses-poc\Praeses_PoC\App\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
+C:\Users\jvelez\Desktop\Jenna's Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Praeses_PoC.csproj;x86
