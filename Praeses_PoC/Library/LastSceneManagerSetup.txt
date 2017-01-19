@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Working Prototypes/Jenna/VideoAnnotations/VideoAnnotations.unity
+- path: Assets/Scenes/Working Prototypes/Jenna/PoCDemo/PoCDemo_1.unity
   isLoaded: 1
   isActive: 1

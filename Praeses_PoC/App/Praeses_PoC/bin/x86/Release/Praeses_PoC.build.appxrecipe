@@ -13,7 +13,7 @@
     <IntermediateOutputPath>C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\obj\x86\Release\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
-    <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\bin\x86\Release\Core\AppxManifest.xml">
@@ -400,11 +400,38 @@
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_ml300.dll">
+      <PackagePath>opencv_ml300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_video300.dll">
+      <PackagePath>opencv_video300.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\AVProVideo.dll">
       <PackagePath>AVProVideo.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_imgproc300.dll">
+      <PackagePath>opencv_imgproc300.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\MicStreamSelector.dll">
       <PackagePath>MicStreamSelector.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_calib3d300.dll">
+      <PackagePath>opencv_calib3d300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_photo300.dll">
+      <PackagePath>opencv_photo300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_core300.dll">
+      <PackagePath>opencv_core300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_features2d300.dll">
+      <PackagePath>opencv_features2d300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Plugin.dll">
+      <PackagePath>Plugin.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_flann300.dll">
+      <PackagePath>opencv_flann300.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\SharingClient.dll">
       <PackagePath>SharingClient.dll</PackagePath>
@@ -412,8 +439,17 @@
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\SpatialUnderstanding.dll">
       <PackagePath>SpatialUnderstanding.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_imgcodecs300.dll">
+      <PackagePath>opencv_imgcodecs300.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\PlaneFinding.dll">
       <PackagePath>PlaneFinding.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_objdetect300.dll">
+      <PackagePath>opencv_objdetect300.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\opencv_videoio300.dll">
+      <PackagePath>opencv_videoio300.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jvelez\Desktop\Jenna%27s Stuff\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
