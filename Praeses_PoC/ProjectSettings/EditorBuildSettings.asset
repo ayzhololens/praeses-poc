@@ -4,4 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/VideoAnnotations/VideoAnnotations.unity
+  - enabled: 0
+    path: Assets/Asset Depot/zPlugins/CompanionKit/SingleZone.unity
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/spatialTagAlignment/spatialTagAlign.unity
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/spatialTagAlignment/spatialTagAlignOnsite.unity
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/fidelityTest/fidelityTest_1.unity
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/PoCDemo/PoCDemo_1.unity
+  - enabled: 1
+    path: Assets/Scenes/Stable Build/Demos/OnsiteInspectionDemo.unity
+  - enabled: 0
+    path: Assets/Scenes/Working Prototypes/Jenna/menuUI/MenuUI.unity
