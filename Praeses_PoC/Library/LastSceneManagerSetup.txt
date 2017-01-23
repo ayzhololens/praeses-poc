@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/Working Prototypes/Jenna/menuUI/MenuUI.unity
-  isLoaded: 1
-  isActive: 1
