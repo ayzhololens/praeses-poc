@@ -799,6 +799,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &110410021
@@ -1069,6 +1070,8 @@ Transform:
   - {fileID: 2083024866}
   - {fileID: 27479494}
   - {fileID: 1530531482}
+  - {fileID: 648116109}
+  - {fileID: 1285918467}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1688,6 +1691,7 @@ MonoBehaviour:
   backHolder: {fileID: 1320693471}
   frontPosHolder: {fileID: 2083024865}
   downHolder: {fileID: 27479493}
+  upHolder: {fileID: 1530531482}
   speed: 0.9
   moving: 0
 --- !u!114 &202474145
@@ -2195,6 +2199,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &230266151
@@ -2459,6 +2464,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!1 &271124270
@@ -2841,6 +2847,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &304277520
@@ -4166,6 +4173,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &576243362
@@ -4507,7 +4515,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 648116108}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 708633000}
@@ -4516,8 +4524,8 @@ Transform:
   - {fileID: 859758890}
   - {fileID: 1321058674}
   - {fileID: 652375495}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 126769731}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &648310883
 GameObject:
@@ -5302,6 +5310,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &679383785
@@ -5398,6 +5407,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &679620210
@@ -7615,6 +7625,7 @@ MonoBehaviour:
   backHolder: {fileID: 1320693471}
   frontPosHolder: {fileID: 2083024865}
   downHolder: {fileID: 27479493}
+  upHolder: {fileID: 1530531482}
   speed: 0.9
   moving: 0
 --- !u!114 &1055465736
@@ -8110,6 +8121,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &1102170159
@@ -8297,11 +8309,12 @@ MonoBehaviour:
   subButton: 0
   frontHolder: {fileID: 1109704471}
   subButtonParent: {fileID: 0}
-  nextButtonHolder: {fileID: 1843743141}
+  nextButtonHolder: {fileID: 0}
   currentButtonHolder: {fileID: 648116108}
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &1124374591
@@ -8931,7 +8944,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1285918466}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 1.667}
+  m_LocalPosition: {x: 0, y: 0, z: 0.66700006}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 1623157522}
@@ -8940,8 +8953,8 @@ Transform:
   - {fileID: 1110717344}
   - {fileID: 1590981701}
   - {fileID: 671295878}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 126769731}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &1289585017
 GameObject:
@@ -11676,6 +11689,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &1630802540
@@ -12079,7 +12093,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1055465735}
+      - m_Target: {fileID: 1670236062}
         m_MethodName: denyInput
         m_Mode: 1
         m_Arguments:
@@ -12111,6 +12125,7 @@ MonoBehaviour:
   backHolder: {fileID: 1320693471}
   frontPosHolder: {fileID: 2083024865}
   downHolder: {fileID: 27479493}
+  upHolder: {fileID: 1530531482}
   speed: 0.9
   moving: 0
 --- !u!114 &1670236063
@@ -12648,6 +12663,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &1731013681
@@ -13848,6 +13864,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &1816098003
@@ -14524,6 +14541,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &1857470092
@@ -15573,7 +15591,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 202474144}
+      - m_Target: {fileID: 1957876927}
         m_MethodName: acceptInput
         m_Mode: 1
         m_Arguments:
@@ -15605,7 +15623,8 @@ MonoBehaviour:
   backHolder: {fileID: 1320693471}
   frontPosHolder: {fileID: 2083024865}
   downHolder: {fileID: 27479493}
-  speed: 0.1
+  upHolder: {fileID: 1530531482}
+  speed: 0.9
   moving: 0
 --- !u!114 &1957876928
 MonoBehaviour:
@@ -16071,6 +16090,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &1978585717
@@ -16591,6 +16611,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &1991619354
@@ -17043,6 +17064,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &2039557831
@@ -17498,6 +17520,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!23 &2048804967
@@ -17656,6 +17679,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &2064810660
@@ -18342,6 +18366,7 @@ MonoBehaviour:
   backHolder: {fileID: 0}
   frontPosHolder: {fileID: 0}
   downHolder: {fileID: 0}
+  upHolder: {fileID: 0}
   speed: 0
   moving: 0
 --- !u!114 &2087267901

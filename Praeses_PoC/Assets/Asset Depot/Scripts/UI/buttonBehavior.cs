@@ -8,9 +8,12 @@ public class buttonBehavior : MonoBehaviour {
     public GameObject subButtonParent;
     public GameObject nextButtonHolder;
     public GameObject currentButtonHolder;
-    public GameObject backHolder;
-    public GameObject frontPosHolder;
-    public GameObject downHolder;
+    public Transform backHolder;
+    public Transform frontPosHolder;
+    public Transform downHolder;
+    public Transform upHolder;
+    Vector3 curTargetPos;
+    Vector3 nextTargetPos;
     public float speed;
     public bool moving;
 
@@ -28,12 +31,13 @@ public class buttonBehavior : MonoBehaviour {
         {
             Debug.Log("hello");
 
-            //nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, frontPosHolder.transform.position, speed * Time.deltaTime);
-            //currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, downHolder.transform.position, speed * Time.deltaTime);
-            //if (currentButtonHolder.transform.position == downHolder.transform.position)
-            //{
-            //    moving = false;
-            //}
+            nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, nextTargetPos, speed * Time.deltaTime);
+            currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, curTargetPos, speed * Time.deltaTime);
+            if (nextButtonHolder.transform.position == nextTargetPos)
+            {
+                moving = false;
+                currentButtonHolder.SetActive(false);
+            }
         }
     }
 
@@ -51,17 +55,24 @@ public class buttonBehavior : MonoBehaviour {
 
     public void acceptInput()
     {
-        //nextButtonHolder.SetActive(true);
+        nextButtonHolder.SetActive(true);
         moving = true;
         Debug.Log("tried again" + moving);
-        //nextButtonHolder.transform.position = backHolder.transform.position;
-        //nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, frontPosHolder.transform.position, speed * Time.deltaTime);
+        nextButtonHolder.transform.position = backHolder.transform.position;
+        curTargetPos = upHolder.position;
+        nextTargetPos = frontPosHolder.position;
+       // nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, frontPosHolder.transform.position, speed * Time.deltaTime);
         //currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, downHolder.transform.position, speed * Time.deltaTime);
         //currentButtonHolder.SetActive(false);
     }
 
     public void denyInput()
     {
-
+        nextButtonHolder.SetActive(true);
+        moving = true;
+        Debug.Log("tried again" + moving);
+        nextButtonHolder.transform.position = backHolder.transform.position;
+        curTargetPos = downHolder.position;
+        nextTargetPos = frontPosHolder.position;
     }
 }
