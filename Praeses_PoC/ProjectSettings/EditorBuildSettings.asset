@@ -17,7 +17,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Working Prototypes/Jenna/fidelityTest/fidelityTest_1.unity
   - enabled: 0
     path: Assets/Scenes/Working Prototypes/Jenna/PoCDemo/PoCDemo_1.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stable Build/Demos/OnsiteInspectionDemo.unity
   - enabled: 0
     path: Assets/Scenes/Working Prototypes/Jenna/menuUI/MenuUI.unity
+  - enabled: 1
+    path: Assets/Scenes/Working Prototypes/Jenna/radialAlt/radialAlt.unity
