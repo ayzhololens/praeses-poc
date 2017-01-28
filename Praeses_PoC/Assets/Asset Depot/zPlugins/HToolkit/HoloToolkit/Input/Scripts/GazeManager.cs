@@ -83,6 +83,8 @@ namespace HoloToolkit.Unity
         private Quaternion gazeRotation;
         private float lastHitDistance = 15.0f;
 
+        //public GameObject magnetManager;
+
         private void Awake()
         {
             if (UseBuiltInGazeStabilization)
@@ -152,6 +154,10 @@ namespace HoloToolkit.Unity
                 if (oldFocusedObject != null)
                 {
                     oldFocusedObject.SendMessage("OnGazeLeave", SendMessageOptions.DontRequireReceiver);
+                    //if (oldFocusedObject.tag == "Button")
+                    //{
+                    //    magnetManager.GetComponent<GazeManagerMagnetic>().shakeOffMagnet();
+                    //}
                 }
                 if (FocusedObject != null)
                 {
