@@ -12,6 +12,10 @@ namespace HoloToolkit.Unity
         public GameObject MiniMapTagAlong;
         public Material miniMapMat;
         public float scaleOffset;
+        GameObject desk;
+        GameObject boiler;
+        int switchCounter;
+        public Material textureMat;
 
         // Use this for initialization
         void Start()
@@ -42,6 +46,17 @@ namespace HoloToolkit.Unity
                 {
                     miniMapMeshes[i].GetComponent<Renderer>().material = miniMapMat;
                 }
+                if(miniMapMeshes[i].name == "desk2(Clone)(Clone)")
+                {
+                    desk = miniMapMeshes[i];
+                    miniMapMeshes[i].transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                }
+
+                if (miniMapMeshes[i].name == "boiler(Clone)(Clone)")
+                {
+                    boiler = miniMapMeshes[i];
+                    boiler.SetActive(false);
+                }
 
                 if (miniMapMeshes[i].GetComponent<MeshRenderer>() != null)
                 {
@@ -60,6 +75,42 @@ namespace HoloToolkit.Unity
             miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
             miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .1f, MiniMapTagAlong.transform.position.z);
             GetComponent<miniMapToggle>().active = true;
+        }
+
+
+        public void Switcher()
+        {
+            switchCounter += 1;
+
+            if (switchCounter >= 4)
+            {
+                switchCounter = 0;
+            }
+
+            if (switchCounter == 0)
+            {
+                desk.SetActive(true);
+                boiler.SetActive(false);
+                desk.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = textureMat;
+            }
+            else if(switchCounter == 1)
+            {
+                desk.SetActive(true);
+                boiler.SetActive(false);
+                desk.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = miniMapMat;
+            }
+            else if(switchCounter == 2)
+            {
+                desk.SetActive(false);
+                boiler.SetActive(true);
+            }
+            else if (switchCounter == 3)
+            {
+                boiler.SetActive(false);
+                desk.SetActive(false);
+            }
+
+
         }
     }
 }

@@ -21,6 +21,8 @@ namespace HoloToolkit.Unity
         public annotationManager annotManager;
         public GameObject focusedButton;
         bool radialOpenNotClicked;
+        public GameObject line;
+
 
         // Use this for initialization
         void Start()
@@ -80,9 +82,12 @@ namespace HoloToolkit.Unity
                 {
                     turnOnRadialMenu();
                 }
+
+
                 if (!gestManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.FocusedObject.tag != "Button")
                 {
                     radialOpenNotClicked = true;
+
                 }
 
                 if (!gestManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.FocusedObject.tag == "Button" && !radialOpenNotClicked)
@@ -99,6 +104,22 @@ namespace HoloToolkit.Unity
                     focusedButton = null;
                 }
 
+                if ( (gazeManager.FocusedObject.tag != "Button" && gazeManager.FocusedObject.tag != "Backplate") || radialOpenNotClicked )
+                {
+                    line.GetComponent<LineTest>().line.SetActive(false);
+                    line.SetActive(false);
+                    Debug.Log("line off");
+                }
+                else if(!line.activeSelf && (gazeManager.FocusedObject.tag == "Button" || gazeManager.FocusedObject.tag == "Backplate") && !radialOpenNotClicked)
+                {
+                    line.SetActive(true);
+                    line.GetComponent<LineTest>().line.SetActive(true);
+                    Debug.Log("line on");
+
+                }
+
+                Debug.Log(gazeManager.FocusedObject.tag);
+
 
             }
 
@@ -111,6 +132,8 @@ namespace HoloToolkit.Unity
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
             isActive = true;
+            line.SetActive(true);
+            line.GetComponent<LineTest>().line.SetActive(true);
 
             if (radialCounter == 0)
             {   
@@ -159,6 +182,9 @@ namespace HoloToolkit.Unity
                     RadialMenu.transform.position = RadialHolder.position;
                     RadialMenu.transform.LookAt(Camera.main.transform);
                     isActive = false;
+
+                    line.SetActive(false);
+                    line.GetComponent<LineTest>().line.SetActive(false);
                 }
 
             }
@@ -176,6 +202,9 @@ namespace HoloToolkit.Unity
                 RadialMenu.transform.LookAt(Camera.main.transform);
                 isActive = false;
                 radialOpenNotClicked = false;
+
+                line.SetActive(false);
+                line.GetComponent<LineTest>().line.SetActive(false);
             }
         }
 

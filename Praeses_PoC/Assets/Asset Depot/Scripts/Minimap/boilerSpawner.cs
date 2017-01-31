@@ -9,8 +9,13 @@ namespace HoloToolkit.Unity
     {
 
         public GameObject boiler;
+        public GameObject desk;
         bool tapToPlaceBoiler;
         public GameObject SpatialMapping;
+        public bool isObj;
+        GameObject activeObj;
+
+        public GameObject frontHolder;
 
         // Use this for initialization
         void Start()
@@ -29,13 +34,28 @@ namespace HoloToolkit.Unity
 
         public void SpawnBoiler()
         {
+            isObj = false;
             Vector3 pos = GazeManager.Instance.Position;
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
             GameObject boilerClone = Instantiate(boiler, pos, rot) as GameObject;
-            boiler = boilerClone;
-            for (int i=0; i<boiler.transform.childCount; i++)
+            activeObj = boilerClone;
+            for (int i=0; i< activeObj.transform.childCount; i++)
             {
-                boiler.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
+                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
+            }
+            tapToPlaceBoiler = true;
+        }
+
+        public void SpawnDesk()
+        {
+            isObj = true;
+            Vector3 pos = GazeManager.Instance.Position;
+
+            GameObject deskClone = Instantiate(desk, pos, Quaternion.identity) as GameObject;
+            activeObj = deskClone;
+            for (int i = 0; i < activeObj.transform.childCount; i++)
+            {
+                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
             }
             tapToPlaceBoiler = true;
         }
@@ -43,20 +63,35 @@ namespace HoloToolkit.Unity
         public void PlaceBoiler()
         {
             tapToPlaceBoiler = true;
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
-            boiler.transform.position = pos;
-            boiler.transform.rotation = rot;
+            if (isObj)
+            {
+                activeObj.transform.position = frontHolder.transform.position;
+            }
+
+            if (!isObj)
+            {
+                Vector3 pos = GazeManager.Instance.Position;
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+                activeObj.transform.position = pos;
+                activeObj.transform.rotation = rot;
+            }
+
         }
 
         public void LockBoiler()
         {
             tapToPlaceBoiler = false;
-            for (int i = 0; i < boiler.transform.childCount; i++)
+            for (int i = 0; i < activeObj.transform.childCount; i++)
             {
-                boiler.transform.GetChild(i).GetComponent<MeshCollider>().enabled = true;
+                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = true;
             }
-            boiler.transform.SetParent(SpatialMapping.transform);
+            activeObj.transform.SetParent(SpatialMapping.transform);
+
+            if (isObj)
+            {
+                activeObj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            
 
         }
     }

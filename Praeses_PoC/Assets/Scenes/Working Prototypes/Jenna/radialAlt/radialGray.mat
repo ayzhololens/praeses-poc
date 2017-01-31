@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: radialYellow
+  m_Name: radialGray
   m_Shader: {fileID: 4800000, guid: b21aa08825c93084cb4072b24fc90532, type: 3}
-  m_ShaderKeywords: _EMISSION _USECOLOR_ON _USEEMISSIONTEX_ON
+  m_ShaderKeywords: _EMISSION _USECOLOR_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _EmissionTex
       second:
-        m_Texture: {fileID: 2800000, guid: 74404ce79b31ea84db8466f5bd30b332, type: 3}
+        m_Texture: {fileID: 2800000, guid: 37a48b15ea69b0b4b9effe9c2629e0f8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -132,7 +132,7 @@ Material:
       second: 1
     - first:
         name: _UseEmissionTex
-      second: 1
+      second: 0
     - first:
         name: _UseMainTex
       second: 0
@@ -145,7 +145,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 0.88965523, b: 0, a: 1}
+      second: {r: 0.63235295, g: 0.63235295, b: 0.63235295, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class buttonBehavior : MonoBehaviour {
     public bool subButton;
-    public Transform frontHolder;
     public GameObject subButtonParent;
     public GameObject nextButtonHolder;
     public GameObject currentButtonHolder;
@@ -29,14 +28,28 @@ public class buttonBehavior : MonoBehaviour {
         Debug.Log(moving);
         if (moving)
         {
-            Debug.Log("hello");
 
             nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, nextTargetPos, speed * Time.deltaTime);
-            currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, curTargetPos, speed * Time.deltaTime);
+            currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, curTargetPos, speed * Time.deltaTime * 1.1f);
+            Invoke("turnOffHolder", 1f);
+
             if (nextButtonHolder.transform.position == nextTargetPos)
             {
                 moving = false;
+                currentButtonHolder.transform.position = backHolder.position;
+                Debug.Log("done");
+                GetComponent<OnGazeLeaveEvent>().enabled = true;
                 currentButtonHolder.SetActive(false);
+
+                //if (subButtonParent != null)
+                //{
+                //    subButtonParent.SetActive(false);
+                //}
+
+                //if (subButtonParent != null)
+                //{
+                //    subButtonParent.SetActive(false);
+                //}
             }
         }
     }
@@ -49,15 +62,23 @@ public class buttonBehavior : MonoBehaviour {
     public void goToNextButton()
     {
         currentButtonHolder.SetActive(false);
-        nextButtonHolder.transform.LookAt(Camera.main.transform);
+        //nextButtonHolder.transform.LookAt(Camera.main.transform);
         nextButtonHolder.SetActive(true);
+    }
+
+    void turnOffHolder()
+    {
+        moving = false;
+        currentButtonHolder.transform.position = backHolder.position;
+        Debug.Log("done");
+        GetComponent<OnGazeLeaveEvent>().enabled = true;
+        currentButtonHolder.SetActive(false);
     }
 
     public void acceptInput()
     {
         nextButtonHolder.SetActive(true);
         moving = true;
-        Debug.Log("tried again" + moving);
         nextButtonHolder.transform.position = backHolder.transform.position;
         curTargetPos = upHolder.position;
         nextTargetPos = frontPosHolder.position;
@@ -70,9 +91,8 @@ public class buttonBehavior : MonoBehaviour {
     {
         nextButtonHolder.SetActive(true);
         moving = true;
-        Debug.Log("tried again" + moving);
-        nextButtonHolder.transform.position = backHolder.transform.position;
-        curTargetPos = downHolder.position;
+        nextButtonHolder.transform.position = upHolder.transform.position;
+        curTargetPos = backHolder.position;
         nextTargetPos = frontPosHolder.position;
     }
 }

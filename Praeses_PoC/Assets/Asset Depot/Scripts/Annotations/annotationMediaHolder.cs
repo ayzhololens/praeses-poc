@@ -62,8 +62,6 @@ namespace HoloToolkit.Unity
 
         void videoChecker()
         {
-            Debug.Log("playing " + VideoPlayer.Control.IsPlaying());
-            Debug.Log("finished " + VideoPlayer.Control.IsFinished());
             if (startedVideo && VideoPlayer.Control.IsFinished())
             {
                 playIcon.SetActive(true);
