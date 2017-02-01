@@ -21,18 +21,22 @@ public class objectTumbler : MonoBehaviour
         if (typing == 0)
         {
             print("scaUp");
+            tumbledObject.transform.localScale *= 1.2f;
         }
         else if (typing == 1)
         {
             print("scaDn");
+            tumbledObject.transform.localScale *= .833333f;
         }
         else if (typing == 2)
         {
             print("rotateCCW");
+            tumbledObject.transform.localRotation *= Quaternion.Euler(0, -15, 0);
         }
         else if (typing == 3)
         {
             print("rotateCW");
+            tumbledObject.transform.localRotation *= Quaternion.Euler(0, 15, 0);
         }
         else if (typing == 4)
         {
