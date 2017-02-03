@@ -226,6 +226,8 @@ namespace HoloToolkit.Unity
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
             isActive = true;
+
+            //test
             if (radialMode != 3)
             {
                 line.SetActive(true);
