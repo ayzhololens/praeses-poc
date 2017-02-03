@@ -12,19 +12,33 @@ namespace HoloToolkit.Unity
         public GameObject[] paneContent;
         public int displayCount;
         public GameObject[] altContent;
+        public GameObject upButton;
+        public GameObject downButton;
         public float speed;
         public float holdSpeed;
         public bool scrollingDown;
         public bool scrollingUp;
         public int scrollCheck;
         public bool holdScroll;
+        public bool gazeScroll;
+        public bool casino;
+        Vector3 startScale;
+        public float scaleMult;
+        public bool radialHold;
+        public GameObject frontHolder;
+        public GameObject line;
+        GameObject lineLine;
+        GameObject lineEnd;
+        Vector3 startPos;
+        public GameObject cursor;
+
 
 
 
         // Use this for initialization
         void Start()
         {
-
+            startScale = paneContent[1].transform.localScale;
 
             for (int i = 0; i < paneContent.Length; i++)
             {
@@ -35,6 +49,12 @@ namespace HoloToolkit.Unity
                 }
             }
 
+            if(line!= null)
+            {
+                lineEnd = line.GetComponent<LineTest>().end;
+                lineLine = line.GetComponent<LineTest>().line;
+            }
+
 
 
 
@@ -43,40 +63,122 @@ namespace HoloToolkit.Unity
         // Update is called once per frame
         void Update()
         {
-            if (GestureManager.Instance.sourcePressed && scrollingUp && holdScroll)
+
+            if (holdScroll && !gazeScroll)
             {
-                holdScrollUp();
+                if (GazeManager.Instance.FocusedObject == upButton && GestureManager.Instance.sourcePressed)
+                {
+                    holdScrollUp();
+                    scrollingDown = false;
+                }
+
+                if (GazeManager.Instance.FocusedObject == downButton && GestureManager.Instance.sourcePressed)
+                {
+                    holdScrollDown();
+                    scrollingUp = false;
+                }
+
+                if (!GestureManager.Instance.sourcePressed)
+                {
+                    scrollingUp = false;
+                    scrollingDown = false;
+                }
+
             }
 
-            if (GestureManager.Instance.sourcePressed && scrollingDown && holdScroll)
+            if (gazeScroll && holdScroll)
             {
-                holdScrollDown();
+                if (GazeManager.Instance.FocusedObject == upButton)
+                {
+                    holdScrollUp();
+                    scrollingDown = false;
+                }
+
+                if (GazeManager.Instance.FocusedObject == downButton)
+                {
+                    holdScrollDown();
+                    scrollingUp = false;
+                }
+
+                if (GazeManager.Instance.FocusedObject != downButton && GazeManager.Instance.FocusedObject != upButton)
+                {
+                    scrollingUp = false;
+                    scrollingDown = false;
+                }
             }
 
-            if (!GestureManager.Instance.sourcePressed && scrollingUp)
+            if (radialHold && GestureManager.Instance.sourcePressed)
             {
-                scrollingUp = false;
-            }
+                if (!line.activeSelf)
+                {
+                    //radialHolder.transform.position = frontHolder.transform.position;
+                    line.SetActive(true);
+                    lineEnd.SetActive(true);
+                    lineLine.SetActive(true);
+                    startPos = line.transform.position;
+                }
 
-            if (!GestureManager.Instance.sourcePressed && scrollingDown)
+                lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, cursor.transform.position.y, lineEnd.transform.position.z);
+                //gazeScroll = true;
+
+                if(lineEnd.transform.position.y> startPos.y+.02f)
+                {
+                    holdScrollUp();
+                    lineEnd.transform.GetChild(0).gameObject.SetActive(true);
+                    lineEnd.transform.GetChild(1).gameObject.SetActive(false);
+                    scrollingDown = false;
+
+                    if(lineEnd.transform.position.y > startPos.y + .05f)
+                    {
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y + .05f, lineEnd.transform.position.z);
+                    }
+                }
+                if (lineEnd.transform.position.y < startPos.y-.02f)
+                {
+                    holdScrollDown();
+                    lineEnd.transform.GetChild(0).gameObject.SetActive(false);
+                    lineEnd.transform.GetChild(1).gameObject.SetActive(true);
+                    scrollingUp = false;
+
+                    if (lineEnd.transform.position.y < startPos.y - .05f)
+                    {
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y - .05f, lineEnd.transform.position.z);
+                    }
+                }
+
+
+            }
+            if (radialHold && !GestureManager.Instance.sourcePressed)
             {
-                scrollingDown = false;
+                gazeScroll = false;
+                line.SetActive(false);
+                lineEnd.SetActive(false);
+                lineLine.SetActive(false);
             }
-
 
 
 
 
             if (!holdScroll)
             {
-                if (scrollingDown)
+                if (scrollingDown &&!casino)
                 {
                     scrollDown();
                 }
 
-                if (scrollingUp)
+                if (scrollingUp &&!casino)
                 {
                     scrollUp();
+                }
+
+                if (scrollingDown && casino)
+                {
+                    scrollDownCasino();
+                }
+
+                if (scrollingUp && casino)
+                {
+                    scrollUpCasino();
                 }
             }
 
@@ -202,6 +304,119 @@ namespace HoloToolkit.Unity
                             Debug.Log(paneContent[i].name + " Complete!!");
                             altContent[i + 1] = paneContent[i];
                             scrollCheck += 1;
+
+                            if (i > displayCount - 2)
+                            {
+                                paneContent[i].transform.GetChild(0).gameObject.SetActive(false);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public void scrollDownCasino()
+        {
+            if (!scrollingUp)
+            {
+                scrollCheck = 0;
+
+                for (int u = 0; u < altContent.Length; u++)
+                {
+                    altContent[u] = null;
+                }
+
+
+
+                for (int i = 0; i < paneContent.Length; i++)
+                {
+                    if ((i - 1) < 0)
+                    {
+                        paneContent[i].transform.position = Vector3.Lerp(paneContent[i].transform.position, paneLoc[0].transform.position, speed);
+
+
+
+                        if (paneContent[i].transform.position == paneLoc[0].transform.position)
+                        {
+                            paneContent[i].transform.GetChild(0).gameObject.SetActive(false);
+                            paneContent[i].transform.position = paneLoc[paneLoc.Length - 1].transform.position;
+                            altContent[altContent.Length - 1] = paneContent[0];
+                            scrollCheck += 1;
+                        }
+
+                    }
+                    else
+                    {
+                        if (i > displayCount + 1)
+                        {
+                            paneContent[i].transform.GetChild(0).gameObject.SetActive(false);
+                        }
+                        else if (i < displayCount + 1)
+                        {
+                            paneContent[i].transform.GetChild(0).gameObject.SetActive(true);
+                        }
+
+                        paneContent[i].transform.position = Vector3.Lerp(paneContent[i].transform.position, paneLoc[i].transform.position, speed);
+                        if(i != 2)
+                        {
+
+                        }
+                        if (paneContent[i].transform.position == paneLoc[i].transform.position)
+                        {
+
+                            Debug.Log(paneContent[i].name + " Complete!!");
+                            altContent[i - 1] = paneContent[i];
+                            scrollCheck += 1;
+
+
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+
+        public void scrollUpCasino()
+        {
+            if (!scrollingDown)
+            {
+                scrollCheck = 0;
+
+                for (int u = 0; u < altContent.Length; u++)
+                {
+                    altContent[u] = null;
+                }
+                for (int i = 0; i < paneContent.Length; i++)
+                {
+                    if (i == paneContent.Length - 1)
+                    {
+                        paneContent[i].transform.GetChild(0).gameObject.SetActive(true);
+
+                        paneContent[i].transform.position = Vector3.Lerp(paneContent[i].transform.position, paneLoc[1].transform.position, speed);
+
+
+
+                        if (paneContent[i].transform.position == paneLoc[1].transform.position)
+                        {
+                            altContent[0] = paneContent[i];
+                            scrollCheck += 1;
+                        }
+
+                    }
+                    else
+                    {
+                        paneContent[i].transform.position = Vector3.Lerp(paneContent[i].transform.position, paneLoc[i + 2].transform.position, speed);
+
+                        if (paneContent[i].transform.position == paneLoc[i + 2].transform.position)
+                        {
+                            Debug.Log(paneContent[i].name + " Complete!!");
+                            altContent[i + 1] = paneContent[i];
+                            scrollCheck += 1;
+
+
 
                             if (i > displayCount - 2)
                             {

@@ -8,6 +8,7 @@ namespace HoloToolkit.Unity
     public class scrollCheck : MonoBehaviour
     {
         public scrollManager scrollManag;
+        public bool up;
 
         // Use this for initialization
         void Start()
@@ -26,12 +27,12 @@ namespace HoloToolkit.Unity
             Debug.Log("scrolling down " + scrollManag.scrollingDown);
             if (scrollManag.holdScroll)
             {
-                if (scrollManag.scrollingUp)
+                if (scrollManag.scrollingUp && up)
                 {
                     other.transform.position = scrollManag.paneLoc[6].transform.position;
                 }
 
-                if (scrollManag.scrollingDown)
+                if (scrollManag.scrollingDown && !up)
                 {
                     other.transform.position = scrollManag.paneLoc[0].transform.position;
                 }

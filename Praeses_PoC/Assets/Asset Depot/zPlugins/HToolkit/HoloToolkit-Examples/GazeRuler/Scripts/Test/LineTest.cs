@@ -11,6 +11,7 @@ public class LineTest : MonoBehaviour
     public GameObject end;
     public GameObject line;
     public GameObject text;
+    public float scale;
 
     // Update is called once per frame
     void Update()
@@ -19,7 +20,7 @@ public class LineTest : MonoBehaviour
         var midPoint = (start.transform.position + end.transform.position) * 0.5f;
         var direction = end.transform.position - start.transform.position;
         line.transform.position = midPoint;
-        line.transform.localScale = new Vector3(distance, .004f, .004f);
+        line.transform.localScale = new Vector3(distance, scale, scale);
         line.transform.rotation = Quaternion.LookRotation(direction);
         line.transform.Rotate(Vector3.down, 90f);
         //text.transform.position = midPoint + new Vector3(0, 0.6f, 0);
