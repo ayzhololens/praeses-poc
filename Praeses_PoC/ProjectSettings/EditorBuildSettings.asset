@@ -23,7 +23,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Working Prototypes/Jenna/menuUI/MenuUI.unity
   - enabled: 0
     path: Assets/Scenes/Working Prototypes/Jenna/radialAlt/radialAlt.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Working Prototypes/Jenna/Scrolling/MenuUI 2.unity
   - enabled: 0
     path: Assets/Scenes/Working Prototypes/Jenna/menuUI anims/MenuUI 1.unity
