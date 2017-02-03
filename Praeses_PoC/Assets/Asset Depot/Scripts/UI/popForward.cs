@@ -17,7 +17,7 @@ public class popForward : MonoBehaviour {
 	void Start () {
         startScale = transform.localScale;
         largeScale = new Vector3(transform.localScale.x + scaleMult, transform.localScale.y + scaleMult, transform.localScale.z + scaleMult);
-        startPos = transform.position;
+        //startPos = transform.position;
         
 	}
 	
@@ -37,7 +37,8 @@ public class popForward : MonoBehaviour {
 
         if (move)
         {
-            movePos = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveMult);
+            startPos = Vector3.zero;
+               movePos = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveMult);
             transform.position = movePos;
         }
     }
@@ -54,7 +55,7 @@ public class popForward : MonoBehaviour {
 
         if (move)
         {
-            transform.position = startPos;
+            transform.localPosition = startPos;
         }
     }
 }
