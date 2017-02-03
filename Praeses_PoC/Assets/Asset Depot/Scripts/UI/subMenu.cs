@@ -42,8 +42,12 @@ public class subMenu : MonoBehaviour {
             {
                 subButtons[i].SetActive(false);
             }
-            
+
+            gameObject.GetComponent<popForward>().moveBackward();
+            gameObject.GetComponent<buttonHightlight>().unHighlight();
+
         }
+        
 
     }
 }
