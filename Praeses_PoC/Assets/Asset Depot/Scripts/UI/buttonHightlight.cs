@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class buttonHightlight : MonoBehaviour {
 
-    public Material mat;
+    Material mat;
     public Material highlightMat;
 
     // Use this for initialization
     void Start () {
+        mat = GetComponent<Renderer>().material;
 		
 	}
 	

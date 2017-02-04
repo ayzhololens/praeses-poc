@@ -389,7 +389,7 @@ PlayerSettings:
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
   metroCertificateNotAfter: 0030e22f197ad301
-  metroApplicationDescription: Praeses_PoC
+  metroApplicationDescription: KeyboardTest
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
