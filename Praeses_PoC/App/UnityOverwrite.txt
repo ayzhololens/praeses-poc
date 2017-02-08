@@ -9,7 +9,7 @@ Keyboard_prototype.sln: modified
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 Keyboard_prototype\App.cs: 298814D08F38CF251C28138F05E052C6
-Keyboard_prototype\Keyboard_prototype.csproj: 6A77B6E54AD96695BA3CAF2B44D58FFB
+Keyboard_prototype\Keyboard_prototype.csproj: 07F8BAE8ECFBFA02C87B620B43A4B43A
 Keyboard_prototype\Keyboard_prototype.csproj.user: modified
 Keyboard_prototype\Package.appxmanifest: 1D71B60FE75394455ED6C9A6E8695D69
 Keyboard_prototype\project.json: 1D02BC64BAC0D041019673A1C4C51737

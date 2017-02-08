@@ -9,6 +9,8 @@ TagManager:
   - Node
   - Backplate
   - inputField
+  - keyboard
+  - keyboardBG
   layers:
   - Default
   - TransparentFX

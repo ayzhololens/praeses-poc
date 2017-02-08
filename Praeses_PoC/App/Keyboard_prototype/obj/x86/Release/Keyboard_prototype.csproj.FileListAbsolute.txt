@@ -112,6 +112,7 @@ C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\System.Xml.XmlDocument.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\System.Xml.XmlSerializer.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\BridgeInterface.winmd
+C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\InputSimulator.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\UnityEngine.Analytics.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\UnityEngine.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\UnityEngine.HoloLens.dll

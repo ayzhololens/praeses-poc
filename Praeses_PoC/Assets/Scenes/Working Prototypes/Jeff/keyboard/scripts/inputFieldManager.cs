@@ -18,7 +18,7 @@ namespace HoloToolkit.Unity
             {
                 if (GazeManager.Instance.FocusedObject != null)
                 {
-                    if (GazeManager.Instance.FocusedObject.tag != "inputField")
+                    if (GazeManager.Instance.FocusedObject.tag != "inputField" && GazeManager.Instance.FocusedObject.tag != "keyboard" && GazeManager.Instance.FocusedObject.tag != "keyboardBG")
                     {
                         keyboardScript.Instance.turnOff();
                         deactivateField();

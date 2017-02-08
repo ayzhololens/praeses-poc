@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-04T03:39:08.288</Modified>
+      <Modified>2017-02-08T02:28:35.447</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\Keyboard_prototype.exe">
       <PackagePath>entrypoint\Keyboard_prototype.exe</PackagePath>
-      <Modified>2017-02-04T03:38:58.034</Modified>
+      <Modified>2017-02-08T02:28:28.960</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -460,6 +460,10 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2016-11-01T20:17:43.844</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Unprocessed\InputSimulator.dll">
+      <PackagePath>InputSimulator.dll</PackagePath>
+      <Modified>2017-02-07T00:03:19.069</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\Unity\Editor\Data\PlaybackEngines\MetroSupport\Players\UAP\dotnet\x86\Release\UnityEngineProxy.dll">
       <PackagePath>UnityEngineProxy.dll</PackagePath>
       <Modified>2016-11-24T16:26:20.000</Modified>
@@ -498,7 +502,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Resource.res">
       <PackagePath>Resource.res</PackagePath>
-      <Modified>2017-02-04T03:36:32.113</Modified>
+      <Modified>2017-02-08T02:28:03.017</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -604,11 +608,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2017-02-04T03:36:18.084</Modified>
+      <Modified>2017-02-08T02:27:46.833</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2017-02-04T03:36:17.334</Modified>
+      <Modified>2017-02-08T02:27:46.007</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -616,39 +620,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2017-02-04T03:36:18.919</Modified>
+      <Modified>2017-02-08T02:27:47.739</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2017-02-04T03:36:18.230</Modified>
+      <Modified>2017-02-08T02:27:47.013</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-      <Modified>2017-02-04T03:36:18.625</Modified>
+      <Modified>2017-02-08T02:27:47.419</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2017-02-04T03:36:18.703</Modified>
+      <Modified>2017-02-08T02:27:47.533</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\level0.resS">
       <PackagePath>Data\level0.resS</PackagePath>
-      <Modified>2017-02-04T03:36:17.334</Modified>
+      <Modified>2017-02-08T02:27:46.005</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\resources.assets.resS">
       <PackagePath>Data\resources.assets.resS</PackagePath>
-      <Modified>2017-02-04T03:36:18.625</Modified>
+      <Modified>2017-02-08T02:27:47.419</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-      <Modified>2017-02-04T03:36:18.703</Modified>
+      <Modified>2017-02-08T02:27:47.532</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2017-02-04T03:36:32.083</Modified>
+      <Modified>2017-02-08T02:28:02.986</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
-      <Modified>2017-02-04T03:36:32.084</Modified>
+      <Modified>2017-02-08T02:28:02.988</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\sharedassets0.resource">
+      <PackagePath>Data\sharedassets0.resource</PackagePath>
+      <Modified>2017-02-08T02:27:47.534</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4</PackagePath>
@@ -685,43 +693,43 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-02-04T03:38:58.586</Modified>
+      <Modified>2017-02-08T02:28:29.406</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.018</Modified>
+      <Modified>2017-02-08T02:28:35.126</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.022</Modified>
+      <Modified>2017-02-08T02:28:35.130</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.089</Modified>
+      <Modified>2017-02-08T02:28:35.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.098</Modified>
+      <Modified>2017-02-08T02:28:35.218</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.143</Modified>
+      <Modified>2017-02-08T02:28:35.265</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\UnityEngine.VR.dll">
       <PackagePath>UnityEngine.VR.dll</PackagePath>
-      <Modified>2017-02-04T03:39:04.146</Modified>
+      <Modified>2017-02-08T02:28:35.268</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2017-02-04T03:39:03.764</Modified>
+      <Modified>2017-02-08T02:28:34.849</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\Assembly-CSharp-firstpass.dll">
       <PackagePath>Assembly-CSharp-firstpass.dll</PackagePath>
-      <Modified>2017-02-04T03:39:03.766</Modified>
+      <Modified>2017-02-08T02:28:34.852</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Keyboard_prototype\bin\x86\Release\Core\Keyboard_prototype.exe">
       <PackagePath>Keyboard_prototype.exe</PackagePath>
-      <Modified>2017-02-04T03:39:08.284</Modified>
+      <Modified>2017-02-08T02:28:35.443</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
