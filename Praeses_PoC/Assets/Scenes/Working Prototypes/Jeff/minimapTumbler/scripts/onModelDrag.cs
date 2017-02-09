@@ -32,6 +32,9 @@ namespace HoloToolkit.Unity
         float xPos;
         float yPos;
 
+        float tempDist;
+        int reverser;
+
         // Use this for initialization
         void Start()
         {
@@ -46,14 +49,23 @@ namespace HoloToolkit.Unity
             hori.SetActive(false);
             vert.SetActive(false);
             neutral.SetActive(false);
+
+            tempDist = 0.0f;
         }
 
         // Update is called once per frame
         void Update()
         {
-            menuOn();
+            if (Camera.main.transform.rotation.y > .5 || Camera.main.transform.rotation.y < -.5)
+            {
+                reverser =-1;
+            }
+            else
+            {
+                reverser = 1;
+            }
 
-
+            menuOn();      
         }
 
         private void menuOn()
@@ -66,13 +78,15 @@ namespace HoloToolkit.Unity
 
                     if (!allowManip)
                     {
+                        tempDist = Vector3.Distance(Camera.main.transform.position, GazeManager.Instance.Position);
+
                         initHandPos = HandsManager.Instance.ManipulationHandPosition;
                         editState = true;
                         adjustWithEdit();
                         allowManip = true;
                     }
                     allowManip = true;
-                    cursorOri.SetActive(false);
+                    //cursorOri.SetActive(false);
                     cursorHand.SetActive(true);
        
                     Vector3 handPos = HandsManager.Instance.ManipulationHandPosition - initHandPos;
@@ -81,9 +95,9 @@ namespace HoloToolkit.Unity
                     {
                         if (!lockCursorX) { 
                         lockCursorY = true;
-                        xPos = handPos.x * -30;
+                        xPos = handPos.x * -30* reverser;
                         yPos = crosshair.transform.position.y;
-                        rotationFactor = handPos.x;
+                        rotationFactor = handPos.x * reverser;
                             hori.SetActive(true);
                             vert.SetActive(false);
                             neutral.SetActive(false);
@@ -94,7 +108,7 @@ namespace HoloToolkit.Unity
                     if (!lockCursorY) { 
                     lockCursorX = true;
                     xPos = crosshair.transform.position.x;
-                    yPos = handPos.y * -30;
+                    yPos = handPos.y * 30;
                     scaleFactor = .01f * scaleMultiplier * (handPos.y);
                             hori.SetActive(false);
                             vert.SetActive(true);
@@ -108,14 +122,14 @@ namespace HoloToolkit.Unity
                         rotationFactor = 0;
                         scaleFactor = 0;
                         if (!lockCursorX && !lockCursorY) { 
-                        xPos = handPos.x * -30;
-                        yPos = handPos.y * -30;
+                        xPos = handPos.x * -30 * reverser;
+                        yPos = handPos.y * 30;
                          }
                         hori.SetActive(false);
                         vert.SetActive(false);
                         neutral.SetActive(true);
                     }
-                    cursorHand.transform.localPosition = new Vector3(xPos, yPos, crosshair.transform.position.z - .05f);
+                    cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist - 1.4f);
                     rotatedObject.transform.Rotate(new Vector3(0, -1 * rotationFactor * rotationMultiplier, 0));
                     float scaleFactor1 = 1 + scaleFactor;
                     float scaleMin = .5f;
@@ -145,10 +159,13 @@ namespace HoloToolkit.Unity
         {
             if (editState)
             {
+                Vector3 up = oriParent.up;
+                Vector3 forward = Vector3.ProjectOnPlane(Camera.main.transform.forward, up).normalized;
+
                 crosshair.SetActive(true);
                 crosshair.transform.SetParent(Camera.main.transform);
-                crosshair.transform.localPosition = new Vector3(0, 0, .9f);
-                crosshair.transform.localRotation = new Quaternion(180, 0, 0, 0);
+                crosshair.transform.localPosition = new Vector3(.25f, 0, tempDist);
+                crosshair.transform.rotation = Quaternion.LookRotation(forward, up);
                 crosshair.transform.SetParent(oriParent);
             }
             else

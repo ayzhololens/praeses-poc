@@ -57,13 +57,15 @@ namespace HoloToolkit.Unity
         {
             if (editState)
             {
+                Vector3 up = oriParent.up;
+                Vector3 forward = Vector3.ProjectOnPlane(Camera.main.transform.forward, up).normalized;
 
                 buttonsGrp.SetActive(true);
                 buttonsGrp.transform.SetParent(Camera.main.transform);
 
                 //buttonsGrp.transform.localPosition = new Vector3(0, 0, .9f);   
                 buttonsGrp.transform.localPosition = new Vector3(0, 0, tempDist);
-                buttonsGrp.transform.localRotation = new Quaternion(0, 0, 0,0);
+                buttonsGrp.transform.rotation = Quaternion.LookRotation(forward, up);
                 buttonsGrp.transform.SetParent(oriParent);
             }
                 else
