@@ -6,10 +6,14 @@ namespace HoloToolkit.Unity
 {
     public class radialOperationsHybrid : MonoBehaviour
     {
-        private float rotationFactor;
+        public float rotationFactor;
         public float rotationMultiplier;
         public GameObject tumbledObject;
         public int typing;
+
+        public followCursorScript followCur;
+        public int cursorIndex;
+        public bool isSpeed;
 
         //1 = rotation
         //2 = scaler
@@ -17,41 +21,59 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
+            
         }
+
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            if (typing == 1) {
-                tumbledObject.transform.Rotate(new Vector3(0, -1 * rotationFactor * rotationMultiplier, 0));
-            }
-            else if (typing == 2)
-            {
-                float scaleFactor = 1 + rotationFactor;
-                tumbledObject.transform.localScale *= scaleFactor;
-            }
-
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            
-            if (other.gameObject.tag == "handCursorCollide")
+            if (GestureManager.Instance.sourcePressed)
             {
                 if (typing == 1)
                 {
-                    rotationFactor = 2;
-
+                    tumbledObject.transform.Rotate(new Vector3(0, -1 * rotationFactor * rotationMultiplier, 0));
                 }
                 else if (typing == 2)
                 {
-                    rotationFactor = .01f * rotationMultiplier;
+                    float scaleFactor1 = 1 + rotationFactor;
+                    float scaleMin = .5f;
+                    float scaleMax = 2;
+                    tumbledObject.transform.localScale = new Vector3(Mathf.Clamp(tumbledObject.transform.localScale.x * scaleFactor1, scaleMin, scaleMax),
+                                                            Mathf.Clamp(tumbledObject.transform.localScale.y * scaleFactor1, scaleMin, scaleMax),
+                                                            Mathf.Clamp(tumbledObject.transform.localScale.z * scaleFactor1, scaleMin, scaleMax));
                 }
             }
+        }
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+
+                if (other.gameObject.tag == "handCursorCollide")
+                    Debug.Log("collide enter tag");
+                followCur.iconIndex = cursorIndex;
+                {
+                    if (typing == 1)
+                    {
+                        Debug.Log("collide enter tag rotate");
+                        rotationFactor = 2;
+                    }
+                    else if (typing == 2)
+                    {
+                        Debug.Log("collide enter tag scale");
+                        rotationFactor = .01f * rotationMultiplier;
+                    }
+                }
         }
 
         private void OnTriggerExit(Collider other)
         {
+            if (!isSpeed) {
+                followCur.iconIndex = 0;
+            }
+
+            Debug.Log("collide exit");
             rotationFactor = 0;
         }
 

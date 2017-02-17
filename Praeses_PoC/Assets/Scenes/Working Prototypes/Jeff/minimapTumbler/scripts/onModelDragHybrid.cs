@@ -10,8 +10,6 @@ namespace HoloToolkit.Unity
         private float scaleFactor;
         public float rotationMultiplier;
         public float scaleMultiplier;
-        public GameObject rotatedObject;
-        public GameObject scaledObject;
 
         public GameObject cursorOri;
         public GameObject cursorHand;
@@ -28,7 +26,15 @@ namespace HoloToolkit.Unity
         float yPos;
 
         float tempDist;
-        int reverser;
+
+        public GameObject handPosLocal;
+
+        public followCursorScript followCur;
+
+        public radialOperationsHybrid col1;
+        public radialOperationsHybrid col2;
+        public radialOperationsHybrid col3;
+        public radialOperationsHybrid col4;
 
         // Use this for initialization
         void Start()
@@ -48,16 +54,7 @@ namespace HoloToolkit.Unity
         // Update is called once per frame
         void Update()
         {
-            if (Camera.main.transform.rotation.y > .5 || Camera.main.transform.rotation.y < -.5)
-            {
-                reverser =-1;
-            }
-            else
-            {
-                reverser = 1;
-            }
-
-            menuOn();      
+            menuOn();
         }
 
         private void menuOn()
@@ -82,21 +79,15 @@ namespace HoloToolkit.Unity
                     cursorHand.SetActive(true);
 
                     Vector3 handPos = HandsManager.Instance.ManipulationHandPosition - initHandPos;
-                    
-                        rotationFactor = 0;
-                        scaleFactor = 0;
-                        
-                        xPos = handPos.x * 2 * reverser;
-                        yPos = handPos.y * 2;
+        
+                    handPosLocal.transform.position = new Vector3(Mathf.Clamp(handPos.x, -.1f, .1f),
+                                                                    Mathf.Clamp(handPos.y, -.1f, .1f),
+                                                                    handPos.z);
 
-                    cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist /100 - .05f);
-                    //rotatedObject.transform.Rotate(new Vector3(0, -1 * rotationFactor * rotationMultiplier, 0));
-                    float scaleFactor1 = 1 + scaleFactor;
-                    float scaleMin = .5f;
-                    float scaleMax = 2;
-                    //scaledObject.transform.localScale = new Vector3(Mathf.Clamp(scaledObject.transform.localScale.x * scaleFactor1, scaleMin, scaleMax),
-                    //                                        Mathf.Clamp(scaledObject.transform.localScale.y * scaleFactor1, scaleMin, scaleMax),
-                    //                                        Mathf.Clamp(scaledObject.transform.localScale.z * scaleFactor1, scaleMin, scaleMax));
+                    xPos = handPosLocal.transform.localPosition.x;
+                    yPos = handPosLocal.transform.localPosition.y;
+
+                    cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
 
                 }
                 else
@@ -128,10 +119,16 @@ namespace HoloToolkit.Unity
             }
             else
             {
+                col1.rotationFactor = 0;
+                col2.rotationFactor = 0;
+                col3.rotationFactor = 0;
+                col4.rotationFactor = 0;
+                followCur.iconIndex = 0;
                 buttonsGrp.SetActive(false);
             }
 
         }
-       
+
     }
-    }
+}
+
