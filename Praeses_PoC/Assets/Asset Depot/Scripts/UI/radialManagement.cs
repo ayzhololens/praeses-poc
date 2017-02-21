@@ -48,21 +48,28 @@ namespace HoloToolkit.Unity
 
             RadialMenu.transform.LookAt(Camera.main.transform);
 
+
+            //get focused object
             if (gazeManager.HitObject != null && gazeManager.HitObject.tag == "Button")
             {
                 focusedButton = gazeManager.HitObject;
             }
-            else if (gazeManager.HitObject == null)
+
+            //clear focused object
+            else if (gazeManager.HitObject == null || gazeManager.HitObject.tag != "Button")
             {
                 focusedButton = null;
             }
 
+            //released pinch and radial is still active so hide the line or hide line if not looking at menu
             if ((gazeManager.HitObject.tag != "Button" && gazeManager.HitObject.tag != "Backplate") || radialOpenNotClicked)
             {
                 line.GetComponent<LineTest>().line.SetActive(false);
                 line.SetActive(false);
                 Debug.Log("line off");
             }
+
+            //looking at menu so dont hide the line
             else if (!line.activeSelf && (gazeManager.HitObject.tag == "Button" || gazeManager.HitObject.tag == "Backplate") && !radialOpenNotClicked)
             {
                 line.SetActive(true);
@@ -71,6 +78,7 @@ namespace HoloToolkit.Unity
 
             }
 
+            //radial
             if (sourceManager.sourcePressed && !isActive && !annotManager.annotating)
             {
                 radialCounter += 1;
