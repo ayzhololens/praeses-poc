@@ -45,6 +45,8 @@ namespace HoloToolkit.Unity
                 if (miniMapMeshes[i].GetComponent<Renderer>() != null)
                 {
                     miniMapMeshes[i].GetComponent<Renderer>().material = miniMapMat;
+
+                    //miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
                 }
 
                 if (miniMapMeshes[i].GetComponent<MeshRenderer>() != null)
@@ -56,6 +58,12 @@ namespace HoloToolkit.Unity
                 {
                     Destroy(miniMapMeshes[i].GetComponent<WorldAnchor>());
                     //miniMapMeshes[i].GetComponent<MeshRenderer>().enabled = false;
+                }
+
+                if(miniMapMeshes[i].GetComponent<MeshFilter>() != null && miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh!=null)
+                {
+                   miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+
                 }
             }
 

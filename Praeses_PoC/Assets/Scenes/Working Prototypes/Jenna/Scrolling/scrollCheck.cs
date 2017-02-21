@@ -24,12 +24,13 @@ namespace HoloToolkit.Unity
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("scrolling down " + scrollManag.scrollingDown);
+            
             if (scrollManag.holdScroll)
             {
                 if (scrollManag.scrollingUp && up)
                 {
-                    other.transform.position = scrollManag.paneLoc[6].transform.position;
+                    other.transform.position = scrollManag.paneLoc[10].transform.position;
+                    Debug.Log("gettt");
                 }
 
                 if (scrollManag.scrollingDown && !up)

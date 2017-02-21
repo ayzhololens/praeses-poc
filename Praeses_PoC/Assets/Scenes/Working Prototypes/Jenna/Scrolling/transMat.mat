@@ -7,12 +7,11 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: transMat
-  m_Shader: {fileID: 4800000, guid: 30a212a88e1063a428c85e50b1e427f2, type: 3}
+  m_Shader: {fileID: 4800000, guid: 17b35d8a8e5e92d4ebcf1933bf853497, type: 3}
   m_ShaderKeywords: _ALPHAPREMULTIPLY_ON _EMISSION _USECOLOR_ON _USEDIFFUSE_ON
   m_LightmapFlags: 1
-  m_CustomRenderQueue: 3000
-  stringTagMap:
-    RenderType: Transparent
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -81,6 +80,9 @@ Material:
         name: _BumpScale
       second: 1
     - first:
+        name: _ColorMask
+      second: 15
+    - first:
         name: _ColorWriteMask
       second: 15
     - first:
@@ -132,6 +134,21 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
+        name: _Stencil
+      second: 0
+    - first:
+        name: _StencilComp
+      second: 8
+    - first:
+        name: _StencilOp
+      second: 0
+    - first:
+        name: _StencilReadMask
+      second: 255
+    - first:
+        name: _StencilWriteMask
+      second: 255
+    - first:
         name: _UVSec
       second: 0
     - first:
@@ -164,7 +181,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.45588237, g: 0.79736316, b: 1, a: 0.209}
+      second: {r: 0, g: 0, b: 0, a: 0.134}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}

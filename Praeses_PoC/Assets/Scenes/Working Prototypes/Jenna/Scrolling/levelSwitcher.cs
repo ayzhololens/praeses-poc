@@ -26,4 +26,9 @@ public class levelSwitcher : MonoBehaviour {
         }
         Application.LoadLevel(levelCounter);
     }
+
+    public void reseter()
+    {
+        Application.LoadLevel(0);
+    }
 }

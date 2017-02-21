@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using HoloToolKit.Unity;
 using UnityEngine;
-
+using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
@@ -29,10 +28,11 @@ namespace HoloToolkit.Unity
 
 
         // Use this for initialization
-        void Start() {
+        void Start()
+        {
 
             scaleOffest = SpatialMapping.GetComponent<minimapSpawn>().scaleOffset;
-            
+
         }
 
         // Update is called once per frame
@@ -48,11 +48,11 @@ namespace HoloToolkit.Unity
 
         public void startPlacingAnnotNode()
         {
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
             spawnedAnnotation.transform.position = pos;
             spawnedAnnotation.transform.rotation = rot;
-            
+
 
 
 
@@ -89,7 +89,10 @@ namespace HoloToolkit.Unity
             miniAnnotation.transform.localScale = miniAnnotation.transform.localScale * scaleOffest;
             miniAnnotation.SetActive(SpatialMapping.GetComponent<miniMapToggle>().active);
 
-
+            spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+            spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+            miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+            miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
             GetComponent<annotationManager>().annotating = false;
             isPhotoNode = false;
             isSimpleNode = false;
@@ -99,8 +102,8 @@ namespace HoloToolkit.Unity
         public void spawnPhotoAnnotation()
         {
             isPhotoNode = true;
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
             spawnedAnnotation = Instantiate(photoNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
@@ -115,8 +118,8 @@ namespace HoloToolkit.Unity
         public void spawnVideoAnnotation()
         {
             isVideoNode = true;
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
             spawnedAnnotation = Instantiate(videoNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
@@ -129,8 +132,8 @@ namespace HoloToolkit.Unity
         public void spawnSimpleAnnotation()
         {
             isSimpleNode = true;
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
             spawnedAnnotation = Instantiate(simpleNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;

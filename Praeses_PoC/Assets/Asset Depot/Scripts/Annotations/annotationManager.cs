@@ -84,7 +84,7 @@ namespace HoloToolkit.Unity
             annotSpawner.spawnSimpleAnnotation();
             tapToPlaceAnnotNode = true;
             tapToPlaceIndicator.SetActive(true);
-        } 
+        }
 
         public void enablePhotoCapture()
         {
@@ -98,7 +98,7 @@ namespace HoloToolkit.Unity
 
         public void CapturePhoto()
         {
-           if(photoCaptureEnabled)
+            if (photoCaptureEnabled)
             {
                 photoRecorder.CapturePhoto();
                 photoCaptureEnabled = false;

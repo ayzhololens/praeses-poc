@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity.InputModule;
+using HoloToolkit.Examples.GazeRuler;
+
 
 namespace HoloToolkit.Unity
 {
@@ -25,12 +28,20 @@ namespace HoloToolkit.Unity
         Vector3 startScale;
         public float scaleMult;
         public bool radialHold;
+        public bool radialHoldAlt;
+        public bool HandHoldAlt;
         public GameObject frontHolder;
         public GameObject line;
         GameObject lineLine;
         GameObject lineEnd;
         Vector3 startPos;
         public GameObject cursor;
+        public Transform handLoc;
+        float dist;
+        float handStartPos;
+        
+
+
 
 
 
@@ -49,7 +60,7 @@ namespace HoloToolkit.Unity
                 }
             }
 
-            if(line!= null)
+            if (line != null)
             {
                 lineEnd = line.GetComponent<LineTest>().end;
                 lineLine = line.GetComponent<LineTest>().line;
@@ -66,19 +77,19 @@ namespace HoloToolkit.Unity
 
             if (holdScroll && !gazeScroll)
             {
-                if (GazeManager.Instance.FocusedObject == upButton && GestureManager.Instance.sourcePressed)
+                if (GazeManager.Instance.HitObject == upButton && sourceManager.Instance.sourcePressed)
                 {
                     holdScrollUp();
                     scrollingDown = false;
                 }
 
-                if (GazeManager.Instance.FocusedObject == downButton && GestureManager.Instance.sourcePressed)
+                if (GazeManager.Instance.HitObject == downButton && sourceManager.Instance.sourcePressed)
                 {
                     holdScrollDown();
                     scrollingUp = false;
                 }
 
-                if (!GestureManager.Instance.sourcePressed)
+                if (!sourceManager.Instance.sourcePressed)
                 {
                     scrollingUp = false;
                     scrollingDown = false;
@@ -88,27 +99,29 @@ namespace HoloToolkit.Unity
 
             if (gazeScroll && holdScroll)
             {
-                if (GazeManager.Instance.FocusedObject == upButton)
+                if (GazeManager.Instance.HitObject == upButton)
                 {
                     holdScrollUp();
                     scrollingDown = false;
                 }
 
-                if (GazeManager.Instance.FocusedObject == downButton)
+                if (GazeManager.Instance.HitObject == downButton)
                 {
                     holdScrollDown();
                     scrollingUp = false;
                 }
 
-                if (GazeManager.Instance.FocusedObject != downButton && GazeManager.Instance.FocusedObject != upButton)
+                if (GazeManager.Instance.HitObject != downButton && GazeManager.Instance.HitObject != upButton)
                 {
                     scrollingUp = false;
                     scrollingDown = false;
                 }
             }
 
-            if (radialHold && GestureManager.Instance.sourcePressed)
+            if (radialHold && sourceManager.Instance.sourcePressed)
             {
+                dist = Vector3.Distance(lineEnd.transform.position, startPos) * 10;
+
                 if (!line.activeSelf)
                 {
                     //radialHolder.transform.position = frontHolder.transform.position;
@@ -118,37 +131,37 @@ namespace HoloToolkit.Unity
                     startPos = line.transform.position;
                 }
 
-                lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, cursor.transform.position.y, lineEnd.transform.position.z);
+                lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, GazeManager.Instance.HitPosition.y, lineEnd.transform.position.z);
                 //gazeScroll = true;
 
-                if(lineEnd.transform.position.y> startPos.y+.02f)
+                if (lineEnd.transform.position.y > startPos.y + .015f)
                 {
-                    holdScrollUp();
+                    holdScrollDown();
                     lineEnd.transform.GetChild(0).gameObject.SetActive(true);
                     lineEnd.transform.GetChild(1).gameObject.SetActive(false);
                     scrollingDown = false;
 
-                    if(lineEnd.transform.position.y > startPos.y + .05f)
+                    if (lineEnd.transform.position.y > startPos.y + .035f)
                     {
-                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y + .05f, lineEnd.transform.position.z);
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y + .035f, lineEnd.transform.position.z);
                     }
                 }
-                if (lineEnd.transform.position.y < startPos.y-.02f)
+                if (lineEnd.transform.position.y < startPos.y - .015f)
                 {
-                    holdScrollDown();
+                    holdScrollUp();
                     lineEnd.transform.GetChild(0).gameObject.SetActive(false);
                     lineEnd.transform.GetChild(1).gameObject.SetActive(true);
                     scrollingUp = false;
 
-                    if (lineEnd.transform.position.y < startPos.y - .05f)
+                    if (lineEnd.transform.position.y < startPos.y - .035f)
                     {
-                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y - .05f, lineEnd.transform.position.z);
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y - .035f, lineEnd.transform.position.z);
                     }
                 }
 
 
             }
-            if (radialHold && !GestureManager.Instance.sourcePressed)
+            if (radialHold && !sourceManager.Instance.sourcePressed)
             {
                 gazeScroll = false;
                 line.SetActive(false);
@@ -159,14 +172,155 @@ namespace HoloToolkit.Unity
 
 
 
+
+
+
+
+
+
+            if (radialHoldAlt && sourceManager.Instance.sourcePressed)
+            {
+                dist = Vector3.Distance(lineEnd.transform.position, startPos) * 10;
+                //holdSpeed = holdSpeed * dist;
+                Debug.Log(dist);
+
+                if (!line.activeSelf)
+                {
+                    //radialHolder.transform.position = frontHolder.transform.position;
+                    transform.position = GazeManager.Instance.HitPosition;
+                    line.SetActive(true);
+                    lineEnd.SetActive(true);
+                    lineLine.SetActive(true);
+                    startPos = line.transform.position;
+                }
+
+                lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, GazeManager.Instance.HitPosition.y, lineEnd.transform.position.z);
+                cursor.SetActive(false);
+                cursor.SetActive(false);
+                //gazeScroll = true;
+
+                if (lineEnd.transform.position.y > startPos.y + .005f)
+                {
+                    holdScrollDown();
+                    lineEnd.transform.GetChild(0).gameObject.SetActive(true);
+                    lineEnd.transform.GetChild(1).gameObject.SetActive(false);
+                    scrollingUp = false;
+
+                    if (lineEnd.transform.position.y > startPos.y + .03f)
+                    {
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y + .03f, lineEnd.transform.position.z);
+                    }
+                }
+                if (lineEnd.transform.position.y < startPos.y - .005f)
+                {
+                    holdScrollUp();
+                    lineEnd.transform.GetChild(0).gameObject.SetActive(false);
+                    lineEnd.transform.GetChild(1).gameObject.SetActive(true);
+                    scrollingDown = false;
+
+                    if (lineEnd.transform.position.y < startPos.y - .03f)
+                    {
+                        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y - .03f, lineEnd.transform.position.z);
+                    }
+                }
+
+
+
+
+            }
+            if (radialHoldAlt && !sourceManager.Instance.sourcePressed)
+            {
+                gazeScroll = false;
+                line.SetActive(false);
+                lineEnd.SetActive(false);
+                lineLine.SetActive(false);
+                cursor.SetActive(true);
+                cursor.SetActive(true);
+            }
+
+
+            if (HandHoldAlt && sourceManager.Instance.sourcePressed)
+            {
+
+
+                //if (!line.activeSelf)
+                //{
+                //    //radialHolder.transform.position = frontHolder.transform.position;
+                //    transform.position = GazeManager.Instance.HitPosition;
+                //    line.SetActive(true);
+                //    lineEnd.SetActive(true);
+                //    lineLine.SetActive(true);
+                //    startPos = line.transform.position;
+
+                //    handStartPos = HandsManager.Instance.ManipulationHandPosition.y;
+                //}
+
+                //float handDist = (((HandsManager.Instance.ManipulationHandPosition.y - handStartPos) / 4) + startPos.y);
+                //dist = Vector3.Distance(lineEnd.transform.position, startPos) * 20;
+                ////holdSpeed = holdSpeed * dist;
+
+
+
+                //lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, handDist, lineEnd.transform.position.z);
+                //cursor.SetActive(false);
+                //cursor.SetActive(false);
+                ////gazeScroll = true;
+
+                //if (lineEnd.transform.position.y > startPos.y + .005f)
+                //{
+                //    holdScrollDown();
+                //    lineEnd.transform.GetChild(0).gameObject.SetActive(true);
+                //    lineEnd.transform.GetChild(1).gameObject.SetActive(false);
+                //    scrollingUp = false;
+
+                //    if (lineEnd.transform.position.y > startPos.y + .03f)
+                //    {
+                //        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y + .03f, lineEnd.transform.position.z);
+                //    }
+                //}
+                //if (lineEnd.transform.position.y < startPos.y - .005f)
+                //{
+                //    holdScrollUp();
+                //    lineEnd.transform.GetChild(0).gameObject.SetActive(false);
+                //    lineEnd.transform.GetChild(1).gameObject.SetActive(true);
+                //    scrollingDown = false;
+
+                //    if (lineEnd.transform.position.y < startPos.y - .03f)
+                //    {
+                //        lineEnd.transform.position = new Vector3(lineEnd.transform.position.x, startPos.y - .03f, lineEnd.transform.position.z);
+                //    }
+                //}
+
+
+
+
+            }
+            if (HandHoldAlt && !sourceManager.Instance.sourcePressed)
+            {
+                gazeScroll = false;
+                line.SetActive(false);
+                lineEnd.SetActive(false);
+                lineLine.SetActive(false);
+                cursor.SetActive(true);
+                cursor.SetActive(true);
+            }
+
+
+
+
+
+
+
+
+
             if (!holdScroll)
             {
-                if (scrollingDown &&!casino)
+                if (scrollingDown && !casino)
                 {
                     scrollDown();
                 }
 
-                if (scrollingUp &&!casino)
+                if (scrollingUp && !casino)
                 {
                     scrollUp();
                 }
@@ -185,8 +339,8 @@ namespace HoloToolkit.Unity
 
             if (scrollCheck == paneContent.Length)
             {
-                scrollingDown = false;
-                scrollingUp = false;
+                //scrollingDown = false;
+                //scrollingUp = false;
                 reorderArray();
             }
         }
@@ -358,7 +512,7 @@ namespace HoloToolkit.Unity
                         }
 
                         paneContent[i].transform.position = Vector3.Lerp(paneContent[i].transform.position, paneLoc[i].transform.position, speed);
-                        if(i != 2)
+                        if (i != 2)
                         {
 
                         }
@@ -434,7 +588,7 @@ namespace HoloToolkit.Unity
             scrollingUp = true;
             for (int i = 0; i < paneContent.Length; i++)
             {
-                paneContent[i].transform.localPosition = new Vector3(paneContent[i].transform.localPosition.x, paneContent[i].transform.localPosition.y + holdSpeed, paneContent[i].transform.localPosition.z);
+                paneContent[i].transform.localPosition = new Vector3(paneContent[i].transform.localPosition.x, paneContent[i].transform.localPosition.y + holdSpeed * dist, paneContent[i].transform.localPosition.z);
 
             }
         }
@@ -444,7 +598,7 @@ namespace HoloToolkit.Unity
             scrollingDown = true;
             for (int i = 0; i < paneContent.Length; i++)
             {
-                paneContent[i].transform.localPosition = new Vector3(paneContent[i].transform.localPosition.x, paneContent[i].transform.localPosition.y - holdSpeed, paneContent[i].transform.localPosition.z);
+                paneContent[i].transform.localPosition = new Vector3(paneContent[i].transform.localPosition.x, paneContent[i].transform.localPosition.y - holdSpeed * dist, paneContent[i].transform.localPosition.z);
 
             }
         }

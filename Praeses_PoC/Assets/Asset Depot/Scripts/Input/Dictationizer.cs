@@ -4,6 +4,8 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
+using HoloToolkit.Unity.InputModule;
+
 
 namespace HoloToolkit.Unity
 {
@@ -94,7 +96,7 @@ namespace HoloToolkit.Unity
                 inProgress = true;
                 setUpDictation();
                 PhraseRecognitionSystem.Shutdown();
-                DictationDisplay.text = "Dictation Started";
+                DictationDisplay.text = "Speech to text started.  Begin dictating";
                 dictationRecognizer.Start();
                 annotMananger.StartDictation();
                 annotMananger.activeDictationBox = this.gameObject;

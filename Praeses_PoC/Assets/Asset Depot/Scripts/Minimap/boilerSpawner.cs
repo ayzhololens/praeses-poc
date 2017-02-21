@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
@@ -35,11 +36,11 @@ namespace HoloToolkit.Unity
         public void SpawnBoiler()
         {
             isObj = false;
-            Vector3 pos = GazeManager.Instance.Position;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
             GameObject boilerClone = Instantiate(boiler, pos, rot) as GameObject;
             activeObj = boilerClone;
-            for (int i=0; i< activeObj.transform.childCount; i++)
+            for (int i = 0; i < activeObj.transform.childCount; i++)
             {
                 activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
             }
@@ -49,7 +50,7 @@ namespace HoloToolkit.Unity
         public void SpawnDesk()
         {
             isObj = true;
-            Vector3 pos = GazeManager.Instance.Position;
+            Vector3 pos = GazeManager.Instance.HitPosition;
 
             GameObject deskClone = Instantiate(desk, pos, Quaternion.identity) as GameObject;
             activeObj = deskClone;
@@ -70,8 +71,8 @@ namespace HoloToolkit.Unity
 
             if (!isObj)
             {
-                Vector3 pos = GazeManager.Instance.Position;
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.Normal);
+                Vector3 pos = GazeManager.Instance.HitPosition;
+                Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
                 activeObj.transform.position = pos;
                 activeObj.transform.rotation = rot;
             }
@@ -91,7 +92,7 @@ namespace HoloToolkit.Unity
             {
                 activeObj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
-            
+
 
         }
     }
