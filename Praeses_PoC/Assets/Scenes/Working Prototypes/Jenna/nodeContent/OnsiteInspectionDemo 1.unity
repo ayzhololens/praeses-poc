@@ -1179,12 +1179,12 @@ GameObject:
   - component: {fileID: 419694217}
   - component: {fileID: 419694225}
   - component: {fileID: 419694224}
-  - component: {fileID: 419694223}
-  - component: {fileID: 419694222}
   - component: {fileID: 419694221}
   - component: {fileID: 419694220}
-  - component: {fileID: 419694219}
   - component: {fileID: 419694218}
+  - component: {fileID: 419694226}
+  - component: {fileID: 419694228}
+  - component: {fileID: 419694227}
   m_Layer: 0
   m_Name: MiniMap Button
   m_TagString: Button
@@ -1220,18 +1220,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.009999999, y: 0.004, z: 0.011031124}
   m_Center: {x: 0, y: 0, z: 9.313226e-10}
---- !u!114 &419694219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114080333379259060, guid: 6b9c14fcc8025f543bf3a867845d521d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419694216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &419694220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,30 +1249,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &419694222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114664570246086994, guid: 6b9c14fcc8025f543bf3a867845d521d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419694216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &419694223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114590341317133932, guid: 6b9c14fcc8025f543bf3a867845d521d,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 419694216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &419694224
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1325,6 +1289,87 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 419694216}
   m_Mesh: {fileID: 4300000, guid: d5a13a8377259294ea57d1dc0c5eb744, type: 3}
+--- !u!114 &419694226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419694216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81afb20295dd35f458d67fcc03db2df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1292695256}
+        m_MethodName: toggleMiniMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &419694227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419694216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6472e8428700658458368ef701ca77b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419694220}
+        m_MethodName: unHighlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &419694228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 419694216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca6b8866eb53af49ba4094b692b0b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 419694220}
+        m_MethodName: highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &422419055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4655,7 +4700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &953295336
 Transform:
   m_ObjectHideFlags: 0
