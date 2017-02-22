@@ -9,6 +9,8 @@ TagManager:
   - Node
   - Backplate
   - ScrollContent
+  - handCursorCollide
+  - miniMapMesh
   layers:
   - Default
   - TransparentFX

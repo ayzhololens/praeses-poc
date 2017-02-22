@@ -4,7 +4,7 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
-public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
+public class onModelDragHybrid : MonoBehaviour
 {
     private float rotationFactor;
     private float scaleFactor;
@@ -32,6 +32,10 @@ public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
 
     bool navigating;
 
+    public List<radialOperationsHybrid> operations;
+
+    public bool tumblerModeOn;
+
     void Start()
     {
         initHandPos = new Vector3(0, 0, 0);
@@ -44,12 +48,21 @@ public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
         adjustWithEdit();
 
         tempDist = 0.0f;
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        menuOn();
+        if (tumblerModeOn) {
+            menuOn();
+            if (gameObject.GetComponent<Collider>().enabled == true) { return; }
+            gameObject.GetComponent<Collider>().enabled = true;
+        }else
+        {
+            if(gameObject.GetComponent<Collider>().enabled == false) { return; }
+            gameObject.GetComponent<Collider>().enabled = false;         
+        }
     }
 
     private void menuOn()
@@ -68,7 +81,7 @@ public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
                     navigating = true;
                 }
                 navigating = true;
-                cursorOri.SetActive(false);
+                //cursorOri.SetActive(false);
                 cursorHand.SetActive(true);
 
                 Vector3 handPos = HandsManager.Instance.ManipulationHandPosition - initHandPos;
@@ -80,7 +93,7 @@ public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
                 xPos = handPosLocal.transform.localPosition.x;
                 yPos = handPosLocal.transform.localPosition.y;
 
-                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
+                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist/ 100 - .025f);
 
             }
             else
@@ -115,6 +128,10 @@ public class onModelDragHybrid : MonoBehaviour//, INavigationHandler
             followCur.iconIndex = 0;
             buttonsGrp.SetActive(false);
             cursorOri.SetActive(true);
+            foreach (radialOperationsHybrid oper in operations)
+            {
+                oper.rotationFactor = 0;
+            }
         }
 
     }

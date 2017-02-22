@@ -42,6 +42,9 @@ namespace HoloToolkit.Unity
 
                 miniMapMeshes.Add((GameObject)Instantiate(transform.GetChild(i).gameObject, transform.GetChild(i).position, transform.GetChild(i).localRotation));
                 miniMapMeshes[i].transform.SetParent(miniMapHolder.transform);
+                miniMapMeshes[i].tag = "miniMapMesh";
+                miniMapMeshes[i].GetComponent<MeshRenderer>().enabled = false;
+                miniMapMeshes[i].layer = 2;
                 if (miniMapMeshes[i].GetComponent<Renderer>() != null)
                 {
                     miniMapMeshes[i].GetComponent<Renderer>().material = miniMapMat;

@@ -51,17 +51,17 @@ namespace HoloToolkit.Unity
         {
 
                 if (other.gameObject.tag == "handCursorCollide")
-                    Debug.Log("collide enter tag");
+                    //Debug.Log("collide enter tag");
                 followCur.iconIndex = cursorIndex;
                 {
                     if (typing == 1)
                     {
-                        Debug.Log("collide enter tag rotate");
+                        //Debug.Log("collide enter tag rotate");
                         rotationFactor = 2;
                     }
                     else if (typing == 2)
                     {
-                        Debug.Log("collide enter tag scale");
+                        //Debug.Log("collide enter tag scale");
                         rotationFactor = .01f * rotationMultiplier;
                     }
                 }
@@ -73,7 +73,7 @@ namespace HoloToolkit.Unity
                 followCur.iconIndex = 0;
             }
 
-            Debug.Log("collide exit");
+           // Debug.Log("collide exit");
             rotationFactor = 0;
         }
 
