@@ -23,7 +23,11 @@ public class gazeEnterEvent : MonoBehaviour,  IFocusable
 
     public void OnFocusEnter()
     {
-        GazeEnter();
+        if(GazeManager.Instance.HitObject == this.gameObject)
+        {
+            GazeEnter();
+        }
+        
     }
 
     public void OnFocusExit()

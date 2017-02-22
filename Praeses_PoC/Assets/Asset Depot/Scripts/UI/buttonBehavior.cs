@@ -17,82 +17,84 @@ public class buttonBehavior : MonoBehaviour {
     public bool moving;
 
 
- //   // Use this for initialization
- //   void Start () {
- //       moving = false;
-		
-	//}
-	
-	//// Update is called once per frame
-	//void Update () {
- //       Debug.Log(moving);
- //       if (moving)
- //       {
+    // Use this for initialization
+    void Start()
+    {
+        moving = false;
 
- //           nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, nextTargetPos, speed * Time.deltaTime);
- //           currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, curTargetPos, speed * Time.deltaTime * 1.1f);
- //           Invoke("turnOffHolder", 1f);
+    }
 
- //           if (nextButtonHolder.transform.position == nextTargetPos)
- //           {
- //               moving = false;
- //               currentButtonHolder.transform.position = backHolder.position;
- //               Debug.Log("done");
- //               GetComponent<OnGazeLeaveEvent>().enabled = true;
- //               currentButtonHolder.SetActive(false);
+    // Update is called once per frame
+    void Update()
+    {
+        Debug.Log(moving);
+        if (moving)
+        {
 
- //               //if (subButtonParent != null)
- //               //{
- //               //    subButtonParent.SetActive(false);
- //               //}
+            nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, nextTargetPos, speed * Time.deltaTime);
+            currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, curTargetPos, speed * Time.deltaTime * 1.1f);
+            Invoke("turnOffHolder", 1f);
 
- //               //if (subButtonParent != null)
- //               //{
- //               //    subButtonParent.SetActive(false);
- //               //}
- //           }
- //       }
- //   }
+            if (nextButtonHolder.transform.position == nextTargetPos)
+            {
+                moving = false;
+                currentButtonHolder.transform.position = backHolder.position;
+                Debug.Log("done");
+                GetComponent<gazeLeaveEvent>().enabled = true;
+                currentButtonHolder.SetActive(false);
 
- //   public void keepSubButtonsOn()
- //   {
- //       subButtonParent.GetComponent<subMenu>().subButtonsOn = true;
- //   }
+                //if (subButtonParent != null)
+                //{
+                //    subButtonParent.SetActive(false);
+                //}
 
- //   public void goToNextButton()
- //   {
- //       currentButtonHolder.SetActive(false);
- //       //nextButtonHolder.transform.LookAt(Camera.main.transform);
- //       nextButtonHolder.SetActive(true);
- //   }
+                //if (subButtonParent != null)
+                //{
+                //    subButtonParent.SetActive(false);
+                //}
+            }
+        }
+    }
 
- //   void turnOffHolder()
- //   {
- //       moving = false;
- //       currentButtonHolder.transform.position = backHolder.position;
- //       Debug.Log("done");
- //       GetComponent<OnGazeLeaveEvent>().enabled = true;
- //       currentButtonHolder.SetActive(false);
- //   }
+    public void keepSubButtonsOn()
+    {
+        subButtonParent.GetComponent<subMenu>().subButtonsOn = true;
+    }
 
- //   public void acceptInput()
- //   {
- //       nextButtonHolder.SetActive(true);
- //       moving = true;
- //       nextButtonHolder.transform.position = backHolder.transform.position;
- //       curTargetPos = upHolder.position;
- //       nextTargetPos = frontPosHolder.position;
- //      // nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, frontPosHolder.transform.position, speed * Time.deltaTime);
- //       //currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, downHolder.transform.position, speed * Time.deltaTime);
- //       //currentButtonHolder.SetActive(false);
- //   }
+    public void goToNextButton()
+    {
+        currentButtonHolder.SetActive(false);
+        //nextButtonHolder.transform.LookAt(Camera.main.transform);
+        nextButtonHolder.SetActive(true);
+    }
 
- //   public void denyInput()
- //   {
- //       nextButtonHolder.SetActive(true);
- //       moving = true;
- //       nextButtonHolder.transform.position = upHolder.transform.position;
- //       curTargetPos = backHolder.position;
- //       nextTargetPos = frontPosHolder.position;
- //   }
+    void turnOffHolder()
+    {
+        moving = false;
+        currentButtonHolder.transform.position = backHolder.position;
+        Debug.Log("done");
+        GetComponent<gazeLeaveEvent>().enabled = true;
+        currentButtonHolder.SetActive(false);
+    }
+
+    public void acceptInput()
+    {
+        nextButtonHolder.SetActive(true);
+        moving = true;
+        nextButtonHolder.transform.position = backHolder.transform.position;
+        curTargetPos = upHolder.position;
+        nextTargetPos = frontPosHolder.position;
+        // nextButtonHolder.transform.position = Vector3.MoveTowards(nextButtonHolder.transform.position, frontPosHolder.transform.position, speed * Time.deltaTime);
+        //currentButtonHolder.transform.position = Vector3.MoveTowards(currentButtonHolder.transform.position, downHolder.transform.position, speed * Time.deltaTime);
+        //currentButtonHolder.SetActive(false);
+    }
+
+    public void denyInput()
+    {
+        nextButtonHolder.SetActive(true);
+        moving = true;
+        nextButtonHolder.transform.position = upHolder.transform.position;
+        curTargetPos = backHolder.position;
+        nextTargetPos = frontPosHolder.position;
+    }
 }

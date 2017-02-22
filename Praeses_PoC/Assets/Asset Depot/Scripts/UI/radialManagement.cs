@@ -78,7 +78,7 @@ namespace HoloToolkit.Unity
 
             }
 
-            //radial
+            //radial turn on counter
             if (sourceManager.sourcePressed && !isActive && !annotManager.annotating)
             {
                 radialCounter += 1;
@@ -96,6 +96,8 @@ namespace HoloToolkit.Unity
                 }
 
             }
+
+            //nothing happened so reset counter
             if (!sourceManager.sourcePressed && !isActive)
             {
                 radialCounter = 0;
@@ -103,19 +105,29 @@ namespace HoloToolkit.Unity
 
             }
 
-
+            //released so keep it open
             if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag != "Button")
             {
                 radialOpenNotClicked = true;
 
             }
 
+            //tapping off radial menu so turn it off
             if (sourceManager.sourcePressed && isActive && radialOpenNotClicked && gazeManager.HitObject.tag != "Button")
             {
                 turnOffRadialMenu();
                 radialOpenNotClicked = false;
             }
 
+
+            //tapping on radial menu so turn it off
+            if (sourceManager.sourcePressed && isActive && radialOpenNotClicked && gazeManager.HitObject.tag == "Button")
+            {
+                turnOffRadialMenu();
+                radialOpenNotClicked = false;
+            }
+
+            //released over button 
             if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag == "Button" && !radialOpenNotClicked)
             {
                 turnOffRadialMenu();
@@ -153,7 +165,7 @@ namespace HoloToolkit.Unity
 
             if (focusedButton == null)
             {
-                BroadcastMessage("OnGazeLeave");
+                BroadcastMessage("OnFocusExit");
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
                 RadialMenu.transform.LookAt(Camera.main.transform);
@@ -168,7 +180,7 @@ namespace HoloToolkit.Unity
             {
 
 
-                BroadcastMessage("OnGazeLeave");
+                BroadcastMessage("OnFocusExit");
                 focusedButton.SendMessage("OnSelect", SendMessageOptions.DontRequireReceiver);
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;

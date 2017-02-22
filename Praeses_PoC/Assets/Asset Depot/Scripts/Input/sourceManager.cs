@@ -59,5 +59,10 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         }
     }
 
+    public void OnInputClicked(InputClickedEventData eventData)
+    {
+
+    }
+
 
 }

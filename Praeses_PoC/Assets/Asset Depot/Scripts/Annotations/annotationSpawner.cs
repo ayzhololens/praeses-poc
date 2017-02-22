@@ -20,6 +20,7 @@ namespace HoloToolkit.Unity
         public GameObject miniVideoNode;
         public GameObject miniSimpleNode;
         float scaleOffest;
+        int finishCounter;
         GameObject miniAnnotation;
 
         bool isVideoNode;
@@ -42,6 +43,7 @@ namespace HoloToolkit.Unity
             if (tapToPlaceInProgress)
             {
                 startPlacingAnnotNode();
+
             }
 
         }
@@ -49,10 +51,16 @@ namespace HoloToolkit.Unity
         public void startPlacingAnnotNode()
         {
             Vector3 pos = GazeManager.Instance.HitPosition;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             spawnedAnnotation.transform.position = pos;
             spawnedAnnotation.transform.rotation = rot;
 
+            finishCounter += 1;
+            if (sourceManager.Instance.sourcePressed && finishCounter >= 40)
+            {
+                finishPlacingAnnotNode();
+                finishCounter = 0;
+            }
 
 
 
@@ -103,7 +111,7 @@ namespace HoloToolkit.Unity
         {
             isPhotoNode = true;
             Vector3 pos = GazeManager.Instance.HitPosition;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             spawnedAnnotation = Instantiate(photoNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
@@ -119,7 +127,7 @@ namespace HoloToolkit.Unity
         {
             isVideoNode = true;
             Vector3 pos = GazeManager.Instance.HitPosition;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             spawnedAnnotation = Instantiate(videoNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
@@ -133,7 +141,7 @@ namespace HoloToolkit.Unity
         {
             isSimpleNode = true;
             Vector3 pos = GazeManager.Instance.HitPosition;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.GazeNormal);
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             spawnedAnnotation = Instantiate(simpleNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
