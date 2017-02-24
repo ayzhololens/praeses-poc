@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity;
 using HoloToolkit.Unity.InputModule;
 
 public class navigationDrag : MonoBehaviour, INavigationHandler
@@ -13,6 +14,8 @@ public class navigationDrag : MonoBehaviour, INavigationHandler
     Vector3 worldObjectPosition;
     Vector3 initialManipulationPosition;
     Vector3 initialObjectPosition;
+    private Interpolator interpolator;
+    bool manipulating;
 
     // Use this for initialization
     void Start()
@@ -32,26 +35,36 @@ public class navigationDrag : MonoBehaviour, INavigationHandler
             OnNavigationStarted(null);
         }
 
-        if(navigating && !sourceManager.Instance.sourcePressed)
+        if (navigating && !sourceManager.Instance.sourcePressed)
         {
             navigating = false;
             NavCursor.SetActive(false);
         }
-        
+
+
+
     }
 
     public void OnNavigationStarted(NavigationEventData eventData)
     {
         rotatedManipulationOffset = Vector3.zero;
         worldObjectPosition = Vector3.zero;
+
+        //initialManipulationPosition = Camera.main.transform.position + Camera.main.transform.forward;
         initialManipulationPosition = NavCursor.transform.position;
         initialObjectPosition = initialManipulationPosition;
+
+        interpolator = GetComponent<Interpolator>();
     }
+
 
     public void OnNavigationUpdated(NavigationEventData eventData)
     {
-        rotatedManipulationOffset = Quaternion.FromToRotation(Vector3.forward, Camera.main.transform.forward) * eventData.CumulativeDelta;
+        rotatedManipulationOffset = Quaternion.FromToRotation((Vector3.forward), Camera.main.transform.forward) * eventData.CumulativeDelta;
         worldObjectPosition = initialManipulationPosition + rotatedManipulationOffset * sensitivity;
+
+
+
         NavCursor.transform.position = worldObjectPosition;
     }
 

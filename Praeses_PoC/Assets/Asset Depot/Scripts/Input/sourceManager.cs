@@ -5,21 +5,24 @@ using HoloToolkit.Unity;
 using HoloToolkit.Unity.InputModule;
 
 
-public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInputHandler {
+public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInputHandler
+{
 
     public bool sourcePressed;
     public bool sourceDetected;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         InputManager.Instance.PushModalInputHandler(gameObject);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     public void OnSourceDetected(SourceStateEventData eventData)
     {
@@ -28,7 +31,7 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         {
             sourceDetected = true;
         }
-        
+
     }
 
 
@@ -37,6 +40,7 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         if (sourceDetected)
         {
             sourceDetected = false;
+            sourcePressed = false;
         }
     }
 
@@ -48,7 +52,7 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         {
             sourcePressed = false;
         }
-        
+
     }
 
     public void OnInputDown(InputEventData eventData)
@@ -57,11 +61,6 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         {
             sourcePressed = true;
         }
-    }
-
-    public void OnInputClicked(InputClickedEventData eventData)
-    {
-
     }
 
 

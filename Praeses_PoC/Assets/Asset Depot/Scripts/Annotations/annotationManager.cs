@@ -55,6 +55,10 @@ namespace HoloToolkit.Unity
             {
                 CapturePhoto();
             }
+            if(sourceManager.Instance.sourcePressed && dictationInProgress)
+            {
+                StopDictation();
+            }
 
 
         }

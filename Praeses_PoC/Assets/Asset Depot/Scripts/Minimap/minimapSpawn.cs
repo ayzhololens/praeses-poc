@@ -15,7 +15,6 @@ namespace HoloToolkit.Unity
         GameObject desk;
         GameObject boiler;
         int switchCounter;
-        public Material textureMat;
 
         // Use this for initialization
         void Start()
@@ -35,11 +34,11 @@ namespace HoloToolkit.Unity
 
         public void spawnMiniMap()
         {
-            Debug.Log("tried");
+
 
             for (int i = 0; i < transform.childCount; i++)
-            {   
-
+            {
+                transform.GetChild(i).gameObject.tag = "SpatialMapping";
                 miniMapMeshes.Add((GameObject)Instantiate(transform.GetChild(i).gameObject, transform.GetChild(i).position, transform.GetChild(i).localRotation));
                 miniMapMeshes[i].transform.SetParent(miniMapHolder.transform);
                 if (miniMapMeshes[i].GetComponent<Renderer>() != null)
@@ -70,7 +69,7 @@ namespace HoloToolkit.Unity
             miniMapHolder.transform.position = Vector3.zero;
             miniMapHolder.transform.localScale = miniMapHolder.transform.localScale * scaleOffset;
             miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
-            miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .1f, MiniMapTagAlong.transform.position.z);
+            miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
             GetComponent<miniMapToggle>().active = true;
         }
 

@@ -26,9 +26,16 @@ public class gazeLeaveEvent : MonoBehaviour, IFocusable
         
     }
 
+
+
+
+
     public void OnFocusExit()
     {
-        GazeLeave();
+
+            GazeLeave();
+        
+        
     }
 
 

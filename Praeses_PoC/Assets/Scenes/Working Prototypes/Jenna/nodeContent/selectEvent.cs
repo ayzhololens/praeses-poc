@@ -13,8 +13,10 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
         // dummy Start function so we can use this.enabled
     }
 
-    void OnSelect()
+    public void OnSelect()
     {
+
+
         if (this.enabled == false) return;
         if (Event != null)
         {

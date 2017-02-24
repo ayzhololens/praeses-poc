@@ -432,5 +432,5 @@ MonoBehaviour:
   photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
-  photoNode: 1
-  simpleNode: 0
+  photoNode: 0
+  simpleNode: 1

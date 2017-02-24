@@ -5,9 +5,7 @@ using UnityEngine;
 namespace HoloToolkit.Unity
 {
     public class nodeHighlight : MonoBehaviour {
-
-        public Color startEmissColor;
-        public Color highlightEmissColor;
+        
         Material mat;
         public GameObject NodeMesh;
         public Material nodeMat;

@@ -27,7 +27,7 @@ public class buttonBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(moving);
+
         if (moving)
         {
 
@@ -59,6 +59,7 @@ public class buttonBehavior : MonoBehaviour {
     public void keepSubButtonsOn()
     {
         subButtonParent.GetComponent<subMenu>().subButtonsOn = true;
+        Debug.Log(subButtonParent.GetComponent<subMenu>().subButtonsOn);
     }
 
     public void goToNextButton()
