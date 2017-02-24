@@ -9,8 +9,10 @@ TagManager:
   - Node
   - Backplate
   - ScrollContent
-  - handCursorCollide
   - miniMapMesh
+  - SpatialMapping
+  - handCursorCollide
+  - boilerPrefab
   layers:
   - Default
   - TransparentFX

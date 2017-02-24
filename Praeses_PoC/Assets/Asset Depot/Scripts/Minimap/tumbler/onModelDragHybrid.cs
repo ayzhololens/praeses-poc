@@ -6,21 +6,14 @@ using HoloToolkit.Unity;
 
 public class onModelDragHybrid : MonoBehaviour
 {
-    private float rotationFactor;
-    private float scaleFactor;
-    public float rotationMultiplier;
-    public float scaleMultiplier;
-
     public GameObject cursorOri;
     public GameObject cursorHand;
-    bool allowRot;
-    bool allowSca;
     Vector3 initHandPos;
 
     public GameObject buttonsGrp;
 
     Transform oriParent;
-    bool editState;
+    public bool editState;
     float xPos;
     float yPos;
 
@@ -39,9 +32,6 @@ public class onModelDragHybrid : MonoBehaviour
     void Start()
     {
         initHandPos = new Vector3(0, 0, 0);
-        allowRot = false;
-        allowSca = false;
-
         navigating = false;
         oriParent = buttonsGrp.transform.parent;
         editState = false;
@@ -84,19 +74,18 @@ public class onModelDragHybrid : MonoBehaviour
                 //cursorOri.SetActive(false);
                 cursorHand.SetActive(true);
 
-                Vector3 handPos = HandsManager.Instance.ManipulationHandPosition - initHandPos;
+                handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
 
-                handPosLocal.transform.position = new Vector3(Mathf.Clamp(handPos.x, -.1f, .1f),
-                                                                Mathf.Clamp(handPos.y, -.1f, .1f),
-                                                                handPos.z);
-
+                handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
+                                                                    Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
+                                                                    handPosLocal.transform.localPosition.z);
                 xPos = handPosLocal.transform.localPosition.x;
                 yPos = handPosLocal.transform.localPosition.y;
 
                 cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist/ 100 - .025f);
 
             }
-            else
+            else 
             {
                 editState = false;
                 navigating = false;
@@ -104,8 +93,6 @@ public class onModelDragHybrid : MonoBehaviour
                 cursorOri.SetActive(true);
                 cursorHand.SetActive(false);
                 initHandPos = new Vector3(0, 0, 0);
-                rotationFactor = 0;
-                scaleFactor = 0;
             }
         }
     }

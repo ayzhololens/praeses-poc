@@ -13,7 +13,6 @@ namespace HoloToolkit.Unity
 
         public followCursorScript followCur;
         public int cursorIndex;
-        public bool isSpeed;
 
         //1 = rotation
         //2 = scaler
@@ -21,7 +20,6 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            
         }
 
 
@@ -32,7 +30,7 @@ namespace HoloToolkit.Unity
             {
                 if (typing == 1)
                 {
-                    tumbledObject.transform.Rotate(new Vector3(0, -1 * rotationFactor * rotationMultiplier, 0));
+                    tumbledObject.transform.Rotate(new Vector3(0, -1 * rotationFactor* rotationMultiplier, 0));
                 }
                 else if (typing == 2)
                 {
@@ -50,31 +48,28 @@ namespace HoloToolkit.Unity
         private void OnTriggerEnter(Collider other)
         {
 
-                if (other.gameObject.tag == "handCursorCollide")
-                    //Debug.Log("collide enter tag");
+            if (other.gameObject.tag != "handCursorCollide"){ return; };
+                //Debug.Log("collide enter tag");
                 followCur.iconIndex = cursorIndex;
+                if (typing == 1)
                 {
-                    if (typing == 1)
-                    {
-                        //Debug.Log("collide enter tag rotate");
-                        rotationFactor = 2;
-                    }
-                    else if (typing == 2)
-                    {
-                        //Debug.Log("collide enter tag scale");
-                        rotationFactor = .01f * rotationMultiplier;
-                    }
+                    //Debug.Log(other.gameObject + "collide enter tag rotate");
+                    rotationFactor = 2;
                 }
+                else if (typing == 2)
+                {
+                    //Debug.Log("collide enter tag scale");
+                    rotationFactor = .01f * rotationMultiplier;
+                }
+      
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (!isSpeed) {
-                followCur.iconIndex = 0;
-            }
-
-           // Debug.Log("collide exit");
+            
+            followCur.iconIndex = 0;
             rotationFactor = 0;
+
         }
 
 

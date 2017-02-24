@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class resetScript : MonoBehaviour {
 
-	public void resetStage()
-    {
-        Application.LoadLevel(Application.loadedLevel);
-    }
+	//public void resetStage()
+ //   {
+ //       Application.LoadLevel(Application.loadedLevel);
+ //   }
 }
