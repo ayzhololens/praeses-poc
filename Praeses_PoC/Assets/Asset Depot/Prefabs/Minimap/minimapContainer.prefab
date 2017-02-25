@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114795581712176608}
   - component: {fileID: 23149698049444266}
   - component: {fileID: 33908982083382476}
+  - component: {fileID: 114379576884216512}
   m_Layer: 0
   m_Name: tumbled_Script
   m_TagString: Untagged
@@ -57,7 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783908453511752}
   - component: {fileID: 33006482732576440}
-  - component: {fileID: 65070035768146132}
+  - component: {fileID: 64436619396103236}
   - component: {fileID: 23510595419664424}
   - component: {fileID: 114458236052503604}
   - component: {fileID: 54375851496209760}
@@ -81,7 +82,7 @@ GameObject:
   - component: {fileID: 65330840959693758}
   - component: {fileID: 114970831354761576}
   - component: {fileID: 114728730205201528}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: scaleUp_geo
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -102,7 +103,7 @@ GameObject:
   - component: {fileID: 54837817802693450}
   - component: {fileID: 114467369370703428}
   - component: {fileID: 114605501319377030}
-  m_Layer: 2
+  m_Layer: 5
   m_Name: CursorOnHolograms
   m_TagString: handCursorCollide
   m_Icon: {fileID: 0}
@@ -134,7 +135,7 @@ GameObject:
   - component: {fileID: 4630693159262914}
   - component: {fileID: 33664837884575464}
   - component: {fileID: 23724784930694846}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: scaleUp_icon
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 33784504073249418}
   - component: {fileID: 65126435639952138}
   - component: {fileID: 23640746818231554}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: lineCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +219,7 @@ GameObject:
   - component: {fileID: 65107048521071706}
   - component: {fileID: 114307294250186964}
   - component: {fileID: 114370018934803524}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: 'rotLft_geo '
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -250,7 +251,7 @@ GameObject:
   - component: {fileID: 4052171768837368}
   - component: {fileID: 33974446362275714}
   - component: {fileID: 23373747758248836}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: scaleDn_icon
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -282,7 +283,7 @@ GameObject:
   - component: {fileID: 4567837315294708}
   - component: {fileID: 33913805988448662}
   - component: {fileID: 23239960895473098}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: rotL_icon
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -302,7 +303,7 @@ GameObject:
   - component: {fileID: 65152164023747886}
   - component: {fileID: 114483356821768684}
   - component: {fileID: 114385533719969758}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: scaleDn_geo
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -322,7 +323,7 @@ GameObject:
   - component: {fileID: 65375868222434580}
   - component: {fileID: 114758756870923756}
   - component: {fileID: 114161527663244336}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: rotRt_geo
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -339,7 +340,7 @@ GameObject:
   - component: {fileID: 4636608669733196}
   - component: {fileID: 33042718949761384}
   - component: {fileID: 23259229933632578}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: rotR_icon
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -373,7 +374,7 @@ GameObject:
   - component: {fileID: 23667874922939652}
   - component: {fileID: 65641793125842586}
   - component: {fileID: 114459388766962136}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: UI
   m_TagString: Button
   m_Icon: {fileID: 0}
@@ -602,7 +603,7 @@ Transform:
   m_GameObject: {fileID: 1060516036349210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 4405819434070606}
   m_RootOrder: 1
@@ -1082,7 +1083,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060516036349210}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 331e6a47e5cfbf545af1a98f57e6f6da, type: 3}
 --- !u!33 &33042718949761384
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -1197,8 +1198,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65070035768146132
-BoxCollider:
+--- !u!64 &64436619396103236
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -1207,8 +1208,10 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.001, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Convex: 1
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 331e6a47e5cfbf545af1a98f57e6f6da, type: 3}
 --- !u!65 &65107048521071706
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1291,8 +1294,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 0.5, z: 1.1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: -0.85}
 --- !u!65 &65963514933106260
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1355,6 +1358,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1bef67ee02310438c892464c1b507d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114379576884216512
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1033610572412592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8d5b128a1d8204fb76c86f47b75912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PivotAxis: 1
 --- !u!114 &114384584061146678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1527,7 +1542,8 @@ MonoBehaviour:
   - {fileID: 114483356821768684}
   - {fileID: 114758756870923756}
   - {fileID: 114307294250186964}
-  tumblerModeOn: 1
+  tumblerModeOn: 0
+  countDown: 0.5
 --- !u!114 &114970831354761576
 MonoBehaviour:
   m_ObjectHideFlags: 1

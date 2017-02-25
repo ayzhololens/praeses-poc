@@ -29,6 +29,9 @@ public class onModelDragHybrid : MonoBehaviour
 
     public bool tumblerModeOn;
 
+    public float countDown;
+    float initCountDown;
+
     void Start()
     {
         initHandPos = new Vector3(0, 0, 0);
@@ -39,11 +42,22 @@ public class onModelDragHybrid : MonoBehaviour
 
         tempDist = 0.0f;
         gameObject.GetComponent<Collider>().enabled = false;
+        initCountDown = countDown;
+        tumblerModeOn = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "miniMapMesh")
+        {
+            countDown -= Time.deltaTime;
+        }
+        if (countDown < 0)
+        {
+            tumblerModeOn = true;
+        }
+
         if (tumblerModeOn) {
             menuOn();
             if (gameObject.GetComponent<Collider>().enabled == true) { return; }
@@ -93,6 +107,8 @@ public class onModelDragHybrid : MonoBehaviour
                 cursorOri.SetActive(true);
                 cursorHand.SetActive(false);
                 initHandPos = new Vector3(0, 0, 0);
+                tumblerModeOn = false;
+                countDown = initCountDown;
             }
         }
     }
@@ -119,6 +135,8 @@ public class onModelDragHybrid : MonoBehaviour
             {
                 oper.rotationFactor = 0;
             }
+            //tumblerModeOn = false;
+            //countDown = initCountDown;
         }
 
     }
