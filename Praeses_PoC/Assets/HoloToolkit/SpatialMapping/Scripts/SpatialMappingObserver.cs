@@ -307,6 +307,8 @@ namespace HoloToolkit.Unity.SpatialMapping
                 ReclaimSurface(replacedSurface.Value);
             }
 
+            //GetComponent<SpatialUnderstandingCustomMesh>().Import_UnderstandingMesh();
+
 
         }
 

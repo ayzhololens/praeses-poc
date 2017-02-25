@@ -252,7 +252,7 @@ namespace HoloToolkit.Unity
                 (UnderstandingCustomMesh != null))
             {
                 // Final mesh import
-                StartCoroutine(UnderstandingCustomMesh.Import_UnderstandingMesh());
+                //StartCoroutine(UnderstandingCustomMesh.Import_UnderstandingMesh());
 
                 // Mark it
                 ScanState = ScanStates.Done;
