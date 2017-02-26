@@ -199,7 +199,7 @@ namespace HoloToolkit.Unity
 
             if (isActive)
             {
-                gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+                //gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
 
                 if (radHands.focusedObj.tag == "Button")
                 {
@@ -212,7 +212,7 @@ namespace HoloToolkit.Unity
             }
             if (!isActive)
             {
-                gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
+                //gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
 
         }

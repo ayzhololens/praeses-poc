@@ -10,7 +10,7 @@ namespace HoloToolkit.Unity
         GameObject miniMapHolder;
         public List<GameObject> miniMapMeshes;
         public GameObject SpatUnderstanding;
-        public GameObject MiniMapTagAlong;
+        public GameObject MiniMapHolderParent;
         public Material miniMapMat;
         public float scaleOffset;
         GameObject desk;
@@ -38,7 +38,7 @@ namespace HoloToolkit.Unity
         public void spawnMiniMap()
         {
             //Debug.Log(miniMapHolder.transform.position);
-            miniMapHolder.transform.position = MiniMapTagAlong.transform.position;
+            miniMapHolder.transform.position = MiniMapHolderParent.transform.position;
 
 
             for (int i = 0; i < transform.childCount; i++)
@@ -79,11 +79,11 @@ namespace HoloToolkit.Unity
                 }
             }
 
-            MiniMapTagAlong.transform.localScale = MiniMapTagAlong.transform.localScale / scaleOffset;
-            MiniMapTagAlong.transform.position = boilerPivot;
-            miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
-            MiniMapTagAlong.transform.localPosition = Vector3.zero;
-            MiniMapTagAlong.transform.localScale = Vector3.one;
+            MiniMapHolderParent.transform.localScale = MiniMapHolderParent.transform.localScale / scaleOffset;
+            MiniMapHolderParent.transform.position = boilerPivot;
+            miniMapHolder.transform.SetParent(MiniMapHolderParent.transform);
+            MiniMapHolderParent.transform.localPosition = Vector3.zero;
+            MiniMapHolderParent.transform.localScale = Vector3.one;
             // miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
             GetComponent<miniMapToggle>().active = true;
             
@@ -114,8 +114,8 @@ namespace HoloToolkit.Unity
             {
                 miniMapHolder.transform.position = Vector3.zero;
                 miniMapHolder.transform.localScale = miniMapHolder.transform.localScale * scaleOffset;
-                miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
-                miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
+                miniMapHolder.transform.SetParent(MiniMapHolderParent.transform);
+                miniMapHolder.transform.position = new Vector3(MiniMapHolderParent.transform.position.x, MiniMapHolderParent.transform.position.y - .2f, MiniMapHolderParent.transform.position.z);
                 GetComponent<miniMapToggle>().active = true;
                 //SpatUnderstanding.SetActive(false);
             }
@@ -229,56 +229,7 @@ namespace HoloToolkit.Unity
             ////}
 
         }
+        
 
-        public void testDestroy()
-        {
-            //foreach (Transform spatChild in SpatUnderstanding.transform)
-            //{
-            //    spatChild.transform.SetParent(miniMapHolder.transform);
-            //    //DestroyImmediate(spatChild.gameObject);
-            //}
-
-            //if (SpatUnderstanding.transform.childCount != 0)
-            //{
-            //    testDestroy();
-            //}
-
-        }
-
-
-        public void Switcher()
-        {
-            //switchCounter += 1;
-
-            //if (switchCounter >= 4)
-            //{
-            //    switchCounter = 0;
-            //}
-
-            //if (switchCounter == 0)
-            //{
-            //    desk.SetActive(true);
-            //    boiler.SetActive(false);
-            //    desk.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = textureMat;
-            //}
-            //else if(switchCounter == 1)
-            //{
-            //    desk.SetActive(true);
-            //    boiler.SetActive(false);
-            //    desk.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = miniMapMat;
-            //}
-            //else if(switchCounter == 2)
-            //{
-            //    desk.SetActive(false);
-            //    boiler.SetActive(true);
-            //}
-            //else if (switchCounter == 3)
-            //{
-            //    boiler.SetActive(false);
-            //    desk.SetActive(false);
-            //}
-
-
-        }
     }
 }

@@ -32,7 +32,6 @@ public class handEnterEvent : MonoBehaviour {
         {
 
             HandEnter();
-            Debug.Log(gameObject + " ON");
         }
     }
 }

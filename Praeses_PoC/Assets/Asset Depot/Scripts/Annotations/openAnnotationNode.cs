@@ -28,7 +28,7 @@ namespace HoloToolkit.Unity
 
         // Use this for initialization
         void Start() {
-            miniMapTagAlong = GameObject.Find("MiniMapTagAlong").transform;
+            miniMapTagAlong = GameObject.Find("SpatialMapping").GetComponent<miniMapToggle>().MiniMapTagAlong.transform;
             annotManager = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
             if (isMiniNode)
             {
