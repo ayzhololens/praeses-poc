@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: spatialMat
-  m_Shader: {fileID: 4800000, guid: b21aa08825c93084cb4072b24fc90532, type: 3}
-  m_ShaderKeywords: _EMISSION _USECOLOR_ON
+  m_Name: wireMat
+  m_Shader: {fileID: 4800000, guid: 0d08dd59087697b44a68a02cc9a7c3a2, type: 3}
+  m_ShaderKeywords: _EMISSION _USECOLOR_ON _USEEMISSIONTEX_ON
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _EmissionTex
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 544602c038c38184d8cc5b896c837027, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -132,10 +132,13 @@ Material:
       second: 1
     - first:
         name: _UseEmissionTex
-      second: 0
+      second: 1
     - first:
         name: _UseMainTex
       second: 0
+    - first:
+        name: _WireThickness
+      second: 221
     - first:
         name: _ZTest
       second: 4
@@ -144,8 +147,14 @@ Material:
       second: 1
     m_Colors:
     - first:
+        name: _BaseColor
+      second: {r: 0.17139928, g: -0, b: 0.38235292, a: 1}
+    - first:
         name: _Color
-      second: {r: 0.20588236, g: 0.7699798, b: 1, a: 1}
+      second: {r: 0.51470584, g: 0.859432, b: 1, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: -0, g: 1, b: 0.66896534, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _WireColor
+      second: {r: -0, g: 0.668966, b: 1, a: 1}
