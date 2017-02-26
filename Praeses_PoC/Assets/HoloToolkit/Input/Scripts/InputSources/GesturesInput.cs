@@ -58,8 +58,7 @@ namespace HoloToolkit.Unity.InputModule
             if (UseRailsNavigation)
             {
                 navigationGestureRecognizer.SetRecognizableGestures(GestureSettings.NavigationRailsX |
-                                                                    GestureSettings.NavigationRailsY |
-                                                                    GestureSettings.NavigationRailsZ);
+                                                                    GestureSettings.NavigationRailsY );
             }
             else
             {

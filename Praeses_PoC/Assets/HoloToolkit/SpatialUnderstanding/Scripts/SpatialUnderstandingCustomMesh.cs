@@ -353,7 +353,7 @@ namespace HoloToolkit.Unity
         /// <returns>A floored vector</returns>
         private Vector3 VectorToSector(Vector3 vector)
         {
-            return new Vector3(Mathf.FloorToInt(vector.x), Mathf.FloorToInt(vector.y), Mathf.FloorToInt(vector.z));
+            return new Vector3(Mathf.FloorToInt(vector.x*2), Mathf.FloorToInt(vector.y*2), Mathf.FloorToInt(vector.z*2));
         }
 
         /// <summary>

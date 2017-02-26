@@ -7,7 +7,7 @@ using UnityEngine.Windows.Speech;
 using HoloToolkit.Unity.InputModule;
 
 
-namespace HoloToolkit.Unity
+namespace HoloToolkit.Unity.InputModule
 {
 
 
@@ -26,7 +26,8 @@ namespace HoloToolkit.Unity
         void Start()
         {
             inProgress = false;
-            PhraseRecognitionSystem.Restart();
+            //UNCOMMENT
+            //PhraseRecognitionSystem.Restart();
             keyWordManager = GameObject.Find("InputManager").GetComponent<KeywordManager>();
             annotMananger = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
             setUpDictation();

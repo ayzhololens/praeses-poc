@@ -54,7 +54,7 @@ namespace HoloToolkit.Unity
                     contentDistance = Vector3.Distance(contentHoler.transform.position, Camera.main.transform.position);
                     if(contentDistance > 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)
                     {
-                        contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, Camera.main.transform.position, speed);
+                        contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, Camera.main.transform.position, speed/1.5f);
                     }
 
                     if (contentDistance < 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)

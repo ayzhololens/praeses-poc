@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
@@ -42,6 +43,24 @@ namespace HoloToolkit.Unity
         void Update()
         {
 
+            if (sourceManager.Instance.sourcePressed && videoReordingEnabled)
+            {
+                StartVideoRecording();
+            }
+            if (sourceManager.Instance.sourcePressed && videoRecordingInProgress)
+            {
+                StopVideoRecording();
+            }
+            if(sourceManager.Instance.sourcePressed && photoCaptureEnabled)
+            {
+                CapturePhoto();
+            }
+            if(sourceManager.Instance.sourcePressed && dictationInProgress)
+            {
+                StopDictation();
+            }
+
+
         }
 
 
@@ -58,12 +77,13 @@ namespace HoloToolkit.Unity
 
         public void StartVideoRecording()
         {
-            videoRecordTextIndicator.SetActive(false);
-            videoRecordingInProgressIndicator.SetActive(true);
-            tapToPlaceIndicator.SetActive(false);
-            vidRecorder.startRecordingVideo();
-            videoRecordingInProgress = true;
-            videoReordingEnabled = false;
+                videoRecordTextIndicator.SetActive(false);
+                videoRecordingInProgressIndicator.SetActive(true);
+                tapToPlaceIndicator.SetActive(false);
+                vidRecorder.startRecordingVideo();
+                videoRecordingInProgress = true;
+                videoReordingEnabled = false;
+            
         }
 
         public void StopVideoRecording()

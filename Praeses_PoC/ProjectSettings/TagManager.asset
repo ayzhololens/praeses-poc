@@ -13,6 +13,7 @@ TagManager:
   - SpatialMapping
   - handCursorCollide
   - boilerPrefab
+  - handCursor
   layers:
   - Default
   - TransparentFX

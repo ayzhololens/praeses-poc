@@ -33,4 +33,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stable Build/Demos/OnsiteInspectionDemoBoundingTest.unity
   - enabled: 0
-    path: Assets/Scenes/Working Prototypes/Jeff/minimapTumbler/scenes/minimapTumbler2_scene.unity
+    path: Assets/Scenes/Working Prototypes/Jeff/minimapTumbler/scenes/minimapTumbler2_scene.unity\

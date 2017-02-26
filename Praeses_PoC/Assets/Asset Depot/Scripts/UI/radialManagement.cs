@@ -23,11 +23,14 @@ namespace HoloToolkit.Unity
         public bool isActive;
         public annotationManager annotManager;
         public GameObject focusedButton;
-        bool radialOpenNotClicked;
-        public GameObject line;
+        public bool radialOpenNotClicked;
+        public GameObject lineCenter;
         public GameObject radialCountIndicator;
         public int radialCounter;
         public int countMax;
+        public bool hands;
+        radialHands radHands;
+        public GameObject gazeCursor;
 
 
 
@@ -36,6 +39,7 @@ namespace HoloToolkit.Unity
         {
             sourceManager = sourceManager.Instance;
             gazeManager = GazeManager.Instance;
+            radHands = GetComponent<radialHands>();
         }
 
 
@@ -44,34 +48,9 @@ namespace HoloToolkit.Unity
         // Update is called once per frame
         void Update()
         {
-
-
-            RadialMenu.transform.LookAt(Camera.main.transform);
-
-            if (gazeManager.HitObject != null && gazeManager.HitObject.tag == "Button")
-            {
-                focusedButton = gazeManager.HitObject;
-            }
-            else if (gazeManager.HitObject == null)
-            {
-                focusedButton = null;
-            }
-
-            if ((gazeManager.HitObject.tag != "Button" && gazeManager.HitObject.tag != "Backplate") || radialOpenNotClicked)
-            {
-                line.GetComponent<LineTest>().line.SetActive(false);
-                line.SetActive(false);
-                Debug.Log("line off");
-            }
-            else if (!line.activeSelf && (gazeManager.HitObject.tag == "Button" || gazeManager.HitObject.tag == "Backplate") && !radialOpenNotClicked)
-            {
-                line.SetActive(true);
-                line.GetComponent<LineTest>().line.SetActive(true);
-                Debug.Log("line on");
-
-            }
-
-            if (sourceManager.sourcePressed && !isActive && !annotManager.annotating)
+            
+            //radial turn on counter
+            if (sourceManager.sourcePressed && !isActive && !annotManager.annotating && (gazeManager.HitObject.tag == "SpatialMapping" || gazeManager.HitObject == null))
             {
                 radialCounter += 1;
 
@@ -88,6 +67,8 @@ namespace HoloToolkit.Unity
                 }
 
             }
+
+            //nothing happened so reset counter
             if (!sourceManager.sourcePressed && !isActive)
             {
                 radialCounter = 0;
@@ -95,22 +76,143 @@ namespace HoloToolkit.Unity
 
             }
 
+            if (!hands)
+            {
+                GazeRadial();
+            }
 
+
+            if (hands)
+            {
+                HandRadial();
+            }
+
+        }
+
+        void GazeRadial()
+        {
+
+
+            //get focused object
+            if (gazeManager.HitObject != null && gazeManager.HitObject.tag == "Button")
+            {
+                focusedButton = gazeManager.HitObject;
+            }
+
+            //clear focused object
+            else if (gazeManager.HitObject == null || gazeManager.HitObject.tag != "Button")
+            {
+                focusedButton = null;
+            }
+
+            //released pinch and radial is still active so hide the line or hide line if not looking at menu
+            if ((gazeManager.HitObject.tag != "Button" && gazeManager.HitObject.tag != "Backplate") || radialOpenNotClicked)
+            {
+                lineCenter.GetComponent<LineTest>().line.SetActive(false);
+                lineCenter.SetActive(false);
+                Debug.Log("line off");
+            }
+
+            //looking at menu so dont hide the line
+            else if (!lineCenter.activeSelf && (gazeManager.HitObject.tag == "Button" || gazeManager.HitObject.tag == "Backplate") && !radialOpenNotClicked)
+            {
+                lineCenter.SetActive(true);
+                lineCenter.GetComponent<LineTest>().line.SetActive(true);
+                Debug.Log("line on");
+
+            }
+            //released so keep it open
             if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag != "Button")
             {
                 radialOpenNotClicked = true;
 
             }
 
+            //tapping off radial menu so turn it off
             if (sourceManager.sourcePressed && isActive && radialOpenNotClicked && gazeManager.HitObject.tag != "Button")
             {
                 turnOffRadialMenu();
                 radialOpenNotClicked = false;
             }
 
+
+            //tapping on radial menu so turn it off
+            if (sourceManager.sourcePressed && isActive && radialOpenNotClicked && gazeManager.HitObject.tag == "Button")
+            {
+                turnOffRadialMenu();
+                radialOpenNotClicked = false;
+            }
+
+            //released over button 
             if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag == "Button" && !radialOpenNotClicked)
             {
                 turnOffRadialMenu();
+            }
+        }
+
+        void HandRadial()
+        {
+
+
+            //released so keep it open
+            //if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && focusedButton == null)
+            //{
+            //    radialOpenNotClicked = true;
+
+            //}
+
+            ////released pinch and radial is still active so hide the line or hide line if not looking at menu
+            //if ((focusedButton!=null && radHands.focusedObj.tag != "Backplate") || radialOpenNotClicked)
+            //{
+            //    line.GetComponent<LineTest>().line.SetActive(false);
+            //    line.SetActive(false);
+            //    Debug.Log("line off");
+            //}
+
+            ////looking at menu so dont hide the line
+            //else if (!line.activeSelf && (focusedButton != null || radHands.focusedObj.tag == "Backplate") && !radialOpenNotClicked)
+            //{
+            //    line.SetActive(true);
+            //    line.GetComponent<LineTest>().line.SetActive(true);
+            //    Debug.Log("line on");
+
+            //}
+            ////tapping off radial menu so turn it off
+            //if (sourceManager.sourcePressed && isActive && gazeManager.HitObject.tag != "Button")
+            //{
+            //    turnOffRadialMenu();
+            //    radialOpenNotClicked = false;
+            //}
+
+            ////tapping on radial menu so turn it off
+            //if (sourceManager.sourcePressed && isActive && radialOpenNotClicked && gazeManager.HitObject.tag == "Button")
+            //{
+            //    turnOffRadialMenu();
+            //    radialOpenNotClicked = false;
+            //}
+
+            //released over button 
+            if (!sourceManager.sourcePressed && isActive && !annotManager.annotating)
+            {
+                turnOffRadialMenu();
+            }
+
+            if (isActive)
+            {
+                gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+                if (radHands.focusedObj.tag == "Button")
+                {
+                    focusedButton = radHands.focusedObj;
+                }
+                if (radHands.focusedObj.tag != "Button")
+                {
+                    focusedButton = null;
+                }
+            }
+            if (!isActive)
+            {
+                gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
             }
 
         }
@@ -122,8 +224,8 @@ namespace HoloToolkit.Unity
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
             isActive = true;
-            line.SetActive(true);
-            line.GetComponent<LineTest>().line.SetActive(true);
+            lineCenter.SetActive(true);
+            lineCenter.GetComponent<LineTest>().line.SetActive(true);
             radialCountIndicator.SetActive(false);
 
 
@@ -141,18 +243,18 @@ namespace HoloToolkit.Unity
 
         public void turnOffRadialMenu()
         {
-            float lineScale = line.GetComponent<LineTest>().scale;
+            float lineScale = lineCenter.GetComponent<LineTest>().scale;
 
             if (focusedButton == null)
             {
-                BroadcastMessage("OnGazeLeave");
+                BroadcastMessage("OnFocusExit");
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
                 RadialMenu.transform.LookAt(Camera.main.transform);
                 isActive = false;
-                line.GetComponent<LineTest>().line.transform.localScale = new Vector3(lineScale, lineScale, lineScale);
-                line.SetActive(false);
-                line.GetComponent<LineTest>().line.SetActive(false);
+                lineCenter.GetComponent<LineTest>().line.transform.localScale = new Vector3(lineScale, lineScale, lineScale);
+                lineCenter.SetActive(false);
+                lineCenter.GetComponent<LineTest>().line.SetActive(false);
 
             }
 
@@ -160,20 +262,21 @@ namespace HoloToolkit.Unity
             {
 
 
-                BroadcastMessage("OnGazeLeave");
+                BroadcastMessage("OnFocusExit");
                 focusedButton.SendMessage("OnSelect", SendMessageOptions.DontRequireReceiver);
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
                 RadialMenu.transform.LookAt(Camera.main.transform);
                 focusedButton = null;
                 isActive = false;
-                line.GetComponent<LineTest>().line.transform.localScale = new Vector3(lineScale, lineScale, lineScale);
-                line.SetActive(false);
-                line.GetComponent<LineTest>().line.SetActive(false);
+                lineCenter.GetComponent<LineTest>().line.transform.localScale = new Vector3(lineScale, lineScale, lineScale);
+                lineCenter.SetActive(false);
+                lineCenter.GetComponent<LineTest>().line.SetActive(false);
 
 
 
             }
+
 
 
         }

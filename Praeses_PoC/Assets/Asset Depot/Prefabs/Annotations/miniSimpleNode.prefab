@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 65860756284157564}
   - component: {fileID: 114533183595539644}
   - component: {fileID: 114116116646553312}
-  - component: {fileID: 114664801203722164}
-  - component: {fileID: 114549755209933430}
-  - component: {fileID: 114521782416154274}
+  - component: {fileID: 114834063047410030}
+  - component: {fileID: 114769034539575282}
+  - component: {fileID: 114777287561711696}
   m_Layer: 0
   m_Name: miniSimpleNode
   m_TagString: Node
@@ -315,7 +315,7 @@ MonoBehaviour:
   distanceThreshold: 0
   openNodeCounter: 0
   speed: 0
---- !u!114 &114521782416154274
+--- !u!114 &114533183595539644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -323,7 +323,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626210597515476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e9ed6a12235514b8c2c71f7ec34b9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 650d598df1116fa49890ad13fc789798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startEmissColor: {r: 0.7372549, g: 0.5647059, b: 0, a: 0}
+  highlightEmissColor: {r: 1, g: 0.9036296, b: 0.58823526, a: 0}
+  NodeMesh: {fileID: 1597728610137884}
+  nodeMat: {fileID: 2100000, guid: b6b4412a9b49cc945a8567ea0d90080b, type: 2}
+  nodeHighlightMat: {fileID: 2100000, guid: 953e931ec0069f544a6b1743826b1e45, type: 2}
+--- !u!114 &114769034539575282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626210597515476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca6b8866eb53af49ba4094b692b0b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
@@ -342,7 +358,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114533183595539644
+--- !u!114 &114777287561711696
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -350,23 +366,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626210597515476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 650d598df1116fa49890ad13fc789798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEmissColor: {r: 0.7372549, g: 0.5647059, b: 0, a: 0}
-  highlightEmissColor: {r: 1, g: 0.9036296, b: 0.58823526, a: 0}
-  NodeMesh: {fileID: 1597728610137884}
-  nodeMat: {fileID: 2100000, guid: b6b4412a9b49cc945a8567ea0d90080b, type: 2}
-  nodeHighlightMat: {fileID: 2100000, guid: 953e931ec0069f544a6b1743826b1e45, type: 2}
---- !u!114 &114549755209933430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626210597515476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40212daea0692eb4c89a23be03c72349, type: 3}
+  m_Script: {fileID: 11500000, guid: 6472e8428700658458368ef701ca77b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
@@ -385,7 +385,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114664801203722164
+--- !u!114 &114834063047410030
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626210597515476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5226414a2659a04ea8cbc38f01cdc28, type: 3}
+  m_Script: {fileID: 11500000, guid: 81afb20295dd35f458d67fcc03db2df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
@@ -432,5 +432,5 @@ MonoBehaviour:
   photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
-  photoNode: 1
-  simpleNode: 0
+  photoNode: 0
+  simpleNode: 1
