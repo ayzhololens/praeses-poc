@@ -25,8 +25,7 @@ public class followCursorScript : MonoBehaviour {
         uIconOriPos = uIcon.transform.localPosition;
         dIconOriPos = dIcon.transform.localPosition;
     }
-	
-	// Update is called once per frame
+
 	void Update () {
         parentToCursor();
 
