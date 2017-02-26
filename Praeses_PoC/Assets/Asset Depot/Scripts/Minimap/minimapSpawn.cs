@@ -17,6 +17,8 @@ namespace HoloToolkit.Unity
         int switchCounter;
         public Material textureMat;
 
+        Vector3 boilerPivot;
+
         // Use this for initialization
         void Start()
         {
@@ -35,13 +37,22 @@ namespace HoloToolkit.Unity
 
         public void spawnMiniMap()
         {
-            Debug.Log("tried");
+            //Debug.Log(miniMapHolder.transform.position);
+            miniMapHolder.transform.position = MiniMapTagAlong.transform.position;
 
             for (int i = 0; i < transform.childCount; i++)
             {   
 
                 miniMapMeshes.Add((GameObject)Instantiate(transform.GetChild(i).gameObject, transform.GetChild(i).position, transform.GetChild(i).localRotation));
                 miniMapMeshes[i].transform.SetParent(miniMapHolder.transform);
+                if (miniMapMeshes[i].tag == "boilerPrefab") {
+                    boilerPivot = miniMapMeshes[i].transform.position;
+                } else
+                {
+                    miniMapMeshes[i].tag = "miniMapMesh";
+                    miniMapMeshes[i].GetComponent<MeshRenderer>().enabled = false;
+                    miniMapMeshes[i].layer = 2;
+                }
                 if (miniMapMeshes[i].GetComponent<Renderer>() != null)
                 {
                     miniMapMeshes[i].GetComponent<Renderer>().material = miniMapMat;
@@ -67,10 +78,11 @@ namespace HoloToolkit.Unity
                 }
             }
 
-            miniMapHolder.transform.position = Vector3.zero;
-            miniMapHolder.transform.localScale = miniMapHolder.transform.localScale * scaleOffset;
+            MiniMapTagAlong.transform.localScale = MiniMapTagAlong.transform.localScale / scaleOffset;
+            MiniMapTagAlong.transform.position = boilerPivot;
             miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
-            miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .1f, MiniMapTagAlong.transform.position.z);
+            MiniMapTagAlong.transform.localPosition = Vector3.zero;
+            MiniMapTagAlong.transform.localScale = Vector3.one;
             GetComponent<miniMapToggle>().active = true;
         }
 

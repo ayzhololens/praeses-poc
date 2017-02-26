@@ -37,6 +37,7 @@ public class sourceManager : Singleton<sourceManager>, ISourceStateHandler, IInp
         if (sourceDetected)
         {
             sourceDetected = false;
+            sourcePressed = false;
         }
     }
 

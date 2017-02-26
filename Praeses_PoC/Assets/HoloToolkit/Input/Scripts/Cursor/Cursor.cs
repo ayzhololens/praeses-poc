@@ -57,7 +57,7 @@ namespace HoloToolkit.Unity.InputModule
         /// <summary>
         /// Minimum distance for cursor if nothing is hit
         /// </summary>
-        [Header("Cusor Distance")]
+        [Header("CURSOR Distance")]
         [Tooltip("The minimum distance the cursor can be with nothing hit")]
         public float MinCursorDistance = 1.0f;
 
