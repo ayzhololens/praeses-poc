@@ -5695,7 +5695,7 @@ MonoBehaviour:
   SpatUnderstanding: {fileID: 1767366925}
   MiniMapTagAlong: {fileID: 1332735809}
   miniMapMat: {fileID: 2100000, guid: fd47ef7f600f7c74f8015654ecd56660, type: 2}
-  scaleOffset: 0.05
+  scaleOffset: 0.65
 --- !u!114 &1292695256
 MonoBehaviour:
   m_ObjectHideFlags: 0

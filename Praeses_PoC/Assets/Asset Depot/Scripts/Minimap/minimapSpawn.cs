@@ -82,12 +82,30 @@ namespace HoloToolkit.Unity
             {
                 spatChild.transform.SetParent(miniMapHolder.transform);
                 spatChild.transform.gameObject.GetComponent<Renderer>().material = miniMapMat;
+
+                if (spatChild.transform.gameObject.GetComponent<MeshFilter>() != null && spatChild.transform.gameObject.GetComponent<MeshFilter>().sharedMesh != null)
+                {
+                    spatChild.transform.gameObject.GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+                    Debug.Log("success");
+
+
+                }
             }
 
             if (SpatUnderstanding.transform.childCount != 0)
             {
                 spawnUnderstandingMiniMap();
             }
+            if (SpatUnderstanding.transform.childCount == 0)
+            {
+                miniMapHolder.transform.position = Vector3.zero;
+                miniMapHolder.transform.localScale = miniMapHolder.transform.localScale * scaleOffset;
+                miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
+                miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
+                GetComponent<miniMapToggle>().active = true;
+                //SpatUnderstanding.SetActive(false);
+            }
+
 
 
             //for (int i = 0; i < SpatUnderstanding.transform.childCount; i++)
@@ -122,12 +140,9 @@ namespace HoloToolkit.Unity
             //    //}
             //}
 
-            //miniMapHolder.transform.position = Vector3.zero;
-            //miniMapHolder.transform.localScale = miniMapHolder.transform.localScale * scaleOffset;
-            //miniMapHolder.transform.SetParent(MiniMapTagAlong.transform);
-            //miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
-            //GetComponent<miniMapToggle>().active = true;
-            //SpatUnderstanding.SetActive(false);
+
+
+
             //SpatUnderstanding.GetComponent<SpatialUnderstandingCustomMesh>().ImportMeshPeriod = 0;
             //if(SpatUnderstanding.transform.childCount == miniMapHolder.transform.childCount)
             //{
@@ -135,7 +150,7 @@ namespace HoloToolkit.Unity
             //    {
             //        //stroyImmediate(spatChild.gameObject);
             //    }
-                
+
             //}
 
 
