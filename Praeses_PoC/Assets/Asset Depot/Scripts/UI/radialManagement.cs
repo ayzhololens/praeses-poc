@@ -200,15 +200,18 @@ namespace HoloToolkit.Unity
             if (isActive)
             {
                 //gazeCursor.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+                if (radHands.focusedObj != null)
+                {
+                    if (radHands.focusedObj.tag == "Button")
+                    {
+                        focusedButton = radHands.focusedObj;
+                    }
+                    if (radHands.focusedObj.tag != "Button")
+                    {
+                        focusedButton = null;
+                    }
+                }
 
-                if (radHands.focusedObj.tag == "Button")
-                {
-                    focusedButton = radHands.focusedObj;
-                }
-                if (radHands.focusedObj.tag != "Button")
-                {
-                    focusedButton = null;
-                }
             }
             if (!isActive)
             {

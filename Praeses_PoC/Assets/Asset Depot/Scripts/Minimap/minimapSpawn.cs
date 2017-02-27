@@ -43,13 +43,15 @@ namespace HoloToolkit.Unity
 
             for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.tag = "SpatialMapping";
+
+                
                 miniMapMeshes.Add((GameObject)Instantiate(transform.GetChild(i).gameObject, transform.GetChild(i).position, transform.GetChild(i).localRotation));
                 miniMapMeshes[i].transform.SetParent(miniMapHolder.transform);
                 if (miniMapMeshes[i].tag == "boilerPrefab") {
                     boilerPivot = miniMapMeshes[i].transform.position;
                 } else
                 {
+                    transform.GetChild(i).gameObject.tag = "SpatialMapping";
                     miniMapMeshes[i].tag = "miniMapMesh";
                     miniMapMeshes[i].GetComponent<MeshRenderer>().enabled = false;
                     miniMapMeshes[i].layer = 2;
