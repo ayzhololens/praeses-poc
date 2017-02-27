@@ -271,6 +271,7 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         protected virtual void UpdateCursorTransform()
         {
+            
             // Get the necessary info from the gaze source
             RaycastHit hitResult = gazeManager.HitInfo;
             GameObject newTargetedObject = gazeManager.HitObject;
@@ -313,6 +314,22 @@ namespace HoloToolkit.Unity.InputModule
             transform.position = Vector3.Lerp(transform.position, targetPosition, deltaTime / PositionLerpTime);
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, deltaTime / ScaleLerpTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, deltaTime / RotationLerpTime);
+
+            if(GazeManager.Instance.HitObject != null && cursorState != CursorStateEnum.Contextual)
+            {
+                OnInputDisabled();
+                Debug.Log("disable");
+
+            }
+            else if ((GazeManager.Instance.HitObject==null) && cursorState == CursorStateEnum.Contextual)
+            {
+                OnInputEnabled();
+                Debug.Log("enable");
+
+            }
+
+            Debug.Log(GazeManager.Instance.HitObject);
+
         }
 
         /// <summary>
@@ -336,6 +353,7 @@ namespace HoloToolkit.Unity.InputModule
             IsHandVisible = false;
 
             OnCursorStateChange(CursorStateEnum.Contextual);
+            Debug.Log("changed");
         }
 
         /// <summary>
@@ -433,7 +451,11 @@ namespace HoloToolkit.Unity.InputModule
                 }
                 return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
             }
+            
+
+
             return CursorStateEnum.Contextual;
+
         }
 
         /// <summary>
