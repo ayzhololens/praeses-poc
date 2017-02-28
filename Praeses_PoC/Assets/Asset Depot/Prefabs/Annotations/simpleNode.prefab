@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 114528150910284252}
   - component: {fileID: 114191739075876252}
   - component: {fileID: 114160217421790082}
+  - component: {fileID: 114618428923137790}
   m_Layer: 0
   m_Name: Mic Enter
   m_TagString: Node
@@ -2088,6 +2089,22 @@ MonoBehaviour:
   PositionUpdateSpeed: 7
   SmoothMotion: 1
   SmoothingFactor: 0.806
+--- !u!114 &114618428923137790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290267029010070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81afb20295dd35f458d67fcc03db2df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114682461227971076
 MonoBehaviour:
   m_ObjectHideFlags: 1

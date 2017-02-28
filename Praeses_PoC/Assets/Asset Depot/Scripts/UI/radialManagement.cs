@@ -6,7 +6,7 @@ using HoloToolkit.Examples.GazeRuler;
 
 namespace HoloToolkit.Unity
 {
-    public class radialManagement : MonoBehaviour
+    public class radialManagement : Singleton<radialManagement>
     {
 
         public GameObject RadialMenu;
@@ -28,9 +28,10 @@ namespace HoloToolkit.Unity
         public GameObject radialCountIndicator;
         public int radialCounter;
         public int countMax;
+        public bool counting;
         public bool hands;
         radialHands radHands;
-        public GameObject gazeCursor;
+        public GameObject Cursor;
 
 
 
@@ -63,7 +64,7 @@ namespace HoloToolkit.Unity
                 if (radialCounter == countMax)
                 {
                     turnOnRadialMenu();
-                    radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
+                    //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
                 }
 
             }
@@ -72,7 +73,8 @@ namespace HoloToolkit.Unity
             if (!sourceManager.sourcePressed && !isActive)
             {
                 radialCounter = 0;
-                radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
+                counting = false;
+                //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
 
             }
 
@@ -223,22 +225,24 @@ namespace HoloToolkit.Unity
         public void turnOnRadialMenu()
         {
             radialCounter = 0;
+            counting = false;
             RadialMenu.SetActive(true);
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
             isActive = true;
             lineCenter.SetActive(true);
             lineCenter.GetComponent<LineTest>().line.SetActive(true);
-            radialCountIndicator.SetActive(false);
+            //radialCountIndicator.SetActive(false);
 
 
         }
 
         public void startRadialCounter()
         {
-            radialCountIndicator.SetActive(true);
-            radialCountIndicator.transform.position = RadialHolder.position;
-            radialCountIndicator.transform.LookAt(Camera.main.transform);
+            //radialCountIndicator.SetActive(true);
+            //radialCountIndicator.transform.position = Cursor.transform.position;
+            //radialCountIndicator.transform.LookAt(Camera.main.transform);
+            counting = true;
             radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStart");
 
 

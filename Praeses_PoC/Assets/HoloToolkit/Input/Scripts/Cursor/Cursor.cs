@@ -8,7 +8,7 @@ namespace HoloToolkit.Unity.InputModule
     /// <summary>
     /// Object that represents a cursor in 3D space controlled by gaze.
     /// </summary>
-    public abstract class Cursor : MonoBehaviour, ICursor
+    public abstract class Cursor : Singleton<Cursor>, ICursor
     {
         /// <summary>
         /// Enum for current cursor state
@@ -48,7 +48,15 @@ namespace HoloToolkit.Unity.InputModule
             /// <summary>
             /// Allows for external override
             /// </summary>
-            Contextual
+            Contextual,
+            Selectable,
+            SelectableDetected,
+            Scrollable,
+            ScrollableDetected,
+            Draggable,
+            DraggableDetected,
+            Counting,
+            KeyBoard
         }
 
         public CursorStateEnum CursorState { get { return cursorState; } }
@@ -315,20 +323,66 @@ namespace HoloToolkit.Unity.InputModule
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, deltaTime / ScaleLerpTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, deltaTime / RotationLerpTime);
 
-            if(GazeManager.Instance.HitObject != null && cursorState != CursorStateEnum.Contextual)
-            {
-                OnInputDisabled();
-                Debug.Log("disable");
+            //if(GazeManager.Instance.HitObject != null && cursorState != CursorStateEnum.Contextual)
+            //{
+            //    OnInputDisabled();
+            //    Debug.Log("disable");
 
+            //}
+            //else if ((GazeManager.Instance.HitObject==null) && cursorState == CursorStateEnum.Contextual)
+            //{
+            //    OnInputEnabled();
+            //    Debug.Log("enable");
+
+            //}
+
+            if (GazeManager.Instance.HitObject != null)
+            {
+                if (GazeManager.Instance.HitObject.GetComponent<selectEvent>() != null)
+                {
+                    if (IsHandVisible)
+                    {
+                        EnableSelectableDetected();
+                    }
+                    else
+                    {
+                        EnableSelectable();
+                    }
+                }
+                if (GazeManager.Instance.HitObject.tag == "ScrollContent")
+                {
+                    if (IsHandVisible)
+                    {
+                        EnableScrollableDetected();
+                    }
+                    else
+                    {
+                        EnableScrollable();
+                    }
+                }
+                if (GazeManager.Instance.HitObject.tag == "miniMapMesh")
+                {
+                    if (IsHandVisible)
+                    {
+                        EnableDraggableDetected();
+                    }
+                    else
+                    {
+                        EnableDraggable();
+                    }
+                }
+
+                //if (radialManagement.Instance.counting)
+                //{
+                //    EnablCounting();
+                //}
             }
-            else if ((GazeManager.Instance.HitObject==null) && cursorState == CursorStateEnum.Contextual)
+            else
             {
                 OnInputEnabled();
-                Debug.Log("enable");
-
             }
 
-            Debug.Log(GazeManager.Instance.HitObject);
+            //Debug.Log(GazeManager.Instance.HitObject);
 
         }
 
@@ -353,7 +407,56 @@ namespace HoloToolkit.Unity.InputModule
             IsHandVisible = false;
 
             OnCursorStateChange(CursorStateEnum.Contextual);
-            Debug.Log("changed");
+        }
+
+        public virtual void EnableSelectable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Selectable);
+        }
+
+        public virtual void EnableSelectableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.SelectableDetected);
+        }
+
+        public virtual void EnableScrollable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Scrollable);
+        }
+
+        public virtual void EnableScrollableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.ScrollableDetected);
+        }
+
+        public virtual void EnableDraggable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Draggable);
+        }
+
+        public virtual void EnableDraggableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.DraggableDetected);
+        }
+
+        public virtual void EnablCounting()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Counting);
         }
 
         /// <summary>
