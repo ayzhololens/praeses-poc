@@ -26,11 +26,15 @@ public class onModelDragHybrid : MonoBehaviour
     bool navigating;
 
     public List<radialOperationsHybrid> operations;
+    public List<GameObject> buttonsOff;
 
     public bool tumblerModeOn;
 
     public float countDown;
     float initCountDown;
+
+    bool messageSent;
+    public GameObject counterCursor;
 
     void Start()
     {
@@ -44,28 +48,51 @@ public class onModelDragHybrid : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = false;
         initCountDown = countDown;
         tumblerModeOn = false;
+        foreach (GameObject but in buttonsOff)
+        {
+            but.SetActive(false);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        menuOn();
         if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "miniMapMesh")
         {
+            gameObject.GetComponent<Collider>().enabled = true;
             countDown -= Time.deltaTime;
         }
+        else if (!sourceManager.Instance.sourcePressed)
+        {
+            if (gameObject.GetComponent<Collider>().enabled == false) { return; }
+            gameObject.GetComponent<Collider>().enabled = false;
+   //timer script ========================================================================
+            if (messageSent)
+            {
+                counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
+                messageSent = false;
+            }
+   //===============================================================================
+        }
+
         if (countDown < 0)
         {
             tumblerModeOn = true;
         }
 
-        if (tumblerModeOn) {
-            menuOn();
-            if (gameObject.GetComponent<Collider>().enabled == true) { return; }
-            gameObject.GetComponent<Collider>().enabled = true;
+        if (tumblerModeOn)
+        {
+            foreach (GameObject but in buttonsOff)
+            {
+                but.SetActive(true);
+            }
         }else
         {
-            if(gameObject.GetComponent<Collider>().enabled == false) { return; }
-            gameObject.GetComponent<Collider>().enabled = false;         
+            foreach (GameObject but in buttonsOff)
+            {
+                but.SetActive(false);
+            }
         }
     }
 
@@ -83,6 +110,14 @@ public class onModelDragHybrid : MonoBehaviour
                     editState = true;
                     adjustWithEdit();
                     navigating = true;
+        //timer script =================================================================================================
+                    counterCursor.transform.parent.transform.position = buttonsGrp.transform.position;
+                    if (!messageSent)
+                    {
+                        counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
+                        messageSent = true;
+                    }
+       //=========================================================================================================
                 }
                 navigating = true;
                 //cursorOri.SetActive(false);
