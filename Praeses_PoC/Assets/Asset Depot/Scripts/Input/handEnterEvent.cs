@@ -17,7 +17,7 @@ public class handEnterEvent : MonoBehaviour {
 		
 	}
 
-    void HandEnter()
+    void OnFocusEnter()
     {
         if (this.enabled == false) return;
         if (Event != null)
@@ -31,7 +31,7 @@ public class handEnterEvent : MonoBehaviour {
         if (other.gameObject.tag == "handCursor")
         {
 
-            HandEnter();
+            OnFocusEnter();
         }
     }
 }

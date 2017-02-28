@@ -20,7 +20,7 @@ public class handLeaveEvent : MonoBehaviour
 
     }
 
-    void HandLeave()
+    void OnFocusExit()
     {
         if (this.enabled == false) return;
         if (Event != null)
@@ -33,7 +33,7 @@ public class handLeaveEvent : MonoBehaviour
     {
         if (other.gameObject.tag == "handCursor")
         {
-            HandLeave();
+            OnFocusExit();
         }
     }
 }

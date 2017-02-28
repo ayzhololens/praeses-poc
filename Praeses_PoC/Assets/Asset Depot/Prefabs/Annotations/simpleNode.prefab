@@ -194,10 +194,9 @@ GameObject:
   - component: {fileID: 23664859206467664}
   - component: {fileID: 114488350547649926}
   - component: {fileID: 114737111779385694}
-  - component: {fileID: 114117902317985552}
-  - component: {fileID: 114107193033594398}
-  - component: {fileID: 114374089008044042}
   - component: {fileID: 114528150910284252}
+  - component: {fileID: 114191739075876252}
+  - component: {fileID: 114160217421790082}
   m_Layer: 0
   m_Name: Mic Enter
   m_TagString: Node
@@ -1117,7 +1116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 664328758fb1a0d49b30450bd963a9e3, type: 2}
+  - {fileID: 2100000, guid: 2f9f354e22407164b84e060117df5e57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1272,7 +1271,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f113c4702c91c2042a605b8ed7f06a77, type: 2}
+  - {fileID: 2100000, guid: 6598c6ac99c2ec6428af6f652a09c84f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1303,7 +1302,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b9be75c2c11420743b891c08cfe939cf, type: 2}
+  - {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1365,7 +1364,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 664328758fb1a0d49b30450bd963a9e3, type: 2}
+  - {fileID: 2100000, guid: 2f9f354e22407164b84e060117df5e57, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1427,7 +1426,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f113c4702c91c2042a605b8ed7f06a77, type: 2}
+  - {fileID: 2100000, guid: 6598c6ac99c2ec6428af6f652a09c84f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1760,7 +1759,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
---- !u!114 &114107193033594398
+--- !u!114 &114160217421790082
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1768,63 +1767,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290267029010070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40212daea0692eb4c89a23be03c72349, type: 3}
+  m_Script: {fileID: 11500000, guid: 6472e8428700658458368ef701ca77b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114488350547649926}
-        m_MethodName: moveBackward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 114737111779385694}
         m_MethodName: unHighlight
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!114 &114117902317985552
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1290267029010070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e9ed6a12235514b8c2c71f7ec34b9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114488350547649926}
-        m_MethodName: moveForward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 114737111779385694}
-        m_MethodName: highlight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1884,6 +1834,33 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
+--- !u!114 &114191739075876252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1290267029010070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca6b8866eb53af49ba4094b692b0b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114737111779385694}
+        m_MethodName: highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114263083756296732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1939,8 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650d598df1116fa49890ad13fc789798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startEmissColor: {r: 0.7372549, g: 0.5647059, b: 0, a: 0}
-  highlightEmissColor: {r: 1, g: 0.9036296, b: 0.58823526, a: 0}
   NodeMesh: {fileID: 1471285103982964}
   nodeMat: {fileID: 2100000, guid: b6b4412a9b49cc945a8567ea0d90080b, type: 2}
   nodeHighlightMat: {fileID: 2100000, guid: 953e931ec0069f544a6b1743826b1e45, type: 2}
@@ -1959,33 +1934,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &114374089008044042
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1290267029010070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5226414a2659a04ea8cbc38f01cdc28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114528150910284252}
-        m_MethodName: startDiction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114375859700762178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2519,7 +2467,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4336b3dec1e198f479d7a34626eaec66, type: 2}
+  - {fileID: 2100000, guid: 38a63095252eb244eb002a6be4807d09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

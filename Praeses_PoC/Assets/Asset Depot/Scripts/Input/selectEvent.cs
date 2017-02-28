@@ -21,7 +21,7 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
         if (Event != null)
         {
             Event.Invoke();
-            Debug.Log("hellll");
+
         }
     }
 
