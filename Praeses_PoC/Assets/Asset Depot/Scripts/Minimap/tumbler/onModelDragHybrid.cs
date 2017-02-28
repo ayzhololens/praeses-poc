@@ -33,6 +33,9 @@ public class onModelDragHybrid : MonoBehaviour
     public float countDown;
     float initCountDown;
 
+    bool messageSent;
+    public GameObject counterCursor;
+
     void Start()
     {
         initHandPos = new Vector3(0, 0, 0);
@@ -64,6 +67,13 @@ public class onModelDragHybrid : MonoBehaviour
         {
             if (gameObject.GetComponent<Collider>().enabled == false) { return; }
             gameObject.GetComponent<Collider>().enabled = false;
+   //timer script ========================================================================
+            if (messageSent)
+            {
+                counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
+                messageSent = false;
+            }
+   //===============================================================================
         }
 
         if (countDown < 0)
@@ -100,6 +110,14 @@ public class onModelDragHybrid : MonoBehaviour
                     editState = true;
                     adjustWithEdit();
                     navigating = true;
+        //timer script =================================================================================================
+                    counterCursor.transform.parent.transform.position = buttonsGrp.transform.position;
+                    if (!messageSent)
+                    {
+                        counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
+                        messageSent = true;
+                    }
+       //=========================================================================================================
                 }
                 navigating = true;
                 //cursorOri.SetActive(false);
