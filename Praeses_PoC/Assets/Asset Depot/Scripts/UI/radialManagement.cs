@@ -26,8 +26,8 @@ namespace HoloToolkit.Unity
         public bool radialOpenNotClicked;
         public GameObject lineCenter;
         public GameObject radialCountIndicator;
-        public int radialCounter;
-        public int countMax;
+        public float radialCounter;
+        public float countMax;
         public bool counting;
         public bool hands;
         radialHands radHands;
@@ -47,33 +47,47 @@ namespace HoloToolkit.Unity
 
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             
             //radial turn on counter
             if (sourceManager.sourcePressed && !isActive && !annotManager.annotating && (gazeManager.HitObject.tag == "SpatialMapping" || gazeManager.HitObject == null))
             {
-                radialCounter += 1;
+                timerManager.Instance.radialCountDown();
+
+                //radialCounter -= Time.deltaTime;
+                //Debug.Log("shoulddaa");
+                //if (!counting)
+                //{
+                //    startRadialCounter();
+                //    counting = true;
+                //}
 
 
-                if (radialCounter == Mathf.Round(countMax / 3))
-                {
-                    startRadialCounter();
-                }
+                //if (radialCounter < .1f)
+                //{
 
-                if (radialCounter == countMax)
-                {
-                    turnOnRadialMenu();
-                    //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
-                }
+                //}
 
-            }
+                //if (radialCounter < 0)
+                //{
+                //    turnOnRadialMenu();
+                //    //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
+                //}
 
-            //nothing happened so reset counter
-            if (!sourceManager.sourcePressed && !isActive)
+            }else if (!sourceManager.sourcePressed)
             {
-                radialCounter = 0;
-                counting = false;
+                timerManager.Instance.CountInterrupt();
+
+                //if (counting)
+                //{
+                //    radialCounter = countMax;
+                //    radialCountIndicator.GetComponent<tumblerRadialCounter>().radialCounterInterrupt();
+                //    //radialCountIndicator.GetComponent<tumblerRadialCounter>().toggleAnim();
+                    
+                //    counting = false;
+                //}
+
                 //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStop");
 
             }
@@ -224,8 +238,10 @@ namespace HoloToolkit.Unity
 
         public void turnOnRadialMenu()
         {
-            radialCounter = 0;
-            counting = false;
+            //radialCounter = countMax;
+            //counting = false;
+            radHands.canManipulate = true;
+            //Cursor.SetActive(false);
             RadialMenu.SetActive(true);
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
@@ -239,11 +255,13 @@ namespace HoloToolkit.Unity
 
         public void startRadialCounter()
         {
-            //radialCountIndicator.SetActive(true);
+            radialCountIndicator.SetActive(true);
             //radialCountIndicator.transform.position = Cursor.transform.position;
             //radialCountIndicator.transform.LookAt(Camera.main.transform);
-            counting = true;
-            radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStart");
+            //radialCountIndicator.GetComponent<tumblerRadialCounter>().toggleAnim();
+            radialCountIndicator.GetComponent<tumblerRadialCounter>().radialCounterOn();
+            //counting = true;
+            //radialCountIndicator.transform.GetChild(0).GetComponent<Animator>().SetTrigger("radialStart");
 
 
         }
@@ -283,6 +301,8 @@ namespace HoloToolkit.Unity
 
 
             }
+            radHands.canManipulate = false;
+            Cursor.SetActive(true);
 
 
 

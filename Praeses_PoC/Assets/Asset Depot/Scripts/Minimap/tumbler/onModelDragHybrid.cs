@@ -4,7 +4,7 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
-public class onModelDragHybrid : MonoBehaviour
+public class onModelDragHybrid : Singleton<onModelDragHybrid>
 {
     public GameObject cursorOri;
     public GameObject cursorHand;
@@ -26,15 +26,7 @@ public class onModelDragHybrid : MonoBehaviour
     bool navigating;
 
     public List<radialOperationsHybrid> operations;
-    public List<GameObject> buttonsOff;
 
-    public bool tumblerModeOn;
-
-    public float countDown;
-    float initCountDown;
-
-    bool messageSent;
-    public GameObject counterCursor;
 
     void Start()
     {
@@ -46,54 +38,27 @@ public class onModelDragHybrid : MonoBehaviour
 
         tempDist = 0.0f;
         gameObject.GetComponent<Collider>().enabled = false;
-        initCountDown = countDown;
-        tumblerModeOn = false;
-        foreach (GameObject but in buttonsOff)
-        {
-            but.SetActive(false);
-        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         menuOn();
         if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "miniMapMesh")
         {
-            gameObject.GetComponent<Collider>().enabled = true;
-            countDown -= Time.deltaTime;
+            timerManager.Instance.tumbleCountDown();
+
         }
         else if (!sourceManager.Instance.sourcePressed)
         {
+
+
             if (gameObject.GetComponent<Collider>().enabled == false) { return; }
             gameObject.GetComponent<Collider>().enabled = false;
-   //timer script ========================================================================
-            if (messageSent)
-            {
-                counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
-                messageSent = false;
-            }
-   //===============================================================================
+
         }
 
-        if (countDown < 0)
-        {
-            tumblerModeOn = true;
-        }
 
-        if (tumblerModeOn)
-        {
-            foreach (GameObject but in buttonsOff)
-            {
-                but.SetActive(true);
-            }
-        }else
-        {
-            foreach (GameObject but in buttonsOff)
-            {
-                but.SetActive(false);
-            }
-        }
     }
 
     private void menuOn()
@@ -108,48 +73,33 @@ public class onModelDragHybrid : MonoBehaviour
 
                     initHandPos = HandsManager.Instance.ManipulationHandPosition;
                     editState = true;
+
                     adjustWithEdit();
                     navigating = true;
-        //timer script =================================================================================================
-                    counterCursor.transform.parent.transform.position = buttonsGrp.transform.position;
-                    if (!messageSent)
-                    {
-                        counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
-                        messageSent = true;
-                    }
-       //=========================================================================================================
+
                 }
-                navigating = true;
-                //cursorOri.SetActive(false);
-                cursorHand.SetActive(true);
 
-                handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
-
-                handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
-                                                                    Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
-                                                                    handPosLocal.transform.localPosition.z);
-                xPos = handPosLocal.transform.localPosition.x;
-                yPos = handPosLocal.transform.localPosition.y;
-
-                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist/ 100 - .025f);
 
             }
             else 
             {
+
+                timerManager.Instance.CountInterrupt();
                 editState = false;
                 navigating = false;
                 adjustWithEdit();
                 cursorOri.SetActive(true);
                 cursorHand.SetActive(false);
                 initHandPos = new Vector3(0, 0, 0);
-                tumblerModeOn = false;
-                countDown = initCountDown;
             }
         }
     }
 
     private void adjustWithEdit()
     {
+
+        gameObject.GetComponent<Collider>().enabled = true;
+        InitHandPos();
         if (editState)
         {
             Vector3 up = oriParent.up;
@@ -170,10 +120,25 @@ public class onModelDragHybrid : MonoBehaviour
             {
                 oper.rotationFactor = 0;
             }
-            //tumblerModeOn = false;
-            //countDown = initCountDown;
+
         }
 
+    }
+
+    private void InitHandPos()
+    {
+        navigating = true;
+        cursorHand.SetActive(true);
+
+        handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
+
+        handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
+                                                            Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
+                                                            handPosLocal.transform.localPosition.z);
+        xPos = handPosLocal.transform.localPosition.x;
+        yPos = handPosLocal.transform.localPosition.y;
+
+        cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
     }
 
 }

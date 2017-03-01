@@ -22,10 +22,12 @@ namespace HoloToolkit.Unity.InputModule
             None = -1,
             /// <summary>
             /// Not IsHandVisible
+            /// NO HOLO NOT DETECTED
             /// </summary>
             Observe,
             /// <summary>
             /// Not IsHandVisible AND not IsInputSourceDown AND TargetedObject exists
+            /// HOLO NOT DETECTED
             /// </summary>
             ObserveHover,
             /// <summary>
@@ -34,6 +36,7 @@ namespace HoloToolkit.Unity.InputModule
             Interact,
             /// <summary>
             /// IsHandVisible AND not IsInputSourceDown AND TargetedObject exists
+            /// HOLO DETECTED
             /// </summary>
             InteractHover,
             /// <summary>
@@ -56,6 +59,7 @@ namespace HoloToolkit.Unity.InputModule
             Draggable,
             DraggableDetected,
             Counting,
+            Null,
             KeyBoard
         }
 
@@ -176,6 +180,7 @@ namespace HoloToolkit.Unity.InputModule
         private void Start()
         {
             gazeManager = GazeManager.Instance;
+
             RegisterManagers();
         }
 
@@ -336,51 +341,51 @@ namespace HoloToolkit.Unity.InputModule
 
             //}
 
-            if (GazeManager.Instance.HitObject != null)
-            {
-                if (GazeManager.Instance.HitObject.GetComponent<selectEvent>() != null)
-                {
-                    if (IsHandVisible)
-                    {
-                        EnableSelectableDetected();
-                    }
-                    else
-                    {
-                        EnableSelectable();
-                    }
-                }
-                if (GazeManager.Instance.HitObject.tag == "ScrollContent")
-                {
-                    if (IsHandVisible)
-                    {
-                        EnableScrollableDetected();
-                    }
-                    else
-                    {
-                        EnableScrollable();
-                    }
-                }
-                if (GazeManager.Instance.HitObject.tag == "miniMapMesh")
-                {
-                    if (IsHandVisible)
-                    {
-                        EnableDraggableDetected();
-                    }
-                    else
-                    {
-                        EnableDraggable();
-                    }
-                }
+            //if (GazeManager.Instance.HitObject != null)
+            //{
+            //    if (GazeManager.Instance.HitObject.GetComponent<selectEvent>() != null)
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableSelectableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableSelectable();
+            //        }
+            //    }
+            //    if (GazeManager.Instance.HitObject.tag == "ScrollContent")
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableScrollableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableScrollable();
+            //        }
+            //    }
+            //    if (GazeManager.Instance.HitObject.tag == "miniMapMesh")
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableDraggableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableDraggable();
+            //        }
+            //    }
 
-                //if (radialManagement.Instance.counting)
-                //{
-                //    EnablCounting();
-                //}
-            }
-            else
-            {
-                OnInputEnabled();
-            }
+            //    if (radialManagement.Instance.counting)
+            //    {
+            //        EnablCounting();
+            //    }
+            //}
+            //else
+            //{
+            //    OnInputEnabled();
+            //}
 
             //Debug.Log(GazeManager.Instance.HitObject);
 
@@ -537,27 +542,116 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         public virtual CursorStateEnum CheckCursorState()
         {
-            if (cursorState != CursorStateEnum.Contextual)
-            {
-                if (IsInputSourceDown)
+                if (cursorState != CursorStateEnum.Contextual)
                 {
-                    return CursorStateEnum.Select;
-                }
-                else if (cursorState == CursorStateEnum.Select)
-                {
-                    return CursorStateEnum.Release;
-                }
+                    if (IsInputSourceDown && !radialManagement.Instance.isActive)
+                    {
+                        return CursorStateEnum.Select;
+                    }
+                    else if (cursorState == CursorStateEnum.Select)
+                    {
+                        return CursorStateEnum.Release;
+                    }
 
-                if (IsHandVisible)
-                {
-                    return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
-                }
-                return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
+                    if (TargetedObject != null)
+                    {
+                    if(!radialManagement.Instance.isActive)
+                    {
+                        if (TargetedObject.tag == "Button")
+                        {
+                            if (IsHandVisible)
+                            {
+                                return CursorStateEnum.SelectableDetected;
+                            }
+                            return CursorStateEnum.Selectable;
+                        }
+                        else if (TargetedObject.tag == "miniMapMesh")
+                        {
+                            if (IsHandVisible)
+                            {
+                                return CursorStateEnum.DraggableDetected;
+                            }
+                            return CursorStateEnum.Draggable;
+                        }
+                        else if (TargetedObject.tag == "ScrollContent")
+                        {
+                            if (IsHandVisible)
+                            {
+                                return CursorStateEnum.ScrollableDetected;
+                            }
+                            return CursorStateEnum.Scrollable;
+                        }
+                        else
+                        {
+                            if (IsHandVisible)
+                            {
+                                return CursorStateEnum.InteractHover;
+                            }
+                            return CursorStateEnum.ObserveHover;
+                        }
+                    }
+                    else if (radialManagement.Instance.isActive)
+                        {
+                            return CursorStateEnum.Null;
+                        }
+
+
+                    }
+                    else
+                    {
+
+                        if (radialManagement.Instance.isActive)
+                        {
+                            return CursorStateEnum.Null;
+                        }
+                        else
+                        {
+                            return CursorStateEnum.Observe;
+                        }
+                        
+                    }
+                
+
+
+
+                //if(TargetedObject.GetComponent<selectEvent>() == null && TargetedObject != null)
+                //{
+                //    if (IsHandVisible)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
+                //    }
+                //    return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
+                //}
+
+                //if(TargetedObject.GetComponent<selectEvent>() != null && TargetedObject != null)
+                //{
+                //    if (IsHandVisible)
+                //    {
+                //        return CursorStateEnum.SelectableDetected;
+                //    }
+                //    return CursorStateEnum.Selectable;
+                //}
+
+
+
+                //if (IsHandVisible)
+                //{
+                //    if (TargetedObject.GetComponent<selectEvent>() == null && TargetedObject != null)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
+                //    }
+                //    else if(TargetedObject.GetComponent<selectEvent>() != null && TargetedObject != null)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.Selectable : CursorStateEnum.SelectableDetected;
+                //    }
+
+                //}
+                //return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
             }
             
 
 
-            return CursorStateEnum.Contextual;
+            return CursorStateEnum.None;
 
         }
 
