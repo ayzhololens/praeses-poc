@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class orientCameraScript : MonoBehaviour {
 
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         transform.rotation = Camera.main.transform.rotation;
-	}
+
+    }
+
 }

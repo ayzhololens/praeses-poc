@@ -69,11 +69,14 @@ public class timerManager : Singleton<timerManager> {
         {
             counter -= Time.deltaTime;
 
-            if (counter < 0)
-            {
-                onModelDragHybrid.Instance.SendMessage("adjustWithEdit", SendMessageOptions.DontRequireReceiver);
-                counter = startCounter;
-            }
+            //if (counter < 0)
+            //{
+                //if (!onModelDragHybrid.Instance.navigating) { 
+                //onModelDragHybrid.Instance.adjustWithEdit();
+                //onModelDragHybrid.Instance.navigating = true;
+                //}
+                //counter = startCounter;
+            //}
         }
     }
 }

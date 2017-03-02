@@ -23,10 +23,11 @@ public class onModelDragHybrid : Singleton<onModelDragHybrid>
 
     public followCursorScript followCur;
 
-    bool navigating;
+    public bool navigating;
 
     public List<radialOperationsHybrid> operations;
 
+    public float sensitivity;
 
     void Start()
     {
@@ -43,63 +44,76 @@ public class onModelDragHybrid : Singleton<onModelDragHybrid>
     // Update is called once per frame
     void FixedUpdate()
     {
-        menuOn();
-        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "miniMapMesh")
+        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject)
         {
+            if (GazeManager.Instance.HitObject.tag == "miniMapMesh") { 
             timerManager.Instance.tumbleCountDown();
-
+            }
         }
         else if (!sourceManager.Instance.sourcePressed)
         {
 
-
             if (gameObject.GetComponent<Collider>().enabled == false) { return; }
             gameObject.GetComponent<Collider>().enabled = false;
-
+            
         }
 
-
+        menuOn();
+        
     }
 
     private void menuOn()
     {
+        if (timerManager.Instance.counter < 0)
+        {
+            gameObject.GetComponent<Collider>().enabled = true;
+        }
+
         if (GazeManager.Instance.HitObject == gameObject || navigating)
         {
             if (sourceManager.Instance.sourcePressed)
             {
                 if (!navigating)
                 {
+                    
                     tempDist = Vector3.Distance(Camera.main.transform.position, GazeManager.Instance.HitPosition);
 
                     initHandPos = HandsManager.Instance.ManipulationHandPosition;
                     editState = true;
-
                     adjustWithEdit();
                     navigating = true;
-
+                    radialManagement.Instance.isActive = true;
                 }
+                navigating = true;
+                cursorHand.SetActive(true);
+            
+                handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
 
+                handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
+                                                                    Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
+                                                                    handPosLocal.transform.localPosition.z) * sensitivity;
+                xPos = handPosLocal.transform.localPosition.x;
+                yPos = handPosLocal.transform.localPosition.y;
+
+                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
 
             }
             else 
             {
-
-                timerManager.Instance.CountInterrupt();
                 editState = false;
                 navigating = false;
                 adjustWithEdit();
                 cursorOri.SetActive(true);
                 cursorHand.SetActive(false);
                 initHandPos = new Vector3(0, 0, 0);
+                timerManager.Instance.CountInterrupt();
+                radialManagement.Instance.isActive = false;
             }
         }
     }
 
-    private void adjustWithEdit()
+    public void adjustWithEdit()
     {
-
-        gameObject.GetComponent<Collider>().enabled = true;
-        InitHandPos();
         if (editState)
         {
             Vector3 up = oriParent.up;
@@ -123,22 +137,6 @@ public class onModelDragHybrid : Singleton<onModelDragHybrid>
 
         }
 
-    }
-
-    private void InitHandPos()
-    {
-        navigating = true;
-        cursorHand.SetActive(true);
-
-        handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
-
-        handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
-                                                            Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
-                                                            handPosLocal.transform.localPosition.z);
-        xPos = handPosLocal.transform.localPosition.x;
-        yPos = handPosLocal.transform.localPosition.y;
-
-        cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
     }
 
 }

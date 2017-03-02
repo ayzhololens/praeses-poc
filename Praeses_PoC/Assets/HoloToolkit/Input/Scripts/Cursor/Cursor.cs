@@ -542,8 +542,8 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         public virtual CursorStateEnum CheckCursorState()
         {
-                if (cursorState != CursorStateEnum.Contextual)
-                {
+            if (cursorState != CursorStateEnum.Contextual)
+            {
                     if (IsInputSourceDown && !radialManagement.Instance.isActive)
                     {
                         return CursorStateEnum.Select;
@@ -551,63 +551,64 @@ namespace HoloToolkit.Unity.InputModule
                     else if (cursorState == CursorStateEnum.Select)
                     {
                         return CursorStateEnum.Release;
+                    
                     }
 
                     if (TargetedObject != null)
                     {
-                    if(!radialManagement.Instance.isActive)
-                    {
-                        if (TargetedObject.tag == "Button")
+                        if(!radialManagement.Instance.isActive )
                         {
-                            if (IsHandVisible)
+                            if (TargetedObject.tag == "Button")
                             {
-                                return CursorStateEnum.SelectableDetected;
+                             if (IsHandVisible)
+                                {
+                                 return CursorStateEnum.SelectableDetected;
+                                }
+                                return CursorStateEnum.Selectable;
                             }
-                            return CursorStateEnum.Selectable;
-                        }
-                        else if (TargetedObject.tag == "miniMapMesh")
-                        {
-                            if (IsHandVisible)
+                            else if (TargetedObject.tag == "miniMapMesh")
                             {
-                                return CursorStateEnum.DraggableDetected;
-                            }
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.DraggableDetected;
+                                }
                             return CursorStateEnum.Draggable;
-                        }
-                        else if (TargetedObject.tag == "ScrollContent")
-                        {
-                            if (IsHandVisible)
-                            {
-                                return CursorStateEnum.ScrollableDetected;
                             }
-                            return CursorStateEnum.Scrollable;
+                            else if (TargetedObject.tag == "ScrollContent")
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.ScrollableDetected;
+                                }
+                                return CursorStateEnum.Scrollable;
+                            }
+                            else
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.InteractHover;
+                                }
+                                return CursorStateEnum.ObserveHover;
+                            }
+                        }
+                        else if (radialManagement.Instance.isActive )
+                            {
+                                return CursorStateEnum.Null;
+                            }
+
+
                         }
                         else
                         {
-                            if (IsHandVisible)
+
+                            if (radialManagement.Instance.isActive )
                             {
-                                return CursorStateEnum.InteractHover;
+                                return CursorStateEnum.Null;
                             }
-                            return CursorStateEnum.ObserveHover;
-                        }
-                    }
-                    else if (radialManagement.Instance.isActive)
-                        {
-                            return CursorStateEnum.Null;
-                        }
-
-
-                    }
-                    else
-                    {
-
-                        if (radialManagement.Instance.isActive)
-                        {
-                            return CursorStateEnum.Null;
-                        }
-                        else
-                        {
-                            return CursorStateEnum.Observe;
-                        }
+                            else
+                            {
+                                return CursorStateEnum.Observe;
+                            }
                         
                     }
                 
