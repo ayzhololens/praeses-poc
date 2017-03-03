@@ -657,7 +657,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1153216012746442
 GameObject:
   m_ObjectHideFlags: 1
@@ -2881,7 +2881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4046105885037978}
   - component: {fileID: 114288626453285332}
-  - component: {fileID: 114206089858612428}
   m_Layer: 0
   m_Name: keyboard
   m_TagString: inputField
@@ -17729,17 +17728,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114206089858612428
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1745604332549746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4bd1bddc4c536c44908b834d34d5247, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114233766068092222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18133,9 +18121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatorObject: {fileID: 1139909520293172}
   currentField: {fileID: 0}
+  fieldTextPreview: 
   keyboardField: {fileID: 114591060034775852}
-  cursorObj: {fileID: 0}
-  canvasObj: {fileID: 0}
   beforeObj: {fileID: 1778531508678796}
   afterObj: {fileID: 1640538736610712}
   numbers: {fileID: 1401113718397600}
@@ -19430,7 +19417,7 @@ MonoBehaviour:
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 0
+  m_LineType: 2
   m_HideMobileInput: 0
   m_CharacterValidation: 0
   m_CharacterLimit: 0

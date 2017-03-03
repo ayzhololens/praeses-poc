@@ -12,7 +12,7 @@ namespace HoloToolkit.Unity.InputModule
 
 
 
-    public class Dictationizer : MonoBehaviour
+    public class Dictationizer : Singleton<Dictationizer>
     {
         private DictationRecognizer dictationRecognizer;
 
@@ -28,8 +28,8 @@ namespace HoloToolkit.Unity.InputModule
         void Start()
         {
             inProgress = false;
-            keyWordManager = GameObject.Find("InputManager").GetComponent<KeywordManager>();
-            annotMananger = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
+            //keyWordManager = GameObject.Find("InputManager").GetComponent<KeywordManager>();
+            //annotMananger = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
 
 
 

@@ -583,7 +583,7 @@ namespace HoloToolkit.Unity.InputModule
                                 }
                                 return CursorStateEnum.Scrollable;
                             }
-                            else if(TargetedObject.tag == "keyboard")
+                            else if(TargetedObject.tag == "keyboard" || TargetedObject.tag == "keyboardBG")
                             {
                                 if (IsHandVisible)
                                 {
