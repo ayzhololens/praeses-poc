@@ -60,7 +60,8 @@ namespace HoloToolkit.Unity.InputModule
             DraggableDetected,
             Counting,
             Null,
-            KeyBoard
+            KeyBoard,
+            KeyBoardDetected
         }
 
         public CursorStateEnum CursorState { get { return cursorState; } }
@@ -581,6 +582,14 @@ namespace HoloToolkit.Unity.InputModule
                                     return CursorStateEnum.ScrollableDetected;
                                 }
                                 return CursorStateEnum.Scrollable;
+                            }
+                            else if(TargetedObject.tag == "keyboard")
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.KeyBoardDetected;
+                                }
+                                return CursorStateEnum.KeyBoard;
                             }
                             else
                             {

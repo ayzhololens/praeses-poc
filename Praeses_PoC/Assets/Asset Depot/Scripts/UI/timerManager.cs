@@ -9,6 +9,7 @@ public class timerManager : Singleton<timerManager> {
     public bool isCounting;
     public float counter;
     float startCounter;
+    public bool menuOpen;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +39,7 @@ public class timerManager : Singleton<timerManager> {
             if (counter < 0)
             {
                 radialManagement.Instance.SendMessage("turnOnRadialMenu", SendMessageOptions.DontRequireReceiver);
+                menuOpen = true;
                 counter = startCounter;
             }
         }
@@ -69,14 +71,10 @@ public class timerManager : Singleton<timerManager> {
         {
             counter -= Time.deltaTime;
 
-            //if (counter < 0)
-            //{
-                //if (!onModelDragHybrid.Instance.navigating) { 
-                //onModelDragHybrid.Instance.adjustWithEdit();
-                //onModelDragHybrid.Instance.navigating = true;
-                //}
-                //counter = startCounter;
-            //}
+            if (counter < 0)
+            {
+                onModelDragHybrid.Instance.colliderOn();
+            }
         }
     }
 }

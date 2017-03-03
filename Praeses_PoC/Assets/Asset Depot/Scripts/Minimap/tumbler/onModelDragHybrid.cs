@@ -62,12 +62,13 @@ public class onModelDragHybrid : Singleton<onModelDragHybrid>
         
     }
 
+    public void colliderOn()
+    {
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+
     private void menuOn()
     {
-        if (timerManager.Instance.counter < 0)
-        {
-            gameObject.GetComponent<Collider>().enabled = true;
-        }
 
         if (GazeManager.Instance.HitObject == gameObject || navigating)
         {
