@@ -43,10 +43,10 @@ namespace HoloToolkit.Unity.InputModule
         [Tooltip("An array of string keywords and UnityEvents, to be set in the Inspector.")]
         public KeywordAndResponse[] KeywordsAndResponses;
 
-        private KeywordRecognizer keywordRecognizer;
+        public  KeywordRecognizer keywordRecognizer;
         private readonly Dictionary<string, UnityEvent> responses = new Dictionary<string, UnityEvent>();
 
-        void Start()
+        public void Start()
         {
             int keywordCount = KeywordsAndResponses.Length;
             if (keywordCount > 0)
@@ -90,7 +90,7 @@ namespace HoloToolkit.Unity.InputModule
             }
         }
 
-        void OnDestroy()
+        public void OnDestroy()
         {
             if (keywordRecognizer != null)
             {

@@ -141,7 +141,7 @@ namespace HoloToolkit.Unity
             annotating = false;
             dictationInProgress = false;
             dictationInProgressIndicator.SetActive(false);
-            activeDictationBox.GetComponent<Dictationizer>().stopDiction();
+            //activeDictationBox.GetComponent<Dictationizer>().stopDiction();
         }
 
 
