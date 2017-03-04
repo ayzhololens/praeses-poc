@@ -53,12 +53,10 @@ namespace HoloToolkit.Unity
         private void FixedUpdate()
         {
             doubleClick();
-            actualText.text = keyboardField.text;
-
+            textSync();
             if (currentField)
             {
                 currentField.text = keyboardField.text;
-                //fieldTextPreview = keyboardField.text;
             }
             if (animCounter > 0)
             {
@@ -78,6 +76,17 @@ namespace HoloToolkit.Unity
                 doubleClickSpeed = initDoubleClick;
             }
 
+        }
+
+        void textSync()
+        {
+            if (keyboardField.text.Length > textLength)
+            {
+                actualText.text = keyboardField.text.Remove(keyboardField.text.Length - textLength, keyboardField.text.Length - textLength);
+            }else
+            {
+                actualText.text = keyboardField.text;
+            }
         }
 
         public void turnOn()
@@ -110,7 +119,7 @@ namespace HoloToolkit.Unity
 
         public void adjustCaret()
         {
-            keyboardField.caretPosition = currentField.text.Length;
+            keyboardField.caretPosition = actualText.text.Length;
         }
 
         void cameraParent()
