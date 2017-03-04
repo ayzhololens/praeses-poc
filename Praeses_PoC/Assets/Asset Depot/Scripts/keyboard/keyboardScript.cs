@@ -42,6 +42,9 @@ namespace HoloToolkit.Unity
         public GameObject LcapsLockBG;
         public GameObject RcapsLockBG;
 
+        public Text actualText;
+        public int textLength;
+
         private void Start()
         {
             initDoubleClick = doubleClickSpeed;
@@ -50,6 +53,7 @@ namespace HoloToolkit.Unity
         private void FixedUpdate()
         {
             doubleClick();
+            actualText.text = keyboardField.text;
 
             if (currentField)
             {

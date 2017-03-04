@@ -2467,7 +2467,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 201898966}
-  m_TextComponent: {fileID: 371496447}
+  m_TextComponent: {fileID: 0}
   m_Placeholder: {fileID: 0}
   m_ContentType: 0
   m_InputType: 0
@@ -7912,6 +7912,8 @@ MonoBehaviour:
   doubleClickSpeed: 0.5
   LcapsLockBG: {fileID: 279784175}
   RcapsLockBG: {fileID: 196369518}
+  actualText: {fileID: 371496447}
+  textLength: 0
 --- !u!114 &732761752
 MonoBehaviour:
   m_ObjectHideFlags: 0
