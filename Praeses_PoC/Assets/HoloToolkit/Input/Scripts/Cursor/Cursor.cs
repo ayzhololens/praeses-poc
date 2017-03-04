@@ -8,7 +8,7 @@ namespace HoloToolkit.Unity.InputModule
     /// <summary>
     /// Object that represents a cursor in 3D space controlled by gaze.
     /// </summary>
-    public abstract class Cursor : MonoBehaviour, ICursor
+    public abstract class Cursor : Singleton<Cursor>, ICursor
     {
         /// <summary>
         /// Enum for current cursor state
@@ -22,10 +22,12 @@ namespace HoloToolkit.Unity.InputModule
             None = -1,
             /// <summary>
             /// Not IsHandVisible
+            /// NO HOLO NOT DETECTED
             /// </summary>
             Observe,
             /// <summary>
             /// Not IsHandVisible AND not IsInputSourceDown AND TargetedObject exists
+            /// HOLO NOT DETECTED
             /// </summary>
             ObserveHover,
             /// <summary>
@@ -34,6 +36,7 @@ namespace HoloToolkit.Unity.InputModule
             Interact,
             /// <summary>
             /// IsHandVisible AND not IsInputSourceDown AND TargetedObject exists
+            /// HOLO DETECTED
             /// </summary>
             InteractHover,
             /// <summary>
@@ -48,7 +51,17 @@ namespace HoloToolkit.Unity.InputModule
             /// <summary>
             /// Allows for external override
             /// </summary>
-            Contextual
+            Contextual,
+            Selectable,
+            SelectableDetected,
+            Scrollable,
+            ScrollableDetected,
+            Draggable,
+            DraggableDetected,
+            Counting,
+            Null,
+            KeyBoard,
+            KeyBoardDetected
         }
 
         public CursorStateEnum CursorState { get { return cursorState; } }
@@ -168,6 +181,7 @@ namespace HoloToolkit.Unity.InputModule
         private void Start()
         {
             gazeManager = GazeManager.Instance;
+
             RegisterManagers();
         }
 
@@ -271,6 +285,7 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         protected virtual void UpdateCursorTransform()
         {
+            
             // Get the necessary info from the gaze source
             RaycastHit hitResult = gazeManager.HitInfo;
             GameObject newTargetedObject = gazeManager.HitObject;
@@ -313,6 +328,68 @@ namespace HoloToolkit.Unity.InputModule
             transform.position = Vector3.Lerp(transform.position, targetPosition, deltaTime / PositionLerpTime);
             transform.localScale = Vector3.Lerp(transform.localScale, targetScale, deltaTime / ScaleLerpTime);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, deltaTime / RotationLerpTime);
+
+            //if(GazeManager.Instance.HitObject != null && cursorState != CursorStateEnum.Contextual)
+            //{
+            //    OnInputDisabled();
+            //    Debug.Log("disable");
+
+            //}
+            //else if ((GazeManager.Instance.HitObject==null) && cursorState == CursorStateEnum.Contextual)
+            //{
+            //    OnInputEnabled();
+            //    Debug.Log("enable");
+
+            //}
+
+            //if (GazeManager.Instance.HitObject != null)
+            //{
+            //    if (GazeManager.Instance.HitObject.GetComponent<selectEvent>() != null)
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableSelectableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableSelectable();
+            //        }
+            //    }
+            //    if (GazeManager.Instance.HitObject.tag == "ScrollContent")
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableScrollableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableScrollable();
+            //        }
+            //    }
+            //    if (GazeManager.Instance.HitObject.tag == "miniMapMesh")
+            //    {
+            //        if (IsHandVisible)
+            //        {
+            //            EnableDraggableDetected();
+            //        }
+            //        else
+            //        {
+            //            EnableDraggable();
+            //        }
+            //    }
+
+            //    if (radialManagement.Instance.counting)
+            //    {
+            //        EnablCounting();
+            //    }
+            //}
+            //else
+            //{
+            //    OnInputEnabled();
+            //}
+
+            //Debug.Log(GazeManager.Instance.HitObject);
+
         }
 
         /// <summary>
@@ -336,6 +413,56 @@ namespace HoloToolkit.Unity.InputModule
             IsHandVisible = false;
 
             OnCursorStateChange(CursorStateEnum.Contextual);
+        }
+
+        public virtual void EnableSelectable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Selectable);
+        }
+
+        public virtual void EnableSelectableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.SelectableDetected);
+        }
+
+        public virtual void EnableScrollable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Scrollable);
+        }
+
+        public virtual void EnableScrollableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.ScrollableDetected);
+        }
+
+        public virtual void EnableDraggable()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Draggable);
+        }
+
+        public virtual void EnableDraggableDetected()
+        {
+
+            OnCursorStateChange(CursorStateEnum.DraggableDetected);
+        }
+
+        public virtual void EnablCounting()
+        {
+            visibleHandsCount = 0;
+            IsHandVisible = false;
+
+            OnCursorStateChange(CursorStateEnum.Counting);
         }
 
         /// <summary>
@@ -418,22 +545,124 @@ namespace HoloToolkit.Unity.InputModule
         {
             if (cursorState != CursorStateEnum.Contextual)
             {
-                if (IsInputSourceDown)
-                {
-                    return CursorStateEnum.Select;
-                }
-                else if (cursorState == CursorStateEnum.Select)
-                {
-                    return CursorStateEnum.Release;
-                }
+                    if (IsInputSourceDown && !radialManagement.Instance.isActive)
+                    {
+                        return CursorStateEnum.Select;
+                    }
+                    else if (cursorState == CursorStateEnum.Select)
+                    {
+                        return CursorStateEnum.Release;
+                    
+                    }
 
-                if (IsHandVisible)
-                {
-                    return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
-                }
-                return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
+                    if (TargetedObject != null)
+                    {
+                        if(!radialManagement.Instance.isActive )
+                        {
+                            if (TargetedObject.tag == "Button")
+                            {
+                             if (IsHandVisible)
+                                {
+                                 return CursorStateEnum.SelectableDetected;
+                                }
+                                return CursorStateEnum.Selectable;
+                            }
+                            else if (TargetedObject.tag == "miniMapMesh")
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.DraggableDetected;
+                                }
+                            return CursorStateEnum.Draggable;
+                            }
+                            else if (TargetedObject.tag == "ScrollContent")
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.ScrollableDetected;
+                                }
+                                return CursorStateEnum.Scrollable;
+                            }
+                            else if(TargetedObject.tag == "keyboard" || TargetedObject.tag == "keyboardBG")
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.KeyBoardDetected;
+                                }
+                                return CursorStateEnum.KeyBoard;
+                            }
+                            else
+                            {
+                                if (IsHandVisible)
+                                {
+                                    return CursorStateEnum.InteractHover;
+                                }
+                                return CursorStateEnum.ObserveHover;
+                            }
+                        }
+                        else if (radialManagement.Instance.isActive )
+                            {
+                                return CursorStateEnum.Null;
+                            }
+
+
+                        }
+                        else
+                        {
+
+                            if (radialManagement.Instance.isActive )
+                            {
+                                return CursorStateEnum.Null;
+                            }
+                            else
+                            {
+                                return CursorStateEnum.Observe;
+                            }
+                        
+                    }
+                
+
+
+
+                //if(TargetedObject.GetComponent<selectEvent>() == null && TargetedObject != null)
+                //{
+                //    if (IsHandVisible)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
+                //    }
+                //    return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
+                //}
+
+                //if(TargetedObject.GetComponent<selectEvent>() != null && TargetedObject != null)
+                //{
+                //    if (IsHandVisible)
+                //    {
+                //        return CursorStateEnum.SelectableDetected;
+                //    }
+                //    return CursorStateEnum.Selectable;
+                //}
+
+
+
+                //if (IsHandVisible)
+                //{
+                //    if (TargetedObject.GetComponent<selectEvent>() == null && TargetedObject != null)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.InteractHover : CursorStateEnum.Interact;
+                //    }
+                //    else if(TargetedObject.GetComponent<selectEvent>() != null && TargetedObject != null)
+                //    {
+                //        return TargetedObject != null ? CursorStateEnum.Selectable : CursorStateEnum.SelectableDetected;
+                //    }
+
+                //}
+                //return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
             }
-            return CursorStateEnum.Contextual;
+            
+
+
+            return CursorStateEnum.None;
+
         }
 
         /// <summary>

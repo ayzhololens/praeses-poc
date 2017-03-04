@@ -11,10 +11,12 @@ namespace HoloToolkit.Unity.InputModule
 {
 
 
-    public class Dictationizer : MonoBehaviour
-    {
 
+    public class Dictationizer : Singleton<Dictationizer>
+    {
         private DictationRecognizer dictationRecognizer;
+
+
         public Text DictationDisplay;
         private StringBuilder textSoFar;
         public annotationManager annotMananger;
@@ -26,13 +28,8 @@ namespace HoloToolkit.Unity.InputModule
         void Start()
         {
             inProgress = false;
-            //UNCOMMENT
-            //PhraseRecognitionSystem.Restart();
-            keyWordManager = GameObject.Find("InputManager").GetComponent<KeywordManager>();
-            annotMananger = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
-            setUpDictation();
-
-            //keyWordManager.enabled = false;
+            //keyWordManager = GameObject.Find("InputManager").GetComponent<KeywordManager>();
+            //annotMananger = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
 
 
 
@@ -42,6 +39,8 @@ namespace HoloToolkit.Unity.InputModule
 
 
         }
+
+
 
 
 
@@ -51,33 +50,41 @@ namespace HoloToolkit.Unity.InputModule
 
         }
 
-        void setUpDictation()
+        public void setUpDictation()
         {
-            textSoFar = new StringBuilder();
+
             dictationRecognizer = new DictationRecognizer();
-            dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
-            dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
-            dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
-            dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+            if (!inProgress)
+            {
+                DictationDisplay.text = "Initializing...";
+                textSoFar = new StringBuilder();
+                keyWordManager.keywordRecognizer.Stop();
+                keyWordManager.keywordRecognizer.Dispose();
+                PhraseRecognitionSystem.Shutdown();
+                dictationRecognizer.DictationHypothesis += DictationRecognizer_DictationHypothesis;
+                dictationRecognizer.DictationResult += DictationRecognizer_DictationResult;
+                dictationRecognizer.DictationComplete += DictationRecognizer_DictationComplete;
+                dictationRecognizer.DictationError += DictationRecognizer_DictationError;
+                dictationRecognizer.Start();
+                DictationDisplay.text = "Speech to text started.  Begin dictating";
+                inProgress = true;
+            }
+            
         }
 
         private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
         {
-            // do something
             textSoFar.Append(text + ". ");
             DictationDisplay.text = textSoFar.ToString();
         }
 
         private void DictationRecognizer_DictationHypothesis(string text)
         {
-            // do something
-
             DictationDisplay.text = textSoFar.ToString() + " " + text + "...";
         }
 
         public void DictationRecognizer_DictationComplete(DictationCompletionCause cause)
         {
-            // do something
             dictationRecognizer.DictationResult -= DictationRecognizer_DictationResult;
             dictationRecognizer.DictationComplete -= DictationRecognizer_DictationComplete;
             dictationRecognizer.DictationHypothesis -= DictationRecognizer_DictationHypothesis;
@@ -87,37 +94,29 @@ namespace HoloToolkit.Unity.InputModule
 
         private void DictationRecognizer_DictationError(string error, int hresult)
         {
-            // do something
+            DictationDisplay.text = "ERROORRRRR";
         }
 
-        public void startDiction()
-        {
-            if (!inProgress)
-            {
-                inProgress = true;
-                setUpDictation();
-                PhraseRecognitionSystem.Shutdown();
-                DictationDisplay.text = "Speech to text started.  Begin dictating";
-                dictationRecognizer.Start();
-                annotMananger.StartDictation();
-                annotMananger.activeDictationBox = this.gameObject;
-                GetComponent<BoxCollider>().enabled = false;
-            }
 
-
-        }
 
         public void stopDiction()
         {
-            dictationRecognizer.Stop();
-            dictationRecognizer.DictationResult -= DictationRecognizer_DictationResult;
-            dictationRecognizer.DictationComplete -= DictationRecognizer_DictationComplete;
-            dictationRecognizer.DictationHypothesis -= DictationRecognizer_DictationHypothesis;
-            dictationRecognizer.DictationError -= DictationRecognizer_DictationError;
-            dictationRecognizer.Dispose();
-            PhraseRecognitionSystem.Restart();
-            inProgress = false;
-            GetComponent<BoxCollider>().enabled = true;
+            if (inProgress)
+            {
+                dictationRecognizer.Stop();
+                dictationRecognizer.DictationResult -= DictationRecognizer_DictationResult;
+                dictationRecognizer.DictationComplete -= DictationRecognizer_DictationComplete;
+                dictationRecognizer.DictationHypothesis -= DictationRecognizer_DictationHypothesis;
+                dictationRecognizer.DictationError -= DictationRecognizer_DictationError;
+                dictationRecognizer.Dispose();
+                keyWordManager.Start();
+                PhraseRecognitionSystem.Restart();
+                DictationDisplay.text = "done";
+                inProgress = false;
+            }
+
+
+
         }
 
 

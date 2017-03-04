@@ -77,27 +77,33 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
 
             //spawn miniNode
+            GameObject boiler = GameObject.Find("boiler(Clone)");
+            Vector3 boilerPos = boiler.transform.position;
+            
+
             Minimap = SpatialMapping.GetComponent<miniMapToggle>().MiniMapHolder;
-            anchDist = (SpatialMapping.position - spawnedAnnotation.transform.position);
+            GameObject rotatorGroup = Minimap.transform.parent.gameObject;
+            rotatorGroup.transform.localScale = Vector3.one * 1 / scaleOffest;
+            rotatorGroup.transform.position = boilerPos;
+            anchDist = (boiler.transform.position - spawnedAnnotation.transform.position);
 
             if (isPhotoNode)
             {
-                miniAnnotation = Instantiate(miniPhotoNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniPhotoNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
             if (isVideoNode)
             {
-                miniAnnotation = Instantiate(miniVideoNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniVideoNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
             if (isSimpleNode)
             {
-                miniAnnotation = Instantiate(miniSimpleNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniSimpleNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
-            miniAnnotation.transform.position = (miniAnnotation.transform.position - (anchDist * scaleOffest));
             miniAnnotation.transform.SetParent(Minimap.transform);
-            miniAnnotation.transform.localScale = miniAnnotation.transform.localScale * scaleOffest;
+            rotatorGroup.transform.localPosition = Vector3.zero;
+            rotatorGroup.transform.localScale = Vector3.one;
             miniAnnotation.SetActive(SpatialMapping.GetComponent<miniMapToggle>().active);
-
             spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
             spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
             miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;

@@ -16,10 +16,10 @@ namespace HoloToolkit.Unity
         public GameObject activatorObject;
         bool onOff;
         public InputField currentField;
+        public string fieldTextPreview;
         public InputField keyboardField;
-
-        public GameObject cursorObj;
-        public GameObject canvasObj;
+        
+        //public GameObject canvasObj;
 
         //anim objects
         float animCounter;
@@ -58,6 +58,7 @@ namespace HoloToolkit.Unity
             if (currentField)
             {
                 currentField.text = keyboardField.text;
+                //fieldTextPreview = keyboardField.text;
             }
             if (animCounter > 0)
             {
@@ -93,7 +94,7 @@ namespace HoloToolkit.Unity
             keyboardField.ActivateInputField();
             onOff = true;
             cameraParent();
-            cursorObj.transform.localScale = new Vector3(.2f, .2f, .2f);
+
             animCounter = .2f;
             //symbols=============================================================
             numbers.SetActive(true);
@@ -137,15 +138,14 @@ namespace HoloToolkit.Unity
 
         public void turnOff()
         {
-            canvasOriPos = canvasObj.GetComponent<RectTransform>().position;
+            //canvasOriPos = canvasObj.GetComponent<RectTransform>().position;
             canvasOffset = canvasOriPos + new Vector3(0, 0, 0);
             activatorObject.SetActive(false);
             keyboardField.DeactivateInputField();
             onOff = false;
-            cursorObj.transform.localScale = new Vector3(1, 1, 1);
             animCounter = .2f;
             float animMult = 1 - (animCounter / .2f);
-            canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
+            //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
         }
 
         public void keyboardToggle()
