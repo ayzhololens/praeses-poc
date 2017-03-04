@@ -2881,6 +2881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4046105885037978}
   - component: {fileID: 114288626453285332}
+  - component: {fileID: 114870439862462690}
   m_Layer: 0
   m_Name: keyboard
   m_TagString: inputField
@@ -18133,6 +18134,8 @@ MonoBehaviour:
   doubleClickSpeed: 0.5
   LcapsLockBG: {fileID: 1281344026093336}
   RcapsLockBG: {fileID: 1241041733491804}
+  actualText: {fileID: 114095181490583428}
+  textLength: 17
 --- !u!114 &114293917660983820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -19411,13 +19414,13 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114737383513451250}
-  m_TextComponent: {fileID: 114095181490583428}
+  m_TextComponent: {fileID: 0}
   m_Placeholder: {fileID: 0}
   m_ContentType: 0
   m_InputType: 0
   m_AsteriskChar: 42
   m_KeyboardType: 0
-  m_LineType: 2
+  m_LineType: 0
   m_HideMobileInput: 0
   m_CharacterValidation: 0
   m_CharacterLimit: 0
@@ -20228,6 +20231,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114870439862462690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745604332549746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4bd1bddc4c536c44908b834d34d5247, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114873404756774822
 MonoBehaviour:
   m_ObjectHideFlags: 1

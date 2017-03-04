@@ -42,6 +42,9 @@ namespace HoloToolkit.Unity
         public GameObject LcapsLockBG;
         public GameObject RcapsLockBG;
 
+        public Text actualText;
+        public int textLength;
+
         private void Start()
         {
             initDoubleClick = doubleClickSpeed;
@@ -50,11 +53,10 @@ namespace HoloToolkit.Unity
         private void FixedUpdate()
         {
             doubleClick();
-
+            textSync();
             if (currentField)
             {
                 currentField.text = keyboardField.text;
-                //fieldTextPreview = keyboardField.text;
             }
             if (animCounter > 0)
             {
@@ -74,6 +76,17 @@ namespace HoloToolkit.Unity
                 doubleClickSpeed = initDoubleClick;
             }
 
+        }
+
+        void textSync()
+        {
+            if (keyboardField.text.Length > textLength)
+            {
+                actualText.text = keyboardField.text.Remove(keyboardField.text.Length - textLength, keyboardField.text.Length - textLength);
+            }else
+            {
+                actualText.text = keyboardField.text;
+            }
         }
 
         public void turnOn()
@@ -106,7 +119,7 @@ namespace HoloToolkit.Unity
 
         public void adjustCaret()
         {
-            keyboardField.caretPosition = currentField.text.Length;
+            keyboardField.caretPosition = actualText.text.Length;
         }
 
         void cameraParent()
