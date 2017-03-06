@@ -18346,7 +18346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatorObject: {fileID: 1139909520293172}
   currentField: {fileID: 0}
-  fieldTextPreview: 
   keyboardField: {fileID: 114591060034775852}
   beforeObj: {fileID: 1778531508678796}
   afterObj: {fileID: 1640538736610712}
@@ -19666,7 +19665,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 114737383513451250}
-  m_TextComponent: {fileID: 0}
+  m_TextComponent: {fileID: 114095181490583428}
   m_Placeholder: {fileID: 0}
   m_ContentType: 0
   m_InputType: 0

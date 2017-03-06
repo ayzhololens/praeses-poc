@@ -130,6 +130,7 @@ namespace HoloToolkit.Unity
 
         public void adjustCaret()
         {
+            keyboardField.ActivateInputField();
             keyboardField.caretPosition = currentField.text.Length;
         }
 
