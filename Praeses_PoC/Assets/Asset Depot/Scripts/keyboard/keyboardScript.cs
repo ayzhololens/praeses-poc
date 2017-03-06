@@ -35,7 +35,7 @@ namespace HoloToolkit.Unity
         public GameObject lower;
         public GameObject upper;
         bool shift;
-        public bool capsLock;
+        bool capsLock;
 
         public float doubleClickSpeed;
         float initDoubleClick;
@@ -45,6 +45,10 @@ namespace HoloToolkit.Unity
         public Text actualText;
         public int textLength;
 
+        public GameObject micOff;
+        public GameObject micOn;
+        bool isRecording;
+
         private void Start()
         {
             initDoubleClick = doubleClickSpeed;
@@ -53,7 +57,6 @@ namespace HoloToolkit.Unity
         private void FixedUpdate()
         {
             doubleClick();
-            textSync();
             if (currentField)
             {
                 currentField.text = keyboardField.text;
@@ -82,7 +85,9 @@ namespace HoloToolkit.Unity
         {
             if (keyboardField.text.Length > textLength)
             {
-                actualText.text = keyboardField.text.Remove(keyboardField.text.Length - textLength, keyboardField.text.Length - textLength);
+                print(keyboardField.text.Length + " is bigger than " + textLength);
+                actualText.text = keyboardField.text;
+                actualText.text = keyboardField.text.Remove(0, keyboardField.text.Length - textLength);
             }else
             {
                 actualText.text = keyboardField.text;
@@ -154,6 +159,7 @@ namespace HoloToolkit.Unity
             onOff = false;
             animCounter = .2f;
             float animMult = 1 - (animCounter / .2f);
+            keyboardField.text = "";
             //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
         }
 
@@ -175,6 +181,7 @@ namespace HoloToolkit.Unity
         {
             keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, processUnderScore(GazeManager.Instance.HitObject.name));
             keyboardField.caretPosition++;
+            textSync();
         }
 
         public void typeCapitalCheck()
@@ -227,12 +234,13 @@ namespace HoloToolkit.Unity
                     keyboardField.caretPosition--;
                 }
             }
-
+            textSync();
         }
 
         public void clearAllField()
         {
             keyboardField.text = "";
+            textSync();
         }
 
         public void caretBack()
@@ -311,6 +319,20 @@ namespace HoloToolkit.Unity
                 upper.SetActive(true);
                 shift = true;
             }
+        }
+
+        public void startRecording()
+        {
+            micOff.SetActive(false);
+            micOn.SetActive(true);
+            isRecording = true;
+        }
+
+        public void finishRecording()
+        {
+            micOff.SetActive(true);
+            micOn.SetActive(false);
+            isRecording = false;
         }
     }
 
