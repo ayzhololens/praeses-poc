@@ -131,7 +131,7 @@ namespace HoloToolkit.Unity
 
         public void adjustCaret()
         {
-            keyboardField.caretPosition = actualText.text.Length;
+            keyboardField.caretPosition = currentField.text.Length;
         }
 
         void cameraParent()
