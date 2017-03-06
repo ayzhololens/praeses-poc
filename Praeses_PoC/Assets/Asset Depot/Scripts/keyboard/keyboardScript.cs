@@ -57,6 +57,7 @@ namespace HoloToolkit.Unity
         private void FixedUpdate()
         {
             doubleClick();
+            textSync();
             if (currentField)
             {
                 currentField.text = keyboardField.text;
@@ -85,7 +86,7 @@ namespace HoloToolkit.Unity
         {
             if (keyboardField.text.Length > textLength)
             {
-                print(keyboardField.text.Length + " is bigger than " + textLength);
+                //print(keyboardField.text.Length + " is bigger than " + textLength);
                 actualText.text = keyboardField.text;
                 actualText.text = keyboardField.text.Remove(0, keyboardField.text.Length - textLength);
             }else
@@ -96,8 +97,14 @@ namespace HoloToolkit.Unity
 
         public void turnOn()
         {
+            getText();
             nestedOn();
             Invoke("adjustCaret",.1f);
+        }
+
+        void getText()
+        {
+            keyboardField.text = currentField.text;
         }
 
         void nestedOn()
@@ -159,7 +166,8 @@ namespace HoloToolkit.Unity
             onOff = false;
             animCounter = .2f;
             float animMult = 1 - (animCounter / .2f);
-            Invoke("cleartext", .1f);
+            currentField = null;
+            keyboardField.text = "";
             //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
         }
 
@@ -186,7 +194,6 @@ namespace HoloToolkit.Unity
         {
             keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, processUnderScore(GazeManager.Instance.HitObject.name));
             keyboardField.caretPosition++;
-            textSync();
         }
 
         public void typeCapitalCheck()
