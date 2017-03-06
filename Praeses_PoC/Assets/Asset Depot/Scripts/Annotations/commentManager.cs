@@ -37,7 +37,7 @@ public class commentManager : MonoBehaviour {
     {
 
     }
-    
+
 
     public void spawnNewComment()
     {
@@ -46,9 +46,16 @@ public class commentManager : MonoBehaviour {
             commentParent.parent.gameObject.SetActive(true);
         }
 
-        if(commentCount == 2)
+        if (commentCount == 2)
         {
             scrollBoxCollider.enabled = true;
+        }
+
+        for (int i = 0; i < activeComments.Count; i++)
+        {
+            activeComments[i].transform.position = new Vector3(activeComments[i].transform.position.x, 
+                                                                activeComments[i].transform.position.y - offsetDist, 
+                                                                activeComments[i].transform.position.z);
         }
 
         activeComments.Add((GameObject)Instantiate(newCommentBox, transform.position, Quaternion.identity));
@@ -61,7 +68,7 @@ public class commentManager : MonoBehaviour {
         activeComments[commentCount].GetComponent<inputFieldManager>().activateField();
         activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
         //activeComments[commentCount].GetComponent<commentContents>().commentMain.text = ("Comment "+ commentCount);
-        startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
+        //startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
         commentCount += 1;
     }
 }

@@ -227,6 +227,10 @@ namespace HoloToolkit.Unity
                         focusedButton = null;
                     }
                 }
+                else
+                {
+                    focusedButton = null;
+                }
 
             }
             if (!isActive)
@@ -245,6 +249,7 @@ namespace HoloToolkit.Unity
             RadialMenu.SetActive(true);
             RadialMenu.transform.position = RadialHolder.position;
             RadialMenu.transform.LookAt(Camera.main.transform);
+            RadialMenu.GetComponent<BoxCollider>().enabled = false;
             isActive = true;
             lineCenter.SetActive(true);
             lineCenter.GetComponent<LineTest>().line.SetActive(true);
@@ -268,10 +273,12 @@ namespace HoloToolkit.Unity
 
         public void turnOffRadialMenu()
         {
+            Debug.Log("eggg");
             float lineScale = lineCenter.GetComponent<LineTest>().scale;
 
             if (focusedButton == null)
             {
+                Debug.Log("fuck");
                 BroadcastMessage("OnFocusExit");
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
@@ -289,6 +296,7 @@ namespace HoloToolkit.Unity
 
                 BroadcastMessage("OnFocusExit");
                 focusedButton.SendMessage("OnSelect", SendMessageOptions.DontRequireReceiver);
+                Debug.Log("sent");
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
                 RadialMenu.transform.LookAt(Camera.main.transform);
@@ -301,6 +309,7 @@ namespace HoloToolkit.Unity
 
 
             }
+            RadialMenu.GetComponent<BoxCollider>().enabled = true;
             radHands.canManipulate = false;
             Cursor.SetActive(true);
 

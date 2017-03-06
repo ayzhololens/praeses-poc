@@ -49,7 +49,7 @@ public class radialHands : MonoBehaviour {
 
             }
 
-            if (navCursor.GetComponent<cursorListening>().focusedObj != null && navCursor.GetComponent<cursorListening>().focusedObj != focusedObj)
+            if (navCursor.GetComponent<cursorListening>().focusedObj != focusedObj)
             {
                 focusedObj = navCursor.GetComponent<cursorListening>().focusedObj;
 
