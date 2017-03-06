@@ -71,10 +71,11 @@ namespace HoloToolkit.Unity
         public void finishPlacingAnnotNode()
         {
             tapToPlaceInProgress = false;
-            GetComponent<annotationManager>().tapToPlaceIndicator.SetActive(false);
-            GetComponent<annotationManager>().tapToPlaceAnnotNode = false;
+            //GetComponent<annotationManager>().tapToPlaceIndicator.SetActive(false);
+            //GetComponent<annotationManager>().tapToPlaceAnnotNode = false;
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = true;
-            spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
+            spawnedAnnotation.GetComponent<selectEvent>().enabled = false;
+            //spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
 
             //spawn miniNode
             GameObject boiler = GameObject.Find("boiler(Clone)");
@@ -108,7 +109,18 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
             miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
             miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
-            GetComponent<annotationManager>().annotating = false;
+            if (isVideoNode)
+            {
+                GetComponent<annotationManager>().enableVideoRecording();
+                Debug.Log("spawned video node, trying to start");
+            }
+
+            if (isSimpleNode)
+            {
+                GetComponent<annotationManager>().enableSimpleCapture();
+                Debug.Log("spawned simple node, trying to start");
+            }
+
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
@@ -141,6 +153,7 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
+            Debug.Log("done");
         }
 
 

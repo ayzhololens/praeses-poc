@@ -40,7 +40,6 @@ namespace HoloToolkit.Unity
         public void activateField()
         {
             mainInputField.ActivateInputField();
-
             keyboardScript.Instance.currentField = mainInputField;
             keyboardScript.Instance.keyboardToggle();
             engaged = true;
@@ -70,7 +69,8 @@ namespace HoloToolkit.Unity
 
         public void OnInputClicked(InputClickedEventData eventData)
         {
-            toggleField();
+            //toggleField();
+            Debug.Log("egggg");
         }
     }
 }

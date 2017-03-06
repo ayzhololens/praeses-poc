@@ -26,14 +26,7 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
-            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
 
-            filename = vidRecorder.filename;
-            filepath = vidRecorder.filepath;
-            VideoPlayer.m_VideoPath = filename;
-            VideoPlayer.LoadVideoPlayer();
 
         }
 
@@ -43,6 +36,18 @@ namespace HoloToolkit.Unity
             videoChecker();
 
 
+        }
+
+        public void loadMedia()
+        {
+            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
+            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
+
+            filename = vidRecorder.filename;
+            filepath = vidRecorder.filepath;
+            VideoPlayer.m_VideoPath = filename;
+            VideoPlayer.LoadVideoPlayer();
         }
 
         public void LoadVideo()
@@ -55,9 +60,20 @@ namespace HoloToolkit.Unity
 
         public void PlayVideo()
         {
-            VideoPlayer.Control.Play();
-            startedVideo = true;
-            playIcon.SetActive(false);
+            if (!startedVideo)
+            {
+                VideoPlayer.Control.Play();
+                startedVideo = true;
+                playIcon.SetActive(false);
+            }
+
+            //if (startedVideo)
+            //{
+            //    VideoPlayer.Control.Pause();
+            //    startedVideo = false;
+            //    playIcon.SetActive(false);
+            //}
+
         }
 
         void videoChecker()

@@ -9,14 +9,14 @@ namespace HoloToolkit.Unity
     public class annotationManager : MonoBehaviour
     {
 
-        public GameObject videoRecordTextIndicator;
-        public GameObject tapToPlaceIndicator;
-        public GameObject videoRecordingInProgressIndicator;
-        public GameObject photoCaptureTextIndicator;
-        public GameObject dictationInProgressIndicator;
+        //public GameObject videoRecordTextIndicator;
+        //public GameObject tapToPlaceIndicator;
+        //public GameObject videoRecordingInProgressIndicator;
+        //public GameObject photoCaptureTextIndicator;
+        //public GameObject dictationInProgressIndicator;
+        public GameObject stateIndicator;
         public bool videoReordingEnabled;
         public bool videoRecordingInProgress;
-        public bool tapToPlaceAnnotNode;
         public bool photoCaptureEnabled;
         public bool dictationInProgress;
         public List<GameObject> activeAnnotations;
@@ -63,37 +63,48 @@ namespace HoloToolkit.Unity
 
         }
 
+        void activateMedia()
+        {
+            annotSpawner.spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
+
+            annotSpawner.spawnedAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
+            annotSpawner.spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
+        }
+
 
         public void enableVideoRecording()
         {
             annotating = true;
             if (videoReordingEnabled == false)
             {
-                videoRecordTextIndicator.SetActive(true);
+                stateIndicator.SetActive(true);
                 videoReordingEnabled = true;
+                stateIndicator.GetComponent<TextMesh>().text = "Tap to start recording video.";
             }
+
+            Debug.Log("enabled");
 
         }
 
         public void StartVideoRecording()
         {
-                videoRecordTextIndicator.SetActive(false);
-                videoRecordingInProgressIndicator.SetActive(true);
-                tapToPlaceIndicator.SetActive(false);
-                vidRecorder.startRecordingVideo();
-                videoRecordingInProgress = true;
-                videoReordingEnabled = false;
-            
+            stateIndicator.GetComponent<TextMesh>().text = "Recoding in progress.  Tap to stop";
+
+            vidRecorder.startRecordingVideo();
+            videoRecordingInProgress = true;
+            videoReordingEnabled = false;
+            Debug.Log("started");
+
         }
 
         public void StopVideoRecording()
         {
-            tapToPlaceIndicator.SetActive(true);
-            videoRecordingInProgressIndicator.SetActive(false);
+            stateIndicator.SetActive(false);
             vidRecorder.StopRecordingVideo();
             videoRecordingInProgress = false;
-            annotSpawner.spawnVideoAnnotation();
-            tapToPlaceAnnotNode = true;
+            activateMedia();
+            annotating = false;
+            Debug.Log("stopped");
 
         }
 
@@ -101,9 +112,10 @@ namespace HoloToolkit.Unity
         public void enableSimpleCapture()
         {
             annotating = true;
-            annotSpawner.spawnSimpleAnnotation();
-            tapToPlaceAnnotNode = true;
-            tapToPlaceIndicator.SetActive(true);
+            stateIndicator.SetActive(true);
+            stateIndicator.GetComponent<TextMesh>().text = "Tap to start recording video.";
+
+            Debug.Log("enabled");
         }
 
         public void enablePhotoCapture()
@@ -111,8 +123,9 @@ namespace HoloToolkit.Unity
             annotating = true;
             if (photoCaptureEnabled == false)
             {
-                photoCaptureTextIndicator.SetActive(true);
                 photoCaptureEnabled = true;
+                stateIndicator.SetActive(true);
+                stateIndicator.GetComponent<TextMesh>().text = "Tap to start capture photo.";
             }
         }
 
@@ -122,10 +135,8 @@ namespace HoloToolkit.Unity
             {
                 photoRecorder.CapturePhoto();
                 photoCaptureEnabled = false;
-                tapToPlaceIndicator.SetActive(true);
-                photoCaptureTextIndicator.SetActive(false);
-                tapToPlaceAnnotNode = true;
-                annotSpawner.spawnPhotoAnnotation();
+                stateIndicator.SetActive(false);
+                annotating = false;
             }
         }
 
@@ -133,14 +144,15 @@ namespace HoloToolkit.Unity
         {
             annotating = true;
             dictationInProgress = true;
-            dictationInProgressIndicator.SetActive(true);
+            stateIndicator.SetActive(true);
+            stateIndicator.GetComponent<TextMesh>().text = "Dictation in progress.  Tap to stop";
         }
 
         public void StopDictation()
         {
             annotating = false;
             dictationInProgress = false;
-            dictationInProgressIndicator.SetActive(false);
+            stateIndicator.SetActive(false);
             //activeDictationBox.GetComponent<Dictationizer>().stopDiction();
         }
 

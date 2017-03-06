@@ -16,7 +16,6 @@ namespace HoloToolkit.Unity
         public GameObject activatorObject;
         bool onOff;
         public InputField currentField;
-        public string fieldTextPreview;
         public InputField keyboardField;
         
         //public GameObject canvasObj;
@@ -49,6 +48,7 @@ namespace HoloToolkit.Unity
         public GameObject micOn;
         bool isRecording;
 
+        
         private void Start()
         {
             initDoubleClick = doubleClickSpeed;
@@ -159,8 +159,13 @@ namespace HoloToolkit.Unity
             onOff = false;
             animCounter = .2f;
             float animMult = 1 - (animCounter / .2f);
-            keyboardField.text = "";
+            Invoke("cleartext", .1f);
             //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
+        }
+
+        void cleartext()
+        {
+            keyboardField.text = "";
         }
 
         public void keyboardToggle()

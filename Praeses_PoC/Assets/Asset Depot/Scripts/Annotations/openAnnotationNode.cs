@@ -158,6 +158,8 @@ namespace HoloToolkit.Unity
         {
             //contentHoler.transform.position = startPos;
 
+            BroadcastMessage("GazeLeave", SendMessageOptions.DontRequireReceiver);
+
             if (contentHoler != null)
             {
                 contentHoler.SetActive(false);
