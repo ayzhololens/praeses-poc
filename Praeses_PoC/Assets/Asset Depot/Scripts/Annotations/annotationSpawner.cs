@@ -121,6 +121,11 @@ namespace HoloToolkit.Unity
                 Debug.Log("spawned simple node, trying to start");
             }
 
+            if (isPhotoNode)
+            {
+                GetComponent<annotationManager>().enablePhotoCapture();
+            }
+
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;

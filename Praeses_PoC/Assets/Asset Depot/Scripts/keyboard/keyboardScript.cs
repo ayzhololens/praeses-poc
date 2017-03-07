@@ -131,7 +131,6 @@ namespace HoloToolkit.Unity
 
         public void adjustCaret()
         {
-            keyboardField.ActivateInputField();
             keyboardField.caretPosition = currentField.text.Length;
         }
 
@@ -195,6 +194,12 @@ namespace HoloToolkit.Unity
         {
             keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, processUnderScore(GazeManager.Instance.HitObject.name));
             keyboardField.caretPosition++;
+        }
+
+        public void updateDict()
+        {
+            //keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, Dictationizer.Instance.textSoFar.ToString());
+            //keyboardField.caretPosition = keyboardField.caretPosition + Dictationizer.Instance.textSoFar.ToString().Length;
         }
 
         public void typeCapitalCheck()

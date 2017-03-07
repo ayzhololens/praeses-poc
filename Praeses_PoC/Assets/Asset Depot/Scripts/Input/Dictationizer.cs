@@ -18,7 +18,7 @@ namespace HoloToolkit.Unity.InputModule
 
 
         public Text DictationDisplay;
-        private StringBuilder textSoFar;
+        public StringBuilder textSoFar;
         public annotationManager annotMananger;
         public KeywordManager keyWordManager;
         bool inProgress;
@@ -77,11 +77,15 @@ namespace HoloToolkit.Unity.InputModule
         {
             textSoFar.Append(text + ". ");
             keyboardScript.Instance.keyboardField.text = textSoFar.ToString();
+            keyboardScript.Instance.keyboardField.caretPosition = keyboardScript.Instance.keyboardField.caretPosition + textSoFar.ToString().Length;
+
+
         }
 
         private void DictationRecognizer_DictationHypothesis(string text)
         {
             keyboardScript.Instance.keyboardField.text = textSoFar.ToString() + " " + text + "...";
+            keyboardScript.Instance.keyboardField.caretPosition = keyboardScript.Instance.keyboardField.caretPosition + textSoFar.ToString().Length;
         }
 
         public void DictationRecognizer_DictationComplete(DictationCompletionCause cause)
