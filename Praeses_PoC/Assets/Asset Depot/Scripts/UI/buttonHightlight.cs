@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class buttonHightlight : MonoBehaviour {
 
-    Material mat;
+    public Material mainMat;
     public Material highlightMat;
 
     // Use this for initialization
     void Start () {
-        mat = GetComponent<Renderer>().material;
-		
-	}
+        //mat = GetComponent<Renderer>().material;
+        GetComponent<Renderer>().material = mainMat;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -25,6 +25,6 @@ public class buttonHightlight : MonoBehaviour {
 
     public void unHighlight()
     {
-        GetComponent<Renderer>().material = mat;
+        GetComponent<Renderer>().material = mainMat;
     }
 }

@@ -14,6 +14,7 @@ namespace HoloToolkit.Unity
         public string filepath;
         public string filename;
         public GameObject playIcon;
+        public GameObject pauseIcon;
         bool startedVideo;
         public Texture2D photoTexture;
         public photoRecorder photoRecorder;
@@ -65,15 +66,20 @@ namespace HoloToolkit.Unity
                 VideoPlayer.Control.Play();
                 startedVideo = true;
                 playIcon.SetActive(false);
+                pauseIcon.SetActive(true);
             }
 
-            //if (startedVideo)
-            //{
-            //    VideoPlayer.Control.Pause();
-            //    startedVideo = false;
-            //    playIcon.SetActive(false);
-            //}
+        }
 
+        public void PauseVideo()
+        {
+            if (startedVideo)
+            {
+                VideoPlayer.Control.Pause();
+                startedVideo = false;
+                playIcon.SetActive(true);
+                pauseIcon.SetActive(false);
+            }
         }
 
         void videoChecker()
@@ -81,6 +87,7 @@ namespace HoloToolkit.Unity
             if (startedVideo && VideoPlayer.Control.IsFinished())
             {
                 playIcon.SetActive(true);
+                pauseIcon.SetActive(false);
                 startedVideo = false;
             }
         }

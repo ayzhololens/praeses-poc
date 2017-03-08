@@ -75,6 +75,8 @@ namespace HoloToolkit.Unity
             //GetComponent<annotationManager>().tapToPlaceAnnotNode = false;
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = true;
             spawnedAnnotation.GetComponent<selectEvent>().enabled = false;
+
+            annotationManager.Instance.currentAnnotation = spawnedAnnotation;
             //spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
 
             //spawn miniNode
@@ -114,11 +116,9 @@ namespace HoloToolkit.Unity
                 GetComponent<annotationManager>().enableVideoRecording();
                 Debug.Log("spawned video node, trying to start");
             }
-
             if (isSimpleNode)
             {
-                GetComponent<annotationManager>().enableSimpleCapture();
-                Debug.Log("spawned simple node, trying to start");
+                GetComponent<annotationManager>().activateMedia();
             }
 
             if (isPhotoNode)
@@ -129,6 +129,7 @@ namespace HoloToolkit.Unity
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
+
         }
 
         public void spawnPhotoAnnotation()

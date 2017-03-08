@@ -20,7 +20,7 @@ public class commentManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        startPos = CommmentStartPos.position;
+        
         //GameObject comment1 = Instantiate(newCommentBox, transform.position, Quaternion.identity);
         //comment1.transform.SetParent(commentParent);
         //comment1.transform.localScale = newCommentBox.transform.localScale;
@@ -41,6 +41,7 @@ public class commentManager : MonoBehaviour {
 
     public void spawnNewComment()
     {
+        startPos = CommmentStartPos.position;
         if (commentCount == 0)
         {
             commentParent.parent.gameObject.SetActive(true);
@@ -53,8 +54,8 @@ public class commentManager : MonoBehaviour {
 
         for (int i = 0; i < activeComments.Count; i++)
         {
-            activeComments[i].transform.position = new Vector3(activeComments[i].transform.position.x, 
-                                                                activeComments[i].transform.position.y - offsetDist, 
+            activeComments[i].transform.position = new Vector3(activeComments[i].transform.position.x,
+                                                                activeComments[i].transform.position.y - offsetDist,
                                                                 activeComments[i].transform.position.z);
         }
 
@@ -62,13 +63,21 @@ public class commentManager : MonoBehaviour {
         activeComments[commentCount].transform.SetParent(commentParent);
         activeComments[commentCount].transform.localScale = newCommentBox.transform.localScale;
         activeComments[commentCount].transform.position = startPos;
+        activeComments[commentCount].transform.localRotation = CommmentStartPos.localRotation;
         //activeComments[commentCount].AddComponent<inputFieldManager>();
         //activeInputField = activeComments[commentCount].GetComponent<commentContents>().inputField;
         //activeComments[commentCount].AddComponent<inputFieldManager>().mainInputField = activeInputField;
-        activeComments[commentCount].GetComponent<inputFieldManager>().activateField();
+        Invoke("fieldActivator", .2f);
         activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
         //activeComments[commentCount].GetComponent<commentContents>().commentMain.text = ("Comment "+ commentCount);
         //startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
+    }
+
+    void fieldActivator()
+    {
+
+        activeComments[commentCount].GetComponent<inputFieldManager>().activateField();
+
         commentCount += 1;
     }
 }

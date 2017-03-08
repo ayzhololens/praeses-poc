@@ -6,7 +6,7 @@ using HoloToolkit.Unity.InputModule;
 namespace HoloToolkit.Unity
 {
 
-    public class annotationManager : MonoBehaviour
+    public class annotationManager : Singleton<annotationManager>
     {
 
         //public GameObject videoRecordTextIndicator;
@@ -20,7 +20,7 @@ namespace HoloToolkit.Unity
         public bool photoCaptureEnabled;
         public bool dictationInProgress;
         public List<GameObject> activeAnnotations;
-
+        public GameObject currentAnnotation;
         public GameObject vidManager;
         public GameObject photoManager;
         videoRecorder vidRecorder;
@@ -63,12 +63,20 @@ namespace HoloToolkit.Unity
 
         }
 
-        void activateMedia()
+        public void activateMedia()
         {
-            annotSpawner.spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
+            currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-            annotSpawner.spawnedAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
-            annotSpawner.spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
+            currentAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
+            currentAnnotation.GetComponent<openAnnotationNode>().openContent();
+            currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
+
+
+            //annotSpawner.spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
+
+            //annotSpawner.spawnedAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
+            //annotSpawner.spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
+            //annotSpawner.spawnedAnnotation.GetComponent<openAnnotationNode>().enableReview();
         }
 
 
@@ -79,6 +87,7 @@ namespace HoloToolkit.Unity
             {
                 stateIndicator.SetActive(true);
                 videoReordingEnabled = true;
+                sourceManager.Instance.sourcePressed = false;
                 stateIndicator.GetComponent<TextMesh>().text = "Tap to start recording video.";
             }
 
@@ -126,8 +135,11 @@ namespace HoloToolkit.Unity
                 photoCaptureEnabled = true;
                 stateIndicator.SetActive(true);
                 stateIndicator.GetComponent<TextMesh>().text = "Tap to start capture photo.";
+                sourceManager.Instance.sourcePressed = false;
             }
         }
+
+        
 
         public void CapturePhoto()
         {
@@ -136,6 +148,7 @@ namespace HoloToolkit.Unity
                 photoRecorder.CapturePhoto();
                 photoCaptureEnabled = false;
                 stateIndicator.SetActive(false);
+                //activateMedia();
                 annotating = false;
             }
         }

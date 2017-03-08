@@ -63,6 +63,7 @@ namespace HoloToolkit.Unity
                 //string filePath = System.IO.Path.Combine(Application.persistentDataPath, filename);
                 //photoCaptureObject.TakePhotoAsync(filePath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
                 photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
+                Invoke("loadPhoto", 1);
             }
             else
             {
@@ -77,6 +78,7 @@ namespace HoloToolkit.Unity
                 Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
                 targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
                 photoCaptureFrame.UploadImageDataToTexture(targetTexture);
+
 
             }
 
@@ -102,6 +104,12 @@ namespace HoloToolkit.Unity
         {
             photoCaptureObject.Dispose();
             photoCaptureObject = null;
+        }
+
+        void loadPhoto()
+        {
+
+            annotationManager.Instance.activateMedia();
         }
     }
 

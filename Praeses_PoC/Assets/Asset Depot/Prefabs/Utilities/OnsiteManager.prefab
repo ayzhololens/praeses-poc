@@ -85,7 +85,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1078250579106048
 GameObject:
   m_ObjectHideFlags: 1
@@ -2293,7 +2293,7 @@ BoxCollider:
   m_GameObject: {fileID: 1046025192021716}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2537,6 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMat: {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
 --- !u!114 &114061987010993304
 MonoBehaviour:
@@ -2819,6 +2820,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMat: {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
 --- !u!114 &114265213990588302
 MonoBehaviour:
@@ -2900,8 +2902,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114630983598103544}
-        m_MethodName: enablePhotoCapture
+      - m_Target: {fileID: 114243023302203750}
+        m_MethodName: spawnPhotoAnnotation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2940,6 +2942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMat: {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
 --- !u!114 &114353498941116984
 MonoBehaviour:
@@ -2952,6 +2955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMat: {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
 --- !u!114 &114354212638704998
 MonoBehaviour:
@@ -3088,6 +3092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMat: {fileID: 2100000, guid: 68e73f5b8af85984bb59d0c78c6c6f8f, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
 --- !u!114 &114425635718063822
 MonoBehaviour:
@@ -3389,8 +3394,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114630983598103544}
-        m_MethodName: enableSimpleCapture
+      - m_Target: {fileID: 114243023302203750}
+        m_MethodName: spawnSimpleAnnotation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3431,14 +3436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e658b3a18fd6842a046fc75403306d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoRecordTextIndicator: {fileID: 0}
-  tapToPlaceIndicator: {fileID: 0}
-  videoRecordingInProgressIndicator: {fileID: 0}
-  photoCaptureTextIndicator: {fileID: 0}
-  dictationInProgressIndicator: {fileID: 0}
+  stateIndicator: {fileID: 0}
   videoReordingEnabled: 0
   videoRecordingInProgress: 0
-  tapToPlaceAnnotNode: 0
   photoCaptureEnabled: 0
   dictationInProgress: 0
   activeAnnotations: []
