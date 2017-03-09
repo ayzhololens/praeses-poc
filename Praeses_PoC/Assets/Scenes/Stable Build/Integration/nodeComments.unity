@@ -149,7 +149,7 @@ Prefab:
         type: 2}
     - target: {fileID: 1000010302963436, guid: 2ed75ffdf9031c94e8bce4b3d17b9928, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2ed75ffdf9031c94e8bce4b3d17b9928, type: 2}
@@ -195,11 +195,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8568a4574ac4dd04e895b697e932fdd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  miniMapHolder: {fileID: 0}
   miniMapMeshes: []
   SpatUnderstanding: {fileID: 0}
   MiniMapHolderParent: {fileID: 1442568328}
   miniMapMat: {fileID: 2100000, guid: fd47ef7f600f7c74f8015654ecd56660, type: 2}
   scaleOffset: 0.05
+  boilerPivot: {x: 0, y: 0, z: 0}
+  avatar: {fileID: 1056556475}
 --- !u!1001 &771215409
 Prefab:
   m_ObjectHideFlags: 0
@@ -371,9 +374,29 @@ Prefab:
       propertyPath: cursorOri
       value: 
       objectReference: {fileID: 1613055825}
+    - target: {fileID: 114340279025088832, guid: 022df2642fa5ade45afcf871b9ec6559,
+        type: 2}
+      propertyPath: cameraTra
+      value: 
+      objectReference: {fileID: 1139740787}
+    - target: {fileID: 114269873604083338, guid: 022df2642fa5ade45afcf871b9ec6559,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 022df2642fa5ade45afcf871b9ec6559, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1056556475 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1641874352022804, guid: 022df2642fa5ade45afcf871b9ec6559,
+    type: 2}
+  m_PrefabInternal: {fileID: 1056556474}
+--- !u!4 &1139740787 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4137246140622392, guid: 917c59906c8034444ac9cf70470d67fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1912778983}
 --- !u!1 &1161373363 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1029965929396586, guid: 022df2642fa5ade45afcf871b9ec6559,
@@ -418,6 +441,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
   m_IsPrefabParent: 0
@@ -460,36 +487,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: RadialHolder
-      value: 
-      objectReference: {fileID: 1912778984}
-    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: radialCountIndicator
-      value: 
-      objectReference: {fileID: 503678501}
-    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: Cursor
-      value: 
-      objectReference: {fileID: 1613055825}
-    - target: {fileID: 114630983598103544, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: stateIndicator
-      value: 
-      objectReference: {fileID: 1976968100}
-    - target: {fileID: 23971309909954566, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bb740cdfb83af7140915b466bc530e90, type: 2}
-    - target: {fileID: 114265213990588302, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 756932298}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[5].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -515,6 +512,26 @@ Prefab:
       propertyPath: KeywordsAndResponses.Array.data[13].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2107578685}
+    - target: {fileID: 114630983598103544, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: stateIndicator
+      value: 
+      objectReference: {fileID: 1976968100}
+    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: RadialHolder
+      value: 
+      objectReference: {fileID: 1912778984}
+    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: radialCountIndicator
+      value: 
+      objectReference: {fileID: 503678501}
+    - target: {fileID: 114357921936230014, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Cursor
+      value: 
+      objectReference: {fileID: 1613055825}
     - target: {fileID: 114307663094771496, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: SpatialMapping
@@ -525,31 +542,26 @@ Prefab:
       propertyPath: frontHolder
       value: 
       objectReference: {fileID: 1912778991}
-    - target: {fileID: 114121968258808104, guid: 6b9c14fcc8025f543bf3a867845d521d,
+    - target: {fileID: 114265213990588302, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
-      propertyPath: cursorTimer
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 503678501}
+      objectReference: {fileID: 756932298}
     - target: {fileID: 114243023302203750, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: SpatialMapping
       value: 
       objectReference: {fileID: 756932297}
-    - target: {fileID: 114608681545669052, guid: 6b9c14fcc8025f543bf3a867845d521d,
+    - target: {fileID: 114121968258808104, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
-      propertyPath: m_VideoLocation
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114608681545669052, guid: 6b9c14fcc8025f543bf3a867845d521d,
-        type: 2}
-      propertyPath: m_VideoPath
+      propertyPath: cursorTimer
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114886577506375506, guid: 6b9c14fcc8025f543bf3a867845d521d,
+      objectReference: {fileID: 503678501}
+    - target: {fileID: 23971309909954566, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
-      propertyPath: filename
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: bb740cdfb83af7140915b466bc530e90, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
   m_IsPrefabParent: 0

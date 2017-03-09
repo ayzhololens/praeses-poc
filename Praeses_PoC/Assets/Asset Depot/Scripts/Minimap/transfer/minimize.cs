@@ -13,6 +13,8 @@ public class minimize : MonoBehaviour, IInputClickHandler {
     bool done;
     public GameObject bigHeadGeo;
     public List<GameObject> meshesHide;
+    Vector3 anchDist;
+
 
     public GameObject paperPlane;
 
@@ -57,9 +59,23 @@ public class minimize : MonoBehaviour, IInputClickHandler {
         //    }
         //}
 
-        if(miniCopy != null && posUpdate)
+
+
+
+
+
+
+
+
+
+
+
+
+
+        if (miniCopy != null && posUpdate)
         {
-            miniCopy.transform.localPosition = transform.position + minimapSpawn.Instance.miniMapHolder.transform.localPosition/minimapSpawn.Instance.scaleOffset*.5752f;
+
+            miniCopy.transform.localPosition = transform.position + minimapSpawn.Instance.miniMapHolder.transform.localPosition / minimapSpawn.Instance.scaleOffset * .5752f;
             miniCopy.transform.localRotation = transform.rotation;
         }
 
@@ -76,5 +92,8 @@ public class minimize : MonoBehaviour, IInputClickHandler {
             miniThis();
         }
     }
+
+
+
 
 }

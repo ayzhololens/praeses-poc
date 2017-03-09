@@ -627,6 +627,7 @@ GameObject:
   - component: {fileID: 114307663094771496}
   - component: {fileID: 114194279099476762}
   - component: {fileID: 114121968258808104}
+  - component: {fileID: 114838384887733444}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -2593,6 +2594,8 @@ MonoBehaviour:
   PositionUpdateSpeed: 9.799999
   SmoothMotion: 1
   SmoothingFactor: 0.75
+  YLimitMax: 0
+  YLimitMin: 0
 --- !u!114 &114074818185274494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3442,6 +3445,7 @@ MonoBehaviour:
   photoCaptureEnabled: 0
   dictationInProgress: 0
   activeAnnotations: []
+  currentAnnotation: {fileID: 0}
   vidManager: {fileID: 1769204271471286}
   photoManager: {fileID: 1196031761808562}
   activeDictationBox: {fileID: 0}
@@ -3657,6 +3661,17 @@ MonoBehaviour:
   upHolder: {fileID: 0}
   speed: 0
   moving: 0
+--- !u!114 &114838384887733444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699194472853180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721008d7651e134c9e280e09fd6fbc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114843202818492724
 MonoBehaviour:
   m_ObjectHideFlags: 1
