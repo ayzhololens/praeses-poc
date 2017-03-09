@@ -58,6 +58,8 @@ namespace HoloToolkit.Unity.InputModule.Tests
         /// </summary>
         private float minSize = .3f;
 
+        public Text display;
+
         private void OnAudioFilterRead(float[] buffer, int numChannels)
         {
             // this is where we call into the DLL and let it fill our audio buffer for us
@@ -76,6 +78,7 @@ namespace HoloToolkit.Unity.InputModule.Tests
         {
             CheckForErrorOnCall(MicStream.MicInitializeCustomRate((int)StreamType, AudioSettings.outputSampleRate));
             CheckForErrorOnCall(MicStream.MicSetGain(InputGain));
+            MicStream.MicInitializeDefault(0);
 
             if (!ListenToAudioSource)
             {
@@ -123,6 +126,34 @@ namespace HoloToolkit.Unity.InputModule.Tests
             }
 
             this.gameObject.transform.localScale = new Vector3(minSize + averageAmplitude, minSize + averageAmplitude, minSize + averageAmplitude);
+        }
+
+        public void startStream()
+        {
+            GetComponent<Renderer>().material.color = Color.blue;
+            string filepath = System.IO.Path.Combine(Application.persistentDataPath, SaveFileName);
+            display.text = SaveFileName;
+
+            CheckForErrorOnCall(MicStream.MicStartRecording(SaveFileName, false));
+            //MicStream.MicStartStream(KeepAllData, false);
+            //MicStream.MicStartRecording(SaveFileName, true);
+
+            //CheckForErrorOnCall(MicStream.MicStartStream(KeepAllData, false));
+        }
+
+        public void stopStream()
+        {
+            GetComponent<Renderer>().material.color = Color.white;
+            string outputPath = MicStream.MicStopRecording();
+            display.text =  "Saved microphone audio to " + outputPath;
+
+            CheckForErrorOnCall(MicStream.MicStopStream());
+            //MicStream.MicStopRecording();
+        }
+
+        public void playBackStream()
+        {
+
         }
 
         private void CheckForErrorOnCall(int returnCode)

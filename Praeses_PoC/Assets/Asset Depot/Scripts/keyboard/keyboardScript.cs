@@ -14,7 +14,7 @@ namespace HoloToolkit.Unity
     {
 
         public GameObject activatorObject;
-        bool onOff;
+        public bool onOff;
         public InputField currentField;
         public InputField keyboardField;
         

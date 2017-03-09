@@ -7,6 +7,7 @@ public class commentContents : MonoBehaviour {
 
     public Text commentMain;
     public Text commentMeta;
+    public GameObject editButton;
     public InputField inputField;
 
 	// Use this for initialization

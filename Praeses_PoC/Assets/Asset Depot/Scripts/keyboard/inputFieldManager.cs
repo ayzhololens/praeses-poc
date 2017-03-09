@@ -41,12 +41,19 @@ namespace HoloToolkit.Unity
         {
 
 
+
             mainInputField.ActivateInputField();
-            keyboardScript.Instance.currentField = mainInputField;
-            keyboardScript.Instance.keyboardToggle();
-            Debug.Log("egggg");
+            Debug.Log("eggg");
+            Invoke("turnOnKeyboard", .1f);
             engaged = true;
 
+        }
+
+        void turnOnKeyboard()
+        {
+            keyboardScript.Instance.currentField = mainInputField;
+
+            keyboardScript.Instance.keyboardToggle();
         }
 
         public void deactivateField()

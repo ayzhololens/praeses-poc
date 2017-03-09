@@ -51,10 +51,19 @@ namespace HoloToolkit.Unity
         {
             
             //radial turn on counter
-            if (sourceManager.sourcePressed && !isActive && !annotManager.annotating && (gazeManager.HitObject.tag == "SpatialMapping" || gazeManager.HitObject == null))
+            if (sourceManager.sourcePressed && !isActive && !annotManager.annotating)
             {
-                timerManager.Instance.radialCountDown();
-
+                if (gazeManager.HitObject != null)
+                {
+                    if(gazeManager.HitObject.tag == "SpatialMapping")
+                    {
+                        timerManager.Instance.radialCountDown();
+                    }
+                }
+                else
+                {
+                    timerManager.Instance.radialCountDown();
+                }
                 //radialCounter -= Time.deltaTime;
                 //Debug.Log("shoulddaa");
                 //if (!counting)

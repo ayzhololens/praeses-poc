@@ -543,8 +543,13 @@ namespace HoloToolkit.Unity.InputModule
         /// </summary>
         public virtual CursorStateEnum CheckCursorState()
         {
-            if (cursorState != CursorStateEnum.Contextual)
+            if(radialManagement.Instance != null)
             {
+
+
+
+                if (cursorState != CursorStateEnum.Contextual)
+                {
                     if (IsInputSourceDown && !radialManagement.Instance.isActive)
                     {
                         return CursorStateEnum.Select;
@@ -552,18 +557,18 @@ namespace HoloToolkit.Unity.InputModule
                     else if (cursorState == CursorStateEnum.Select)
                     {
                         return CursorStateEnum.Release;
-                    
+
                     }
 
                     if (TargetedObject != null)
                     {
-                        if(!radialManagement.Instance.isActive )
+                        if (!radialManagement.Instance.isActive)
                         {
                             if (TargetedObject.tag == "Button")
                             {
-                             if (IsHandVisible)
+                                if (IsHandVisible)
                                 {
-                                 return CursorStateEnum.SelectableDetected;
+                                    return CursorStateEnum.SelectableDetected;
                                 }
                                 return CursorStateEnum.Selectable;
                             }
@@ -573,7 +578,7 @@ namespace HoloToolkit.Unity.InputModule
                                 {
                                     return CursorStateEnum.DraggableDetected;
                                 }
-                            return CursorStateEnum.Draggable;
+                                return CursorStateEnum.Draggable;
                             }
                             else if (TargetedObject.tag == "ScrollContent")
                             {
@@ -583,7 +588,7 @@ namespace HoloToolkit.Unity.InputModule
                                 }
                                 return CursorStateEnum.Scrollable;
                             }
-                            else if(TargetedObject.tag == "keyboard" || TargetedObject.tag == "keyboardBG")
+                            else if (TargetedObject.tag == "keyboard" || TargetedObject.tag == "keyboardBG")
                             {
                                 if (IsHandVisible)
                                 {
@@ -600,26 +605,27 @@ namespace HoloToolkit.Unity.InputModule
                                 return CursorStateEnum.ObserveHover;
                             }
                         }
-                        else if (radialManagement.Instance.isActive )
-                            {
-                                return CursorStateEnum.Null;
-                            }
+                        else if (radialManagement.Instance.isActive)
+                        {
+                            return CursorStateEnum.Null;
+                        }
 
 
+                    }
+                    else
+                    {
+
+                        if (radialManagement.Instance.isActive)
+                        {
+                            return CursorStateEnum.Null;
                         }
                         else
                         {
+                            return CursorStateEnum.Observe;
+                        }
 
-                            if (radialManagement.Instance.isActive )
-                            {
-                                return CursorStateEnum.Null;
-                            }
-                            else
-                            {
-                                return CursorStateEnum.Observe;
-                            }
-                        
                     }
+                }
                 
 
 
@@ -658,10 +664,11 @@ namespace HoloToolkit.Unity.InputModule
                 //}
                 //return TargetedObject != null ? CursorStateEnum.ObserveHover : CursorStateEnum.Observe;
             }
+
             
 
 
-            return CursorStateEnum.None;
+            return CursorStateEnum.Selectable;
 
         }
 
