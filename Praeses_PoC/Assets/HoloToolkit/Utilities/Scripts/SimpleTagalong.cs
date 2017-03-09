@@ -43,6 +43,9 @@ namespace HoloToolkit.Unity
         protected const int frustumBottom = 2;
         protected const int frustumTop = 3;
 
+        public float YLimitMax;
+        public float YLimitMin;
+
         protected virtual void Start()
         {
             // Make sure the Tagalong object has a BoxCollider.
@@ -172,7 +175,9 @@ namespace HoloToolkit.Unity
             // Find the point along that ray that is the right distance away and
             // update the calculated toPosition to be that point.
             toPosition = ray.GetPoint(TagalongDistance);
-
+            toPosition = new Vector3(toPosition.x,
+                                            Mathf.Clamp(toPosition.y, Camera.main.transform.position.y + YLimitMin, Camera.main.transform.position.y + YLimitMax),
+                                            toPosition.z);
             // If we got here, needsToMove will be true.
             return needsToMove;
         }
