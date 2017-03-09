@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class followViz : MonoBehaviour {
 
-    public List<GameObject> followers;
+    public List<GameObject> meshViz;
     public GameObject opposite;
 
 	// Use this for initialization
@@ -14,9 +14,12 @@ public class followViz : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		foreach(GameObject fol in followers)
+        foreach(GameObject obj in meshViz)
         {
-            fol.GetComponent<MeshRenderer>().enabled = gameObject.GetComponent<MeshRenderer>().enabled;
+            if(obj.GetComponent<MeshRenderer>() != null)
+            {
+                obj.GetComponent<MeshRenderer>().enabled = gameObject.GetComponent<MeshRenderer>().enabled;
+            }
         }
         if (opposite != null)
         {

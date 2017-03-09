@@ -7,7 +7,7 @@ using HoloToolkit.Unity;
 public class minimapTransferObject : Singleton<minimapTransferObject> {
     //Vector3 initPos;
 
-    public void mainFunc(GameObject processObj)
+    public void forHolder(GameObject processObj)
     {
         //print("processed:" + processObj);
         //initPos = gameObject.transform.position;
@@ -17,5 +17,14 @@ public class minimapTransferObject : Singleton<minimapTransferObject> {
         minimapSpawn.Instance.MiniMapHolderParent.transform.localPosition = Vector3.zero;
         minimapSpawn.Instance.MiniMapHolderParent.transform.localScale = Vector3.one;
         processObj.transform.SetParent(minimapSpawn.Instance.miniMapHolder.transform);
+    }
+
+    public void afterHolder(GameObject processObj)
+    {
+        //print("processed:" + processObj);
+        //initPos = gameObject.transform.position;
+        minimapSpawn.Instance.MiniMapHolderParent.transform.localScale = minimapSpawn.Instance.MiniMapHolderParent.transform.localScale / minimapSpawn.Instance.scaleOffset;
+        processObj.transform.SetParent(minimapSpawn.Instance.miniMapHolder.transform);
+        minimapSpawn.Instance.MiniMapHolderParent.transform.localScale = Vector3.one;
     }
 }
