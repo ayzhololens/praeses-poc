@@ -14,12 +14,14 @@ namespace HoloToolkit.Unity
         public GameObject photoNode;
         public GameObject videoNode;
         public GameObject simpleNode;
+        public GameObject fieldNode;
         public GameObject Minimap;
         public Vector3 anchDist;
         public Transform SpatialMapping;
         public GameObject miniPhotoNode;
         public GameObject miniVideoNode;
         public GameObject miniSimpleNode;
+        public GameObject miniFieldNode;
         float scaleOffest;
         int finishCounter;
         GameObject miniAnnotation;
@@ -27,6 +29,7 @@ namespace HoloToolkit.Unity
         bool isVideoNode;
         bool isPhotoNode;
         bool isSimpleNode;
+        bool isFieldNode;
 
 
         // Use this for initialization
@@ -102,6 +105,11 @@ namespace HoloToolkit.Unity
             {
                 miniAnnotation = Instantiate(miniSimpleNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
+            if (isFieldNode)
+            {
+                miniAnnotation = Instantiate(miniFieldNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+
+            }
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
             miniAnnotation.transform.SetParent(Minimap.transform);
             rotatorGroup.transform.localPosition = Vector3.zero;
@@ -125,10 +133,15 @@ namespace HoloToolkit.Unity
             {
                 GetComponent<annotationManager>().enablePhotoCapture();
             }
+            if (isFieldNode)
+            {
+                spawnedAnnotation.GetComponent<subMenu>().turnOnSubButtons();
+            }
 
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
+            isFieldNode = false;
 
         }
 
@@ -169,6 +182,19 @@ namespace HoloToolkit.Unity
             Vector3 pos = GazeManager.Instance.HitPosition;
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             spawnedAnnotation = Instantiate(simpleNode, pos, rot) as GameObject;
+            GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
+            spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
+            spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
+            spawnedAnnotation.transform.SetParent(transform);
+            tapToPlaceInProgress = true;
+        }
+
+        public void spawnFieldAnnotation()
+        {
+            isFieldNode = true;
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
+            spawnedAnnotation = Instantiate(fieldNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();

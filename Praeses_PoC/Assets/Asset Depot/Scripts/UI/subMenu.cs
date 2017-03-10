@@ -48,7 +48,7 @@ public class subMenu : MonoBehaviour {
             }
             
             gameObject.GetComponent<buttonHightlight>().unHighlight();
-
+            BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
         }
         
 

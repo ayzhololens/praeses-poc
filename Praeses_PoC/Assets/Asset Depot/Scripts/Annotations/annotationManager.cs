@@ -65,11 +65,20 @@ namespace HoloToolkit.Unity
 
         public void activateMedia()
         {
-            currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-            currentAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
-            currentAnnotation.GetComponent<openAnnotationNode>().openContent();
-            currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
+            if (currentAnnotation.GetComponent<openAnnotationNode>() != null)
+            {
+                currentAnnotation.GetComponent<selectEvent>().enabled = true;
+
+                currentAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
+                currentAnnotation.GetComponent<openAnnotationNode>().openContent();
+                currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
+            }
+            if(currentAnnotation.GetComponent<formNodeController>() != null)
+            {
+
+            }
+
 
 
             //annotSpawner.spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
