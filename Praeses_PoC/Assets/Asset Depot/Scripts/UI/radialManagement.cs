@@ -288,7 +288,7 @@ namespace HoloToolkit.Unity
             if (focusedButton == null)
             {
                 Debug.Log("fuck");
-                BroadcastMessage("OnFocusExit");
+                BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
                 RadialMenu.transform.LookAt(Camera.main.transform);

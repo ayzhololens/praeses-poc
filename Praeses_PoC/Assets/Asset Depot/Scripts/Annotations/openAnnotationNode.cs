@@ -112,30 +112,40 @@ namespace HoloToolkit.Unity
 
         public void enableReview()
         {
-            reviewButtons.SetActive(true);
-            reviewState = true;
-            if (contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+            if (!isMiniNode)
             {
-                contentHoler.GetComponent<SimpleTagalong>().enabled = true;
-                Debug.Log("hello");
+                reviewButtons.SetActive(true);
+                reviewState = true;
+                if (contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                {
+                    contentHoler.GetComponent<SimpleTagalong>().enabled = true;
+                    Debug.Log("hello");
+                }
+
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(true);
+                }
             }
 
-            for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
-            {
-                GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(true);
-            }
         }
 
         public void completeReview()
         {
-            reviewButtons.SetActive(false);
-            reviewState = false;
-            for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+            if (!isMiniNode)
             {
-                GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(false);
+                Debug.Log("complete " + gameObject.name);
+                reviewButtons.SetActive(false);
+                reviewState = false;
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(false);
+                }
+                BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
+
             }
-            BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
-           
+
+
         }
 
         public void recapture()
@@ -209,7 +219,7 @@ namespace HoloToolkit.Unity
             //contentHoler.transform.position = startPos;
 
             BroadcastMessage("GazeLeave", SendMessageOptions.DontRequireReceiver);
-            completeReview();
+
 
             if (contentHoler != null)
             {
@@ -224,6 +234,7 @@ namespace HoloToolkit.Unity
                 contentHoler.transform.position = contenLoc.position;
                 miniNodeOpen = false;
                 contentOpen = false;
+                //completeReview();
             }
             
         }

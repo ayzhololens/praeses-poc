@@ -20,11 +20,11 @@ public class deleteNode : MonoBehaviour {
     {
         foreach (GameObject node in annotationManager.Instance.activeAnnotations)
         {
-            if(node == this.gameObject)
+            if(node == this.gameObject && node!=null)
             {
                 if (GetComponent<openAnnotationNode>().miniNode != null)
                 {
-                    DestroyImmediate(GetComponent<openAnnotationNode>().miniNode);
+                    DestroyImmediate(GetComponent<openAnnotationNode>().miniNode.gameObject);
                 }
                 
                 if (GetComponent<annotationMediaHolder>().filepath != null)
@@ -36,6 +36,7 @@ public class deleteNode : MonoBehaviour {
                 }
                 DestroyImmediate(this.gameObject);
                 Debug.Log("found it");
+                
             }
         }
     }

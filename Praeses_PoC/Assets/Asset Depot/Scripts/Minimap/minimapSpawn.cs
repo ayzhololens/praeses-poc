@@ -19,6 +19,7 @@ namespace HoloToolkit.Unity
 
         public Vector3 boilerPivot;
         public GameObject avatar;
+        public bool useAvatar;
 
         // Use this for initialization
         void Start()
@@ -88,7 +89,12 @@ namespace HoloToolkit.Unity
             MiniMapHolderParent.transform.localPosition = Vector3.zero;
             MiniMapHolderParent.transform.localScale = Vector3.one;
             GetComponent<miniMapToggle>().active = true;
-            avatar.GetComponent<minimize>().miniThis();
+
+            if (useAvatar)
+            {
+                avatar.GetComponent<minimize>().miniThis();
+            }
+            
         }
 
         public void spawnUnderstandingMiniMap()
