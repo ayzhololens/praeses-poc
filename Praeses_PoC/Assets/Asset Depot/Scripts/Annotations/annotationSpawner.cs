@@ -7,7 +7,7 @@ using HoloToolkit.Unity.InputModule;
 namespace HoloToolkit.Unity
 {
 
-    public class annotationSpawner : MonoBehaviour {
+    public class annotationSpawner : Singleton<annotationSpawner> {
         
         public GameObject spawnedAnnotation;
         public bool tapToPlaceInProgress;
@@ -115,10 +115,14 @@ namespace HoloToolkit.Unity
             rotatorGroup.transform.localPosition = Vector3.zero;
             rotatorGroup.transform.localScale = Vector3.one;
             miniAnnotation.SetActive(SpatialMapping.GetComponent<miniMapToggle>().active);
-            spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
-            spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
-            miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
-            miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+            if (!isFieldNode)
+            {
+
+                spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+                spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+                miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+                miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+            }
             if (isVideoNode)
             {
                 GetComponent<annotationManager>().enableVideoRecording();
@@ -135,7 +139,10 @@ namespace HoloToolkit.Unity
             }
             if (isFieldNode)
             {
-                spawnedAnnotation.GetComponent<subMenu>().turnOnSubButtons();
+                spawnedAnnotation.GetComponent<formNodeController>().linkedField = annotationManager.Instance.activeField;
+                annotationManager.Instance.activeField.GetComponent<formFieldController>().linkedNode = spawnedAnnotation;
+                annotationManager.Instance.activeField.GetComponent<formFieldController>().enableAttachmentCapture();
+                spawnedAnnotation.GetComponent<formNodeController>().openForm();
             }
 
             isPhotoNode = false;
@@ -197,7 +204,6 @@ namespace HoloToolkit.Unity
             spawnedAnnotation = Instantiate(fieldNode, pos, rot) as GameObject;
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
-            spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
         }

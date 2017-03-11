@@ -27,6 +27,7 @@ namespace HoloToolkit.Unity
         photoRecorder photoRecorder;
         annotationSpawner annotSpawner;
         public GameObject activeDictationBox;
+        public GameObject activeField;
 
         public bool annotating;
 
@@ -74,9 +75,9 @@ namespace HoloToolkit.Unity
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
-            if(currentAnnotation.GetComponent<formNodeController>() != null)
+            if(currentAnnotation.GetComponent<formFieldController>() != null)
             {
-
+                currentAnnotation.GetComponent<formFieldController>().loadMedia();
             }
 
 
