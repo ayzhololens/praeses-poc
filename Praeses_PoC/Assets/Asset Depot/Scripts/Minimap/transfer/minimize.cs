@@ -44,7 +44,7 @@ public class minimize : MonoBehaviour, IInputClickHandler {
                 }
             }
         }
-        minimapTransferObject.Instance.afterHolder(miniCopy);
+        minimapTransferObject.Instance.transferObject(miniCopy);
         done = true;
         foreach(GameObject mesh in meshesHide)
         {
@@ -58,7 +58,7 @@ public class minimize : MonoBehaviour, IInputClickHandler {
 
         if(miniCopy != null && posUpdate)
         {
-            miniCopy.transform.localPosition = transform.position + new Vector3(.5f,-.5f,0)+  minimapSpawn.Instance.miniMapHolder.transform.localPosition /minimapSpawn.Instance.scaleOffset;
+            miniCopy.transform.localPosition = transform.localPosition;
             miniCopy.transform.localRotation = transform.rotation;
         }
 

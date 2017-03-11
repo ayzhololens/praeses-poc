@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\bin\x86\Release\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-09T19:48:39.869</Modified>
+      <Modified>2017-03-11T18:44:42.863</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\bin\x86\Release\Praeses_PoC.exe">
       <PackagePath>entrypoint\Praeses_PoC.exe</PackagePath>
-      <Modified>2017-03-09T19:48:32.762</Modified>
+      <Modified>2017-03-11T18:44:36.086</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\.nuget\packages\Microsoft.ApplicationInsights\1.0.0\lib\portable-win81+wpa81\Microsoft.ApplicationInsights.dll">
       <PackagePath>Microsoft.ApplicationInsights.dll</PackagePath>
@@ -498,7 +498,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Resource.res">
       <PackagePath>Resource.res</PackagePath>
-      <Modified>2017-03-09T19:48:12.205</Modified>
+      <Modified>2017-03-11T18:43:38.327</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
@@ -604,11 +604,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\globalgamemanagers">
       <PackagePath>Data\globalgamemanagers</PackagePath>
-      <Modified>2017-03-09T19:47:56.808</Modified>
+      <Modified>2017-03-11T18:43:23.725</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\level0">
       <PackagePath>Data\level0</PackagePath>
-      <Modified>2017-03-09T19:47:55.982</Modified>
+      <Modified>2017-03-11T18:43:22.940</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\Resources\unity default resources">
       <PackagePath>Data\Resources\unity default resources</PackagePath>
@@ -616,35 +616,35 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\Resources\unity_builtin_extra">
       <PackagePath>Data\Resources\unity_builtin_extra</PackagePath>
-      <Modified>2017-03-09T19:47:58.159</Modified>
+      <Modified>2017-03-11T18:43:24.972</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\globalgamemanagers.assets">
       <PackagePath>Data\globalgamemanagers.assets</PackagePath>
-      <Modified>2017-03-09T19:47:56.981</Modified>
+      <Modified>2017-03-11T18:43:23.901</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\resources.assets">
       <PackagePath>Data\resources.assets</PackagePath>
-      <Modified>2017-03-09T19:47:57.398</Modified>
+      <Modified>2017-03-11T18:43:24.289</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
-      <Modified>2017-03-09T19:47:57.888</Modified>
+      <Modified>2017-03-11T18:43:24.756</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
-      <Modified>2017-03-09T19:48:12.177</Modified>
+      <Modified>2017-03-11T18:43:38.294</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
-      <Modified>2017-03-09T19:48:12.178</Modified>
+      <Modified>2017-03-11T18:43:38.295</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\resources.assets.resS">
       <PackagePath>Data\resources.assets.resS</PackagePath>
-      <Modified>2017-03-09T19:47:57.398</Modified>
+      <Modified>2017-03-11T18:43:24.288</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.assets.resS">
       <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-      <Modified>2017-03-09T19:47:57.883</Modified>
+      <Modified>2017-03-11T18:43:24.751</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4</PackagePath>
@@ -681,43 +681,43 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\bin\x86\Release\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-09T19:48:33.226</Modified>
+      <Modified>2017-03-11T18:44:36.754</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.563</Modified>
+      <Modified>2017-03-11T18:44:42.479</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.567</Modified>
+      <Modified>2017-03-11T18:44:42.484</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.639</Modified>
+      <Modified>2017-03-11T18:44:42.550</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.HoloLens.dll">
       <PackagePath>UnityEngine.HoloLens.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.649</Modified>
+      <Modified>2017-03-11T18:44:42.560</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.693</Modified>
+      <Modified>2017-03-11T18:44:42.599</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\UnityEngine.VR.dll">
       <PackagePath>UnityEngine.VR.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.695</Modified>
+      <Modified>2017-03-11T18:44:42.601</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Assembly-CSharp.dll">
       <PackagePath>Assembly-CSharp.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.062</Modified>
+      <Modified>2017-03-11T18:44:42.035</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Assembly-CSharp-firstpass.dll">
       <PackagePath>Assembly-CSharp-firstpass.dll</PackagePath>
-      <Modified>2017-03-09T19:48:39.064</Modified>
+      <Modified>2017-03-11T18:44:42.037</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\bin\x86\Release\Core\Praeses_PoC.exe">
       <PackagePath>Praeses_PoC.exe</PackagePath>
-      <Modified>2017-03-09T19:48:39.866</Modified>
+      <Modified>2017-03-11T18:44:42.860</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

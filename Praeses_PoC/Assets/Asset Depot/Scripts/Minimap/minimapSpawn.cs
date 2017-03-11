@@ -39,8 +39,6 @@ namespace HoloToolkit.Unity
         public void spawnMiniMap()
         {
             //Debug.Log(miniMapHolder.transform.position);
-            miniMapHolder.transform.position = MiniMapHolderParent.transform.position;
-
 
             for (int i = 0; i < transform.childCount; i++)
             {
