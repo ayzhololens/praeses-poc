@@ -77,7 +77,7 @@ namespace HoloToolkit.Unity
             }
             if(currentAnnotation.GetComponent<formFieldController>() != null)
             {
-                currentAnnotation.GetComponent<formFieldController>().loadMedia();
+                currentAnnotation.GetComponent<formFieldController>().loadVideoMedia();
             }
 
 
@@ -121,7 +121,6 @@ namespace HoloToolkit.Unity
             stateIndicator.SetActive(false);
             vidRecorder.StopRecordingVideo();
             videoRecordingInProgress = false;
-            activateMedia();
             annotating = false;
             Debug.Log("stopped");
 

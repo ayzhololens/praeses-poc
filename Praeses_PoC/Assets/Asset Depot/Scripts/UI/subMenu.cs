@@ -25,17 +25,21 @@ public class subMenu : MonoBehaviour {
             subButtons[i].SetActive(true);
         }
         subButtonsOn = true;
+        Debug.Log(" turn on");
     }
 
     public void turnOffCounter()
     {
         Invoke("turnOffSubButtons", timeOutCounter);
         subButtonsOn = false;
+        Debug.Log(" turn off counter");
     }
 
     public void turnOffSubButtons()
     {
-       
+
+
+
         if (!subButtonsOn)
         {
             for (int i = 0; i < subButtons.Length; i++)
@@ -46,24 +50,25 @@ public class subMenu : MonoBehaviour {
             {
                 gameObject.GetComponent<popForward>().moveBackward();
             }
-            
-            gameObject.GetComponent<buttonHightlight>().unHighlight();
-            BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
-        }
-        if (subButtonsOn)
-        {
-            for (int i = 0; i < subButtons.Length; i++)
-            {
-                subButtons[i].SetActive(false);
-            }
-            if (gameObject.GetComponent<buttonHightlight>() != null)
-            {
-                gameObject.GetComponent<buttonHightlight>().unHighlight();
-            }
 
-            
-            BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
+            gameObject.GetComponent<buttonHightlight>().unHighlight();
+            //BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
         }
+        //if (subButtonsOn)
+        //    Debug.Log(" turn off");
+        //{
+        //    for (int i = 0; i < subButtons.Length; i++)
+        //    {
+        //        subButtons[i].SetActive(false);
+        //    }
+        //    if (gameObject.GetComponent<buttonHightlight>() != null)
+        //    {
+        //        gameObject.GetComponent<buttonHightlight>().unHighlight();
+        //    }
+
+
+        //    //BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
+        //}
 
 
     }

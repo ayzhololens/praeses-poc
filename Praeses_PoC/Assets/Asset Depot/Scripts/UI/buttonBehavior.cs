@@ -62,7 +62,7 @@ namespace HoloToolkit.Unity.InputModule
         public void keepSubButtonsOn()
         {
             subButtonParent.GetComponent<subMenu>().subButtonsOn = true;
-            Debug.Log(subButtonParent.GetComponent<subMenu>().subButtonsOn);
+
         }
 
         public void goToNextButton()

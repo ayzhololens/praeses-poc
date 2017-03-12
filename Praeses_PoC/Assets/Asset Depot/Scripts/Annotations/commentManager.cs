@@ -69,6 +69,7 @@ public class commentManager : MonoBehaviour {
         //activeComments[commentCount].AddComponent<inputFieldManager>().mainInputField = activeInputField;
         Invoke("fieldActivator", .2f);
         activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
+        activeComments[commentCount].GetComponent<commentContents>().linkedComponent = this.gameObject;
         //activeComments[commentCount].GetComponent<commentContents>().commentMain.text = ("Comment "+ commentCount);
         //startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
     }

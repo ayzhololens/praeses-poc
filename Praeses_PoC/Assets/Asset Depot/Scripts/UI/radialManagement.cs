@@ -282,12 +282,12 @@ namespace HoloToolkit.Unity
 
         public void turnOffRadialMenu()
         {
-            Debug.Log("eggg");
+
             float lineScale = lineCenter.GetComponent<LineTest>().scale;
 
             if (focusedButton == null)
             {
-                Debug.Log("fuck");
+
                 BroadcastMessage("OnFocusExit");
                 RadialMenu.SetActive(false);
                 RadialMenu.transform.position = RadialHolder.position;
