@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 114967709503269660}
   - component: {fileID: 114055098095809302}
   - component: {fileID: 114877357367574314}
+  - component: {fileID: 114384941148144328}
   m_Layer: 5
   m_Name: simpleThumb
   m_TagString: Untagged
@@ -274,6 +275,17 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &114384941148144328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086963000631786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5d5f6bd7521e478939cf2295e9e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114438603218756294
 MonoBehaviour:
   m_ObjectHideFlags: 1

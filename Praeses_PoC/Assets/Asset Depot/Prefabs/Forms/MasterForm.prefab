@@ -850,7 +850,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114076160982578512}
-        m_MethodName: enableVideoCapture
+        m_MethodName: spawnVideoPane
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

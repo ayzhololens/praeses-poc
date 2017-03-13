@@ -69,7 +69,6 @@ GameObject:
   - component: {fileID: 114072301224971288}
   - component: {fileID: 114095693617207272}
   - component: {fileID: 114071983537270126}
-  - component: {fileID: 114896099259567274}
   m_Layer: 5
   m_Name: Field
   m_TagString: Untagged
@@ -351,7 +350,7 @@ MonoBehaviour:
   - {fileID: 1609513629967536}
   - {fileID: 1322463117077180}
   subButtonsOn: 0
-  timeOutCounter: 0.3
+  timeOutCounter: 0
 --- !u!114 &114072301224971288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -423,7 +422,8 @@ MonoBehaviour:
   simpleNotePrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
   activeSimpleNotes: []
-  photoThumbPrefab: {fileID: 0}
+  photoThumbPrefab: {fileID: 1100938329339992, guid: 8a4f8e8d6eb0ac746a5575957a0db584,
+    type: 2}
   photoFilePaths: []
   activePhotos: []
 --- !u!114 &114095920855190966
@@ -564,7 +564,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114095693617207272}
-        m_MethodName: spawnNode
+        m_MethodName: enablePhotoCapture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -790,7 +790,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114095693617207272}
-        m_MethodName: spawnComment
+        m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -889,18 +889,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114896099259567274
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1191887073528030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a7fbb09c0df3a40a0c1d616fc31ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyword: 
 --- !u!114 &114972593200288428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,7 +937,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114095693617207272}
-        m_MethodName: spawnNode
+        m_MethodName: enableVideoCapture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

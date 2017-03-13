@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 65245648809026124}
   - component: {fileID: 23354316273940842}
   - component: {fileID: 114483962542037426}
+  - component: {fileID: 114953024449630720}
   m_Layer: 0
   m_Name: videoThumb
   m_TagString: Node
@@ -91,7 +92,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410952836486740}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0.049889177, z: 2.232}
   m_LocalScale: {x: 0.039475, y: 0.022205, z: 0.000165}
   m_Children:
@@ -99,7 +100,7 @@ Transform:
   - {fileID: 4561306423148808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4561306423148808
 Transform:
   m_ObjectHideFlags: 1
@@ -401,6 +402,17 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
+--- !u!114 &114953024449630720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410952836486740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5d5f6bd7521e478939cf2295e9e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212434350225821850
 SpriteRenderer:
   m_ObjectHideFlags: 1
