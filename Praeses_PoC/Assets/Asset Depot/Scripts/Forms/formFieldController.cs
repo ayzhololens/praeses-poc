@@ -117,6 +117,7 @@ namespace HoloToolkit.Unity
             spawnedVideo.transform.SetParent(attachmentParent);
             spawnedVideo.transform.localPosition = thumbPos.localPosition;
             repositionThumb();
+            spawnedVideo.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
             spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
             spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
             VideoPlayer.LoadVideoPlayer();
@@ -161,7 +162,7 @@ namespace HoloToolkit.Unity
             repositionThumb();
             spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
             spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
-
+            spawnedPhoto.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
             photoTexture = photoRecorder.targetTexture;
             spawnedPhoto.GetComponent<Renderer>().material.mainTexture = photoTexture;
 
