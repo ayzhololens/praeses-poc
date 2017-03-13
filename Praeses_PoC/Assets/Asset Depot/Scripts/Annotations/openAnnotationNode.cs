@@ -23,12 +23,14 @@ namespace HoloToolkit.Unity
         public float speed;
         bool opening;
         Vector3 miniMapPos;
+        public bool reviewState;
+        public GameObject reviewButtons;
 
 
 
         // Use this for initialization
         void Start() {
-            miniMapTagAlong = GameObject.Find("SpatialMapping").GetComponent<miniMapToggle>().MiniMapTagAlong.transform;
+            miniMapTagAlong = GameObject.Find("SpatialMapping").GetComponent<miniMapToggle>().MiniMapHolder.transform;
             annotManager = GameObject.Find("AnnotationManager").GetComponent<annotationManager>();
             if (isMiniNode)
             {
@@ -45,58 +47,61 @@ namespace HoloToolkit.Unity
             camDistance = Vector3.Distance(transform.position, Camera.main.transform.position);
             //Debug.Log(camDistance);
 
-
-
-            if(openNodeCounter == 2 && contentHoler.activeSelf && !miniNodeOpen && contentOpen)
+            if (!reviewState)
             {
-                if (camDistance > distanceThreshold)
+                if (openNodeCounter == 2 && contentHoler.activeSelf && !miniNodeOpen && contentOpen)
                 {
-                    contentDistance = Vector3.Distance(contentHoler.transform.position, Camera.main.transform.position);
-                    if(contentDistance > 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                    if (camDistance > distanceThreshold)
                     {
-                        contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, Camera.main.transform.position, speed/1.5f);
+                        contentDistance = Vector3.Distance(contentHoler.transform.position, Camera.main.transform.position);
+                        if (contentDistance > 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                        {
+                            contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, Camera.main.transform.position, speed / 1.5f);
+                        }
+
+                        if (contentDistance < 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                        {
+                            contentHoler.GetComponent<SimpleTagalong>().enabled = true;
+                            //contentHoler.GetComponent<Interpolator>().enabled = true;
+                        }
+
+
+
                     }
 
-                    if (contentDistance < 2 && contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                    if (camDistance < distanceThreshold)
                     {
-                        contentHoler.GetComponent<SimpleTagalong>().enabled = true;
-                        //contentHoler.GetComponent<Interpolator>().enabled = true;
+                        if (contentHoler.GetComponent<SimpleTagalong>().enabled == true)
+                        {
+                            contentHoler.GetComponent<SimpleTagalong>().enabled = false;
+                            contentHoler.GetComponent<Interpolator>().enabled = false;
+                        }
+
+                        contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, contenLoc.position, speed);
+
+
                     }
 
-
-                        
                 }
 
-                if (camDistance < distanceThreshold)
+                if (openNodeCounter == 2 && contentHoler.activeSelf && miniNodeOpen)
                 {
-                    if (contentHoler.GetComponent<SimpleTagalong>().enabled == true)
+                    miniMapPos = new Vector3(miniMapTagAlong.position.x, miniMapTagAlong.position.y + .18f, miniMapTagAlong.position.z);
+                    contentDistance = Vector3.Distance(contentHoler.transform.position, miniMapTagAlong.position);
+
+                    if (contentDistance > .1f)
                     {
-                        contentHoler.GetComponent<SimpleTagalong>().enabled = false;
-                        contentHoler.GetComponent<Interpolator>().enabled = false;
+                        contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, miniMapPos, speed);
+                    }
+                    else
+                    {
+                        contentHoler.transform.position = miniMapPos;
                     }
 
-                    contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, contenLoc.position, speed);
-                    
-
                 }
-                
             }
 
-            if (openNodeCounter == 2 && contentHoler.activeSelf && miniNodeOpen)
-            {
-                miniMapPos = new Vector3(miniMapTagAlong.position.x, miniMapTagAlong.position.y + .18f, miniMapTagAlong.position.z);
-                contentDistance = Vector3.Distance(contentHoler.transform.position, miniMapTagAlong.position);
 
-                if (contentDistance > .1f)
-                {
-                    contentHoler.transform.position = Vector3.MoveTowards(contentHoler.transform.position, miniMapPos, speed);
-                }
-                else
-                {
-                    contentHoler.transform.position = miniMapPos;
-                }
-
-            }
 
 
 
@@ -104,6 +109,60 @@ namespace HoloToolkit.Unity
 
 
         }
+
+        public void enableReview()
+        {
+
+            if (!isMiniNode)
+            {
+                reviewButtons.SetActive(true);
+                reviewState = true;
+                if (contentHoler.GetComponent<SimpleTagalong>().enabled != true)
+                {
+                    contentHoler.GetComponent<SimpleTagalong>().enabled = true;
+                    Debug.Log("hello");
+                }
+
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(true);
+                }
+            }
+
+        }
+
+        public void completeReview()
+        {
+            if (!isMiniNode)
+            {
+                reviewButtons.SetActive(false);
+                reviewState = false;
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(false);
+                }
+                BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
+            }
+
+           
+        }
+
+        public void recapture()
+        {
+            if (GetComponent<annotationMediaHolder>().photoNode)
+            {
+                annotationManager.Instance.currentAnnotation = this.gameObject;
+                annotationManager.Instance.enablePhotoCapture();
+                closeContent();
+            }
+            if (GetComponent<annotationMediaHolder>().videoNode)
+            {
+                annotationManager.Instance.currentAnnotation = this.gameObject;
+                annotationManager.Instance.enableVideoRecording();
+                closeContent();
+            }
+        }
+        
 
         public void openContent()
         {
@@ -158,6 +217,9 @@ namespace HoloToolkit.Unity
         {
             //contentHoler.transform.position = startPos;
 
+            BroadcastMessage("GazeLeave", SendMessageOptions.DontRequireReceiver);
+            completeReview();
+
             if (contentHoler != null)
             {
                 contentHoler.SetActive(false);
@@ -166,7 +228,7 @@ namespace HoloToolkit.Unity
 
             if (!isMiniNode)
             {
-                contentHoler.GetComponent<SimpleTagalong>().enabled = false;
+                //contentHoler.GetComponent<SimpleTagalong>().enabled = false;
                 contentHoler.GetComponent<Interpolator>().enabled = false;
                 contentHoler.transform.position = contenLoc.position;
                 miniNodeOpen = false;

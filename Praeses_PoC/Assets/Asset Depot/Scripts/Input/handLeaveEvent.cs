@@ -26,6 +26,7 @@ public class handLeaveEvent : MonoBehaviour
         if (Event != null)
         {
             Event.Invoke();
+
         }
     }
 

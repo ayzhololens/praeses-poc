@@ -14,6 +14,7 @@ namespace HoloToolkit.Unity
         public string filepath;
         public string filename;
         public GameObject playIcon;
+        public GameObject pauseIcon;
         bool startedVideo;
         public Texture2D photoTexture;
         public photoRecorder photoRecorder;
@@ -26,14 +27,7 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
-            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
 
-            filename = vidRecorder.filename;
-            filepath = vidRecorder.filepath;
-            VideoPlayer.m_VideoPath = filename;
-            VideoPlayer.LoadVideoPlayer();
 
         }
 
@@ -43,6 +37,18 @@ namespace HoloToolkit.Unity
             videoChecker();
 
 
+        }
+
+        public void loadMedia()
+        {
+            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
+            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
+
+            filename = vidRecorder.filename;
+            filepath = vidRecorder.filepath;
+            VideoPlayer.m_VideoPath = filename;
+            VideoPlayer.LoadVideoPlayer();
         }
 
         public void LoadVideo()
@@ -55,9 +61,25 @@ namespace HoloToolkit.Unity
 
         public void PlayVideo()
         {
-            VideoPlayer.Control.Play();
-            startedVideo = true;
-            playIcon.SetActive(false);
+            if (!startedVideo)
+            {
+                VideoPlayer.Control.Play();
+                startedVideo = true;
+                playIcon.SetActive(false);
+                pauseIcon.SetActive(true);
+            }
+
+        }
+
+        public void PauseVideo()
+        {
+            if (startedVideo)
+            {
+                VideoPlayer.Control.Pause();
+                startedVideo = false;
+                playIcon.SetActive(true);
+                pauseIcon.SetActive(false);
+            }
         }
 
         void videoChecker()
@@ -65,6 +87,7 @@ namespace HoloToolkit.Unity
             if (startedVideo && VideoPlayer.Control.IsFinished())
             {
                 playIcon.SetActive(true);
+                pauseIcon.SetActive(false);
                 startedVideo = false;
             }
         }

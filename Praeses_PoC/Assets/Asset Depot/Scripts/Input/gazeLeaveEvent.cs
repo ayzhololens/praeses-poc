@@ -2,42 +2,45 @@
 using UnityEngine.Events;
 using HoloToolkit.Unity.InputModule;
 
-public class gazeLeaveEvent : MonoBehaviour, IFocusable
+
+
+namespace HoloToolkit.Unity.InputModule
 {
-    public UnityEvent Event;
-
-    void Start()
+    public class gazeLeaveEvent : MonoBehaviour, IFocusable
     {
-        // dummy Start function so we can use this.enabled
-    }
+        public UnityEvent Event;
 
-    void GazeLeave()
-    {
-        if (this.enabled == false) return;
-        if (Event != null)
+        void Start()
         {
-            Event.Invoke();
+            // dummy Start function so we can use this.enabled
         }
-    }
+
+        void GazeLeave()
+        {
+            if (this.enabled == false) return;
+            if (Event != null)
+            {
+                Event.Invoke();
+            }
+        }
 
 
-    public void OnFocusEnter()
-    {
-        
-    }
+        public void OnFocusEnter()
+        {
+
+        }
 
 
 
 
 
-    public void OnFocusExit()
-    {
-
+        public void OnFocusExit()
+        {
             GazeLeave();
-        
-        
+
+
+        }
+
+
     }
-
-
-
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
-public class onModelDragHybrid : MonoBehaviour
+public class onModelDragHybrid : Singleton<onModelDragHybrid>
 {
     public GameObject cursorOri;
     public GameObject cursorHand;
@@ -23,18 +23,11 @@ public class onModelDragHybrid : MonoBehaviour
 
     public followCursorScript followCur;
 
-    bool navigating;
+    public bool navigating;
 
     public List<radialOperationsHybrid> operations;
-    public List<GameObject> buttonsOff;
 
-    public bool tumblerModeOn;
-
-    public float countDown;
-    float initCountDown;
-
-    bool messageSent;
-    public GameObject counterCursor;
+    public float sensitivity;
 
     void Start()
     {
@@ -46,92 +39,64 @@ public class onModelDragHybrid : MonoBehaviour
 
         tempDist = 0.0f;
         gameObject.GetComponent<Collider>().enabled = false;
-        initCountDown = countDown;
-        tumblerModeOn = false;
-        foreach (GameObject but in buttonsOff)
-        {
-            but.SetActive(false);
-        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        menuOn();
-        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "miniMapMesh")
+        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject)
         {
-            gameObject.GetComponent<Collider>().enabled = true;
-            countDown -= Time.deltaTime;
+            if (GazeManager.Instance.HitObject.tag == "miniMapMesh") { 
+            timerManager.Instance.tumbleCountDown();
+            }
         }
         else if (!sourceManager.Instance.sourcePressed)
         {
+
             if (gameObject.GetComponent<Collider>().enabled == false) { return; }
             gameObject.GetComponent<Collider>().enabled = false;
-   //timer script ========================================================================
-            if (messageSent)
-            {
-                counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
-                messageSent = false;
-            }
-   //===============================================================================
+            
         }
 
-        if (countDown < 0)
-        {
-            tumblerModeOn = true;
-        }
+        menuOn();
+        
+    }
 
-        if (tumblerModeOn)
-        {
-            foreach (GameObject but in buttonsOff)
-            {
-                but.SetActive(true);
-            }
-        }else
-        {
-            foreach (GameObject but in buttonsOff)
-            {
-                but.SetActive(false);
-            }
-        }
+    public void colliderOn()
+    {
+        gameObject.GetComponent<Collider>().enabled = true;
     }
 
     private void menuOn()
     {
+
         if (GazeManager.Instance.HitObject == gameObject || navigating)
         {
             if (sourceManager.Instance.sourcePressed)
             {
                 if (!navigating)
                 {
+                    
                     tempDist = Vector3.Distance(Camera.main.transform.position, GazeManager.Instance.HitPosition);
 
                     initHandPos = HandsManager.Instance.ManipulationHandPosition;
                     editState = true;
                     adjustWithEdit();
                     navigating = true;
-        //timer script =================================================================================================
-                    counterCursor.transform.parent.transform.position = buttonsGrp.transform.position;
-                    if (!messageSent)
-                    {
-                        counterCursor.GetComponent<tumblerRadialCounter>().toggleAnim();
-                        messageSent = true;
-                    }
-       //=========================================================================================================
+                    radialManagement.Instance.isActive = true;
                 }
                 navigating = true;
-                //cursorOri.SetActive(false);
                 cursorHand.SetActive(true);
-
+            
                 handPosLocal.transform.position = HandsManager.Instance.ManipulationHandPosition - initHandPos;
 
                 handPosLocal.transform.localPosition = new Vector3(Mathf.Clamp(handPosLocal.transform.localPosition.x, -.1f, .1f),
                                                                     Mathf.Clamp(handPosLocal.transform.localPosition.y, -.1f, .1f),
-                                                                    handPosLocal.transform.localPosition.z);
+                                                                    handPosLocal.transform.localPosition.z) * sensitivity;
                 xPos = handPosLocal.transform.localPosition.x;
                 yPos = handPosLocal.transform.localPosition.y;
 
-                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist/ 100 - .025f);
+                cursorHand.transform.localPosition = new Vector3(xPos, yPos, tempDist / 100 - .025f);
 
             }
             else 
@@ -142,13 +107,13 @@ public class onModelDragHybrid : MonoBehaviour
                 cursorOri.SetActive(true);
                 cursorHand.SetActive(false);
                 initHandPos = new Vector3(0, 0, 0);
-                tumblerModeOn = false;
-                countDown = initCountDown;
+                timerManager.Instance.CountInterrupt();
+                radialManagement.Instance.isActive = false;
             }
         }
     }
 
-    private void adjustWithEdit()
+    public void adjustWithEdit()
     {
         if (editState)
         {
@@ -170,8 +135,7 @@ public class onModelDragHybrid : MonoBehaviour
             {
                 oper.rotationFactor = 0;
             }
-            //tumblerModeOn = false;
-            //countDown = initCountDown;
+
         }
 
     }

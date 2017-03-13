@@ -28,7 +28,7 @@ namespace HoloToolkit.Unity.InputModule
         /// <summary>
         /// The game object that is currently being gazed at, if any.
         /// </summary>
-        public GameObject HitObject { get; private set; }
+        public GameObject HitObject;
 
         /// <summary>
         /// Position at which the gaze manager hit an object.

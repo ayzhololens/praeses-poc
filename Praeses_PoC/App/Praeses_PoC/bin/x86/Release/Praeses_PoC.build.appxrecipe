@@ -472,23 +472,17 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.assets">
       <PackagePath>Data\sharedassets0.assets</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\level0.resS">
-      <PackagePath>Data\level0.resS</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\resources.assets.resS">
-      <PackagePath>Data\resources.assets.resS</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.assets.resS">
-      <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\managedAssemblies.txt">
       <PackagePath>Data\managedAssemblies.txt</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\nativePlugins.txt">
       <PackagePath>Data\nativePlugins.txt</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.resource">
-      <PackagePath>Data\sharedassets0.resource</PackagePath>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\resources.assets.resS">
+      <PackagePath>Data\resources.assets.resS</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\sharedassets0.assets.resS">
+      <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\App\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4</PackagePath>

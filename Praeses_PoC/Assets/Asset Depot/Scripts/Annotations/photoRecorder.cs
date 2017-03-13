@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using System.Collections;
+using System.IO;
 
 using UnityEngine.VR.WSA.WebCam;
 using System.Linq;
@@ -19,7 +20,8 @@ namespace HoloToolkit.Unity
 
         PhotoCapture photoCaptureObject = null;
         public Texture2D targetTexture;
-
+        public string filePath;
+        public string filename;
 
 
 
@@ -59,10 +61,14 @@ namespace HoloToolkit.Unity
         {
             if (result.success)
             {
-                //string filename = string.Format(@"CapturedImage{0}_n.jpg", Time.time);
-                //string filePath = System.IO.Path.Combine(Application.persistentDataPath, filename);
-                //photoCaptureObject.TakePhotoAsync(filePath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
-                photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
+                Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
+                filename = string.Format(@"CapturedImage{0}_n.jpg", Time.time);
+                filePath = Path.Combine(Application.persistentDataPath , filename);
+                photoCaptureObject.TakePhotoAsync(filePath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
+                
+                
+                //photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
+                Invoke("loadPhoto", 1);
             }
             else
             {
@@ -77,6 +83,7 @@ namespace HoloToolkit.Unity
                 Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
                 targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
                 photoCaptureFrame.UploadImageDataToTexture(targetTexture);
+
 
             }
 
@@ -103,6 +110,28 @@ namespace HoloToolkit.Unity
             photoCaptureObject.Dispose();
             photoCaptureObject = null;
         }
+
+        void loadPhoto()
+        {
+            Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
+            targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
+            var path = System.IO.Path.Combine(Application.persistentDataPath, filename);
+            var bytesRead = System.IO.File.ReadAllBytes(path);
+            //Texture2D myTexture = new Texture2D(1024, 1024);
+            targetTexture.LoadImage(bytesRead);
+
+            
+            if (annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>() != null)
+            {
+                annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>().loadPhotoMedia();
+            }
+            else
+            {
+                annotationManager.Instance.activateMedia();
+            }
+        }
+
+
     }
 
 }

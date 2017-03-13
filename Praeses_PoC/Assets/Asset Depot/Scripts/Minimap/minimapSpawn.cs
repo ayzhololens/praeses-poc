@@ -4,10 +4,10 @@ using UnityEngine.VR.WSA;
 
 namespace HoloToolkit.Unity
 {
-    public class minimapSpawn : MonoBehaviour
+    public class minimapSpawn : Singleton<minimapSpawn>
     {
 
-        GameObject miniMapHolder;
+        public GameObject miniMapHolder;
         public List<GameObject> miniMapMeshes;
         public GameObject SpatUnderstanding;
         public GameObject MiniMapHolderParent;
@@ -17,7 +17,9 @@ namespace HoloToolkit.Unity
         GameObject boiler;
         int switchCounter;
 
-        Vector3 boilerPivot;
+        public Vector3 boilerPivot;
+        public GameObject avatar;
+        public bool useAvatar;
 
         // Use this for initialization
         void Start()
@@ -86,9 +88,13 @@ namespace HoloToolkit.Unity
             miniMapHolder.transform.SetParent(MiniMapHolderParent.transform);
             MiniMapHolderParent.transform.localPosition = Vector3.zero;
             MiniMapHolderParent.transform.localScale = Vector3.one;
-            // miniMapHolder.transform.position = new Vector3(MiniMapTagAlong.transform.position.x, MiniMapTagAlong.transform.position.y - .2f, MiniMapTagAlong.transform.position.z);
             GetComponent<miniMapToggle>().active = true;
-            
+
+            if (useAvatar)
+            {
+                avatar.GetComponent<minimize>().miniThis();
+
+            }
         }
 
         public void spawnUnderstandingMiniMap()

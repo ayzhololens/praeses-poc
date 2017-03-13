@@ -7,19 +7,21 @@ using HoloToolkit.Unity.InputModule;
 namespace HoloToolkit.Unity
 {
 
-    public class annotationSpawner : MonoBehaviour {
+    public class annotationSpawner : Singleton<annotationSpawner> {
         
         public GameObject spawnedAnnotation;
         public bool tapToPlaceInProgress;
         public GameObject photoNode;
         public GameObject videoNode;
         public GameObject simpleNode;
+        public GameObject fieldNode;
         public GameObject Minimap;
         public Vector3 anchDist;
         public Transform SpatialMapping;
         public GameObject miniPhotoNode;
         public GameObject miniVideoNode;
         public GameObject miniSimpleNode;
+        public GameObject miniFieldNode;
         float scaleOffest;
         int finishCounter;
         GameObject miniAnnotation;
@@ -27,6 +29,7 @@ namespace HoloToolkit.Unity
         bool isVideoNode;
         bool isPhotoNode;
         bool isSimpleNode;
+        bool isFieldNode;
 
 
         // Use this for initialization
@@ -71,41 +74,82 @@ namespace HoloToolkit.Unity
         public void finishPlacingAnnotNode()
         {
             tapToPlaceInProgress = false;
-            GetComponent<annotationManager>().tapToPlaceIndicator.SetActive(false);
-            GetComponent<annotationManager>().tapToPlaceAnnotNode = false;
+            //GetComponent<annotationManager>().tapToPlaceIndicator.SetActive(false);
+            //GetComponent<annotationManager>().tapToPlaceAnnotNode = false;
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = true;
-            spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
+            spawnedAnnotation.GetComponent<selectEvent>().enabled = false;
+
+            annotationManager.Instance.currentAnnotation = spawnedAnnotation;
+            //spawnedAnnotation.GetComponent<openAnnotationNode>().openContent();
 
             //spawn miniNode
+            GameObject boiler = GameObject.Find("boiler(Clone)");
+            Vector3 boilerPos = boiler.transform.position;
+            
+
             Minimap = SpatialMapping.GetComponent<miniMapToggle>().MiniMapHolder;
-            anchDist = (SpatialMapping.position - spawnedAnnotation.transform.position);
+            GameObject rotatorGroup = Minimap.transform.parent.gameObject;
+            rotatorGroup.transform.localScale = Vector3.one * 1 / scaleOffest;
+            rotatorGroup.transform.position = boilerPos;
+            anchDist = (boiler.transform.position - spawnedAnnotation.transform.position);
 
             if (isPhotoNode)
             {
-                miniAnnotation = Instantiate(miniPhotoNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniPhotoNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
             if (isVideoNode)
             {
-                miniAnnotation = Instantiate(miniVideoNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniVideoNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
             }
             if (isSimpleNode)
             {
-                miniAnnotation = Instantiate(miniSimpleNode, Minimap.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+                miniAnnotation = Instantiate(miniSimpleNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+            }
+            if (isFieldNode)
+            {
+                miniAnnotation = Instantiate(miniFieldNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+
             }
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
-            miniAnnotation.transform.position = (miniAnnotation.transform.position - (anchDist * scaleOffest));
             miniAnnotation.transform.SetParent(Minimap.transform);
-            miniAnnotation.transform.localScale = miniAnnotation.transform.localScale * scaleOffest;
+            rotatorGroup.transform.localPosition = Vector3.zero;
+            rotatorGroup.transform.localScale = Vector3.one;
             miniAnnotation.SetActive(SpatialMapping.GetComponent<miniMapToggle>().active);
+            if (!isFieldNode)
+            {
 
-            spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
-            spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
-            miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
-            miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
-            GetComponent<annotationManager>().annotating = false;
+                spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+                spawnedAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+                miniAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
+                miniAnnotation.GetComponent<openAnnotationNode>().miniNode = miniAnnotation;
+            }
+            if (isVideoNode)
+            {
+                GetComponent<annotationManager>().enableVideoRecording();
+                Debug.Log("spawned video node, trying to start");
+            }
+            if (isSimpleNode)
+            {
+                GetComponent<annotationManager>().activateMedia();
+            }
+
+            if (isPhotoNode)
+            {
+                GetComponent<annotationManager>().enablePhotoCapture();
+            }
+            if (isFieldNode)
+            {
+                spawnedAnnotation.GetComponent<formNodeController>().linkedField = annotationManager.Instance.activeField;
+                annotationManager.Instance.activeField.GetComponent<formFieldController>().linkedNode = spawnedAnnotation;
+                annotationManager.Instance.activeField.GetComponent<formFieldController>().enableAttachmentCapture();
+                spawnedAnnotation.GetComponent<formNodeController>().openForm();
+            }
+
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
+            isFieldNode = false;
+
         }
 
         public void spawnPhotoAnnotation()
@@ -135,6 +179,7 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
+            Debug.Log("done");
         }
 
 
@@ -147,6 +192,18 @@ namespace HoloToolkit.Unity
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
+            spawnedAnnotation.transform.SetParent(transform);
+            tapToPlaceInProgress = true;
+        }
+
+        public void spawnFieldAnnotation()
+        {
+            isFieldNode = true;
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
+            spawnedAnnotation = Instantiate(fieldNode, pos, rot) as GameObject;
+            GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
+            spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
         }
