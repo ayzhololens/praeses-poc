@@ -2819,7 +2819,7 @@ MonoBehaviour:
   fieldPrefab: {fileID: 1191887073528030, guid: a5b42e12867554646a275135edb15da2,
     type: 2}
   fieldStartPos: {fileID: 0}
-  offsetDist: 0.055
+  offsetDist: 0.045
   ActiveFields: []
   fieldCount: 4
 --- !u!114 &114234066634813678

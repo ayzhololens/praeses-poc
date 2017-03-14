@@ -69,18 +69,27 @@ public class formNodeController : MonoBehaviour {
 
     public void openForm()
     {
-        //if (masterForm == null)
-        //{
-        //    //masterForm = fieldSpawner.Instance.MasterForm;
-        //}
-        //if(linkedField !=null)
-        //{
-        //    linkedField.GetComponent<formFieldController>().linkedNode = this.gameObject;
-        //}
-        //masterForm.SetActive(true);
-        ////contentHolder.gameObject.SetActive(true);
-        //contentOpen = true;
+        if (masterForm == null)
+        {
+            masterForm = fieldSpawner.Instance.MasterForm;
+        }
+        if (linkedField != null)
+        {
+            linkedField.GetComponent<formFieldController>().linkedNode = this.gameObject;
+        }
+        masterForm.SetActive(true);
+        contentOpen = true;
         //masterForm.transform.position = contentLoc.position;
+        for (int i = 0; i < linkedField.transform.parent.childCount; i++)
+        {
+            if (linkedField.transform.parent.GetChild(i).gameObject != linkedField)
+            {
+
+                linkedField.transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
+                linkedField.transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+            }
+        }
+        linkedField.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(true);
     }
 
 

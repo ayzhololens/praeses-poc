@@ -142,7 +142,8 @@ namespace HoloToolkit.Unity
                 spawnedAnnotation.GetComponent<formNodeController>().linkedField = annotationManager.Instance.activeField;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().linkedNode = spawnedAnnotation;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().enableAttachmentCapture();
-                spawnedAnnotation.GetComponent<formNodeController>().openForm();
+                //spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
+                //spawnedAnnotation.GetComponent<formNodeController>().openForm();
             }
 
             isPhotoNode = false;

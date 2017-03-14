@@ -72,6 +72,19 @@ namespace HoloToolkit.Unity
         {
             GetComponent<subMenu>().turnOnSubButtons();
             attachmentParent.gameObject.SetActive(false);
+            for(int i = 0; i<transform.parent.childCount; i++)
+            {
+                if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                {
+
+                    transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
+                    transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+                }
+            }
+            if(linkedNode.GetComponent<selectEvent>().enabled == false)
+            {
+                linkedNode.GetComponent<selectEvent>().enabled = true;
+            }
         }
 
 
