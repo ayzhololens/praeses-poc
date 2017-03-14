@@ -628,6 +628,7 @@ GameObject:
   - component: {fileID: 114194279099476762}
   - component: {fileID: 114121968258808104}
   - component: {fileID: 114746543246976490}
+  - component: {fileID: 114838384887733444}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -3674,7 +3675,7 @@ MonoBehaviour:
   moving: 0
 --- !u!114 &114838384887733444
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1699194472853180}

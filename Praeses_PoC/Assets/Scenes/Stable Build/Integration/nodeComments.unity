@@ -203,7 +203,7 @@ MonoBehaviour:
   scaleOffset: 0.05
   boilerPivot: {x: 0, y: 0, z: 0}
   avatar: {fileID: 1056556475}
-  useAvatar: 0
+  useAvatar: 1
 --- !u!1001 &771215409
 Prefab:
   m_ObjectHideFlags: 0
@@ -578,7 +578,8 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bb740cdfb83af7140915b466bc530e90, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114838384887733444, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1442568328 stripped
