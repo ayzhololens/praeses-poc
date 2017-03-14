@@ -14,8 +14,11 @@ namespace HoloToolkit.Unity
         public Transform thumbPos;
         public Transform attachmentParent;
         public float thumbOffset;
-        public string Field;
         public Text DisplayName;
+        public string trueName;
+        public InputField Value;
+        public Text previousValue;
+        public int nodeIndex;
 
         public GameObject videoThumbPrefab;
         public List<GameObject> activeVideos;

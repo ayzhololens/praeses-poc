@@ -452,8 +452,11 @@ MonoBehaviour:
   thumbPos: {fileID: 4654615743316606}
   attachmentParent: {fileID: 224212857894688050}
   thumbOffset: 0.03
-  Field: 
   DisplayName: {fileID: 114399770479911458}
+  trueName: 
+  Value: {fileID: 114103713282777854}
+  previousValue: {fileID: 114709033996690092}
+  nodeIndex: 0
   videoThumbPrefab: {fileID: 1410952836486740, guid: bbc47ff66660a4641a22000861c0507d,
     type: 2}
   activeVideos: []
