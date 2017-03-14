@@ -699,6 +699,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4761663470052606}
   - component: {fileID: 114224805855449132}
+  - component: {fileID: 114892696656310902}
+  - component: {fileID: 114669762581712772}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -2815,13 +2817,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MasterForm: {fileID: 0}
-  FieldParent: {fileID: 0}
+  FieldInspectionParent: {fileID: 0}
+  EquipmentDataParent: {fileID: 0}
+  LocationDataParent: {fileID: 0}
   fieldPrefab: {fileID: 1191887073528030, guid: a5b42e12867554646a275135edb15da2,
     type: 2}
   fieldStartPos: {fileID: 0}
   offsetDist: 0.055
-  ActiveFields: []
-  fieldCount: 4
+  IFCollection: []
+  EDCollection: []
+  LDCollection: []
 --- !u!114 &114234066634813678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2983,7 +2988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab65eee199255e4d94ef942f5d8fab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boiler: {fileID: 1466636709281654, guid: 502fa1b6494b0a74ca94c06a4fd2de09, type: 2}
+  boiler: {fileID: 0}
   desk: {fileID: 0}
   SpatialMapping: {fileID: 0}
   isObj: 0
@@ -3548,6 +3553,39 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114669762581712772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771440602139932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea05033d5a1c83448055128f8f12d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  definitions:
+    LocationFields:
+      address1: 
+      address2: 
+      City: 
+      County: 
+      Country: 
+      LocationID: 0
+      LocationName: 
+      State: 
+      Zip: 
+    EquipmentData:
+      fields: []
+    InspectionFields:
+      fields: []
+  values:
+    presentData: []
+    historicData: []
+  nodesManager:
+    nodes: []
+  violationsManager:
+    violations: []
 --- !u!114 &114671968705941500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3815,6 +3853,45 @@ MonoBehaviour:
   filepath: 
   vidCounter: 0
   fileList: []
+--- !u!114 &114892696656310902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771440602139932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6759599d0c3d35345893e668b98bc8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveDir: 
+  definitionsDir: 
+  valuesDir: 
+  defJsonText: 
+  valJsonText: 
+  definitions:
+    EquipmentFields:
+      threeNine: []
+    EquipmentInspectionFields:
+      threeNine: []
+  values:
+    Location:
+      LocationID: 0
+      LocationName: 
+      Address:
+        address1: 
+        address2: 
+        City: 
+        County: 
+        Country: 
+        State: 
+        Zip: 
+      Equipment:
+      - EquipmentData: []
+        PreviousInspection: []
+        Violations:
+        - nodeIndex: 0
+        Nodes: []
 --- !u!114 &114906442611100558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4089,6 +4166,42 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_MethodName: spawnCommentPreview
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: populate jason
+    KeyCode: 106
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114892696656310902}
+          m_MethodName: loadDefCmd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: populate form
+    KeyCode: 107
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114224805855449132}
+          m_MethodName: populateFields
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

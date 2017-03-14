@@ -14,8 +14,11 @@ namespace HoloToolkit.Unity
         public Transform thumbPos;
         public Transform attachmentParent;
         public float thumbOffset;
-        public string Field;
         public Text DisplayName;
+        public string trueName;
+        public InputField Value;
+        public Text previousValue;
+        public int nodeIndex;
 
         public GameObject videoThumbPrefab;
         public List<GameObject> activeVideos;
@@ -26,6 +29,8 @@ namespace HoloToolkit.Unity
         int videoCounter;
         public GameObject simpleNotePrefab;
         public List<GameObject> activeSimpleNotes;
+        public List<string> simpleDescriptions;
+        public List<string> simpleMetas;
         public GameObject photoThumbPrefab;
         public List<string> photoFilePaths;
         public List<GameObject> activePhotos;
@@ -134,6 +139,8 @@ namespace HoloToolkit.Unity
             repositionThumb();
             spawnedComment.GetComponent<inputFieldManager>().activateField();
             spawnedComment.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
+            simpleDescriptions.Add(spawnedComment.GetComponent<commentContents>().commentMain.text);
+            simpleMetas.Add(spawnedComment.GetComponent<commentContents>().commentMeta.text);
             spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
         }
 

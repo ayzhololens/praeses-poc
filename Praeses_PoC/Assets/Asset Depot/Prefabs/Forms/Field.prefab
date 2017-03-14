@@ -411,8 +411,10 @@ MonoBehaviour:
   thumbPos: {fileID: 4654615743316606}
   attachmentParent: {fileID: 224212857894688050}
   thumbOffset: 0.03
-  Field: 
   DisplayName: {fileID: 114399770479911458}
+  trueName: 
+  Value: {fileID: 114103713282777854}
+  previousValue: {fileID: 114709033996690092}
   videoThumbPrefab: {fileID: 1410952836486740, guid: bbc47ff66660a4641a22000861c0507d,
     type: 2}
   activeVideos: []
@@ -422,6 +424,8 @@ MonoBehaviour:
   simpleNotePrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
   activeSimpleNotes: []
+  simpleDescriptions: []
+  simpleMetas: []
   photoThumbPrefab: {fileID: 1100938329339992, guid: 8a4f8e8d6eb0ac746a5575957a0db584,
     type: 2}
   photoFilePaths: []
@@ -834,7 +838,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: (160)
+  m_Text: ()
 --- !u!114 &114764368701772506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -921,7 +925,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 12345678
+  m_Text: 
 --- !u!114 &114976718237322026
 MonoBehaviour:
   m_ObjectHideFlags: 1

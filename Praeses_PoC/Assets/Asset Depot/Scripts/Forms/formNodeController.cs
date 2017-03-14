@@ -14,6 +14,15 @@ public class formNodeController : MonoBehaviour {
     public float speed;
     bool contentOpen;
 
+    public List<string> videoFilePaths;
+    public List<string> photoFilePaths;
+    public string title;
+    public string user;
+    public string date;
+    public string description;
+    public int indexNum;
+    //type 1.annotation 2.field 3.violation
+    public int type;
 
     // Use this for initialization
     void Start() {
