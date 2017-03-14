@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 114307663094771496}
   - component: {fileID: 114194279099476762}
   - component: {fileID: 114121968258808104}
-  - component: {fileID: 114838384887733444}
+  - component: {fileID: 114746543246976490}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -3581,6 +3581,17 @@ MonoBehaviour:
   upHolder: {fileID: 0}
   speed: 0
   moving: 0
+--- !u!114 &114746543246976490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699194472853180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d721008d7651e134c9e280e09fd6fbc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114762939697747612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3884,7 +3895,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_MethodName: StopObserving
+          m_MethodName: StopObserver
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

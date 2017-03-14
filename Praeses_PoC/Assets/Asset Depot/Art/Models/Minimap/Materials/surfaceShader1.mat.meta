@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 61f01760e7d38fd409feccb6ea7a7ba0
 timeCreated: 1489085844
+=======
+guid: 57b6d6c4644d65f448bad2a05d007fa3
+timeCreated: 1489086217
+>>>>>>> tumblerCursorFix
 licenseType: Free
 NativeFormatImporter:
   userData: 

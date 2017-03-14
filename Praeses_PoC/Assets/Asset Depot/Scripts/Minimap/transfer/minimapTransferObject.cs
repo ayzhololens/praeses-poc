@@ -5,17 +5,29 @@ using HoloToolkit.Unity.InputModule;
 using HoloToolkit.Unity;
 
 public class minimapTransferObject : Singleton<minimapTransferObject> {
-    //Vector3 initPos;
+    Vector3 initPos;
+    Quaternion initRot;
+    Vector3 initSca;
 
-    public void mainFunc(GameObject processObj)
+    public void transferObject(GameObject processObj)
     {
-        //print("processed:" + processObj);
-        //initPos = gameObject.transform.position;
-        minimapSpawn.Instance.MiniMapHolderParent.transform.localScale = minimapSpawn.Instance.MiniMapHolderParent.transform.localScale / minimapSpawn.Instance.scaleOffset;
-        minimapSpawn.Instance.MiniMapHolderParent.transform.position = minimapSpawn.Instance.boilerPivot;
-        processObj.transform.SetParent(minimapSpawn.Instance.MiniMapHolderParent.transform);
-        minimapSpawn.Instance.MiniMapHolderParent.transform.localPosition = Vector3.zero;
-        minimapSpawn.Instance.MiniMapHolderParent.transform.localScale = Vector3.one;
+        initPos = minimapSpawn.Instance.miniMapHolder.transform.localPosition;
+        initRot = minimapSpawn.Instance.miniMapHolder.transform.localRotation;
+        initSca = minimapSpawn.Instance.miniMapHolder.transform.localScale;
+        resetHolder();
+
         processObj.transform.SetParent(minimapSpawn.Instance.miniMapHolder.transform);
+        minimapSpawn.Instance.miniMapHolder.transform.SetParent(minimapSpawn.Instance.MiniMapHolderParent.transform);
+        minimapSpawn.Instance.miniMapHolder.transform.localPosition = initPos;
+        minimapSpawn.Instance.miniMapHolder.transform.localRotation = initRot;
+        minimapSpawn.Instance.miniMapHolder.transform.localScale = initSca;
+    }
+
+    public void resetHolder()
+    {
+        minimapSpawn.Instance.miniMapHolder.transform.SetParent(null);
+        minimapSpawn.Instance.miniMapHolder.transform.position = Vector3.zero;
+        minimapSpawn.Instance.miniMapHolder.transform.rotation = new Quaternion(0,0,0,0);
+        minimapSpawn.Instance.miniMapHolder.transform.localScale = Vector3.one;
     }
 }

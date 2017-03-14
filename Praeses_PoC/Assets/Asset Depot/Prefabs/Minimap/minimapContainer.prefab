@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 65963514933106260}
   - component: {fileID: 114677719315298688}
   - component: {fileID: 114384584061146678}
+  - component: {fileID: 114229468465921552}
   m_Layer: 2
   m_Name: tumbled_grp
   m_TagString: Untagged
@@ -113,8 +114,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4205361048860956}
+  - component: {fileID: 114903769295654254}
   m_Layer: 0
-  m_Name: scaler_grp
+  m_Name: wordOrient_grp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +151,7 @@ GameObject:
   - component: {fileID: 23267616164759288}
   m_Layer: 0
   m_Name: frustum
-  m_TagString: miniMapMesh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +185,7 @@ GameObject:
   - component: {fileID: 114330846731021230}
   m_Layer: 0
   m_Name: frustumReverse
-  m_TagString: miniMapMesh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +368,7 @@ GameObject:
   - component: {fileID: 23738609526350136}
   m_Layer: 0
   m_Name: head_geo
-  m_TagString: miniMapMesh
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +420,22 @@ GameObject:
   - component: {fileID: 114130208466292530}
   m_Layer: 0
   m_Name: body_geo
-  m_TagString: miniMapMesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1781461304234124
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4652280739925988}
+  m_Layer: 0
+  m_Name: scaler_grp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +601,7 @@ Transform:
   m_GameObject: {fileID: 1641874352022804}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5752131, y: 0.57521313, z: 0.57521313}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4965766563941656}
   m_Father: {fileID: 4860368086224370}
@@ -600,7 +617,9 @@ Transform:
   m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4526059645026802}
+  - {fileID: 4783908453511752}
+  - {fileID: 4768832312867784}
+  - {fileID: 4652280739925988}
   m_Father: {fileID: 4405819434070606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -652,7 +671,7 @@ Transform:
   m_GameObject: {fileID: 1115931965091860}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.18181819, z: 1}
+  m_LocalScale: {x: 1, y: 0.2, z: 1}
   m_Children:
   - {fileID: 4898111384505200}
   m_Father: {fileID: 4783908453511752}
@@ -708,8 +727,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4205361048860956}
-  - {fileID: 4783908453511752}
-  - {fileID: 4768832312867784}
   m_Father: {fileID: 4860368086224370}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -765,7 +782,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4706172423445674}
-  m_Father: {fileID: 4205361048860956}
+  m_Father: {fileID: 4652280739925988}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4567837315294708
@@ -822,6 +839,20 @@ Transform:
   m_Father: {fileID: 4845725843229266}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 135, z: 0}
+--- !u!4 &4652280739925988
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781461304234124}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4526059645026802}
+  m_Father: {fileID: 4205361048860956}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4678803724634260
 Transform:
   m_ObjectHideFlags: 1
@@ -868,11 +899,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1033610572412592}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
-  m_Father: {fileID: 4405819434070606}
-  m_RootOrder: 2
+  m_Father: {fileID: 4205361048860956}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4783908453511752
 Transform:
@@ -881,12 +912,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060516036349210}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.4, y: 2.2, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 2, z: 0.4}
   m_Children:
   - {fileID: 4256958723529042}
-  m_Father: {fileID: 4405819434070606}
-  m_RootOrder: 1
+  m_Father: {fileID: 4205361048860956}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4845725843229266
 Transform:
@@ -962,8 +993,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1776434432327468}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.28, z: 0}
-  m_LocalScale: {x: 1.7384862, y: 1.7384859, z: 1.7384859}
+  m_LocalPosition: {x: 0, y: -0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4748367249177472}
   - {fileID: 4630664544202406}
@@ -1817,7 +1848,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.5, z: 0.5}
+  m_Size: {x: 0.5, y: 1.89, z: 0.5}
   m_Center: {x: 0, y: 0.28, z: -0.011036179}
 --- !u!95 &95042592294606384
 Animator:
@@ -1864,7 +1895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d615844b7f730e4ea0b76750017a22a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followers:
+  meshViz:
   - {fileID: 1320703318018758}
   - {fileID: 1379700066205076}
   - {fileID: 1683768842884014}
@@ -1880,6 +1911,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1bef67ee02310438c892464c1b507d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114229468465921552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1029965929396586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac8d5b128a1d8204fb76c86f47b75912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PivotAxis: 1
 --- !u!114 &114246047048861808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1936,10 +1979,10 @@ MonoBehaviour:
   miniRot: {fileID: 0}
   bigHeadGeo: {fileID: 1889242171072584}
   meshesHide:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1780419264071132}
+  - {fileID: 1320703318018758}
+  - {fileID: 1379700066205076}
+  - {fileID: 1683768842884014}
   paperPlane: {fileID: 1591206893384640}
 --- !u!114 &114307294250186964
 MonoBehaviour:
@@ -2071,7 +2114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationFactor: 0
   rotationMultiplier: -1
-  tumbledObject: {fileID: 1280584223196544}
+  tumbledObject: {fileID: 1781461304234124}
   typing: 2
   followCur: {fileID: 114808438321974122}
   cursorIndex: 3
@@ -2165,6 +2208,18 @@ MonoBehaviour:
   myColor: {r: 1, g: 1, b: 1, a: 0.447}
   slo: {r: 1, g: 1, b: 1, a: 1}
   fas: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114903769295654254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1280584223196544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a63f4b6632702b54f91257c0881d9198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  world: {fileID: 4860368086224370}
 --- !u!114 &114970831354761576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2178,7 +2233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationFactor: 0
   rotationMultiplier: 1
-  tumbledObject: {fileID: 1280584223196544}
+  tumbledObject: {fileID: 1781461304234124}
   typing: 2
   followCur: {fileID: 114808438321974122}
   cursorIndex: 1

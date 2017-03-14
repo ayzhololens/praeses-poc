@@ -31,6 +31,10 @@ public class minimize : MonoBehaviour, IInputClickHandler {
         {
             foreach (Transform childObj in miniCopy.GetComponentsInChildren<Transform>())
             {
+                if (childObj.gameObject.GetComponent<MeshRenderer>() != null)
+                { 
+                childObj.gameObject.tag = "miniMapMesh";
+                }
                 if (childObj.gameObject.name == "headPivot")
                 {
                     miniRot = childObj.gameObject;
@@ -42,22 +46,17 @@ public class minimize : MonoBehaviour, IInputClickHandler {
                 }
             }
         }
-        minimapTransferObject.Instance.mainFunc(miniCopy);
+        minimapTransferObject.Instance.transferObject(miniCopy);
         done = true;
         foreach(GameObject mesh in meshesHide)
         {
-            mesh.GetComponent<Collider>().enabled = false;
+            Destroy(mesh.GetComponent<Collider>());
+            Destroy(mesh.GetComponent<MeshRenderer>());
         }
     }
 
     private void Update()
     {
-        //if (Input.GetButtonDown("Jump")){
-        //    if (!done)
-        //    {
-        //        miniThis();
-        //    }
-        //}
 
 
 
@@ -75,7 +74,7 @@ public class minimize : MonoBehaviour, IInputClickHandler {
         if (miniCopy != null && posUpdate)
         {
 
-            miniCopy.transform.localPosition = transform.position + minimapSpawn.Instance.miniMapHolder.transform.localPosition / minimapSpawn.Instance.scaleOffset * .5752f;
+            miniCopy.transform.localPosition = transform.localPosition;
             miniCopy.transform.localRotation = transform.rotation;
         }
 
