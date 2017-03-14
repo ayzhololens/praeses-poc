@@ -25,14 +25,12 @@ public class subMenu : MonoBehaviour {
             subButtons[i].SetActive(true);
         }
         subButtonsOn = true;
-        Debug.Log(" turn on");
     }
 
     public void turnOffCounter()
     {
         Invoke("turnOffSubButtons", timeOutCounter);
         subButtonsOn = false;
-        Debug.Log(" turn off counter");
     }
 
     public void turnOffSubButtons()
@@ -50,8 +48,10 @@ public class subMenu : MonoBehaviour {
             {
                 gameObject.GetComponent<popForward>().moveBackward();
             }
-
-            gameObject.GetComponent<buttonHightlight>().unHighlight();
+            if (gameObject.GetComponent<buttonHightlight>() != null)
+            {
+                gameObject.GetComponent<buttonHightlight>().unHighlight();
+            }
             //BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
         }
         //if (subButtonsOn)

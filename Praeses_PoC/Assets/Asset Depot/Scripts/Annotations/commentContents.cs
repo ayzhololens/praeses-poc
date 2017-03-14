@@ -7,6 +7,9 @@ namespace HoloToolkit.Unity
 {
     public class commentContents : MonoBehaviour {
 
+        public bool isSimple;
+        public bool isPhoto;
+        public bool isVideo;
         public Text commentMain;
         public Text commentMeta;
         public GameObject editButton;

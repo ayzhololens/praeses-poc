@@ -117,6 +117,8 @@ namespace HoloToolkit.Unity
             spawnedVideo.transform.SetParent(attachmentParent);
             spawnedVideo.transform.localPosition = thumbPos.localPosition;
             repositionThumb();
+
+            spawnedVideo.GetComponent<commentContents>().isVideo = true;
             spawnedVideo.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
             spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
             spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
@@ -128,10 +130,11 @@ namespace HoloToolkit.Unity
             GetComponent<subMenu>().turnOffCounter();
             attachmentParent.gameObject.SetActive(true);
             GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
-            activeSimpleNotes.Add(simpleNotePrefab);
+            activeSimpleNotes.Add(spawnedComment);
             spawnedComment.transform.SetParent(attachmentParent);
             spawnedComment.transform.localPosition = thumbPos.localPosition;
             repositionThumb();
+            spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();
             spawnedComment.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
             spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
@@ -155,11 +158,12 @@ namespace HoloToolkit.Unity
         public void spawnPhotoPane()
         {
             attachmentParent.gameObject.SetActive(true);
-            GameObject spawnedPhoto = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
+            GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
             activePhotos.Add(spawnedPhoto);
             spawnedPhoto.transform.SetParent(attachmentParent);
             spawnedPhoto.transform.localPosition = thumbPos.localPosition;
             repositionThumb();
+            spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
             spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
             spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
             spawnedPhoto.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);

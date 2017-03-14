@@ -24,6 +24,10 @@ GameObject:
   - component: {fileID: 23993743811785620}
   - component: {fileID: 114087980681684280}
   - component: {fileID: 114665836016043586}
+  - component: {fileID: 114390008728622190}
+  - component: {fileID: 114940458815796286}
+  - component: {fileID: 114038201406950254}
+  - component: {fileID: 114006694312794078}
   m_Layer: 0
   m_Name: photoThumb
   m_TagString: Node
@@ -64,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4334673361248260
 Transform:
   m_ObjectHideFlags: 1
@@ -129,6 +133,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114006694312794078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100938329339992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930d5889c57417143a0f55a18dbe0620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114038201406950254}
+        m_MethodName: breakOutThumb
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114036351357161418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +187,21 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114038201406950254
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100938329339992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6918c6d371ddd414c8e724582fcabad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExpandMult: 1.4
+  ShrinkMult: 1
+  breakOutScale: 2.5
+  breakOutPos: {fileID: 0}
 --- !u!114 &114087980681684280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae9486691a4d634eb16a9a52599d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSimple: 0
+  isPhoto: 0
+  isVideo: 0
   commentMain: {fileID: 0}
   commentMeta: {fileID: 114355925616663702}
   editButton: {fileID: 0}
@@ -208,6 +257,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Nina Garcia, 03/01/2017
+--- !u!114 &114390008728622190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100938329339992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2d10f23e301f4aa4da034e1389d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114038201406950254}
+        m_MethodName: expandThumbnail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114665836016043586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +295,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d5d5f6bd7521e478939cf2295e9e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114940458815796286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1100938329339992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a8f740b6c84f64b908a6f42857de48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114038201406950254}
+        m_MethodName: resetThumbs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!222 &222359874134439540
 CanvasRenderer:
   m_ObjectHideFlags: 1

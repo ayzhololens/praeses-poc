@@ -21,11 +21,11 @@ namespace HoloToolkit.Unity
 
         private void Update()
         {
-            if (sourceManager.Instance.sourcePressed)
+            if (engaged && sourceManager.Instance.sourcePressed)
             {
                 if (GazeManager.Instance.HitObject != null)
                 {
-                    if (engaged && GazeManager.Instance.HitObject.tag != "inputField" && GazeManager.Instance.HitObject.tag != "keyboard" && GazeManager.Instance.HitObject.tag != "keyboardBG")
+                    if ( GazeManager.Instance.HitObject.tag != "inputField" && GazeManager.Instance.HitObject.tag != "keyboard" && GazeManager.Instance.HitObject.tag != "keyboardBG")
                     {
                         keyboardScript.Instance.turnOff();
                         deactivateField();

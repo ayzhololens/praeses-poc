@@ -48,7 +48,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1331282797171428
 GameObject:
   m_ObjectHideFlags: 1
@@ -79,6 +79,10 @@ GameObject:
   - component: {fileID: 23354316273940842}
   - component: {fileID: 114483962542037426}
   - component: {fileID: 114953024449630720}
+  - component: {fileID: 114401557900949202}
+  - component: {fileID: 114069737373070862}
+  - component: {fileID: 114729493000763908}
+  - component: {fileID: 114117987389552312}
   m_Layer: 0
   m_Name: videoThumb
   m_TagString: Node
@@ -106,7 +110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4353562907449042
 Transform:
   m_ObjectHideFlags: 1
@@ -310,6 +314,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114069737373070862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410952836486740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a8f740b6c84f64b908a6f42857de48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114729493000763908}
+        m_MethodName: resetThumbs
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114083302698633342
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +357,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114360954667744918}
         m_MethodName: moveForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &114117987389552312
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410952836486740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930d5889c57417143a0f55a18dbe0620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114729493000763908}
+        m_MethodName: breakOutThumb
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -406,6 +464,33 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
+--- !u!114 &114401557900949202
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410952836486740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ea2d10f23e301f4aa4da034e1389d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114729493000763908}
+        m_MethodName: expandThumbnail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114483962542037426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -417,13 +502,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae9486691a4d634eb16a9a52599d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentMain: {fileID: 114211706686305090, guid: c609422b45147b04ba435ba72b95e045,
-    type: 2}
+  isSimple: 0
+  isPhoto: 0
+  isVideo: 0
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114260772065706710, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
   editButton: {fileID: 0}
-  inputField: {fileID: 114353306870644986, guid: c609422b45147b04ba435ba72b95e045,
-    type: 2}
+  inputField: {fileID: 0}
   filepath: 
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 1588918397858714}
@@ -455,6 +541,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114729493000763908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410952836486740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6918c6d371ddd414c8e724582fcabad5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExpandMult: 1.4
+  ShrinkMult: 1
+  breakOutScale: 2.5
+  breakOutPos: {fileID: 0}
 --- !u!114 &114827900136622490
 MonoBehaviour:
   m_ObjectHideFlags: 1
