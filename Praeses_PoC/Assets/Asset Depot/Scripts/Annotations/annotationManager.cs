@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
@@ -74,6 +75,8 @@ namespace HoloToolkit.Unity
                 currentAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
+                currentAnnotation.GetComponent<annotationMediaHolder>().User = metaManager.Instance.user;
+                currentAnnotation.GetComponent<annotationMediaHolder>().Date =  System.DateTime.Now.ToString();
             }
             if(currentAnnotation.GetComponent<formFieldController>() != null)
             {

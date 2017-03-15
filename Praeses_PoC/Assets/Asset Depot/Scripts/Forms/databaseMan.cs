@@ -150,9 +150,12 @@ public class databaseMan : Singleton<databaseMan>
     public void saveCmd()
     {
         //#if WINDOWS_UWP
-        //        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //        System.IO.File.WriteAllText(saveDir, json);
+        //                string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        //                System.IO.File.WriteAllText(saveDir, json);
         //#endif
+
+
+
         string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         System.IO.File.WriteAllText(saveDir, json);
 
@@ -162,8 +165,8 @@ public class databaseMan : Singleton<databaseMan>
     public void loadDefCmd()
     {
         //#if WINDOWS_UWP
-        //        defJsonText = File.ReadAllText(definitionsDir);
-        //        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        //                defJsonText = File.ReadAllText(definitionsDir);
+        //                definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
         //#endif
 
         defJsonText = File.ReadAllText(definitionsDir);
@@ -172,6 +175,10 @@ public class databaseMan : Singleton<databaseMan>
         print("jsonDefinitionsLoaded");
         loadValCmd();
         JU_databaseMan.Instance.loadDefCmd();
+
+
+
+
         //#if WINDOWS_UWP
         //        buildUI(EFcanvasObject,definitions.EquipmentFields.threeNine, values.Location.Equipment[0].EquipmentData);
         //        buildUI(EIFcanvasObject, definitions.EquipmentInspectionFields.threeNine, values.Location.Equipment[0].PreviousInspection[0].InspectionData);
@@ -184,8 +191,8 @@ public class databaseMan : Singleton<databaseMan>
     public void loadValCmd()
     {
         //#if WINDOWS_UWP
-        //        valJsonText = File.ReadAllText(valuesDir);
-        //        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        //                valJsonText = File.ReadAllText(valuesDir);
+        //                values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
         //#endif
 
         valJsonText = File.ReadAllText(valuesDir);

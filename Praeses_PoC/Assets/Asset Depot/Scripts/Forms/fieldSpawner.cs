@@ -22,7 +22,7 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            fieldInitPos = fieldStartPos.position;
+            fieldInitPos = fieldStartPos.localPosition;
         }
 
         // Update is called once per frame
@@ -76,7 +76,7 @@ namespace HoloToolkit.Unity
 
         void populateIF()
         {
-            fieldStartPos.position = fieldInitPos;
+            fieldStartPos.localPosition = fieldInitPos;
             int fieldCount = JU_databaseMan.Instance.definitions.InspectionFields.fields.Count;
             for (int i = 0; i < fieldCount; i++)
             {
@@ -91,11 +91,12 @@ namespace HoloToolkit.Unity
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 IFCollection.Add(spawnedField);
             }
+            FieldInspectionParent.gameObject.SetActive(false);
         }
 
         void populateED()
         {
-            fieldStartPos.position = fieldInitPos;
+            fieldStartPos.localPosition = fieldInitPos;
             int fieldCount = JU_databaseMan.Instance.definitions.EquipmentData.fields.Count;
             for (int i = 0; i < fieldCount; i++)
             {
@@ -110,11 +111,12 @@ namespace HoloToolkit.Unity
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 EDCollection.Add(spawnedField);
             }
+            EquipmentDataParent.gameObject.SetActive(false);
         }
 
         void populateLD()
         {
-            fieldStartPos.position = fieldInitPos;
+            fieldStartPos.localPosition = fieldInitPos;
 
             string[] keys = new string[] { "address1", "address2", "City", "County", "Country", "LocationID", "LocationName", "State", "Zip" };
 

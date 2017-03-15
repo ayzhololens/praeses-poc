@@ -3373,6 +3373,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114763280025997680}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114213659833747870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3590,6 +3596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114342114485460082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3603,6 +3610,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114342682335204256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3686,6 +3694,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114451384423896488}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114360911289890854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3773,6 +3787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114417259723294608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3804,6 +3819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114446602831327944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3947,10 +3963,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae9486691a4d634eb16a9a52599d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSimple: 0
+  isPhoto: 0
+  isVideo: 0
   commentMain: {fileID: 114204348037966732}
   commentMeta: {fileID: 114643714739855350}
+  Date: 
+  user: 
   editButton: {fileID: 1109064858866218}
   inputField: {fileID: 114235204241355850}
+  filepath: 
+  linkedComponent: {fileID: 0}
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
 --- !u!114 &114474854228617722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4120,6 +4145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114571897169940810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4148,6 +4174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114642736292500118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4273,6 +4300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114701428476195794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4286,6 +4314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114711603199545296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4441,6 +4470,13 @@ MonoBehaviour:
   videoNode: 0
   photoNode: 1
   simpleNode: 0
+  Title: {fileID: 114763280025997680}
+  Description: {fileID: 114451384423896488}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114796087846431300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4622,6 +4658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114893831506593828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4839,6 +4876,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114235204241355850}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 0
+  useNumpad: 0
 --- !u!114 &114967978063841558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4855,6 +4898,8 @@ MonoBehaviour:
   PositionUpdateSpeed: 7
   SmoothMotion: 1
   SmoothingFactor: 0.806
+  YLimitMax: 0
+  YLimitMin: 0
 --- !u!114 &114973222590161748
 MonoBehaviour:
   m_ObjectHideFlags: 1

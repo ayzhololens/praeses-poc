@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using RenderHeads.Media.AVProVideo;
 
 namespace HoloToolkit.Unity
@@ -22,7 +23,13 @@ namespace HoloToolkit.Unity
         public bool videoNode;
         public bool photoNode;
         public bool simpleNode;
-
+        public InputField Title;
+        public InputField Description;
+        public string Date;
+        public string User;
+        public string audioPath;
+        public int type;
+        public int NodeIndex;
 
         // Use this for initialization
         void Start()

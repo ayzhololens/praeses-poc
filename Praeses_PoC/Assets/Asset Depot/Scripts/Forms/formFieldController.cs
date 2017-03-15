@@ -90,6 +90,21 @@ namespace HoloToolkit.Unity
             }
         }
 
+        public void revealAttachments()
+        {
+            for (int i = 0; i < transform.parent.childCount; i++)
+            {
+                if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                {
+
+                    transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
+                    transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+                }
+            }
+
+            attachmentParent.gameObject.SetActive(true);
+        }
+
 
         public void enableVideoCapture()
         {
@@ -135,7 +150,9 @@ namespace HoloToolkit.Unity
             repositionThumb();
 
             spawnedVideo.GetComponent<commentContents>().isVideo = true;
-            spawnedVideo.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
+            spawnedVideo.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+            spawnedVideo.GetComponent<commentContents>().user = metaManager.Instance.user;
+            spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
             spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
             VideoPlayer.LoadVideoPlayer();
@@ -152,7 +169,9 @@ namespace HoloToolkit.Unity
             repositionThumb();
             spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();
-            spawnedComment.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
+            spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+            spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
+            spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
         }
 
@@ -182,7 +201,9 @@ namespace HoloToolkit.Unity
             spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
             spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
             spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            spawnedPhoto.GetComponent<commentContents>().commentMeta.text = ("Reviewer, " + System.DateTime.Now);
+            spawnedPhoto.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+            spawnedPhoto.GetComponent<commentContents>().user = metaManager.Instance.user;
+            spawnedPhoto.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             photoTexture = photoRecorder.targetTexture;
             spawnedPhoto.GetComponent<Renderer>().material.mainTexture = photoTexture;
 

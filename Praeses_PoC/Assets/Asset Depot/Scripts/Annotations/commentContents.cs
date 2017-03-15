@@ -12,6 +12,8 @@ namespace HoloToolkit.Unity
         public bool isVideo;
         public Text commentMain;
         public Text commentMeta;
+        public string Date;
+        public string user;
         public GameObject editButton;
         public InputField inputField;
         public string filepath;
