@@ -1,10 +1,10 @@
-//#if WINDOWS_UWP
-//using Newtonsoft.Json;
-//using System.Collections;
-//#endif
-
+#if WINDOWS_UWP
 using Newtonsoft.Json;
 using System.Collections;
+#endif
+
+//using Newtonsoft.Json;
+//using System.Collections;
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -149,28 +149,28 @@ public class databaseMan : Singleton<databaseMan>
 
     public void saveCmd()
     {
-        //#if WINDOWS_UWP
-        //                string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //                System.IO.File.WriteAllText(saveDir, json);
-        //#endif
+#if WINDOWS_UWP
+                        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+                        System.IO.File.WriteAllText(saveDir, json);
+#endif
 
 
 
-        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        System.IO.File.WriteAllText(saveDir, json);
+        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        //System.IO.File.WriteAllText(saveDir, json);
 
         print("jsonSaved");
     }
 
     public void loadDefCmd()
     {
-        //#if WINDOWS_UWP
-        //                defJsonText = File.ReadAllText(definitionsDir);
-        //                definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
-        //#endif
+#if WINDOWS_UWP
+                        defJsonText = File.ReadAllText(definitionsDir);
+                        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+#endif
 
-        defJsonText = File.ReadAllText(definitionsDir);
-        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        //defJsonText = File.ReadAllText(definitionsDir);
+        //definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 
         print("jsonDefinitionsLoaded");
         loadValCmd();
@@ -190,13 +190,13 @@ public class databaseMan : Singleton<databaseMan>
 
     public void loadValCmd()
     {
-        //#if WINDOWS_UWP
-        //                valJsonText = File.ReadAllText(valuesDir);
-        //                values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
-        //#endif
+#if WINDOWS_UWP
+                        valJsonText = File.ReadAllText(valuesDir);
+                        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+#endif
 
-        valJsonText = File.ReadAllText(valuesDir);
-        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        //valJsonText = File.ReadAllText(valuesDir);
+        //values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 
         print("jsonValuesLoaded");
     }

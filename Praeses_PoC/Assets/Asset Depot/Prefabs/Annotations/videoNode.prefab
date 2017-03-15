@@ -819,6 +819,7 @@ GameObject:
   - component: {fileID: 114316801437532230}
   - component: {fileID: 114945550841483948}
   - component: {fileID: 114319608210254228}
+  - component: {fileID: 114144954359119590}
   m_Layer: 0
   m_Name: videoNode
   m_TagString: Node
@@ -3000,6 +3001,41 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114144954359119590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723358471618130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeFileName: 
+  commentDescriptions: []
+  commentMetas: []
+  VideoPlayer: {fileID: 0}
+  vidRecorder: {fileID: 0}
+  playIcon: {fileID: 1865320774385740}
+  pauseIcon: {fileID: 1224971330552542}
+  photoTexture: {fileID: 0}
+  photoRecorder: {fileID: 0}
+  photoVideoPane: {fileID: 1184561891358668}
+  videoNode: 1
+  photoNode: 0
+  simpleNode: 0
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114950666262883962}
+  Description: {fileID: 114021788202737748}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114146837020260574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3123,7 +3159,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723358471618130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 
@@ -3927,7 +3963,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 114173958900309700}
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114502327322678852}
   Date: 
   user: 
@@ -4624,7 +4660,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114213182469890558}
+      - m_Target: {fileID: 114144954359119590}
         m_MethodName: PlayVideo
         m_Mode: 1
         m_Arguments:

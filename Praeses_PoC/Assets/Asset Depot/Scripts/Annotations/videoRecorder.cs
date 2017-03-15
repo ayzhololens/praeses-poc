@@ -107,14 +107,9 @@ namespace HoloToolkit.Unity
             Debug.Log("Stopped Recording Video!");
             m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
             vidCounter += 1;
-            if (annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>() != null)
-            {
-                annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>().loadVideoMedia();
-            }
-            else
-            {
-                annotationManager.Instance.activateMedia();
-            }
+
+            annotationManager.Instance.activateMedia();
+
             
         }
 

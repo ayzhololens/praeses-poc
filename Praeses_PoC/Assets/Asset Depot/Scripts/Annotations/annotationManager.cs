@@ -68,20 +68,51 @@ namespace HoloToolkit.Unity
         public void activateMedia()
         {
 
-            if (currentAnnotation.GetComponent<openAnnotationNode>() != null)
+            if (currentAnnotation.GetComponent<nodeMediaHolder>().photoNode)
             {
                 currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-                currentAnnotation.GetComponent<annotationMediaHolder>().loadMedia();
+                currentAnnotation.GetComponent<nodeMediaHolder>().loadPhotoMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
-                currentAnnotation.GetComponent<annotationMediaHolder>().User = metaManager.Instance.user;
-                currentAnnotation.GetComponent<annotationMediaHolder>().Date =  System.DateTime.Now.ToString();
             }
-            if(currentAnnotation.GetComponent<formFieldController>() != null)
+
+            if (currentAnnotation.GetComponent<nodeMediaHolder>().videoNode)
             {
-                currentAnnotation.GetComponent<formFieldController>().loadVideoMedia();
+                currentAnnotation.GetComponent<selectEvent>().enabled = true;
+
+                currentAnnotation.GetComponent<nodeMediaHolder>().loadVideoMedia();
+                currentAnnotation.GetComponent<openAnnotationNode>().openContent();
+                currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
+
+            if (currentAnnotation.GetComponent<nodeMediaHolder>().simpleNode)
+            {
+                currentAnnotation.GetComponent<selectEvent>().enabled = true;
+                
+                currentAnnotation.GetComponent<openAnnotationNode>().openContent();
+                currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
+            }
+
+            if (activeField != null && currentAnnotation.GetComponent<nodeMediaHolder>().fieldNode)
+            {
+                if (activeField.GetComponent<formFieldController>().capturingPhoto)
+                {
+                    activeField.GetComponent<formFieldController>().loadPhotoMedia();
+                }
+                if (activeField.GetComponent<formFieldController>().capturingVideo)
+                {
+                    activeField.GetComponent<formFieldController>().loadVideoMedia();
+                }
+
+                //currentAnnotation.GetComponent<nodeMediaHolder>().Title = activeField.GetComponent<formFieldController>().DisplayName.text;
+            }
+
+
+            currentAnnotation.GetComponent<nodeMediaHolder>().User = metaManager.Instance.user;
+            currentAnnotation.GetComponent<nodeMediaHolder>().Date = System.DateTime.Now.ToString();
+
+
 
 
 

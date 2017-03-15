@@ -19,7 +19,7 @@ namespace HoloToolkit.Unity
         public InputField Value;
         public Text previousValue;
         public int nodeIndex;
-
+        public List<GameObject> activeComments;
         public GameObject videoThumbPrefab;
         public List<GameObject> activeVideos;
         public List<string> videoFilePaths;
@@ -35,7 +35,8 @@ namespace HoloToolkit.Unity
         string activePhotoPath;
         Texture2D photoTexture;
         photoRecorder photoRecorder;
-
+        public bool capturingVideo;
+        public bool capturingPhoto;
 
 
         // Use this for initialization
@@ -92,15 +93,19 @@ namespace HoloToolkit.Unity
 
         public void revealAttachments()
         {
-            for (int i = 0; i < transform.parent.childCount; i++)
+            if (!GetComponent<subMenu>().subButtonsOn)
             {
-                if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                for (int i = 0; i < transform.parent.childCount; i++)
                 {
+                    if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                    {
 
-                    transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
-                    transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+                        transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
+                        transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+                    }
                 }
             }
+
 
             attachmentParent.gameObject.SetActive(true);
         }
@@ -109,17 +114,23 @@ namespace HoloToolkit.Unity
         public void enableVideoCapture()
         {
             annotationManager.Instance.enableVideoRecording();
-            annotationManager.Instance.currentAnnotation = this.gameObject;
+            annotationManager.Instance.currentAnnotation = linkedNode;
+
+            annotationManager.Instance.activeField = this.gameObject;
             GetComponent<subMenu>().turnOffCounter();
             attachmentParent.gameObject.SetActive(true);
+            capturingVideo = true;
         }
 
         public void enablePhotoCapture()
         {
             annotationManager.Instance.enablePhotoCapture();
-            annotationManager.Instance.currentAnnotation = this.gameObject;
+            annotationManager.Instance.currentAnnotation = linkedNode;
+
+            annotationManager.Instance.activeField = this.gameObject;
             GetComponent<subMenu>().turnOffCounter();
             attachmentParent.gameObject.SetActive(true);
+            capturingPhoto = true;
 
         }
 
@@ -135,6 +146,7 @@ namespace HoloToolkit.Unity
             //
             activeVideoPath = vidRecorder.filepath;
             VideoPlayer.m_VideoPath = activeVideoPath;
+            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activeVideoPath);
             videoFilePaths.Add(activeVideoPath);
             spawnVideoPane();
         }
@@ -150,12 +162,15 @@ namespace HoloToolkit.Unity
             repositionThumb();
 
             spawnedVideo.GetComponent<commentContents>().isVideo = true;
+            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedVideo.GetComponent<commentContents>().commentMain);
+            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedVideo.GetComponent<commentContents>().commentMeta.text);
             spawnedVideo.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedVideo.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
             spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
             VideoPlayer.LoadVideoPlayer();
+            capturingVideo = false;
         }
 
         public void spawnSimpleComment()
@@ -169,6 +184,9 @@ namespace HoloToolkit.Unity
             repositionThumb();
             spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();
+            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(null);
+            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedComment.GetComponent<commentContents>().commentMain);
+            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedComment.GetComponent<commentContents>().commentMeta.text);
             spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
@@ -187,6 +205,7 @@ namespace HoloToolkit.Unity
             //
             activePhotoPath = photoRecorder.filePath;
             photoFilePaths.Add(activePhotoPath);
+            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activePhotoPath);
             spawnPhotoPane();
         }
 
@@ -201,11 +220,14 @@ namespace HoloToolkit.Unity
             spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
             spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
             spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
+            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedPhoto.GetComponent<commentContents>().commentMain);
+            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedPhoto.GetComponent<commentContents>().commentMeta.text);
             spawnedPhoto.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedPhoto.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedPhoto.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             photoTexture = photoRecorder.targetTexture;
             spawnedPhoto.GetComponent<Renderer>().material.mainTexture = photoTexture;
+            capturingPhoto = false;
 
         }
 

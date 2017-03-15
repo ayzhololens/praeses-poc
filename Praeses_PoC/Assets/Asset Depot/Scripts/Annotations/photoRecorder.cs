@@ -121,14 +121,9 @@ namespace HoloToolkit.Unity
             targetTexture.LoadImage(bytesRead);
 
             
-            if (annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>() != null)
-            {
-                annotationManager.Instance.currentAnnotation.GetComponent<formFieldController>().loadPhotoMedia();
-            }
-            else
-            {
-                annotationManager.Instance.activateMedia();
-            }
+
+            annotationManager.Instance.activateMedia();
+
         }
 
 

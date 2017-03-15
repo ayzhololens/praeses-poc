@@ -12,7 +12,7 @@ namespace HoloToolkit.Unity
         Vector3 simpleStartScale;
         Vector3 photoStartScale;
         Vector3 videoStartScale;
-        formFieldController linkedField;
+        public formFieldController linkedField;
         public float breakOutScale;
         public Transform breakOutPos;
         Vector3 startPos;
@@ -47,7 +47,7 @@ namespace HoloToolkit.Unity
             if (!brokeOut)
             {
 
-                transform.localScale = transform.localScale * ExpandMult;
+                transform.localScale = new Vector3 (transform.localScale.x * ExpandMult, transform.localScale.y* ExpandMult, transform.localScale.z);
                 shrinkThumbnails();
             }
 
@@ -57,21 +57,26 @@ namespace HoloToolkit.Unity
         {
 
 
-
-            for (int i=0; i<linkedField.activeSimpleNotes.Count; i++)
+            if(linkedField.activeSimpleNotes.Count != 0)
             {
-                if (linkedField.activeSimpleNotes[i] != this.gameObject)
+                for (int i = 0; i < linkedField.activeSimpleNotes.Count; i++)
                 {
-                    linkedField.activeSimpleNotes[i].transform.localScale = linkedField.activeSimpleNotes[i].transform.localScale * ShrinkMult;
+                    if (linkedField.activeSimpleNotes[i] != this.gameObject)
+                    {
+                        simpleStartScale = linkedField.activeSimpleNotes[i].transform.localScale;
+                        linkedField.activeSimpleNotes[i].transform.localScale = linkedField.activeSimpleNotes[i].transform.localScale * ShrinkMult;
+
+                    }
 
                 }
-                
             }
+
 
             for (int i = 0; i < linkedField.activePhotos.Count; i++)
             {
                 if (linkedField.activePhotos[i] != this.gameObject)
                 {
+                    photoStartScale = linkedField.activePhotos[i].transform.localScale;
                     linkedField.activePhotos[i].transform.localScale = linkedField.activePhotos[i].transform.localScale * ShrinkMult;
                 }
 
@@ -81,6 +86,7 @@ namespace HoloToolkit.Unity
             {
                 if (linkedField.activeVideos[i] != this.gameObject)
                 {
+                    videoStartScale = linkedField.activeVideos[i].transform.localScale;
                     linkedField.activeVideos[i].transform.localScale = linkedField.activeVideos[i].transform.localScale * ShrinkMult;
 
                 }
@@ -93,14 +99,19 @@ namespace HoloToolkit.Unity
         {
             if (!brokeOut)
             {
-                for (int i = 0; i < linkedField.activeSimpleNotes.Count; i++)
+                if (linkedField.activeSimpleNotes.Count != 0)
                 {
-                    if (!linkedField.activeSimpleNotes[i].activeSelf)
+                    for (int i = 0; i < linkedField.activeSimpleNotes.Count; i++)
                     {
-                        linkedField.activeSimpleNotes[i].SetActive(true);
+                        if (!linkedField.activeSimpleNotes[i].activeSelf)
+                        {
+                            linkedField.activeSimpleNotes[i].SetActive(true);
+                        }
+                        linkedField.activeSimpleNotes[i].transform.localScale = simpleStartScale;
                     }
-                    linkedField.activeSimpleNotes[i].transform.localScale = startScale;
+
                 }
+
 
                 for (int i = 0; i < linkedField.activePhotos.Count; i++)
                 {
@@ -108,7 +119,7 @@ namespace HoloToolkit.Unity
                     {
                         linkedField.activePhotos[i].SetActive(true);
                     }
-                    linkedField.activePhotos[i].transform.localScale = startScale;
+                    linkedField.activePhotos[i].transform.localScale = photoStartScale;
 
                 }
 
@@ -117,8 +128,13 @@ namespace HoloToolkit.Unity
                     if (!linkedField.activeVideos[i].activeSelf)
                     {
                         linkedField.activeVideos[i].SetActive(true);
+                        if (linkedField.activeVideos[i].GetComponent<commentContents>().playIcon.activeSelf)
+                        {
+                            linkedField.activeVideos[i].GetComponent<commentContents>().playIcon.SetActive(false);
+                        }
+                        
                     }
-                    linkedField.activeVideos[i].transform.localScale = startScale;
+                    linkedField.activeVideos[i].transform.localScale = videoStartScale;
 
                 }
                 transform.localPosition = startPos;
@@ -134,15 +150,22 @@ namespace HoloToolkit.Unity
             {
                 brokeOut = true;
 
-                for (int i = 0; i < linkedField.activeSimpleNotes.Count; i++)
+
+                if (linkedField.activeSimpleNotes.Count != 0)
                 {
-                    if (linkedField.activeSimpleNotes[i] != this.gameObject)
+                    for (int i = 0; i < linkedField.activeSimpleNotes.Count; i++)
                     {
-                        linkedField.activeSimpleNotes[i].SetActive(false);
+                        if (linkedField.activeSimpleNotes[i] != this.gameObject)
+                        {
+                            linkedField.activeSimpleNotes[i].SetActive(false);
+
+                        }
 
                     }
 
                 }
+
+
 
                 for (int i = 0; i < linkedField.activePhotos.Count; i++)
                 {
@@ -165,6 +188,10 @@ namespace HoloToolkit.Unity
                 transform.localScale = transform.localScale * breakOutScale;
                 GetComponent<commentContents>().commentMeta.gameObject.SetActive(true);
 
+                if (GetComponent<commentContents>().isVideo)
+                {
+                    GetComponent<commentContents>().playIcon.SetActive(true);
+                }
                 transform.localPosition = breakOutPos.localPosition;
             }
 
@@ -174,6 +201,10 @@ namespace HoloToolkit.Unity
         {
 
             brokeOut = false;
+            if (GetComponent<commentContents>().isVideo)
+            {
+                GetComponent<commentContents>().playIcon.SetActive(false);
+            }
             resetThumbs();
         }
     }

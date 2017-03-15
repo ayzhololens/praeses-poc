@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 114284174955068448}
   - component: {fileID: 114848484132885940}
   - component: {fileID: 114726478977023936}
+  - component: {fileID: 114211248512029846}
   m_Layer: 0
   m_Name: simpleNode
   m_TagString: Node
@@ -1418,7 +1419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290267029010070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44, y: -1.51, z: -0}
+  m_LocalPosition: {x: -0.44, y: -3.43, z: -0}
   m_LocalScale: {x: 1.9874691, y: 1, z: 0.9999999}
   m_Children:
   - {fileID: 4364739379018422}
@@ -2766,6 +2767,41 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
+--- !u!114 &114211248512029846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749729230984222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeFileName: 
+  commentDescriptions: []
+  commentMetas: []
+  VideoPlayer: {fileID: 0}
+  vidRecorder: {fileID: 0}
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
+  photoTexture: {fileID: 0}
+  photoRecorder: {fileID: 0}
+  photoVideoPane: {fileID: 0}
+  videoNode: 0
+  photoNode: 0
+  simpleNode: 1
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114295422893972472}
+  Description: {fileID: 114561911120028370}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114211448949069388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3467,7 +3503,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749729230984222}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 
@@ -3712,7 +3748,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 114583268358988262}
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114219813969307356}
   Date: 
   user: 

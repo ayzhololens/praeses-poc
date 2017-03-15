@@ -198,7 +198,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410952836486740}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.0495, z: 0}
+  m_LocalPosition: {x: 0, y: 0.1152, z: 0}
   m_LocalScale: {x: 0.039475, y: 0.022205, z: 0.000165}
   m_Children:
   - {fileID: 4353562907449042}
@@ -717,8 +717,9 @@ MonoBehaviour:
   isPhoto: 0
   isVideo: 0
   commentMain: {fileID: 0}
-  commentMeta: {fileID: 114260772065706710, guid: c609422b45147b04ba435ba72b95e045,
-    type: 2}
+  commentMeta: {fileID: 114026757942736786}
+  Date: 
+  user: 
   editButton: {fileID: 0}
   inputField: {fileID: 0}
   filepath: 
@@ -817,8 +818,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6918c6d371ddd414c8e724582fcabad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExpandMult: 1.8
-  ShrinkMult: 0.75
+  ExpandMult: 1.5
+  ShrinkMult: 0.6
+  linkedField: {fileID: 0}
   breakOutScale: 2.5
   breakOutPos: {fileID: 0}
 --- !u!114 &114827900136622490

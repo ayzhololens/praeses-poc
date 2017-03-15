@@ -24,19 +24,19 @@ public class formNodeController : MonoBehaviour {
     void Update() {
 
         //camDistance = Vector3.Distance(transform.position, Camera.main.transform.position);
-        //if (contentHolder.gameObject.activeSelf && contentOpen)
+        //if (contentOpen)
         //{
         //    if (camDistance > distanceThreshold)
         //    {
-        //        contentDistance = Vector3.Distance(contentHolder.transform.position, Camera.main.transform.position);
-        //        if (contentDistance > 2 && contentHolder.GetComponent<SimpleTagalong>().enabled != true)
+        //        contentDistance = Vector3.Distance(masterForm.GetComponent<formController>().contentHolder.transform.position, Camera.main.transform.position);
+        //        if (contentDistance > 2 && masterForm.GetComponent<formController>().contentHolder.GetComponent<SimpleTagalong>().enabled != true)
         //        {
-        //            contentHolder.transform.position = Vector3.MoveTowards(contentHolder.transform.position, Camera.main.transform.position, speed / 1.5f);
+        //            masterForm.GetComponent<formController>().contentHolder.transform.position = Vector3.MoveTowards(masterForm.GetComponent<formController>().contentHolder.transform.position, Camera.main.transform.position, speed / 1.5f);
         //        }
 
-        //        if (contentDistance < 2 && contentHolder.GetComponent<SimpleTagalong>().enabled != true)
+        //        if (contentDistance < 2 && masterForm.GetComponent<formController>().contentHolder.GetComponent<SimpleTagalong>().enabled != true)
         //        {
-        //            contentHolder.GetComponent<SimpleTagalong>().enabled = true;
+        //            masterForm.GetComponent<formController>().contentHolder.GetComponent<SimpleTagalong>().enabled = true;
         //        }
 
 
@@ -45,13 +45,13 @@ public class formNodeController : MonoBehaviour {
 
         //    if (camDistance < distanceThreshold)
         //    {
-        //        if (contentHolder.GetComponent<SimpleTagalong>().enabled == true)
+        //        if (masterForm.GetComponent<formController>().contentHolder.GetComponent<SimpleTagalong>().enabled == true)
         //        {
-        //            contentHolder.GetComponent<SimpleTagalong>().enabled = false;
-        //            contentHolder.GetComponent<Interpolator>().enabled = false;
+        //            masterForm.GetComponent<formController>().contentHolder.GetComponent<SimpleTagalong>().enabled = false;
+        //            masterForm.GetComponent<formController>().contentHolder.GetComponent<Interpolator>().enabled = false;
         //        }
 
-        //        contentHolder.transform.position = Vector3.MoveTowards(contentHolder.transform.position, contentLoc.position, speed);
+        //        masterForm.GetComponent<formController>().contentHolder.transform.position = Vector3.MoveTowards(contentHolder.transform.position, contentLoc.position, speed);
 
 
         //    }
@@ -77,8 +77,10 @@ public class formNodeController : MonoBehaviour {
         {
             linkedField.GetComponent<formFieldController>().linkedNode = this.gameObject;
         }
-        masterForm.SetActive(true);
+        //masterForm.SetActive(true);
         contentOpen = true;
+        masterForm.GetComponent<formController>().openForm();
+        //masterForm.GetComponent<formController>().contentHolder.transform.position = contentLoc.position;
         //masterForm.transform.position = contentLoc.position;
         for (int i = 0; i < linkedField.transform.parent.childCount; i++)
         {

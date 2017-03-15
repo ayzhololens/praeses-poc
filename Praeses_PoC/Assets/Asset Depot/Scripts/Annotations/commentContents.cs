@@ -10,7 +10,7 @@ namespace HoloToolkit.Unity
         public bool isSimple;
         public bool isPhoto;
         public bool isVideo;
-        public Text commentMain;
+        public InputField commentMain;
         public Text commentMeta;
         public string Date;
         public string user;
@@ -24,6 +24,7 @@ namespace HoloToolkit.Unity
 
         // Use this for initialization
         void Start() {
+            
 
         }
 

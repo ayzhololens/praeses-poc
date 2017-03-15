@@ -68,6 +68,8 @@ public class commentManager : MonoBehaviour {
         //activeInputField = activeComments[commentCount].GetComponent<commentContents>().inputField;
         //activeComments[commentCount].AddComponent<inputFieldManager>().mainInputField = activeInputField;
         Invoke("fieldActivator", .2f);
+        GetComponent<nodeMediaHolder>().commentDescriptions.Add(activeComments[commentCount].GetComponent<commentContents>().commentMain);
+        GetComponent<nodeMediaHolder>().commentMetas.Add(activeComments[commentCount].GetComponent<commentContents>().commentMeta.text);
         activeComments[commentCount].GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
         activeComments[commentCount].GetComponent<commentContents>().user = metaManager.Instance.user;
         activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);

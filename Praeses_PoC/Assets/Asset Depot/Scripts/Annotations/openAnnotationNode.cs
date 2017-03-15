@@ -149,13 +149,13 @@ namespace HoloToolkit.Unity
 
         public void recapture()
         {
-            if (GetComponent<annotationMediaHolder>().photoNode)
+            if (GetComponent<nodeMediaHolder>().photoNode)
             {
                 annotationManager.Instance.currentAnnotation = this.gameObject;
                 annotationManager.Instance.enablePhotoCapture();
                 closeContent();
             }
-            if (GetComponent<annotationMediaHolder>().videoNode)
+            if (GetComponent<nodeMediaHolder>().videoNode)
             {
                 annotationManager.Instance.currentAnnotation = this.gameObject;
                 annotationManager.Instance.enableVideoRecording();
@@ -189,14 +189,14 @@ namespace HoloToolkit.Unity
 
                 contentHoler.SetActive(true);
 
-                if (GetComponent<annotationMediaHolder>().videoNode)
+                if (GetComponent<nodeMediaHolder>().videoNode)
                 {
-                    GetComponent<annotationMediaHolder>().LoadVideo();
+                    GetComponent<nodeMediaHolder>().LoadVideo();
                 }
 
-                if (GetComponent<annotationMediaHolder>().photoNode)
+                if (GetComponent<nodeMediaHolder>().photoNode)
                 {
-                    GetComponent<annotationMediaHolder>().LoadPhoto();
+                    //GetComponent<nodeMediaHolder>().loadPhotoMedia();
                 }
                 contentOpen = true;
 

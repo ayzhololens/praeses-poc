@@ -331,8 +331,10 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 114211706686305090}
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114260772065706710}
+  Date: 
+  user: 
   editButton: {fileID: 0}
   inputField: {fileID: 114353306870644986}
   filepath: 
@@ -512,7 +514,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Reviewer, 3/13/2017 6:01:52 PM
+  m_Text: Nina Garcia 3/14/2017 10:56:09 PM
 --- !u!114 &114277449283162310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -759,8 +761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6918c6d371ddd414c8e724582fcabad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExpandMult: 1.8
-  ShrinkMult: 0.75
+  ExpandMult: 1.5
+  ShrinkMult: 0.6
+  linkedField: {fileID: 0}
   breakOutScale: 2.5
   breakOutPos: {fileID: 0}
 --- !u!114 &114921870576927848
