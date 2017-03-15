@@ -22,19 +22,26 @@ public class deleteNode : MonoBehaviour {
         {
             if(node == this.gameObject && node!=null)
             {
+
                 if (GetComponent<openAnnotationNode>().miniNode != null)
                 {
                     DestroyImmediate(GetComponent<openAnnotationNode>().miniNode.gameObject);
                 }
+
+                //if (GetComponent<openAnnotationNode>().miniNode != null)
+                //{
+                //    DestroyImmediate(GetComponent<openAnnotationNode>().miniNode);
+                //}
+
                 
-                if (GetComponent<annotationMediaHolder>().filepath != null)
-                {
-                    if (File.Exists(GetComponent<annotationMediaHolder>().filepath))
-                    {
-                        File.Delete(GetComponent<annotationMediaHolder>().filepath);
-                    }
-                }
-                DestroyImmediate(this.gameObject);
+                //if (GetComponent<nodeMediaHolder>().filepath != null)
+                //{
+                //    if (File.Exists(GetComponent<nodeMediaHolder>().filepath))
+                //    {
+                //        File.Delete(GetComponent<nodeMediaHolder>().filepath);
+                //    }
+                //}
+                //DestroyImmediate(this.gameObject);
                 Debug.Log("found it");
                 
             }

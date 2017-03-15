@@ -14,7 +14,7 @@ public class minimize : MonoBehaviour, IInputClickHandler {
     public GameObject bigHeadGeo;
     public List<GameObject> meshesHide;
     Vector3 anchDist;
-
+    public bool useAvatar;
 
     public GameObject paperPlane;
 

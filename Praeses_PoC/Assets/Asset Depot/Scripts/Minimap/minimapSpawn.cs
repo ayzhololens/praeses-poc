@@ -44,12 +44,14 @@ namespace HoloToolkit.Unity
             for (int i = 0; i < transform.childCount; i++)
             {
 
-                
+
                 miniMapMeshes.Add((GameObject)Instantiate(transform.GetChild(i).gameObject, transform.GetChild(i).position, transform.GetChild(i).localRotation));
                 miniMapMeshes[i].transform.SetParent(miniMapHolder.transform);
-                if (miniMapMeshes[i].tag == "boilerPrefab") {
+                if (miniMapMeshes[i].tag == "boilerPrefab")
+                {
                     boilerPivot = miniMapMeshes[i].transform.position;
-                } else
+                }
+                else
                 {
                     transform.GetChild(i).gameObject.tag = "SpatialMapping";
                     miniMapMeshes[i].tag = "miniMapMesh";
@@ -74,9 +76,9 @@ namespace HoloToolkit.Unity
                     //miniMapMeshes[i].GetComponent<MeshRenderer>().enabled = false;
                 }
 
-                if(miniMapMeshes[i].GetComponent<MeshFilter>() != null && miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh!=null)
+                if (miniMapMeshes[i].GetComponent<MeshFilter>() != null && miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh != null)
                 {
-                   miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
+                    miniMapMeshes[i].GetComponent<MeshFilter>().sharedMesh.RecalculateNormals();
 
                 }
             }
@@ -91,8 +93,8 @@ namespace HoloToolkit.Unity
             if (useAvatar)
             {
                 avatar.GetComponent<minimize>().miniThis();
+
             }
-            
         }
 
         public void spawnUnderstandingMiniMap()

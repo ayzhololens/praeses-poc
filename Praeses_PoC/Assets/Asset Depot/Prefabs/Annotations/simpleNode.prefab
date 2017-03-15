@@ -712,6 +712,7 @@ GameObject:
   - component: {fileID: 114284174955068448}
   - component: {fileID: 114848484132885940}
   - component: {fileID: 114726478977023936}
+  - component: {fileID: 114211248512029846}
   m_Layer: 0
   m_Name: simpleNode
   m_TagString: Node
@@ -1418,7 +1419,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1290267029010070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.44, y: -1.51, z: -0}
+  m_LocalPosition: {x: -0.44, y: -3.43, z: -0}
   m_LocalScale: {x: 1.9874691, y: 1, z: 0.9999999}
   m_Children:
   - {fileID: 4364739379018422}
@@ -2565,6 +2566,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114764937902116050}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 0
+  useNumpad: 0
 --- !u!114 &114016450303756410
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2578,6 +2585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114052611893869384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2649,6 +2657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114115069590216298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2661,6 +2670,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114561911120028370}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114129374492273494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2716,6 +2731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114188379450020782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2729,6 +2745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114204042018157276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2750,6 +2767,41 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
+--- !u!114 &114211248512029846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749729230984222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeFileName: 
+  commentDescriptions: []
+  commentMetas: []
+  VideoPlayer: {fileID: 0}
+  vidRecorder: {fileID: 0}
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
+  photoTexture: {fileID: 0}
+  photoRecorder: {fileID: 0}
+  photoVideoPane: {fileID: 0}
+  videoNode: 0
+  photoNode: 0
+  simpleNode: 1
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114295422893972472}
+  Description: {fileID: 114561911120028370}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114211448949069388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2912,6 +2964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114267386224840138
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3450,7 +3503,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1749729230984222}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 
@@ -3467,6 +3520,13 @@ MonoBehaviour:
   videoNode: 0
   photoNode: 0
   simpleNode: 1
+  Title: {fileID: 114295422893972472}
+  Description: {fileID: 114561911120028370}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114561911120028370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3660,6 +3720,8 @@ MonoBehaviour:
   PositionUpdateSpeed: 7
   SmoothMotion: 1
   SmoothingFactor: 0.806
+  YLimitMax: 0
+  YLimitMin: 0
 --- !u!114 &114629066256968532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3683,10 +3745,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae9486691a4d634eb16a9a52599d99d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commentMain: {fileID: 114583268358988262}
+  isSimple: 0
+  isPhoto: 0
+  isVideo: 0
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114219813969307356}
+  Date: 
+  user: 
   editButton: {fileID: 0}
   inputField: {fileID: 114764937902116050}
+  filepath: 
+  linkedComponent: {fileID: 0}
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
 --- !u!114 &114653414832262664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3700,6 +3771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114681989326015100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3817,6 +3889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
+  isPanel: 0
 --- !u!114 &114764937902116050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4372,6 +4445,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainInputField: {fileID: 114295422893972472}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114995352036976452
 MonoBehaviour:
   m_ObjectHideFlags: 1

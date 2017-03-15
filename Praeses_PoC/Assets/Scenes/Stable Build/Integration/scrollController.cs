@@ -29,7 +29,7 @@ public class scrollController : MonoBehaviour {
             }
             float lastPos = curPos.y;
             curPos = HandsManager.Instance.ManipulationHandPosition;
-            
+
             offset = (curPos.y - startPos.y) * sensitivity;
             transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
             if (curPos.y > startPos.y)
@@ -47,7 +47,7 @@ public class scrollController : MonoBehaviour {
 
             }
 
-            
+
 
         }
         else
@@ -57,5 +57,5 @@ public class scrollController : MonoBehaviour {
 
 
 
-	}
+    }
 }

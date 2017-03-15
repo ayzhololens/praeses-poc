@@ -23,7 +23,6 @@ public class handEnterEvent : MonoBehaviour {
         if (Event != null)
         {
             Event.Invoke();
-            Debug.Log("handEnter");
         }
     }
 

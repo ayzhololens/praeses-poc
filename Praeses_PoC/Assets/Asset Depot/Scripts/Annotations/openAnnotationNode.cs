@@ -121,7 +121,7 @@ namespace HoloToolkit.Unity
                     contentHoler.GetComponent<SimpleTagalong>().enabled = true;
                     Debug.Log("hello");
                 }
-
+                
                 for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
                 {
                     GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(true);
@@ -134,7 +134,6 @@ namespace HoloToolkit.Unity
         {
             if (!isMiniNode)
             {
-                Debug.Log("complete " + gameObject.name);
                 reviewButtons.SetActive(false);
                 reviewState = false;
                 for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
@@ -143,20 +142,22 @@ namespace HoloToolkit.Unity
                 }
                 BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
 
+
             }
-
-
         }
+
+
+
 
         public void recapture()
         {
-            if (GetComponent<annotationMediaHolder>().photoNode)
+            if (GetComponent<nodeMediaHolder>().photoNode)
             {
                 annotationManager.Instance.currentAnnotation = this.gameObject;
                 annotationManager.Instance.enablePhotoCapture();
                 closeContent();
             }
-            if (GetComponent<annotationMediaHolder>().videoNode)
+            if (GetComponent<nodeMediaHolder>().videoNode)
             {
                 annotationManager.Instance.currentAnnotation = this.gameObject;
                 annotationManager.Instance.enableVideoRecording();
@@ -190,14 +191,14 @@ namespace HoloToolkit.Unity
 
                 contentHoler.SetActive(true);
 
-                if (GetComponent<annotationMediaHolder>().videoNode)
+                if (GetComponent<nodeMediaHolder>().videoNode)
                 {
-                    GetComponent<annotationMediaHolder>().LoadVideo();
+                    GetComponent<nodeMediaHolder>().LoadVideo();
                 }
 
-                if (GetComponent<annotationMediaHolder>().photoNode)
+                if (GetComponent<nodeMediaHolder>().photoNode)
                 {
-                    GetComponent<annotationMediaHolder>().LoadPhoto();
+                    //GetComponent<nodeMediaHolder>().loadPhotoMedia();
                 }
                 contentOpen = true;
 

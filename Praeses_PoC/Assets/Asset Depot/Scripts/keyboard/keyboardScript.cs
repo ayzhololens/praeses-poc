@@ -13,20 +13,10 @@ namespace HoloToolkit.Unity
     public class keyboardScript : Singleton<keyboardScript>
     {
 
-        public GameObject activatorObject;
+        public GameObject keyboardActivator;
         public bool onOff;
         public InputField currentField;
         public InputField keyboardField;
-        
-        //public GameObject canvasObj;
-
-        //anim objects
-        float animCounter;
-        public GameObject beforeObj;
-        public GameObject afterObj;
-        Vector3 canvasOriPos;
-        Vector3 canvasOffset;
-
         public GameObject numbers;
         public GameObject symbols;
         bool symbolsOn;
@@ -48,7 +38,11 @@ namespace HoloToolkit.Unity
         public GameObject micOn;
         bool isRecording;
 
-        
+        public bool useKeypad;
+        public bool useNumpad;
+        public bool useEnum;
+
+
         private void Start()
         {
             initDoubleClick = doubleClickSpeed;
@@ -62,11 +56,7 @@ namespace HoloToolkit.Unity
             {
                 currentField.text = keyboardField.text;
             }
-            if (animCounter > 0)
-            {
-                //    animCounter -= Time.deltaTime;
-                //    animObj(activatorObject,beforeObj,afterObj);
-            }
+
         }
 
         void doubleClick()
@@ -109,14 +99,19 @@ namespace HoloToolkit.Unity
 
         void nestedOn()
         {
+            if (useKeypad)
+            {
+                keyboardActivator.SetActive(true);
+            }
+
+
             //canvasOriPos = canvasObj.GetComponent<RectTransform>().position;
             //canvasOffset = canvasOriPos + new Vector3(0, .2f, 0);
-            activatorObject.SetActive(true);
+            
             keyboardField.ActivateInputField();
             onOff = true;
             cameraParent();
-
-            animCounter = .2f;
+            
             //symbols=============================================================
             numbers.SetActive(true);
             symbols.SetActive(false);
@@ -128,6 +123,7 @@ namespace HoloToolkit.Unity
             shift = false;
             //====================================================================
         }
+        
 
         public void adjustCaret()
         {
@@ -143,29 +139,12 @@ namespace HoloToolkit.Unity
             transform.SetParent(null);
         }
 
-        void animObj(GameObject animated, GameObject before, GameObject after)
-        {
-            //float animMult = 1 - (animCounter / .2f);
-            //animated.transform.SetParent(before.transform);
-            //animated.transform.localPosition = new Vector3(0, 0, 0);
-            //animated.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            //animated.transform.localScale = new Vector3(1, 1, 1);
-            //animated.transform.SetParent(after.transform);
-            //animated.transform.localPosition = Vector3.MoveTowards(animated.transform.localPosition, after.transform.position, animMult);
-            //animated.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            //animated.transform.localScale = Vector3.MoveTowards(animated.transform.localScale, after.transform.localScale, animMult);
-            //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos, canvasOffset, animMult);
-        }
 
         public void turnOff()
         {
-            //canvasOriPos = canvasObj.GetComponent<RectTransform>().position;
-            canvasOffset = canvasOriPos + new Vector3(0, 0, 0);
-            activatorObject.SetActive(false);
+            keyboardActivator.SetActive(false);
             keyboardField.DeactivateInputField();
             onOff = false;
-            animCounter = .2f;
-            float animMult = 1 - (animCounter / .2f);
             currentField = null;
             keyboardField.text = "";
             //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
@@ -196,11 +175,7 @@ namespace HoloToolkit.Unity
             keyboardField.caretPosition++;
         }
 
-        public void updateDict()
-        {
-            //keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, Dictationizer.Instance.textSoFar.ToString());
-            //keyboardField.caretPosition = keyboardField.caretPosition + Dictationizer.Instance.textSoFar.ToString().Length;
-        }
+
 
         public void typeCapitalCheck()
         {
@@ -271,15 +246,7 @@ namespace HoloToolkit.Unity
             keyboardField.caretPosition++;
         }
 
-        void symbolsOnFunc()
-        {
 
-        }
-
-        void symbolsOffFunc()
-        {
-
-        }
 
         public void symbolsToggle()
         {
