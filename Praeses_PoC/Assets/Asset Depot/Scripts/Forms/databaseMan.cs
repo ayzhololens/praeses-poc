@@ -194,13 +194,37 @@ public class databaseMan : Singleton<databaseMan>
         print("jsonValuesLoaded");
     }
 
-    //public void addAnnotation(string type, string value, List<float> coordinate)
-    //{
-    //    AnnotationClass newAnn = new AnnotationClass();
-    //    newAnn.type = type;
-    //    newAnn.value = value;
-    //    newAnn.coordinate = coordinate;
-    //}
+    public void addAnnotation(GameObject nodeObj)
+    {
+        NodeClass newNode = new NodeClass();
+        Vector3 pos = nodeObj.transform.position;
+        Quaternion rot = nodeObj.transform.rotation;
+        Vector3 sca = nodeObj.transform.localScale;
+
+        float[] floats = new float[] { pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, rot.w, sca.x, sca.y, sca.z };
+        foreach(float flo in floats)
+        {
+            newNode.transform.Add(flo);
+        };
+
+        if (nodeObj.GetComponent<annotationMediaHolder>() != null)
+        {
+            newNode.type = "0";
+        }else if(nodeObj.GetComponent<formNodeController>() != null)
+        {
+            newNode.type = "1";
+        }
+        //newNode.title = ;
+        //public string user;
+        //public string date;
+        //public string description;
+        //public string audioPath;
+        //public List<comment> comments = new List<comment>();
+        //public List<media> medias = new List<media>();
+        //public int indexNum;
+        ////1=generic,2=form, 3=violation
+        //public string type;
+    }
 
     public void formToClassValueSync(string keyword, string value)
     {
