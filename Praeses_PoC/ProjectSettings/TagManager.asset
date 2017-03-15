@@ -14,6 +14,7 @@ TagManager:
   - handCursorCollide
   - boilerPrefab
   - handCursor
+  - inputField
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - nodes
   - 
   - 
   - 

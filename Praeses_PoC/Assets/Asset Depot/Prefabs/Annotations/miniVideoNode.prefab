@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4684139448022174}
   - component: {fileID: 33128312344639572}
   - component: {fileID: 23553414460746326}
+  - component: {fileID: 114671553700275910}
   m_Layer: 0
   m_Name: pPipe1
   m_TagString: Untagged
@@ -60,6 +61,9 @@ GameObject:
   - component: {fileID: 114250910643539598}
   - component: {fileID: 114820960199300674}
   - component: {fileID: 114550007628984080}
+  - component: {fileID: 23753328026700568}
+  - component: {fileID: 33893325014826200}
+  - component: {fileID: 114761948844415012}
   m_Layer: 0
   m_Name: miniVideoNode
   m_TagString: Node
@@ -119,7 +123,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358996027637648}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalPosition: {x: 1.37, y: -1.73, z: -2.97}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4655293716229026}
@@ -261,6 +265,37 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &23753328026700568
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358996027637648}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!33 &33023085122232134
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -282,6 +317,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1950380569128572}
   m_Mesh: {fileID: 4300002, guid: 335b597ed9d46454782577c435ac89d6, type: 3}
+--- !u!33 &33893325014826200
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358996027637648}
+  m_Mesh: {fileID: 4300012, guid: faa9261052912a348a86cead9f186f79, type: 3}
 --- !u!65 &65481901542667918
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -337,6 +379,7 @@ MonoBehaviour:
   filepath: 
   filename: 
   playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
   photoTexture: {fileID: 0}
   photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
@@ -364,6 +407,8 @@ MonoBehaviour:
   distanceThreshold: 0
   openNodeCounter: 0
   speed: 0
+  reviewState: 0
+  reviewButtons: {fileID: 0}
 --- !u!114 &114550007628984080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,6 +436,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114671553700275910
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1094978397959078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a1decba766efd4f8cf1e34c96f7d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  render: 1998
 --- !u!114 &114707165348320524
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -405,6 +462,18 @@ MonoBehaviour:
   NodeMesh: {fileID: 1522157756768968}
   nodeMat: {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
   nodeHighlightMat: {fileID: 2100000, guid: 358f766297a01c142a3f17bb58dd2e05, type: 2}
+--- !u!114 &114761948844415012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358996027637648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a1decba766efd4f8cf1e34c96f7d21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  render: 1998
 --- !u!114 &114820960199300674
 MonoBehaviour:
   m_ObjectHideFlags: 1
