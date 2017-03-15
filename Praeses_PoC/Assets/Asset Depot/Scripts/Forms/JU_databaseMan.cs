@@ -83,7 +83,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         public List<media> photos = new List<media>();
         public List<media> videos = new List<media>();
         public int indexNum;
-        public string type;
+        public int type;
     }
 
     [System.Serializable]

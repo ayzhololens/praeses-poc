@@ -1,10 +1,10 @@
-#if WINDOWS_UWP
-using Newtonsoft.Json;
-using System.Collections;
-#endif
-
+//#if WINDOWS_UWP
 //using Newtonsoft.Json;
 //using System.Collections;
+//#endif
+
+using Newtonsoft.Json;
+using System.Collections;
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +23,7 @@ public class databaseMan : Singleton<databaseMan>
     public MainForm definitions;
     public ValuesClass values;
 
+    public GameObject testItem;
 
     public Dictionary<string, GameObject> formPairs = new Dictionary<string, GameObject>();
 
@@ -126,7 +127,7 @@ public class databaseMan : Singleton<databaseMan>
         public List<media> medias = new List<media>();
         public int indexNum;
         //1=generic,2=form, 3=violation
-        public string type;
+        public int type;
     }
 
     [System.Serializable]
@@ -149,28 +150,28 @@ public class databaseMan : Singleton<databaseMan>
 
     public void saveCmd()
     {
-#if WINDOWS_UWP
-                        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-                        System.IO.File.WriteAllText(saveDir, json);
-#endif
+        //#if WINDOWS_UWP
+        //                        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        //                        System.IO.File.WriteAllText(saveDir, json);
+        //#endif
 
 
 
-        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //System.IO.File.WriteAllText(saveDir, json);
+        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        System.IO.File.WriteAllText(saveDir, json);
 
         print("jsonSaved");
     }
 
     public void loadDefCmd()
     {
-#if WINDOWS_UWP
-                        defJsonText = File.ReadAllText(definitionsDir);
-                        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
-#endif
+        //#if WINDOWS_UWP
+        //                        defJsonText = File.ReadAllText(definitionsDir);
+        //                        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        //#endif
 
-        //defJsonText = File.ReadAllText(definitionsDir);
-        //definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        defJsonText = File.ReadAllText(definitionsDir);
+        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 
         print("jsonDefinitionsLoaded");
         loadValCmd();
@@ -190,24 +191,75 @@ public class databaseMan : Singleton<databaseMan>
 
     public void loadValCmd()
     {
-#if WINDOWS_UWP
-                        valJsonText = File.ReadAllText(valuesDir);
-                        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
-#endif
+        //#if WINDOWS_UWP
+        //                        valJsonText = File.ReadAllText(valuesDir);
+        //                        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        //#endif
 
-        //valJsonText = File.ReadAllText(valuesDir);
-        //values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        valJsonText = File.ReadAllText(valuesDir);
+        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 
         print("jsonValuesLoaded");
     }
 
-    //public void addAnnotation(string type, string value, List<float> coordinate)
-    //{
-    //    AnnotationClass newAnn = new AnnotationClass();
-    //    newAnn.type = type;
-    //    newAnn.value = value;
-    //    newAnn.coordinate = coordinate;
-    //}
+    public void testAddAnnotation()
+    {
+        addAnnotation(testItem);
+    }
+
+    public void addAnnotation(GameObject nodeObj)
+    {
+        NodeClass newNode = new NodeClass();
+        Vector3 pos = nodeObj.transform.position;
+        Quaternion rot = nodeObj.transform.rotation;
+        Vector3 sca = nodeObj.transform.localScale;
+
+        float[] floats = new float[] { pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, rot.w, sca.x, sca.y, sca.z };
+        foreach (float flo in floats)
+        {
+            newNode.transform.Add(flo);
+        };
+
+        newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;
+        newNode.user = nodeObj.GetComponent<nodeMediaHolder>().User;
+        newNode.date = nodeObj.GetComponent<nodeMediaHolder>().Date;
+        newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
+        newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;
+        foreach (InputField inputField in nodeObj.GetComponent<nodeMediaHolder>().commentDescriptions)
+        {
+            comment newComment = new comment();
+            newComment.content = inputField.text;
+            //public string user;
+            //public string date;
+            newNode.comments.Add(newComment);
+        }
+        foreach (string mediaPath in nodeObj.GetComponent<nodeMediaHolder>().filepath)
+        {
+            media newMedia = new media();
+            newMedia.path = mediaPath;
+            //public int type;
+            //public string user;
+            //public string date;
+            newNode.medias.Add(newMedia);
+        }
+        newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;
+
+        //1=generic,2=form, 3=violation
+        if (nodeObj.GetComponent<nodeMediaHolder>().fieldNode)
+        {
+            newNode.type = 2;
+        }
+        else if (nodeObj.GetComponent<nodeMediaHolder>().violationNode)
+        {
+            newNode.type = 3;
+        }else
+        {
+            newNode.type = 1;
+        }
+        
+
+        values.Location.Equipment[0].Nodes.Add(newNode);
+    }
 
     public void formToClassValueSync(string keyword, string value)
     {
