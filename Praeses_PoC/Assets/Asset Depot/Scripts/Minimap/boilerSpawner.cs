@@ -42,7 +42,7 @@ namespace HoloToolkit.Unity
             activeObj = boilerClone;
             for (int i = 0; i < activeObj.transform.childCount; i++)
             {
-                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
+                    activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
             }
             tapToPlaceBoiler = true;
         }
