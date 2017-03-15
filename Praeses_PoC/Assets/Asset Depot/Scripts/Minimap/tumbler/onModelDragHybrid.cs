@@ -72,8 +72,10 @@ public class onModelDragHybrid : Singleton<onModelDragHybrid>
 
         if (GazeManager.Instance.HitObject == gameObject || navigating)
         {
+            Debug.Log("looking");
             if (sourceManager.Instance.sourcePressed)
             {
+                Debug.Log("pressing...");
                 if (!navigating)
                 {
                     
