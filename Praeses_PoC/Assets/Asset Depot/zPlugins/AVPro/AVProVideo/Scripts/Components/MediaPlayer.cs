@@ -994,7 +994,7 @@ namespace RenderHeads.Media.AVProVideo
 			ErrorCode errorCode = m_Control.GetLastError();
 			if (ErrorCode.None != errorCode)
 			{
-				//Debug.LogError("[AVProVideo] Error: " + errorCode.ToString());
+				Debug.LogError("[AVProVideo] Error: " + errorCode.ToString());
 
 				if (m_events != null)
 				{
