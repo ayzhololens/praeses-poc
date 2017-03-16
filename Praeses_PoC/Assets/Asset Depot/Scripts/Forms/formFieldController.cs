@@ -162,8 +162,7 @@ namespace HoloToolkit.Unity
             repositionThumb();
 
             spawnedVideo.GetComponent<commentContents>().isVideo = true;
-            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedVideo.GetComponent<commentContents>().commentMain);
-            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedVideo.GetComponent<commentContents>().commentMeta.text);
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
             spawnedVideo.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedVideo.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
@@ -184,9 +183,8 @@ namespace HoloToolkit.Unity
             repositionThumb();
             spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
             linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(null);
-            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedComment.GetComponent<commentContents>().commentMain);
-            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedComment.GetComponent<commentContents>().commentMeta.text);
             spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
@@ -220,8 +218,7 @@ namespace HoloToolkit.Unity
             spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
             spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
             spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            linkedNode.GetComponent<nodeMediaHolder>().commentDescriptions.Add(spawnedPhoto.GetComponent<commentContents>().commentMain);
-            linkedNode.GetComponent<nodeMediaHolder>().commentMetas.Add(spawnedPhoto.GetComponent<commentContents>().commentMeta.text);
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
             spawnedPhoto.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedPhoto.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedPhoto.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);

@@ -110,7 +110,7 @@ namespace HoloToolkit.Unity
                 miniAnnotation = Instantiate(miniFieldNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
 
             }
-            GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
+            //GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
             miniAnnotation.transform.SetParent(Minimap.transform);
             rotatorGroup.transform.localPosition = Vector3.zero;
             rotatorGroup.transform.localScale = Vector3.one;

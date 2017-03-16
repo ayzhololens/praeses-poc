@@ -785,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1788995767565682
 GameObject:
   m_ObjectHideFlags: 1
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 0}
+  commentMain: {fileID: 114260315507178478}
   commentMeta: {fileID: 114182457614180024}
   Date: 
   user: 
