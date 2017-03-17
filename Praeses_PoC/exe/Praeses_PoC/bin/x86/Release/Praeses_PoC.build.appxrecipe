@@ -9,7 +9,7 @@
     <SolutionConfiguration>Release|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>870ccf90-3e52-4284-98c9-cc29872d51b3</PackageIdentityName>
-    <PackageIdentityPublisher>CN=jjohar</PackageIdentityPublisher>
+    <PackageIdentityPublisher>CN=DefaultCompany</PackageIdentityPublisher>
     <IntermediateOutputPath>C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\obj\x86\Release\</IntermediateOutputPath>
     <RemoteDeploymentType></RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
@@ -521,14 +521,14 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\UnityEngine.dll">
       <PackagePath>UnityEngine.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Newtonsoft.Json.dll">
+      <PackagePath>Newtonsoft.Json.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\UnityEngine.Analytics.dll">
       <PackagePath>UnityEngine.Analytics.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\UnityEngine.UI.dll">
       <PackagePath>UnityEngine.UI.dll</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Newtonsoft.Json.dll">
-      <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\UnityEngine.Networking.dll">
       <PackagePath>UnityEngine.Networking.dll</PackagePath>

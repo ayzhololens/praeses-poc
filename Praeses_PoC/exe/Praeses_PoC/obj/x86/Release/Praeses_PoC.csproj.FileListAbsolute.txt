@@ -126,9 +126,9 @@ C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\WinRTBridge.winmd
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\WinRTLegacy.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityEngine.pdb
+C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\Newtonsoft.Json.pdb
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityEngine.Analytics.pdb
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityEngine.UI.pdb
-C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\Newtonsoft.Json.pdb
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityEngine.Networking.pdb
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityPlayer.dll
 C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\UnityPlayer_UAP_x86_Release_dotnet.pdb
