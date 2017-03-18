@@ -15,6 +15,7 @@ namespace HoloToolkit.Unity
         public GameObject videoNode;
         public GameObject simpleNode;
         public GameObject fieldNode;
+        public GameObject violationNode;
         public GameObject Minimap;
         public Vector3 anchDist;
         public Transform SpatialMapping;
@@ -22,6 +23,7 @@ namespace HoloToolkit.Unity
         public GameObject miniVideoNode;
         public GameObject miniSimpleNode;
         public GameObject miniFieldNode;
+        public GameObject miniViolationNode;
         float scaleOffest;
         int finishCounter;
         GameObject miniAnnotation;
@@ -30,7 +32,7 @@ namespace HoloToolkit.Unity
         bool isPhotoNode;
         bool isSimpleNode;
         bool isFieldNode;
-
+        bool isViolationNode;
 
         // Use this for initialization
         void Start()
@@ -110,12 +112,17 @@ namespace HoloToolkit.Unity
                 miniAnnotation = Instantiate(miniFieldNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
 
             }
+            if (violationNode)
+            {
+                miniAnnotation = Instantiate(miniViolationNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
+
+            }
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)miniAnnotation);
             miniAnnotation.transform.SetParent(Minimap.transform);
             rotatorGroup.transform.localPosition = Vector3.zero;
             rotatorGroup.transform.localScale = Vector3.one;
             miniAnnotation.SetActive(SpatialMapping.GetComponent<miniMapToggle>().active);
-            if (!isFieldNode)
+            if (!isFieldNode && !isViolationNode)
             {
 
                 spawnedAnnotation.GetComponent<openAnnotationNode>().parentNode = spawnedAnnotation;
@@ -142,14 +149,17 @@ namespace HoloToolkit.Unity
                 spawnedAnnotation.GetComponent<formNodeController>().linkedField = annotationManager.Instance.activeField;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().linkedNode = spawnedAnnotation;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().enableAttachmentCapture();
-                //spawnedAnnotation.GetComponent<selectEvent>().enabled = true;
-                //spawnedAnnotation.GetComponent<formNodeController>().openForm();
+            }
+            if (isViolationNode)
+            {
+                spawnedAnnotation.GetComponent<violationNodeController>().spawnViolation();
             }
 
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
             isFieldNode = false;
+            isViolationNode = false;
 
         }
 
@@ -208,6 +218,20 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
         }
+
+
+        public void spawnViolationNode()
+        {
+            isViolationNode = true;
+            Vector3 pos = GazeManager.Instance.HitPosition;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
+            spawnedAnnotation = Instantiate(violationNode, pos, rot) as GameObject;
+            GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
+            spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
+            spawnedAnnotation.transform.SetParent(transform);
+            tapToPlaceInProgress = true;
+        }
+
 
         public void spawnMiniAnnotation()
         {

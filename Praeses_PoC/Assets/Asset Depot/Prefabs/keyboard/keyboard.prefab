@@ -2951,7 +2951,7 @@ GameObject:
   - component: {fileID: 65488967977763218}
   - component: {fileID: 114990181044178810}
   - component: {fileID: 114797628334948762}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: keyboard
   m_TagString: inputField
   m_Icon: {fileID: 0}
@@ -18359,11 +18359,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a8f9074e90ca74dbda256bc7ed8239, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatorObject: {fileID: 1139909520293172}
+  keyboardActivator: {fileID: 1139909520293172}
+  onOff: 0
   currentField: {fileID: 0}
   keyboardField: {fileID: 114591060034775852}
-  beforeObj: {fileID: 1778531508678796}
-  afterObj: {fileID: 1640538736610712}
   numbers: {fileID: 1401113718397600}
   symbols: {fileID: 1136051108373190}
   lower: {fileID: 1450324278646024}
@@ -18375,6 +18374,9 @@ MonoBehaviour:
   textLength: 17
   micOff: {fileID: 1297958902409340}
   micOn: {fileID: 1653204376186998}
+  useKeypad: 1
+  useNumpad: 0
+  useEnum: 0
 --- !u!114 &114293917660983820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -21087,11 +21089,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be8bd2ebd8277c448d6d81c75517fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagalongDistance: 1
+  TagalongDistance: 0.75
   EnforceDistance: 1
   PositionUpdateSpeed: 9.8
   SmoothMotion: 1
   SmoothingFactor: 0.75
+  YLimitMax: 0
+  YLimitMin: 0
 --- !u!114 &114992938616735460
 MonoBehaviour:
   m_ObjectHideFlags: 1
