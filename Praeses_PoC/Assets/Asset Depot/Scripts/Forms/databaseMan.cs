@@ -1,7 +1,7 @@
-//#if WINDOWS_UWP
-//using Newtonsoft.Json;
-//using System.Collections;
-//#endif
+#if WINDOWS_UWP
+using Newtonsoft.Json;
+using System.Collections;
+#endif
 
 using Newtonsoft.Json;
 using System.Collections;
@@ -148,12 +148,23 @@ public class databaseMan : Singleton<databaseMan>
         public string date;
     }
 
+    [System.Serializable]
+    public class tempComment
+    {
+        //1=simple,2=photo,3=video
+        public int type;
+        public string path;
+        public string content;
+        public string user;
+        public string date;
+    }
+
     public void saveCmd()
     {
-        //#if WINDOWS_UWP
-        //                        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //                        System.IO.File.WriteAllText(saveDir, json);
-        //#endif
+#if WINDOWS_UWP
+                                string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+                                System.IO.File.WriteAllText(saveDir, json);
+#endif
 
 
 
@@ -165,10 +176,10 @@ public class databaseMan : Singleton<databaseMan>
 
     public void loadDefCmd()
     {
-        //#if WINDOWS_UWP
-        //                        defJsonText = File.ReadAllText(definitionsDir);
-        //                        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
-        //#endif
+#if WINDOWS_UWP
+                                defJsonText = File.ReadAllText(definitionsDir);
+                                definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+#endif
 
         defJsonText = File.ReadAllText(definitionsDir);
         definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
@@ -176,25 +187,14 @@ public class databaseMan : Singleton<databaseMan>
         print("jsonDefinitionsLoaded");
         loadValCmd();
         JU_databaseMan.Instance.loadDefCmd();
-
-
-
-
-        //#if WINDOWS_UWP
-        //        buildUI(EFcanvasObject,definitions.EquipmentFields.threeNine, values.Location.Equipment[0].EquipmentData);
-        //        buildUI(EIFcanvasObject, definitions.EquipmentInspectionFields.threeNine, values.Location.Equipment[0].PreviousInspection[0].InspectionData);
-        //#endif
-
-        //buildUI(EFcanvasObject,definitions.EquipmentFields.threeNine, values.Location.Equipment[0].EquipmentData);
-        //buildUI(EIFcanvasObject, definitions.EquipmentInspectionFields.threeNine, values.Location.Equipment[0].PreviousInspection[0].InspectionData);
-    }
+}
 
     public void loadValCmd()
     {
-        //#if WINDOWS_UWP
-        //                        valJsonText = File.ReadAllText(valuesDir);
-        //                        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
-        //#endif
+#if WINDOWS_UWP
+                                valJsonText = File.ReadAllText(valuesDir);
+                                values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+#endif
 
         valJsonText = File.ReadAllText(valuesDir);
         values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
@@ -202,16 +202,21 @@ public class databaseMan : Singleton<databaseMan>
         print("jsonValuesLoaded");
     }
 
-    public void testAddAnnotation()
+    public void storeNodesList()
     {
-        addAnnotation(testItem);
+        values.Location.Equipment[0].Nodes.Clear();
+        foreach (GameObject node in annotationManager.Instance.activeAnnotations)
+        {
+            addAnnotation(node);
+        }
+        saveCmd();
     }
 
     public void addAnnotation(GameObject nodeObj)
     {
         NodeClass newNode = new NodeClass();
-        Vector3 pos = nodeObj.transform.position;
-        Quaternion rot = nodeObj.transform.rotation;
+        Vector3 pos = nodeObj.transform.localPosition;
+        Quaternion rot = nodeObj.transform.localRotation;
         Vector3 sca = nodeObj.transform.localScale;
 
         float[] floats = new float[] { pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, rot.w, sca.x, sca.y, sca.z };
@@ -320,8 +325,14 @@ public class databaseMan : Singleton<databaseMan>
         JU_databaseMan.Instance.loadNodesCmd();
     }
 
+    public void addComment()
+    {
+
+    }
+
     public void formToClassValueSync(string keyword, string value)
     {
+        print("values applied " + keyword + " " + value);
         List<ItemClass> itemClasses = new List<ItemClass>();
         foreach (ItemClass item in values.Location.Equipment[0].EquipmentData)
         {
@@ -335,10 +346,13 @@ public class databaseMan : Singleton<databaseMan>
         {
             if (item.name == keyword)
             {
-                InputField field = formPairs[keyword].GetComponentInChildren<InputField>();
+                print(item.name);
+                //InputField field = formPairs[keyword].GetComponentInChildren<InputField>();
                 item.value = value;
             }
-        };
+        }
+
+        JU_databaseMan.Instance.loadPresent();
     }
 
 }

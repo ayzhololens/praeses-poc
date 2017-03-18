@@ -168,9 +168,28 @@ namespace HoloToolkit.Unity
             spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
             spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            VideoPlayer.LoadVideoPlayer();
             capturingVideo = false;
         }
+
+        public virtual GameObject spawnVideoPaneFromJSon()
+        {
+            if (VideoPlayer == null)
+            {
+                VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            }
+
+            GameObject spawnedVideo = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
+            activeVideos.Add(spawnedVideo);
+            spawnedVideo.transform.SetParent(attachmentParent);
+            spawnedVideo.transform.localPosition = thumbPos.localPosition;
+            repositionThumb();
+
+            spawnedVideo.GetComponent<commentContents>().isVideo = true;
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
+            spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
+            return spawnedVideo;
+        }
+
 
         public void spawnSimpleComment()
         {
@@ -184,13 +203,24 @@ namespace HoloToolkit.Unity
             spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();
             linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
-            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(null);
             spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
             spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
             spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
             spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
         }
 
+        public virtual GameObject spawnSimpleCommentFromJSon()
+        {
+            GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
+            activeSimpleNotes.Add(spawnedComment);
+            spawnedComment.transform.SetParent(attachmentParent);
+            spawnedComment.transform.localPosition = thumbPos.localPosition;
+            repositionThumb();
+            spawnedComment.GetComponent<commentContents>().isSimple = true;
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
+            spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
+            return spawnedComment;
+        }
 
         public void loadPhotoMedia()
         {
@@ -228,6 +258,21 @@ namespace HoloToolkit.Unity
 
         }
 
+        public virtual GameObject spawnPhotoPaneFromJSon()
+        {
+            GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
+            activePhotos.Add(spawnedPhoto);
+            spawnedPhoto.transform.SetParent(attachmentParent);
+            spawnedPhoto.transform.localPosition = thumbPos.localPosition;
+            repositionThumb();
+            spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
+            spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
+            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
+
+
+            return spawnedPhoto;
+
+        }
 
     }
 }

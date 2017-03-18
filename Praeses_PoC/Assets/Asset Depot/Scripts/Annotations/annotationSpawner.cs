@@ -151,6 +151,7 @@ namespace HoloToolkit.Unity
             isVideoNode = false;
             isFieldNode = false;
 
+            databaseMan.Instance.addAnnotation(spawnedAnnotation);
         }
 
         public void spawnPhotoAnnotation()

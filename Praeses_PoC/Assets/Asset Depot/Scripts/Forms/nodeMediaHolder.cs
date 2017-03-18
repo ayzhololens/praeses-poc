@@ -83,8 +83,10 @@ namespace HoloToolkit.Unity
         }
 
         public void loadPhoto(string filepath)
-        {          
-            Texture2D targetTexture = new Texture2D(photoRecorder.cameraRes.width, photoRecorder.cameraRes.height);
+        {
+
+            Texture2D targetTexture = new Texture2D(2048, 1152);
+
             var bytesRead = System.IO.File.ReadAllBytes(filepath);
             //Texture2D myTexture = new Texture2D(1024, 1024);
             targetTexture.LoadImage(bytesRead);
