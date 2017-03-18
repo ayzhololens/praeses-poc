@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using System.Collections;
 #endif
 
-//using Newtonsoft.Json;
-//using System.Collections;
+using Newtonsoft.Json;
+using System.Collections;
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -157,8 +157,8 @@ public class databaseMan : Singleton<databaseMan>
 
 
 
-        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //System.IO.File.WriteAllText(saveDir, json);
+        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        System.IO.File.WriteAllText(saveDir, json);
 
         print("jsonSaved");
     }
@@ -170,24 +170,13 @@ public class databaseMan : Singleton<databaseMan>
                                 definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 #endif
 
-        //defJsonText = File.ReadAllText(definitionsDir);
-        //definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        defJsonText = File.ReadAllText(definitionsDir);
+        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 
         print("jsonDefinitionsLoaded");
         loadValCmd();
         JU_databaseMan.Instance.loadDefCmd();
-
-
-
-
-        //#if WINDOWS_UWP
-        //        buildUI(EFcanvasObject,definitions.EquipmentFields.threeNine, values.Location.Equipment[0].EquipmentData);
-        //        buildUI(EIFcanvasObject, definitions.EquipmentInspectionFields.threeNine, values.Location.Equipment[0].PreviousInspection[0].InspectionData);
-        //#endif
-
-        //buildUI(EFcanvasObject,definitions.EquipmentFields.threeNine, values.Location.Equipment[0].EquipmentData);
-        //buildUI(EIFcanvasObject, definitions.EquipmentInspectionFields.threeNine, values.Location.Equipment[0].PreviousInspection[0].InspectionData);
-    }
+}
 
     public void loadValCmd()
     {
@@ -196,8 +185,8 @@ public class databaseMan : Singleton<databaseMan>
                                 values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 #endif
 
-        //valJsonText = File.ReadAllText(valuesDir);
-        //values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        valJsonText = File.ReadAllText(valuesDir);
+        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 
         print("jsonValuesLoaded");
     }
@@ -322,6 +311,7 @@ public class databaseMan : Singleton<databaseMan>
 
     public void formToClassValueSync(string keyword, string value)
     {
+        print("values applied " + keyword + " " + value);
         List<ItemClass> itemClasses = new List<ItemClass>();
         foreach (ItemClass item in values.Location.Equipment[0].EquipmentData)
         {
@@ -335,10 +325,13 @@ public class databaseMan : Singleton<databaseMan>
         {
             if (item.name == keyword)
             {
-                InputField field = formPairs[keyword].GetComponentInChildren<InputField>();
+                print(item.name);
+                //InputField field = formPairs[keyword].GetComponentInChildren<InputField>();
                 item.value = value;
             }
-        };
+        }
+
+        JU_databaseMan.Instance.loadPresent();
     }
 
 }

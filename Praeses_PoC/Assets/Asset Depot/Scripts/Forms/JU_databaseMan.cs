@@ -326,8 +326,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         }
     }
 
-    void loadPresent()
+    public void loadPresent()
     {
+        values.presentData.Clear();
         foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].EquipmentData)
         {
             valueItem newValueItem = new valueItem();
