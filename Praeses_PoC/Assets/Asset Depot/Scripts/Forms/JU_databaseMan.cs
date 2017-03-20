@@ -219,7 +219,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         readLocationFields();
         readEquipmentFields();
         readInspectionFields();
-        print("JU_jsonDefinitionsLoaded");
+        //print("JU_jsonDefinitionsLoaded");
         loadNodesCmd();
         loadViolationsCmd();
         loadValCmd();

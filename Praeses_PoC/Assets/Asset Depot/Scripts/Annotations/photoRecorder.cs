@@ -22,14 +22,12 @@ namespace HoloToolkit.Unity
         public Texture2D targetTexture;
         public string filePath;
         public string filename;
-        public Resolution cameraRes;
-
 
 
         // Use this for initialization
         void Start()
         {
-            cameraRes = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
+
         }
 
 

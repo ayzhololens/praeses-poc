@@ -148,6 +148,17 @@ public class databaseMan : Singleton<databaseMan>
         public string date;
     }
 
+    [System.Serializable]
+    public class tempComment
+    {
+        //1=simple,2=photo,3=video
+        public int type;
+        public string path;
+        public string content;
+        public string user;
+        public string date;
+    }
+
     public void saveCmd()
     {
 #if WINDOWS_UWP
@@ -191,16 +202,21 @@ public class databaseMan : Singleton<databaseMan>
         print("jsonValuesLoaded");
     }
 
-    public void testAddAnnotation()
+    public void storeNodesList()
     {
-        addAnnotation(testItem);
+        values.Location.Equipment[0].Nodes.Clear();
+        foreach (GameObject node in annotationManager.Instance.activeAnnotations)
+        {
+            addAnnotation(node);
+        }
+        saveCmd();
     }
 
     public void addAnnotation(GameObject nodeObj)
     {
         NodeClass newNode = new NodeClass();
-        Vector3 pos = nodeObj.transform.position;
-        Quaternion rot = nodeObj.transform.rotation;
+        Vector3 pos = nodeObj.transform.localPosition;
+        Quaternion rot = nodeObj.transform.localRotation;
         Vector3 sca = nodeObj.transform.localScale;
 
         float[] floats = new float[] { pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, rot.w, sca.x, sca.y, sca.z };
@@ -307,6 +323,11 @@ public class databaseMan : Singleton<databaseMan>
 
         values.Location.Equipment[0].Nodes.Add(newNode);
         JU_databaseMan.Instance.loadNodesCmd();
+    }
+
+    public void addComment()
+    {
+
     }
 
     public void formToClassValueSync(string keyword, string value)

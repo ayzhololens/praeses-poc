@@ -173,11 +173,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1995137031808178, guid: f256e9a9eb09206468d9c70f1ae87cab,
     type: 2}
   m_PrefabInternal: {fileID: 1592269379}
---- !u!1 &488861246 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1424359974238574, guid: 53124755de575cd44bc6bb52b244f2a6,
-    type: 2}
-  m_PrefabInternal: {fileID: 734242984}
 --- !u!1 &503678501 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1455328868444208, guid: b2db04283121ca74495c2ee000fb4243,
@@ -430,6 +425,13 @@ MonoBehaviour:
   - {fileID: 1424359974238574, guid: 53124755de575cd44bc6bb52b244f2a6, type: 2}
   - {fileID: 1424359974238574, guid: 53124755de575cd44bc6bb52b244f2a6, type: 2}
   - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
+  changedText: {fileID: 0}
+--- !u!114 &1239472684 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114734879544203838, guid: 6b9c14fcc8025f543bf3a867845d521d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1422079146}
+  m_Script: {fileID: 11500000, guid: 6759599d0c3d35345893e668b98bc8a3, type: 3}
 --- !u!114 &1321159826 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114762939697747612, guid: 6b9c14fcc8025f543bf3a867845d521d,
@@ -670,7 +672,8 @@ Prefab:
         type: 2}
       propertyPath: fieldNode
       value: 
-      objectReference: {fileID: 488861246}
+      objectReference: {fileID: 1424359974238574, guid: 53124755de575cd44bc6bb52b244f2a6,
+        type: 2}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[0].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -684,7 +687,27 @@ Prefab:
     - target: {fileID: 114608681545669052, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: m_VideoLocation
-      value: 2
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: KeywordsAndResponses.Array.data[10].Keyword
+      value: store nodes
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: KeywordsAndResponses.Array.data[10].KeyCode
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: KeywordsAndResponses.Array.data[10].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1239472684}
+    - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: KeywordsAndResponses.Array.data[10].Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: storeNodesList
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114746543246976490, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
@@ -732,6 +755,10 @@ Prefab:
     - target: {fileID: 1783933078411172, guid: f256e9a9eb09206468d9c70f1ae87cab, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1457044882841498, guid: f256e9a9eb09206468d9c70f1ae87cab, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f256e9a9eb09206468d9c70f1ae87cab, type: 2}
