@@ -17,15 +17,14 @@ Data\resources.assets.resS
 Data\Resources\unity default resources
 Data\Resources\unity_builtin_extra
 Data\sharedassets0.assets
+Data\sharedassets0.assets.resS
 Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4
 Data\StreamingAssets\AVProVideoSamples\AlphaTopBottom.mp4
 Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp3
 Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp4
-Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_720p30.mp4
 Data\StreamingAssets\AVProVideoSamples\SampleCube.mp4
 Data\StreamingAssets\AVProVideoSamples\SampleSphere.mp4
 Data\StreamingAssets\hi
-Data\StreamingAssets\hi.jpg
 MicStreamSelector.dll
 opencv_calib3d300.dll
 opencv_core300.dll

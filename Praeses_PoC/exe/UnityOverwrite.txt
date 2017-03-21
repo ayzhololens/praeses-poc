@@ -9,9 +9,9 @@ Praeses_PoC.sln: modified
 GeneratedProjects\UWP\Assembly-CSharp\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 GeneratedProjects\UWP\Assembly-CSharp-firstpass\project.json: 4FCF72A4D5EDB37E24C206A7BCFE7AF1
 Praeses_PoC\App.xaml: B2D48D7A3394611417F4B702878D4E13
-Praeses_PoC\App.xaml.cs: 6931229D0C5DE2D21EE736E0531F1CF2
+Praeses_PoC\App.xaml.cs: modified
 Praeses_PoC\MainPage.xaml: 1F67A876EBD6A85A8383969EEEF4AEDE
-Praeses_PoC\MainPage.xaml.cs: F8FB1E95062C57318136C531A7BC5366
+Praeses_PoC\MainPage.xaml.cs: modified
 Praeses_PoC\Package.appxmanifest: 74398443ACC156B2FC65CCDCEA01E546
 Praeses_PoC\Praeses_PoC.csproj: modified
 Praeses_PoC\Praeses_PoC.csproj.user: modified
@@ -38,5 +38,5 @@ Praeses_PoC\obj\x86\Release\PackageLayout\Assets\Square44x44Logo.targetsize-24_a
 Praeses_PoC\obj\x86\Release\PackageLayout\Assets\StoreLogo.png: 90BD194CA4A7CFFF3E8B8222229857FB
 Praeses_PoC\obj\x86\Release\PackageLayout\Assets\Wide310x150Logo.scale-200.png: C96846A80DF667F87355569CD816192D
 Praeses_PoC\obj\x86\Release\PackageLayout\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826
-Praeses_PoC\Properties\AssemblyInfo.cs: 751511EC4FF40BB3F4D8AC503D2343D3
+Praeses_PoC\Properties\AssemblyInfo.cs: modified
 Praeses_PoC\Properties\Default.rd.xml: 72EB282657164E79A1C42F6240984826

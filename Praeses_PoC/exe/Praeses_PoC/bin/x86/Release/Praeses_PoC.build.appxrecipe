@@ -484,6 +484,9 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\resources.assets.resS">
       <PackagePath>Data\resources.assets.resS</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\sharedassets0.assets.resS">
+      <PackagePath>Data\sharedassets0.assets.resS</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\AlphaLeftRight.mp4</PackagePath>
     </AppxPackagedFile>
@@ -493,9 +496,6 @@
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp4</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_720p30.mp4">
-      <PackagePath>Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_720p30.mp4</PackagePath>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\SampleCube.mp4">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\SampleCube.mp4</PackagePath>
     </AppxPackagedFile>
@@ -504,9 +504,6 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp3">
       <PackagePath>Data\StreamingAssets\AVProVideoSamples\BigBuckBunny_360p30.mp3</PackagePath>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\Data\StreamingAssets\hi.jpg">
-      <PackagePath>Data\StreamingAssets\hi.jpg</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\exe\Praeses_PoC\bin\x86\Release\Praeses_PoC.xr.xml">
       <PackagePath>Praeses_PoC.xr.xml</PackagePath>

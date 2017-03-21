@@ -105,8 +105,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     [System.Serializable]
     public class ValuesClass
     {
-        public List<valueItem> presentData = new List<valueItem>();
+        public List<valueItem> equipmentData = new List<valueItem>();
         public List<valueItem> historicData = new List<valueItem>();
+        public List<valueItem> currentData = new List<valueItem>();
     }
 
     [System.Serializable]
@@ -227,7 +228,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
     public void loadValCmd()
     {
-        loadPresent();
+        loadEquipmentData();
         loadHistoric();
     }
 
@@ -326,9 +327,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         }
     }
 
-    public void loadPresent()
+    public void loadEquipmentData()
     {
-        values.presentData.Clear();
+        values.equipmentData.Clear();
         foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].EquipmentData)
         {
             valueItem newValueItem = new valueItem();
@@ -336,7 +337,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
             newValueItem.value = item.value;
             newValueItem.nodeIndex = item.nodeIndex;
 
-            values.presentData.Add(newValueItem);
+            values.equipmentData.Add(newValueItem);
         }
     }
 
@@ -351,7 +352,21 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
             values.historicData.Add(newValueItem);
         }
-    } 
+    }
+
+    public void loadCurrentData()
+    {
+        values.currentData.Clear();
+        foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].CurrentInspection)
+        {
+            valueItem newValueItem = new valueItem();
+            newValueItem.name = item.name;
+            newValueItem.value = item.value;
+            newValueItem.nodeIndex = item.nodeIndex;
+
+            values.currentData.Add(newValueItem);
+        }
+    }
 
     public virtual ViolationsItem scriptedViolation(ViolationsItem incomingItem)
     {

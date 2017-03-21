@@ -99,5 +99,12 @@ namespace HoloToolkit.Unity
         {
             //toggleField();
         }
+
+        public void onEditChangeUpdateJSon()
+        {
+            string keyword;
+            keyword = gameObject.GetComponent<formFieldController>().trueName;
+            databaseMan.Instance.formToClassValueSync(keyword, mainInputField.text);
+        }
     }
 }
