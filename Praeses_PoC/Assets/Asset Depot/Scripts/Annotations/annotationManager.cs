@@ -222,6 +222,15 @@ namespace HoloToolkit.Unity
             }
         }
 
+        public void FinishFakeCapture()
+        {
+            photoCaptureEnabled = false;
+            stateIndicator.SetActive(false);
+            annotating = false;
+            videoRecordingInProgress = false;
+
+        }
+
         public void StartDictation()
         {
             annotating = true;

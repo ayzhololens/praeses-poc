@@ -180,13 +180,18 @@ namespace HoloToolkit.Unity
             if (!isMiniNode)
             {
                 contentHoler.transform.position = contenLoc.position;
-                foreach (GameObject annots in annotManager.activeAnnotations)
+                if (annotManager != null)
                 {
-                    if (annots.GetComponent<openAnnotationNode>() != null)
-                    {
-                        annots.GetComponent<openAnnotationNode>().closeContent();
-                    }
 
+                    foreach (GameObject annots in annotManager.activeAnnotations)
+                    {
+                        if (annots.GetComponent<openAnnotationNode>() != null)
+                        {
+                            annots.GetComponent<openAnnotationNode>().closeContent();
+                        }
+
+
+                    }
                 }
 
                 contentHoler.SetActive(true);
