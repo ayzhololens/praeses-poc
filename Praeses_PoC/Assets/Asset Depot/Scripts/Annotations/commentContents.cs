@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using RenderHeads.Media.AVProVideo;
 using UnityEngine.UI;
 
 namespace HoloToolkit.Unity
@@ -21,10 +23,22 @@ namespace HoloToolkit.Unity
         bool startedVideo;
         public GameObject playIcon;
         public GameObject pauseIcon;
+        MediaPlayer mediaPlayer;
 
         // Use this for initialization
         void Start() {
-            
+            if (linkedComponent.GetComponent<formFieldController>() != null)
+            {
+
+                mediaPlayer = linkedComponent.GetComponent<formFieldController>().VideoPlayer;
+            }
+
+            if (linkedComponent.GetComponent<violationController>() != null)
+            {
+
+                mediaPlayer = linkedComponent.GetComponent<violationController>().VideoPlayer;
+            }
+
 
         }
 
@@ -40,22 +54,28 @@ namespace HoloToolkit.Unity
 
         public void LoadVideo()
         {
-            linkedComponent.GetComponent<formFieldController>().VideoPlayer.m_VideoPath = filepath;
-            linkedComponent.GetComponent<formFieldController>().VideoPlayer.LoadVideoPlayer();
-            PlayVideo();
+
+            mediaPlayer.m_VideoPath = filepath;
+            mediaPlayer.LoadVideoPlayer();
+
 
         }
 
         public void PlayVideo()
         {
+            if (mediaPlayer.m_VideoPath != filepath)
+            {
+                LoadVideo();
+            }
             if (!startedVideo)
             {
 
-                linkedComponent.GetComponent<formFieldController>().VideoPlayer.Control.Play();
+                mediaPlayer.Control.Play();
                 startedVideo = true;
                 playIcon.SetActive(false);
                 pauseIcon.SetActive(true);
             }
+
 
         }
 
@@ -63,16 +83,17 @@ namespace HoloToolkit.Unity
         {
             if (startedVideo)
             {
-                linkedComponent.GetComponent<formFieldController>().VideoPlayer.Control.Pause();
+                mediaPlayer.Control.Pause();
                 startedVideo = false;
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);
             }
+
         }
 
         void videoChecker()
         {
-            if (linkedComponent.GetComponent<formFieldController>().VideoPlayer.Control.IsFinished())
+            if (mediaPlayer.Control.IsFinished())
             {
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);

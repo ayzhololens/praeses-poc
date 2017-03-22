@@ -153,6 +153,7 @@ namespace HoloToolkit.Unity
             if (isViolationNode)
             {
                 spawnedAnnotation.GetComponent<violationNodeController>().spawnViolation();
+                annotationManager.Instance.activateMedia();
             }
 
             isPhotoNode = false;

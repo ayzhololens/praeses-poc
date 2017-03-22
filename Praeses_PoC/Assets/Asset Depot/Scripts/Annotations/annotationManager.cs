@@ -93,22 +93,48 @@ namespace HoloToolkit.Unity
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
-
-            if (activeField != null && currentAnnotation.GetComponent<nodeMediaHolder>().fieldNode)
+            if (currentAnnotation.GetComponent<nodeMediaHolder>().violationNode)
             {
-                if (activeField.GetComponent<formFieldController>().capturingPhoto)
+
+
+                if (currentAnnotation.GetComponent<selectEvent>().enabled == false)
                 {
-                    activeField.GetComponent<formFieldController>().loadPhotoMedia();
-                }
-                if (activeField.GetComponent<formFieldController>().capturingVideo)
-                {
-                    activeField.GetComponent<formFieldController>().loadVideoMedia();
+
+                    currentAnnotation.GetComponent<selectEvent>().enabled = true;
                 }
 
-                //currentAnnotation.GetComponent<nodeMediaHolder>().Title = activeField.GetComponent<formFieldController>().DisplayName.text;
+                if (activeField != null)
+                {
+                    if (activeField.GetComponent<violationController>().capturingPhoto)
+                    {
+                        activeField.GetComponent<violationController>().loadPhotoMedia();
+                    }
+                    if (activeField.GetComponent<violationController>().capturingVideo)
+                    {
+                        activeField.GetComponent<violationController>().loadVideoMedia();
+                    }
+                }
             }
+            if (activeField != null)
+            {
+                if (currentAnnotation.GetComponent<nodeMediaHolder>().fieldNode)
+                {
+                    if (activeField.GetComponent<formFieldController>().capturingPhoto)
+                    {
+                        activeField.GetComponent<formFieldController>().loadPhotoMedia();
+                    }
+                    if (activeField.GetComponent<formFieldController>().capturingVideo)
+                    {
+                        activeField.GetComponent<formFieldController>().loadVideoMedia();
+                    }
+                }
 
 
+
+                    //currentAnnotation.GetComponent<nodeMediaHolder>().Title = activeField.GetComponent<formFieldController>().DisplayName.text;
+                }
+
+            
             currentAnnotation.GetComponent<nodeMediaHolder>().User = metaManager.Instance.user;
             currentAnnotation.GetComponent<nodeMediaHolder>().Date = System.DateTime.Now.ToString();
 

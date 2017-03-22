@@ -22,9 +22,13 @@ namespace HoloToolkit.Unity
         void Start()
         {
             linkedField = GetComponent<commentContents>().linkedComponent.GetComponent<formFieldController>();
-            simpleStartScale = linkedField.GetComponent<formFieldController>().simpleNotePrefab.transform.localScale;
-            photoStartScale = linkedField.GetComponent<formFieldController>().photoThumbPrefab.transform.localScale; 
-            videoStartScale = linkedField.GetComponent<formFieldController>().videoThumbPrefab.transform.localScale;
+            if (linkedField.GetComponent<formFieldController>() != null)
+            {
+                simpleStartScale = linkedField.simpleNotePrefab.transform.localScale;
+                photoStartScale = linkedField.photoThumbPrefab.transform.localScale;
+                videoStartScale = linkedField.videoThumbPrefab.transform.localScale;
+
+            }
             for (int i = 0; i<transform.parent.childCount; i++)
             {
                 if (transform.parent.GetChild(i).gameObject.name == "breakOut")

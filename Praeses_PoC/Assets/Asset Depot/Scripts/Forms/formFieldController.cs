@@ -126,7 +126,6 @@ namespace HoloToolkit.Unity
         {
             annotationManager.Instance.enablePhotoCapture();
             annotationManager.Instance.currentAnnotation = linkedNode;
-
             annotationManager.Instance.activeField = this.gameObject;
             GetComponent<subMenu>().turnOffCounter();
             attachmentParent.gameObject.SetActive(true);

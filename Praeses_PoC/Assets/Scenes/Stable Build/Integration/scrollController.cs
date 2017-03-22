@@ -10,6 +10,7 @@ public class scrollController : MonoBehaviour {
     Vector3 curPos;
     float offset;
     public float sensitivity;
+    public GameObject ScrollContent;
 
 
 	// Use this for initialization
@@ -20,31 +21,37 @@ public class scrollController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject.tag == "ScrollContent")
+        if (sourceManager.Instance.sourcePressed && GazeManager.Instance.HitObject !=null)
         {
-            if (!scrolling)
-            {
-                startPos = HandsManager.Instance.ManipulationHandPosition;
-                scrolling = true;
-            }
-            float lastPos = curPos.y;
-            curPos = HandsManager.Instance.ManipulationHandPosition;
 
-            offset = (curPos.y - startPos.y) * sensitivity;
-            transform.position = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
-            if (curPos.y > startPos.y)
+
+
+            if ( GazeManager.Instance.HitObject.tag == "ScrollContent" && GazeManager.Instance.HitObject == this.gameObject)
             {
-                if (lastPos > curPos.y)
+                if (!scrolling)
                 {
+                    startPos = HandsManager.Instance.ManipulationHandPosition;
+                    scrolling = true;
+                }
+                float lastPos = curPos.y;
+                curPos = HandsManager.Instance.ManipulationHandPosition;
+
+                offset = (curPos.y - startPos.y) * sensitivity;
+                ScrollContent.transform.position = new Vector3(ScrollContent.transform.position.x, ScrollContent.transform.position.y + offset, ScrollContent.transform.position.z);
+                if (curPos.y > startPos.y)
+                {
+                    if (lastPos > curPos.y)
+                    {
+                    }
+
+
+
                 }
 
+                if (curPos.y < startPos.y)
+                {
 
-
-            }
-
-            if (curPos.y < startPos.y)
-            {
-
+                }
             }
 
 
