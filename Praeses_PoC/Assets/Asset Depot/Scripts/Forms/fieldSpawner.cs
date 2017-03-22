@@ -59,7 +59,7 @@ namespace HoloToolkit.Unity
                 }
                 else
                 {
-                    print(valueItem.name + " is not available");
+                    //print(valueItem.name + " is not available");
                 }
 
             }

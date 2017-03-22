@@ -162,6 +162,7 @@ namespace HoloToolkit.Unity
             isFieldNode = false;
             isViolationNode = false;
 
+            databaseMan.Instance.addAnnotation(spawnedAnnotation);
         }
 
         public void spawnPhotoAnnotation()

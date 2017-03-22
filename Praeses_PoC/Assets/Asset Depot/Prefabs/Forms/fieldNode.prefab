@@ -515,8 +515,7 @@ MonoBehaviour:
   filepath: []
   activeFilepath: 
   activeFileName: 
-  commentDescriptions: []
-  commentMetas: []
+  activeComments: []
   VideoPlayer: {fileID: 0}
   vidRecorder: {fileID: 0}
   playIcon: {fileID: 0}

@@ -38,8 +38,6 @@ namespace HoloToolkit.Unity
 
                 mediaPlayer = linkedComponent.GetComponent<violationController>().VideoPlayer;
             }
-
-
         }
 
         // Update is called once per frame
@@ -54,10 +52,22 @@ namespace HoloToolkit.Unity
 
         public void LoadVideo()
         {
-
             mediaPlayer.m_VideoPath = filepath;
             mediaPlayer.LoadVideoPlayer();
+            linkedComponent.GetComponent<formFieldController>().VideoPlayer.m_VideoPath = filepath;
+            linkedComponent.GetComponent<formFieldController>().VideoPlayer.LoadVideoPlayer();
+            //PlayVideo();
 
+        }
+
+        public void loadPhoto()
+        {
+
+            Texture2D targetTexture = new Texture2D(2048, 1152);
+
+            var bytesRead = System.IO.File.ReadAllBytes(filepath);
+            targetTexture.LoadImage(bytesRead);
+            GetComponent<Renderer>().material.mainTexture = targetTexture;
 
         }
 
@@ -69,7 +79,6 @@ namespace HoloToolkit.Unity
             }
             if (!startedVideo)
             {
-
                 mediaPlayer.Control.Play();
                 startedVideo = true;
                 playIcon.SetActive(false);

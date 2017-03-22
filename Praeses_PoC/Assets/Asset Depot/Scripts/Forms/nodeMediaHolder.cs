@@ -14,8 +14,8 @@ namespace HoloToolkit.Unity
         public List<string> filepath;
         public string activeFilepath;
         public string activeFileName;
-        public List<InputField> commentDescriptions;
-        public List<string> commentMetas;
+        public List<GameObject> activeComments;
+
         public MediaPlayer VideoPlayer;
         public videoRecorder vidRecorder;
         public GameObject playIcon;
@@ -40,6 +40,13 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
+            NodeIndex = annotationManager.Instance.nodeIndex;
+            annotationManager.Instance.nodeIndex += 1;
+
+
+            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
+            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
 
         }
 
@@ -55,8 +62,7 @@ namespace HoloToolkit.Unity
 
         public void loadVideoMedia()
         {
-            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
-            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+
 
             activeFileName = vidRecorder.filename;
             filepath.Add(vidRecorder.filepath);
@@ -67,7 +73,6 @@ namespace HoloToolkit.Unity
 
         public void loadPhotoMedia()
         {
-            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
 
             if (photoRecorder.targetTexture != null && photoVideoPane != null)
             {
@@ -89,13 +94,19 @@ namespace HoloToolkit.Unity
             photoVideoPane.GetComponent<Renderer>().material.mainTexture = photoTexture;
         }
 
+
+
         public void LoadVideo()
         {
-
+            if (VideoPlayer == null)
+            {
+                VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            }
             VideoPlayer.m_VideoPath = activeFileName;
             VideoPlayer.LoadVideoPlayer();
 
         }
+
 
         public void PlayVideo()
         {

@@ -9,7 +9,7 @@ public class commentManager : MonoBehaviour {
 
     public List<GameObject> activeComments;
     public Collider scrollBoxCollider;
-    int commentCount;
+    public int commentCount;
     public Transform commentParent;
     public Transform CommmentStartPos;
     Vector3 startPos;
@@ -68,21 +68,56 @@ public class commentManager : MonoBehaviour {
         //activeInputField = activeComments[commentCount].GetComponent<commentContents>().inputField;
         //activeComments[commentCount].AddComponent<inputFieldManager>().mainInputField = activeInputField;
         Invoke("fieldActivator", .2f);
-        GetComponent<nodeMediaHolder>().commentDescriptions.Add(activeComments[commentCount].GetComponent<commentContents>().commentMain);
-        GetComponent<nodeMediaHolder>().commentMetas.Add(activeComments[commentCount].GetComponent<commentContents>().commentMeta.text);
+        GetComponent<nodeMediaHolder>().activeComments.Add(activeComments[commentCount]);
         activeComments[commentCount].GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
         activeComments[commentCount].GetComponent<commentContents>().user = metaManager.Instance.user;
         activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
         activeComments[commentCount].GetComponent<commentContents>().linkedComponent = this.gameObject;
+
         //activeComments[commentCount].GetComponent<commentContents>().commentMain.text = ("Comment "+ commentCount);
         //startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
+    }
+
+    public virtual  GameObject spawnNewCommentFromJSon()
+    {
+        GameObject output;
+
+        startPos = CommmentStartPos.position;
+        if (commentCount == 0)
+        {
+            commentParent.parent.gameObject.SetActive(true);
+        }
+
+        if (commentCount == 2)
+        {
+            scrollBoxCollider.enabled = true;
+        }
+
+        for (int i = 0; i < activeComments.Count; i++)
+        {
+            activeComments[i].transform.position = new Vector3(activeComments[i].transform.position.x,
+                                                                activeComments[i].transform.position.y - offsetDist,
+                                                                activeComments[i].transform.position.z);
+        }
+
+        activeComments.Add((GameObject)Instantiate(newCommentBox, transform.position, Quaternion.identity));
+        activeComments[commentCount].transform.SetParent(commentParent);
+        activeComments[commentCount].transform.localScale = newCommentBox.transform.localScale;
+        activeComments[commentCount].transform.position = startPos;
+        activeComments[commentCount].transform.localRotation = CommmentStartPos.localRotation;
+        output = activeComments[commentCount];
+        GetComponent<nodeMediaHolder>().activeComments.Add(activeComments[commentCount]);
+        activeComments[commentCount].GetComponent<commentContents>().linkedComponent = this.gameObject;
+        commentCount += 1;
+        return output;
     }
 
     void fieldActivator()
     {
 
         activeComments[commentCount].GetComponent<inputFieldManager>().activateField();
-
         commentCount += 1;
+
+
     }
 }

@@ -10,6 +10,7 @@ namespace HoloToolkit.Unity
     {
 
         public GameObject boiler;
+        GameObject boilerClone;
         public GameObject desk;
         bool tapToPlaceBoiler;
         public GameObject SpatialMapping;
@@ -38,11 +39,11 @@ namespace HoloToolkit.Unity
             isObj = false;
             Vector3 pos = GazeManager.Instance.HitPosition;
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
-            GameObject boilerClone = Instantiate(boiler, pos, rot) as GameObject;
+            boilerClone = Instantiate(boiler, pos, rot) as GameObject;
             activeObj = boilerClone;
             for (int i = 0; i < activeObj.transform.childCount; i++)
             {
-                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
+                    activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
             }
             tapToPlaceBoiler = true;
         }
@@ -92,8 +93,18 @@ namespace HoloToolkit.Unity
             {
                 activeObj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
+            repositionNodeHolder();
 
+        }
 
+        void repositionNodeHolder()
+        {
+            Transform initParent = annotationManager.Instance.gameObject.transform.parent;
+            annotationManager.Instance.gameObject.transform.SetParent(boilerClone.transform);
+            annotationManager.Instance.gameObject.transform.localPosition = Vector3.zero;
+            annotationManager.Instance.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            annotationManager.Instance.gameObject.transform.localScale = Vector3.one;
+            annotationManager.Instance.gameObject.transform.SetParent(initParent);
         }
     }
 }

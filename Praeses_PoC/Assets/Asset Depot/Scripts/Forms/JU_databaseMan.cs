@@ -83,7 +83,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         public List<media> photos = new List<media>();
         public List<media> videos = new List<media>();
         public int indexNum;
-        public string type;
+        public int type;
     }
 
     [System.Serializable]
@@ -219,7 +219,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         readLocationFields();
         readEquipmentFields();
         readInspectionFields();
-        print("JU_jsonDefinitionsLoaded");
+        //print("JU_jsonDefinitionsLoaded");
         loadNodesCmd();
         loadViolationsCmd();
         loadValCmd();
@@ -231,8 +231,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         loadHistoric();
     }
 
-    void loadNodesCmd()
+    public void loadNodesCmd()
     {
+        nodesManager.nodes.Clear();
         databaseMan.ObjectsClass objectItem = databaseMan.Instance.values.Location.Equipment[0];
         foreach (databaseMan.NodeClass node in objectItem.Nodes)
         {
@@ -258,10 +259,10 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
                 newMedia.path = mediaItem.path;
                 newMedia.user = mediaItem.user;
                 newMedia.date = mediaItem.date;
-                if (mediaItem.type == 0)
+                if (mediaItem.type == 2)
                 {
                     newNodeItem.photos.Add(newMedia);
-                }else if(mediaItem.type == 1)
+                }else if(mediaItem.type == 3)
                 {
                     newNodeItem.videos.Add(newMedia);
                 }
@@ -325,8 +326,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         }
     }
 
-    void loadPresent()
+    public void loadPresent()
     {
+        values.presentData.Clear();
         foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].EquipmentData)
         {
             valueItem newValueItem = new valueItem();

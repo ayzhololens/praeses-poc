@@ -24,7 +24,6 @@ namespace HoloToolkit.Unity
         public string filename;
 
 
-
         // Use this for initialization
         void Start()
         {

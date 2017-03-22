@@ -29,6 +29,7 @@ namespace HoloToolkit.Unity
         annotationSpawner annotSpawner;
         public GameObject activeDictationBox;
         public GameObject activeField;
+        public int nodeIndex;
 
         public bool annotating;
 
