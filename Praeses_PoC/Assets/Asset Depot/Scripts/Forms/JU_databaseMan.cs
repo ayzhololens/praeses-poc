@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 using UnityEngine.UI;
 using HoloToolkit.Unity;
@@ -115,6 +116,16 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     {
         public string name;
         public string value;
+        public int nodeIndex;
+    }
+
+    [System.Serializable]
+    public class compareItem
+    {
+        public string name;
+        public string displayName;
+        public string value;
+        public string oldValue;
         public int nodeIndex;
     }
 
@@ -230,11 +241,14 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     {
         loadEquipmentData();
         loadHistoric();
+        loadCurrentData();
     }
 
     public void loadNodesCmd()
     {
         nodesManager.nodes.Clear();
+        List<nodeItem> tempNodeList = new List<nodeItem>();
+
         databaseMan.ObjectsClass objectItem = databaseMan.Instance.values.Location.Equipment[0];
         foreach (databaseMan.NodeClass node in objectItem.Nodes)
         {
@@ -272,8 +286,13 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
             newNodeItem.indexNum = node.indexNum;
             newNodeItem.type = node.type;
 
-            nodesManager.nodes.Add(newNodeItem);
+            tempNodeList.Add(newNodeItem);
         }
+        foreach(nodeItem nodeItem in tempNodeList.OrderBy(si => si.date).ToList().Reverse<nodeItem>())
+        {
+            nodesManager.nodes.Add(nodeItem);
+        }
+        
     }
 
     void loadViolationsCmd()
