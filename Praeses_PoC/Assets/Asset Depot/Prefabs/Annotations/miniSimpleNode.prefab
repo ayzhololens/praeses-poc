@@ -55,9 +55,9 @@ GameObject:
   - component: {fileID: 65860756284157564}
   - component: {fileID: 114533183595539644}
   - component: {fileID: 114116116646553312}
-  - component: {fileID: 114834063047410030}
-  - component: {fileID: 114769034539575282}
-  - component: {fileID: 114777287561711696}
+  - component: {fileID: 114345805981848518}
+  - component: {fileID: 114878295806040872}
+  - component: {fileID: 114918686193466352}
   m_Layer: 0
   m_Name: miniSimpleNode
   m_TagString: Node
@@ -315,7 +315,9 @@ MonoBehaviour:
   distanceThreshold: 0
   openNodeCounter: 0
   speed: 0
---- !u!114 &114533183595539644
+  reviewState: 0
+  reviewButtons: {fileID: 0}
+--- !u!114 &114345805981848518
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -323,23 +325,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626210597515476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 650d598df1116fa49890ad13fc789798, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startEmissColor: {r: 0.7372549, g: 0.5647059, b: 0, a: 0}
-  highlightEmissColor: {r: 1, g: 0.9036296, b: 0.58823526, a: 0}
-  NodeMesh: {fileID: 1597728610137884}
-  nodeMat: {fileID: 2100000, guid: b6b4412a9b49cc945a8567ea0d90080b, type: 2}
-  nodeHighlightMat: {fileID: 2100000, guid: 953e931ec0069f544a6b1743826b1e45, type: 2}
---- !u!114 &114769034539575282
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626210597515476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ca6b8866eb53af49ba4094b692b0b6b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ea2d10f23e301f4aa4da034e1389d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
@@ -358,7 +344,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114777287561711696
+--- !u!114 &114533183595539644
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -366,7 +352,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626210597515476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6472e8428700658458368ef701ca77b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 650d598df1116fa49890ad13fc789798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NodeMesh: {fileID: 1597728610137884}
+  nodeMat: {fileID: 2100000, guid: b6b4412a9b49cc945a8567ea0d90080b, type: 2}
+  nodeHighlightMat: {fileID: 2100000, guid: 953e931ec0069f544a6b1743826b1e45, type: 2}
+--- !u!114 &114878295806040872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626210597515476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a8f740b6c84f64b908a6f42857de48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Event:
@@ -374,33 +374,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114533183595539644}
         m_MethodName: unhighlightNode
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
---- !u!114 &114834063047410030
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626210597515476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81afb20295dd35f458d67fcc03db2df6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114116116646553312}
-        m_MethodName: openContent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -428,9 +401,44 @@ MonoBehaviour:
   filepath: 
   filename: 
   playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
   photoTexture: {fileID: 0}
   photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
   photoNode: 0
   simpleNode: 1
+  Title: {fileID: 0}
+  Description: {fileID: 0}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
+--- !u!114 &114918686193466352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626210597515476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 930d5889c57417143a0f55a18dbe0620, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114116116646553312}
+        m_MethodName: openContent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null

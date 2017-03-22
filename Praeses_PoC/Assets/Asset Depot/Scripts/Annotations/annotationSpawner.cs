@@ -112,7 +112,7 @@ namespace HoloToolkit.Unity
                 miniAnnotation = Instantiate(miniFieldNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
 
             }
-            if (violationNode)
+            if (isViolationNode)
             {
                 miniAnnotation = Instantiate(miniViolationNode, spawnedAnnotation.transform.position, spawnedAnnotation.transform.rotation) as GameObject;
 

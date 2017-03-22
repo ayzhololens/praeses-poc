@@ -93,7 +93,7 @@ namespace HoloToolkit.Unity
 
         public void revealAttachments()
         {
-            if (!GetComponent<subMenu>().subButtonsOn)
+            if (!GetComponent<subMenu>().subButtonsOn && linkedNode!=null)
             {
                 for (int i = 0; i < transform.parent.childCount; i++)
                 {

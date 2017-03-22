@@ -84,6 +84,7 @@ namespace HoloToolkit.Unity
                 spawnedField.transform.SetParent(FieldInspectionParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
                 spawnedField.transform.localScale = fieldPrefab.transform.localScale;
+                spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
                 spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = JU_databaseMan.Instance.definitions.InspectionFields.fields[i].DisplayName;
@@ -104,6 +105,7 @@ namespace HoloToolkit.Unity
                 spawnedField.transform.SetParent(EquipmentDataParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
                 spawnedField.transform.localScale = fieldPrefab.transform.localScale;
+                spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
                 spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = JU_databaseMan.Instance.definitions.EquipmentData.fields[i].DisplayName;
@@ -126,6 +128,7 @@ namespace HoloToolkit.Unity
                 spawnedField.transform.SetParent(LocationDataParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
                 spawnedField.transform.localScale = fieldPrefab.transform.localScale;
+                spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
                 spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = key;
@@ -133,6 +136,25 @@ namespace HoloToolkit.Unity
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 LDCollection.Add(spawnedField);
             }
+        }
+
+
+        public void testSpawn()
+        {
+
+            fieldStartPos.localPosition = fieldInitPos;
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject spawnedField = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+                spawnedField.transform.SetParent(FieldInspectionParent);
+                spawnedField.transform.localPosition = fieldStartPos.localPosition;
+                spawnedField.transform.localScale = fieldPrefab.transform.localScale;
+                spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
+                spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
+                fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
+                IFCollection.Add(spawnedField);
+            }
+            FieldInspectionParent.gameObject.SetActive(false);
         }
     }
 }
