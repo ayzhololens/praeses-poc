@@ -16,12 +16,14 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 4000013298573622}
-  - 114: {fileID: 114000012698980792}
-  - 114: {fileID: 114000011154029958}
-  - 114: {fileID: 114000012149591842}
+  - component: {fileID: 4000013298573622}
+  - component: {fileID: 114000012698980792}
+  - component: {fileID: 114000011154029958}
+  - component: {fileID: 114000012149591842}
+  - component: {fileID: 114722865667208052}
+  - component: {fileID: 114372533453860654}
   m_Layer: 0
   m_Name: SpatialMapping
   m_TagString: Untagged
@@ -69,7 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d883c0118351e4890753200e0ac916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomModel: {fileID: 0}
+  RoomModel: {fileID: 1474033978489156, guid: 7014f1aaec7296342afcd7f95f965b99, type: 2}
+  SimulatedUpdatePeriodInSeconds: -1
 --- !u!114 &114000012698980792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,3 +87,37 @@ MonoBehaviour:
   TrianglesPerCubicMeter: 500
   Extents: {x: 10, y: 10, z: 10}
   TimeBetweenUpdates: 3.5
+--- !u!114 &114372533453860654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010302963436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8568a4574ac4dd04e895b697e932fdd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miniMapHolder: {fileID: 0}
+  miniMapMeshes: []
+  SpatUnderstanding: {fileID: 0}
+  MiniMapHolderParent: {fileID: 0}
+  miniMapMat: {fileID: 2100000, guid: fd47ef7f600f7c74f8015654ecd56660, type: 2}
+  scaleOffset: 0
+  boilerPivot: {x: 0, y: 0, z: 0}
+  avatar: {fileID: 0}
+  useAvatar: 1
+--- !u!114 &114722865667208052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000010302963436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a570ea9dc2eee341a7ce03bc08b6e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MiniMapTagAlong: {fileID: 0}
+  MiniMapHolder: {fileID: 0}
+  active: 0

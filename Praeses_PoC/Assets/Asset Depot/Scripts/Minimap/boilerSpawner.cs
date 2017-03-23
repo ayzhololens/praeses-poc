@@ -38,8 +38,7 @@ namespace HoloToolkit.Unity
         {
             isObj = false;
             Vector3 pos = GazeManager.Instance.HitPosition;
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
-            boilerClone = Instantiate(boiler, pos, rot) as GameObject;
+            boilerClone = Instantiate(boiler, pos, Quaternion.identity) as GameObject;
             activeObj = boilerClone;
             for (int i = 0; i < activeObj.transform.childCount; i++)
             {
@@ -73,9 +72,7 @@ namespace HoloToolkit.Unity
             if (!isObj)
             {
                 Vector3 pos = GazeManager.Instance.HitPosition;
-                Quaternion rot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
                 activeObj.transform.position = pos;
-                activeObj.transform.rotation = rot;
             }
 
         }
