@@ -8,6 +8,7 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
 
 
     bool focused;
+    public bool gazeExit;
     void Start()
     {
         // dummy Start function so we can use this.enabled
@@ -23,6 +24,11 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
             Event.Invoke();
             Debug.Log("select");
 
+        }
+
+        if (GetComponent<gazeLeaveEvent>() != null && gazeExit)
+        {
+            GetComponent<gazeLeaveEvent>().OnFocusExit();
         }
     }
 

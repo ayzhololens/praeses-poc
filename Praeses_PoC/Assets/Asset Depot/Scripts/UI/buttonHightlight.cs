@@ -8,6 +8,8 @@ public class buttonHightlight : MonoBehaviour {
     public Material mainMat;
     public Material highlightMat;
     public bool isPanel;
+    Color panelMain;
+    public Color panelHighlight;
 
     // Use this for initialization
     void Start () {
@@ -18,7 +20,7 @@ public class buttonHightlight : MonoBehaviour {
         }
         if (isPanel)
         {
-            GetComponent<Image>().material = mainMat;
+            panelMain = GetComponent<Image>().color;
         }
     }
 	
@@ -35,7 +37,7 @@ public class buttonHightlight : MonoBehaviour {
         }
         if (isPanel)
         {
-            GetComponent<Image>().material = highlightMat;
+            GetComponent<Image>().color = panelHighlight;
         }
         
     }
@@ -48,7 +50,7 @@ public class buttonHightlight : MonoBehaviour {
         }
         if (isPanel)
         {
-            GetComponent<Image>().material = mainMat;
+            GetComponent<Image>().color = panelMain;
         }
 
     }
