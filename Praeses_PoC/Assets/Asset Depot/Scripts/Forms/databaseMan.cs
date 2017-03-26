@@ -313,10 +313,11 @@ public class databaseMan : Singleton<databaseMan>
             newNode.audioPath = "";
         }
         else
-        { 
-        newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;       
-        newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
-        newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;   
+        {
+
+                newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;
+                newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
+                newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;
         }
 
         newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;       

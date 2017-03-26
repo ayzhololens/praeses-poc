@@ -92,7 +92,7 @@ namespace HoloToolkit.Unity
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 IFCollection.Add(spawnedField);
             }
-            FieldInspectionParent.gameObject.SetActive(false);
+            //FieldInspectionParent.gameObject.SetActive(false);
         }
 
         void populateED()
@@ -113,7 +113,7 @@ namespace HoloToolkit.Unity
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 EDCollection.Add(spawnedField);
             }
-            EquipmentDataParent.gameObject.SetActive(false);
+            //EquipmentDataParent.gameObject.SetActive(false);
         }
 
         void populateLD()
@@ -154,7 +154,7 @@ namespace HoloToolkit.Unity
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 IFCollection.Add(spawnedField);
             }
-            FieldInspectionParent.gameObject.SetActive(false);
+            //FieldInspectionParent.gameObject.SetActive(false);
         }
     }
 }

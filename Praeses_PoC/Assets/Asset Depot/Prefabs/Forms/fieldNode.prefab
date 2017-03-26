@@ -303,7 +303,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
+  - {fileID: 2100000, guid: d9534a4e8356bf0458da4a74bcdc0391, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -334,7 +334,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
+  - {fileID: 2100000, guid: d9534a4e8356bf0458da4a74bcdc0391, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -365,7 +365,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
+  - {fileID: 2100000, guid: d9534a4e8356bf0458da4a74bcdc0391, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -482,8 +482,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeMesh: {fileID: 1145260801390098}
-  nodeMat: {fileID: 2100000, guid: 8dbb519843428aa4fb545874851eafe4, type: 2}
-  nodeHighlightMat: {fileID: 2100000, guid: 358f766297a01c142a3f17bb58dd2e05, type: 2}
+  nodeMat: {fileID: 2100000, guid: d9534a4e8356bf0458da4a74bcdc0391, type: 2}
+  nodeHighlightMat: {fileID: 2100000, guid: 32522d57f984bed4a945063389d9efa2, type: 2}
 --- !u!114 &114365789196834642
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,6 +562,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114679653308147288
 MonoBehaviour:
   m_ObjectHideFlags: 1
