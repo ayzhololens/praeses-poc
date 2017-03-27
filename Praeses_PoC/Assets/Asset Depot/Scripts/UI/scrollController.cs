@@ -26,7 +26,7 @@ public class scrollController : MonoBehaviour {
 
 
 
-            if ( GazeManager.Instance.HitObject.tag == "ScrollContent")
+            if ( GazeManager.Instance.HitObject.tag == "ScrollContent" && GazeManager.Instance.HitObject == this.gameObject)
             {
                 if (!scrolling)
                 {

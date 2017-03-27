@@ -135,7 +135,7 @@ namespace HoloToolkit.Unity
                     //currentAnnotation.GetComponent<nodeMediaHolder>().Title = activeField.GetComponent<formFieldController>().DisplayName.text;
                 }
 
-            
+            stateIndicator.SetActive(false);
             currentAnnotation.GetComponent<nodeMediaHolder>().User = metaManager.Instance.user;
             currentAnnotation.GetComponent<nodeMediaHolder>().Date = System.DateTime.Now.ToString();
 
@@ -191,8 +191,6 @@ namespace HoloToolkit.Unity
         public void enableSimpleCapture()
         {
             annotating = true;
-            stateIndicator.SetActive(true);
-            stateIndicator.GetComponent<TextMesh>().text = "Tap to start recording video.";
 
             Debug.Log("enabled");
         }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224771323646800418}
   - component: {fileID: 222393580278142162}
   - component: {fileID: 114243796096702996}
+  - component: {fileID: 114877179075739610}
   m_Layer: 5
   m_Name: TitlePanel
   m_TagString: Untagged
@@ -57,6 +58,7 @@ GameObject:
   - component: {fileID: 65348303921492276}
   - component: {fileID: 114292832575242626}
   - component: {fileID: 114086559796292012}
+  - component: {fileID: 114128078356055616}
   m_Layer: 5
   m_Name: ViolationFIeld
   m_TagString: Untagged
@@ -92,6 +94,44 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 114760750304031268}
         m_MethodName: showViolationContent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 114877179075739610}
+        m_MethodName: highlight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &114128078356055616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669649067651166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16a8f740b6c84f64b908a6f42857de48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114877179075739610}
+        m_MethodName: unHighlight
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -207,6 +247,21 @@ MonoBehaviour:
   linkedViolation: {fileID: 0}
   Index: 0
   setDate: 0
+--- !u!114 &114877179075739610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1274945187897650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc04de91ab286cd499184a04de6d3364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMat: {fileID: 0}
+  highlightMat: {fileID: 0}
+  isPanel: 1
+  panelHighlight: {r: 0, g: 0.75294125, b: 1, a: 1}
 --- !u!222 &222385524425658416
 CanvasRenderer:
   m_ObjectHideFlags: 1

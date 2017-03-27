@@ -11,6 +11,7 @@ namespace HoloToolkit.Unity
 
         public GameObject[] tabs;
         public formContent[] preloadedDataFields;
+        public GameObject contentHolder;
 
         // Use this for initialization
         void Start() {
@@ -40,6 +41,11 @@ namespace HoloToolkit.Unity
             {
                 preloadedDataFields[i].loadDetails();
             }
+        }
+
+        public void closeMainMenu()
+        {
+            contentHolder.SetActive(false);
         }
     }
 }

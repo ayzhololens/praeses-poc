@@ -84,7 +84,7 @@ public class formNodeController : MonoBehaviour {
         //masterForm.transform.position = contentLoc.position;
         for (int i = 0; i < linkedField.transform.parent.childCount; i++)
         {
-            if (linkedField.transform.parent.GetChild(i).gameObject != linkedField)
+            if (linkedField.transform.parent.GetChild(i).gameObject != linkedField && linkedField.transform.parent.GetChild(i).gameObject.GetComponent<subMenu>()!=null)
             {
 
                 linkedField.transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();

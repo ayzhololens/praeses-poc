@@ -37,10 +37,11 @@ namespace HoloToolkit.Unity
         public Transform thumbPos;
         public float thumbOffset;
         public GameObject linkedPreview;
+        public Transform frontHolder;
         // Use this for initialization
         void Start()
         {
-
+            frontHolder = Camera.main.transform.GetChild(0);
         }
 
         // Update is called once per frame
@@ -225,6 +226,7 @@ namespace HoloToolkit.Unity
 
         public void openViolation()
         {
+            contentHolder.transform.position = frontHolder.position;
             contentHolder.SetActive(true);
         }
         public void closeViolation()

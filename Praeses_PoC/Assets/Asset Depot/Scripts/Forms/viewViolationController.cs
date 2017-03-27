@@ -11,9 +11,11 @@ public class viewViolationController : MonoBehaviour {
     public Transform resolvedPos;
     public float offsetDist;
     public GameObject resolved;
+    public Transform frontHolder;
 
 	// Use this for initialization
 	void Start () {
+        frontHolder = Camera.main.transform.GetChild(0);
 		
 	}
 	
@@ -83,6 +85,7 @@ public class viewViolationController : MonoBehaviour {
 
     public void openViewer()
     {
+        contentHolder.transform.position = frontHolder.position;
         contentHolder.SetActive(true);
     }
 }

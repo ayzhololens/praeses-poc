@@ -149,20 +149,25 @@ namespace HoloToolkit.Unity
                 spawnedAnnotation.GetComponent<formNodeController>().linkedField = annotationManager.Instance.activeField;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().linkedNode = spawnedAnnotation;
                 annotationManager.Instance.activeField.GetComponent<formFieldController>().enableAttachmentCapture();
+                annotationManager.Instance.stateIndicator.SetActive(false);
             }
             if (isViolationNode)
             {
                 spawnedAnnotation.GetComponent<violationNodeController>().spawnViolation();
                 annotationManager.Instance.activateMedia();
+                annotationManager.Instance.stateIndicator.SetActive(false);
             }
 
+            if (!violationNode)
+            {
+
+                databaseMan.Instance.addAnnotation(spawnedAnnotation);
+            }
             isPhotoNode = false;
             isSimpleNode = false;
             isVideoNode = false;
             isFieldNode = false;
             isViolationNode = false;
-
-            databaseMan.Instance.addAnnotation(spawnedAnnotation);
         }
 
         public void spawnPhotoAnnotation()
@@ -175,6 +180,9 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
+
+            GetComponent<annotationManager>().stateIndicator.SetActive(true);
+            GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for annotation";
             tapToPlaceInProgress = true;
 
 
@@ -192,6 +200,9 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
             tapToPlaceInProgress = true;
+
+            GetComponent<annotationManager>().stateIndicator.SetActive(true);
+            GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for annotation";
             Debug.Log("done");
         }
 
@@ -206,6 +217,10 @@ namespace HoloToolkit.Unity
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.GetComponent<openAnnotationNode>().closeContent();
             spawnedAnnotation.transform.SetParent(transform);
+
+            GetComponent<annotationManager>().stateIndicator.SetActive(true);
+            GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for annotation";
+
             tapToPlaceInProgress = true;
         }
 
@@ -218,6 +233,8 @@ namespace HoloToolkit.Unity
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.transform.SetParent(transform);
+            GetComponent<annotationManager>().stateIndicator.SetActive(true);
+            GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for attachment";
             tapToPlaceInProgress = true;
         }
 
@@ -231,6 +248,10 @@ namespace HoloToolkit.Unity
             GetComponent<annotationManager>().activeAnnotations.Add((GameObject)spawnedAnnotation);
             spawnedAnnotation.GetComponent<BoxCollider>().enabled = false;
             spawnedAnnotation.transform.SetParent(transform);
+
+            GetComponent<annotationManager>().stateIndicator.SetActive(true);
+            GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for violation";
+
             tapToPlaceInProgress = true;
         }
 

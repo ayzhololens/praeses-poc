@@ -38,14 +38,14 @@ namespace HoloToolkit.Unity
 
         public void submitReview()
         {
-            commentHolder.transform.SetParent(submittedViolationHolder.transform);
+            commentHolder.transform.SetParent(submittedViolationHolder.transform.parent);
 
 
             copiedViolationContent = Instantiate(this.gameObject, transform.position, Quaternion.identity);
             copiedViolationContent.transform.SetParent(submittedViolationHolder.transform);
             copiedViolationContent.transform.localScale = transform.localScale;
             copiedViolationContent.transform.localRotation = transform.localRotation;
-            
+            copiedViolationContent.transform.localPosition = new Vector3(copiedViolationContent.transform.localPosition.x, copiedViolationContent.transform.localPosition.y +(headerOffset*800), copiedViolationContent.transform.localPosition.z);
             violationControl.showTabs(false);
 
             violationControl.violationHeader.text = violationControl.violationData[2];
@@ -53,7 +53,7 @@ namespace HoloToolkit.Unity
             headerStartPos = header.position;
             header.localPosition = new Vector3(header.localPosition.x, header.localPosition.y- headerOffset, header.localPosition.z);
 
-            submittedViolationHolder.SetActive(true);
+            submittedViolationHolder.transform.parent.gameObject.SetActive(true);
             ReviewHolder.SetActive(false);
 
             violatoinSpawner.Instance.populatePreviewField();
@@ -67,7 +67,7 @@ namespace HoloToolkit.Unity
             header.localPosition = headerStartPos;
             DestroyImmediate(copiedViolationContent);
             violationControl.showTabs(true);
-            submittedViolationHolder.SetActive(false);
+            submittedViolationHolder.transform.parent.gameObject.SetActive(false);
             ReviewHolder.SetActive(true);
         }
 

@@ -42,7 +42,13 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-
+            //for (int i=0; i<transform.parent.childCount; i++)
+            //{
+            //    if(transform.parent.GetChild(i).gameObject.name == "commentLocator")
+            //    {
+            //        thumbPos.transform.position = transform.parent.GetChild(i).position;
+            //    }
+            //}
         }
 
         // Update is called once per frame
@@ -78,7 +84,7 @@ namespace HoloToolkit.Unity
             attachmentParent.gameObject.SetActive(false);
             for(int i = 0; i<transform.parent.childCount; i++)
             {
-                if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                if (transform.parent.GetChild(i).gameObject != this.gameObject && transform.parent.GetChild(i).gameObject.GetComponent<subMenu>() != null)
                 {
 
                     transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
@@ -97,7 +103,7 @@ namespace HoloToolkit.Unity
             {
                 for (int i = 0; i < transform.parent.childCount; i++)
                 {
-                    if (transform.parent.GetChild(i).gameObject != this.gameObject)
+                    if (transform.parent.GetChild(i).gameObject != this.gameObject && transform.parent.GetChild(i).gameObject.GetComponent<subMenu>() != null)
                     {
 
                         transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
@@ -197,7 +203,7 @@ namespace HoloToolkit.Unity
             GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
             activeSimpleNotes.Add(spawnedComment);
             spawnedComment.transform.SetParent(attachmentParent);
-            spawnedComment.transform.localPosition = thumbPos.localPosition;
+            spawnedComment.transform.position = thumbPos.position;
             repositionThumb();
             spawnedComment.GetComponent<commentContents>().isSimple = true;
             spawnedComment.GetComponent<inputFieldManager>().activateField();

@@ -8,6 +8,7 @@ public class formController : MonoBehaviour {
     public GameObject equipmentTab;
     public GameObject locationTab;
     public GameObject contentHolder;
+    public Transform frontHolder;
     bool isOpen;
 
     // Use this for initialization
@@ -76,11 +77,13 @@ public class formController : MonoBehaviour {
 
     public void closeForm()
     {
+        
         contentHolder.SetActive(false);
     }
 
     public void openForm()
     {
+        contentHolder.transform.position = frontHolder.position;
         contentHolder.SetActive(true);
     }
 }
