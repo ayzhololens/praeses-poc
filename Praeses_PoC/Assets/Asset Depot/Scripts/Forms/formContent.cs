@@ -58,7 +58,7 @@ namespace HoloToolkit.Unity
             }
             if (NBNumber != null)
             {
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "strNBNumber")
                     {
@@ -115,7 +115,7 @@ namespace HoloToolkit.Unity
                     }
                 }
 
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "dtCertExpire")
                     {
@@ -138,7 +138,7 @@ namespace HoloToolkit.Unity
 
             if (MAWP != null)
             {
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "intStampedMAWP")
                     {
@@ -149,7 +149,7 @@ namespace HoloToolkit.Unity
 
             if (SerialNumber != null)
             {
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "strOtherNumber")
                     {
@@ -159,7 +159,7 @@ namespace HoloToolkit.Unity
             }
             if (JONumber != null)
             {
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "strJurisNumber")
                     {
@@ -170,7 +170,7 @@ namespace HoloToolkit.Unity
 
             if (Size != null)
             {
-                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+                foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
                 {
                     if (valueItem.name == "fltSV1SizeIn")
                     {

@@ -89,6 +89,7 @@ public class databaseMan : Singleton<databaseMan>
     {
         public List<ItemClass> EquipmentData = new List<ItemClass>();
         public List<PreviousInspectionClass> PreviousInspection = new List<PreviousInspectionClass>();
+        public List<ItemClass> CurrentInspection = new List<ItemClass>();
         public List<ViolationsClass> Violations = new List<ViolationsClass>();
         public List<NodeClass> Nodes = new List<NodeClass>();
     }
@@ -162,11 +163,9 @@ public class databaseMan : Singleton<databaseMan>
     public void saveCmd()
     {
 #if WINDOWS_UWP
-                                string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-                                System.IO.File.WriteAllText(saveDir, json);
+        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        System.IO.File.WriteAllText(saveDir, json);
 #endif
-
-
 
         //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         //System.IO.File.WriteAllText(saveDir, json);
@@ -177,8 +176,8 @@ public class databaseMan : Singleton<databaseMan>
     public void loadDefCmd()
     {
 #if WINDOWS_UWP
-                                defJsonText = File.ReadAllText(definitionsDir);
-                                definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        defJsonText = File.ReadAllText(definitionsDir);
+        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 #endif
 
         //defJsonText = File.ReadAllText(definitionsDir);
@@ -192,8 +191,9 @@ public class databaseMan : Singleton<databaseMan>
     public void loadValCmd()
     {
 #if WINDOWS_UWP
-                                valJsonText = File.ReadAllText(valuesDir);
-                                values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        Debug.Log("reading from: " + valuesDir);
+        valJsonText = File.ReadAllText(valuesDir);
+        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 #endif
 
         //valJsonText = File.ReadAllText(valuesDir);
@@ -313,11 +313,10 @@ public class databaseMan : Singleton<databaseMan>
             newNode.audioPath = "";
         }
         else
-        {
-
-                newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;
-                newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
-                newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;
+        { 
+        newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;       
+        newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
+        newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;   
         }
 
         newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;       
@@ -326,34 +325,38 @@ public class databaseMan : Singleton<databaseMan>
         JU_databaseMan.Instance.loadNodesCmd();
     }
 
-    public void addComment()
-    {
-
-    }
-
     public void formToClassValueSync(string keyword, string value)
     {
         print("values applied " + keyword + " " + value);
-        List<ItemClass> itemClasses = new List<ItemClass>();
+        Dictionary<string, ItemClass> itemClasses = new Dictionary<string, ItemClass>();
         foreach (ItemClass item in values.Location.Equipment[0].EquipmentData)
         {
-            itemClasses.Add(item);
+            itemClasses.Add(item.name, item);
         };
-        foreach (ItemClass item in values.Location.Equipment[0].PreviousInspection[0].InspectionData)
-        {
-            itemClasses.Add(item);
-        };
-        foreach (ItemClass item in itemClasses)
-        {
-            if (item.name == keyword)
-            {
-                print(item.name);
-                //InputField field = formPairs[keyword].GetComponentInChildren<InputField>();
-                item.value = value;
-            }
-        }
+        //foreach (ItemClass item in values.Location.Equipment[0].PreviousInspection[0].InspectionData)
+        //{
+        //    itemClasses.Add(item.name, item);
+        //};
 
-        JU_databaseMan.Instance.loadPresent();
+        foreach (ItemClass item in values.Location.Equipment[0].CurrentInspection)
+        {
+            itemClasses.Add(item.name, item);
+        };
+
+        if (itemClasses.ContainsKey(keyword))
+        {
+            itemClasses[keyword].value = value;
+        }else
+        {
+            ItemClass newItem = new ItemClass();
+            newItem.value = value;
+            newItem.name = keyword;
+            values.Location.Equipment[0].EquipmentData.Add(newItem);
+        }
+            
+
+        JU_databaseMan.Instance.loadCurrentData();
+        JU_databaseMan.Instance.loadEquipmentData();
     }
 
 }
