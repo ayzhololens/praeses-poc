@@ -80,6 +80,7 @@ namespace HoloToolkit.Unity
 
         public void enableAttachmentCapture()
         {
+
             GetComponent<subMenu>().turnOnSubButtons();
             attachmentParent.gameObject.SetActive(false);
             for(int i = 0; i<transform.parent.childCount; i++)
@@ -154,6 +155,7 @@ namespace HoloToolkit.Unity
             linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activeVideoPath);
             videoFilePaths.Add(activeVideoPath);
             spawnVideoPane();
+
         }
 
 

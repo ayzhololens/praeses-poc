@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4635279695853614}
   m_Layer: 0
-  m_Name: rotator_grp
+  m_Name: parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 114337437664374688}
   - component: {fileID: 114034420187923466}
   m_Layer: 2
-  m_Name: tumbled_grp
+  m_Name: tagalong
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2260,6 +2260,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 3.07
+  m_Height: 1.89
   m_Direction: 1
-  m_Center: {x: 0, y: 0.36, z: 0}
+  m_Center: {x: 0, y: -0.57, z: 0}

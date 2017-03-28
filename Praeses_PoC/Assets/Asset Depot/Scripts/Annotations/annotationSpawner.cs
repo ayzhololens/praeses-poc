@@ -156,6 +156,8 @@ namespace HoloToolkit.Unity
                 spawnedAnnotation.GetComponent<violationNodeController>().spawnViolation();
                 annotationManager.Instance.activateMedia();
                 annotationManager.Instance.stateIndicator.SetActive(false);
+                miniAnnotation.GetComponent<violationNodeController>().parentNode = spawnedAnnotation;
+                spawnedAnnotation.GetComponent<violationNodeController>().miniNode = miniAnnotation;
             }
 
             if (!violationNode)
@@ -203,7 +205,6 @@ namespace HoloToolkit.Unity
 
             GetComponent<annotationManager>().stateIndicator.SetActive(true);
             GetComponent<annotationManager>().stateIndicator.GetComponent<TextMesh>().text = "Place node for annotation";
-            Debug.Log("done");
         }
 
 

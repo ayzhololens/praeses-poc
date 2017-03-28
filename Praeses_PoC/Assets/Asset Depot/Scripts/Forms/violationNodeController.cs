@@ -10,6 +10,9 @@ namespace HoloToolkit.Unity
     {
 
         public GameObject violationPrefab;
+        public bool isMini;
+        public GameObject parentNode;
+        public GameObject miniNode;
         public GameObject linkedViolation;
 
         // Use this for initialization
@@ -36,8 +39,14 @@ namespace HoloToolkit.Unity
 
         public void openViolation()
         {
-            linkedViolation.GetComponent<violationController>().openViolation();
-
+            if (isMini)
+            {
+                parentNode.GetComponent<violationNodeController>().openViolation();
+            }
+            else
+            {
+                linkedViolation.GetComponent<violationController>().openViolation();
+            }
         }
 
 

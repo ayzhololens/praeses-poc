@@ -7,7 +7,7 @@ public class subMenu : MonoBehaviour {
     public GameObject[] subButtons;
     public bool subButtonsOn;
     public float timeOutCounter;
-    public GameObject hide;
+    public GameObject[] hide;
 
 	// Use this for initialization
 	void Start () {
@@ -26,9 +26,9 @@ public class subMenu : MonoBehaviour {
             subButtons[i].SetActive(true);
         }
         subButtonsOn = true;
-        if (hide != null)
+        if (hide.Length > 0)
         {
-            hide.SetActive(false);
+            for(int i =0; i<hide.Length; i++) { hide[i].SetActive(false); }
         }
     }
 
@@ -57,9 +57,9 @@ public class subMenu : MonoBehaviour {
             }
 
 
-            if (hide != null)
+            if (hide.Length > 0)
             {
-                hide.SetActive(true);
+                for (int i = 0; i < hide.Length; i++) { hide[i].SetActive(true); }
             }
 
             //BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);

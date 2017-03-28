@@ -50,7 +50,7 @@ namespace HoloToolkit.Unity
 
             violationControl.violationHeader.text = violationControl.violationData[2];
             Transform header = violationControl.violationHeader.transform.parent.parent;
-            headerStartPos = header.position;
+            headerStartPos = header.localPosition;
             header.localPosition = new Vector3(header.localPosition.x, header.localPosition.y- headerOffset, header.localPosition.z);
 
             submittedViolationHolder.transform.parent.gameObject.SetActive(true);
