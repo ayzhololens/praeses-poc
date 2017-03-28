@@ -772,7 +772,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114609328960067754, guid: 396900ef8ff5e37479e155869d781415,
+    - target: {fileID: 114261800693856704, guid: 396900ef8ff5e37479e155869d781415,
+        type: 2}
+      propertyPath: subButtonParent
+      value: 
+      objectReference: {fileID: 604225635}
+    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
         type: 2}
       propertyPath: subButtonParent
       value: 
@@ -782,12 +787,7 @@ Prefab:
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1422079148}
-    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
-        type: 2}
-      propertyPath: subButtonParent
-      value: 
-      objectReference: {fileID: 604225635}
-    - target: {fileID: 114261800693856704, guid: 396900ef8ff5e37479e155869d781415,
+    - target: {fileID: 114609328960067754, guid: 396900ef8ff5e37479e155869d781415,
         type: 2}
       propertyPath: subButtonParent
       value: 
@@ -797,6 +797,10 @@ Prefab:
       propertyPath: frontHolder
       value: 
       objectReference: {fileID: 1912778992}
+    - target: {fileID: 1118935304195676, guid: 396900ef8ff5e37479e155869d781415, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1818028388281626, guid: 396900ef8ff5e37479e155869d781415, type: 2}
       propertyPath: m_IsActive
       value: 0
