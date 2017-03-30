@@ -331,7 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 0}
   isMiniNode: 1
-  contentOpen: 0
+  contentStartLoc: {fileID: 0}
   distanceThreshold: 0
   moveSpeed: 0
 --- !u!114 &114345805981848518
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626210597515476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 

@@ -108,7 +108,7 @@ namespace HoloToolkit.Unity
             m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
             vidCounter += 1;
 
-            annotationManager.Instance.activateMedia();
+            mediaManager.Instance.activateMedia();
 
             
         }

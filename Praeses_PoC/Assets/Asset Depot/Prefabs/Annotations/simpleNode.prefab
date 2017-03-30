@@ -2784,15 +2784,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
-  activeFilepath: 
-  activeFileName: 
   activeComments: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
   photoNode: 0
@@ -2801,9 +2795,6 @@ MonoBehaviour:
   violationNode: 0
   Title: {fileID: 114295422893972472}
   Description: {fileID: 114561911120028370}
-  Date: 
-  User: 
-  audioPath: 
   type: 0
   NodeIndex: 0
 --- !u!114 &114211448949069388
@@ -3356,6 +3347,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 1822431757891052}
   isMiniNode: 0
+  contentStartLoc: {fileID: 4383998521054646}
   distanceThreshold: 4
   moveSpeed: 0.1
 --- !u!114 &114454293680085728

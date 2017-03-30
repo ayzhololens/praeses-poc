@@ -12,17 +12,12 @@ namespace HoloToolkit.Unity
 
 
         public List<string> filepath;
-        public string activeFilepath;
-        public string activeFileName;
+        public string activeFilepath { get; set; }
         public List<GameObject> activeComments;
-
-        public MediaPlayer VideoPlayer;
-        public videoRecorder vidRecorder;
         public GameObject playIcon;
         public GameObject pauseIcon;
         bool startedVideo;
-        public Texture2D photoTexture;
-        public photoRecorder photoRecorder;
+        Texture2D photoTexture;
         public GameObject photoVideoPane;
         public bool videoNode;
         public bool photoNode;
@@ -31,22 +26,18 @@ namespace HoloToolkit.Unity
         public bool violationNode;
         public InputField Title;
         public InputField Description;
-        public string Date;
-        public string User;
-        public string audioPath;
+        public string Date { get; set; }
+        public string User { get; set; }
+        public string audioPath { get; set; }
         public int type;
         public int NodeIndex;
 
         // Use this for initialization
         void Start()
         {
-            NodeIndex = annotationManager.Instance.nodeIndex;
-            annotationManager.Instance.nodeIndex += 1;
+            NodeIndex = mediaManager.Instance.nodeIndex;
+            mediaManager.Instance.nodeIndex += 1;
 
-
-            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
-            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
 
         }
 
@@ -54,41 +45,41 @@ namespace HoloToolkit.Unity
         // Update is called once per frame
         void Update()
         {
-
-            videoChecker();
-
-
-        }
-
-        public void loadVideoMedia()
-        {
-
-
-            activeFileName = vidRecorder.filename;
-            filepath.Add(vidRecorder.filepath);
-            activeFilepath = vidRecorder.filepath;
-            VideoPlayer.m_VideoPath = activeFileName;
-            VideoPlayer.LoadVideoPlayer();
-        }
-
-        public void loadPhotoMedia()
-        {
-
-            if (photoRecorder.targetTexture != null && photoVideoPane != null)
+            if (startedVideo)
             {
-                filepath.Add(photoRecorder.filePath);
-                photoTexture = photoRecorder.targetTexture;
-                photoVideoPane.GetComponent<Renderer>().material.mainTexture = photoTexture;
+                videoChecker();
             }
+
+
         }
+
+        //public void loadVideoMedia()
+        //{
+
+
+        //    activeFileName = vidRecorder.filename;
+        //    filepath.Add(vidRecorder.filepath);
+        //    activeFilepath = vidRecorder.filepath;
+        //    VideoPlayer.m_VideoPath = activeFileName;
+        //    VideoPlayer.LoadVideoPlayer();
+        //}
+
+        //public void loadPhotoMedia()
+        //{
+
+        //    if (photoRecorder.targetTexture != null && photoVideoPane != null)
+        //    {
+        //        filepath.Add(photoRecorder.filePath);
+        //        photoTexture = photoRecorder.targetTexture;
+        //        photoVideoPane.GetComponent<Renderer>().material.mainTexture = photoTexture;
+        //    }
+        //}
 
         public void loadPhoto(string filepath)
         {
 
             Texture2D targetTexture = new Texture2D(2048, 1152);
-
             var bytesRead = System.IO.File.ReadAllBytes(filepath);
-            //Texture2D myTexture = new Texture2D(1024, 1024);
             targetTexture.LoadImage(bytesRead);
             photoTexture = targetTexture;
             photoVideoPane.GetComponent<Renderer>().material.mainTexture = photoTexture;
@@ -98,12 +89,8 @@ namespace HoloToolkit.Unity
 
         public void LoadVideo()
         {
-            if (VideoPlayer == null)
-            {
-                VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            }
-            VideoPlayer.m_VideoPath = activeFileName;
-            VideoPlayer.LoadVideoPlayer();
+            MediaPlayer.Instance.m_VideoPath = activeFilepath;
+            MediaPlayer.Instance.LoadVideoPlayer();
 
         }
 
@@ -112,7 +99,7 @@ namespace HoloToolkit.Unity
         {
             if (!startedVideo)
             {
-                VideoPlayer.Control.Play();
+                MediaPlayer.Instance.Control.Play();
                 startedVideo = true;
                 playIcon.SetActive(false);
                 pauseIcon.SetActive(true);
@@ -124,7 +111,7 @@ namespace HoloToolkit.Unity
         {
             if (startedVideo)
             {
-                VideoPlayer.Control.Pause();
+                MediaPlayer.Instance.Control.Pause();
                 startedVideo = false;
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);
@@ -133,7 +120,7 @@ namespace HoloToolkit.Unity
 
         void videoChecker()
         {
-            if (startedVideo && VideoPlayer.Control.IsFinished())
+            if (MediaPlayer.Instance.Control.IsFinished())
             {
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);

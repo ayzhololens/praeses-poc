@@ -73,7 +73,7 @@ namespace HoloToolkit.Unity
             {
                 currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-                currentAnnotation.GetComponent<nodeMediaHolder>().loadPhotoMedia();
+                //currentAnnotation.GetComponent<nodeMediaHolder>().loadPhotoMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
@@ -82,7 +82,7 @@ namespace HoloToolkit.Unity
             {
                 currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-                currentAnnotation.GetComponent<nodeMediaHolder>().loadVideoMedia();
+                //currentAnnotation.GetComponent<nodeMediaHolder>().loadVideoMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }

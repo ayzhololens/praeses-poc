@@ -121,7 +121,7 @@ namespace HoloToolkit.Unity
 
             
 
-            annotationManager.Instance.activateMedia();
+            mediaManager.Instance.activateMedia();
 
         }
 

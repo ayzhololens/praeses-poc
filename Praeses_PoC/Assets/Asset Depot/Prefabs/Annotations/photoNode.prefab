@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 114487820996126554}
   - component: {fileID: 114922585429606876}
   - component: {fileID: 114593180182353228}
+  - component: {fileID: 114629911391182568}
   m_Layer: 0
   m_Name: photoNode
   m_TagString: Node
@@ -1593,8 +1594,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.053707875, y: -0.5224013, z: 1.3699648}
   m_LocalScale: {x: 0.4451675, y: 0.4451674, z: 0.4451674}
   m_Children:
   - {fileID: 4875413148603318}
@@ -3025,6 +3026,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114031690799627046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3164,6 +3166,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114088865968362522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3218,6 +3221,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114123933726212340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3272,6 +3276,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114156450700869930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3407,6 +3412,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114219600467163630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3461,6 +3467,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114235204241355850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3598,6 +3605,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114342114485460082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3612,6 +3620,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114342682335204256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3666,7 +3675,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -3789,6 +3798,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114417259723294608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3802,6 +3812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeComments: []
   scrollBoxCollider: {fileID: 65984960754134368}
+  commentCount: 0
   commentParent: {fileID: 224644654234756902}
   CommmentStartPos: {fileID: 224930496201331804}
   newCommentBox: {fileID: 1115960859750630, guid: 040c36b8b1c95c444ae5fb3535064c96,
@@ -3821,6 +3832,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114446602831327944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3953,6 +3965,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114473120117613238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3967,7 +3980,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 114204348037966732}
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114643714739855350}
   Date: 
   user: 
@@ -4147,6 +4160,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114571897169940810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4174,16 +4188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
-  activeFilepath: 
-  activeFileName: 
-  commentDescriptions: []
-  commentMetas: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
+  activeComments: []
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 1936230943857402}
   videoNode: 0
   photoNode: 1
@@ -4192,9 +4199,6 @@ MonoBehaviour:
   violationNode: 0
   Title: {fileID: 114763280025997680}
   Description: {fileID: 114451384423896488}
-  Date: 
-  User: 
-  audioPath: 
   type: 0
   NodeIndex: 0
 --- !u!114 &114601420634443252
@@ -4211,6 +4215,23 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114629911391182568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 1908089109972462}
+  isMiniNode: 0
+  contentStartLoc: {fileID: 4436757531566736}
+  distanceThreshold: 4
+  moveSpeed: 0.01
 --- !u!114 &114642736292500118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4337,6 +4358,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114701428476195794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4351,6 +4373,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114711603199545296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4363,6 +4386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.01
+  ScrollContent: {fileID: 0}
 --- !u!114 &114749040697930454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4695,6 +4719,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114893831506593828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4722,6 +4747,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114915745294196914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4782,6 +4808,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114922585429606876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4963,6 +4990,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114974455637654434
 MonoBehaviour:
   m_ObjectHideFlags: 1

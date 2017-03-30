@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 114945550841483948}
   - component: {fileID: 114319608210254228}
   - component: {fileID: 114144954359119590}
+  - component: {fileID: 114837416946677524}
   m_Layer: 0
   m_Name: videoNode
   m_TagString: Node
@@ -1043,8 +1044,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723358471618130}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.053707875, y: -0.5224013, z: 1.3699648}
   m_LocalScale: {x: 0.4451675, y: 0.4451674, z: 0.4451674}
   m_Children:
   - {fileID: 4419675828816884}
@@ -2811,6 +2812,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114021788202737748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3013,16 +3015,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
-  activeFilepath: 
-  activeFileName: 
-  commentDescriptions: []
-  commentMetas: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
+  activeComments: []
   playIcon: {fileID: 1865320774385740}
   pauseIcon: {fileID: 1224971330552542}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 1184561891358668}
   videoNode: 1
   photoNode: 0
@@ -3031,9 +3026,6 @@ MonoBehaviour:
   violationNode: 0
   Title: {fileID: 114950666262883962}
   Description: {fileID: 114021788202737748}
-  Date: 
-  User: 
-  audioPath: 
   type: 0
   NodeIndex: 0
 --- !u!114 &114146837020260574
@@ -3126,6 +3118,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114207581290329312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3277,6 +3270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeComments: []
   scrollBoxCollider: {fileID: 65856780162855428}
+  commentCount: 0
   commentParent: {fileID: 224569449840046492}
   CommmentStartPos: {fileID: 224837182461757152}
   newCommentBox: {fileID: 1115960859750630, guid: 040c36b8b1c95c444ae5fb3535064c96,
@@ -3309,6 +3303,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114308339560368238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3390,6 +3385,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114316801437532230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3639,6 +3635,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114483111642320076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3773,6 +3770,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114534116454883234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4002,13 +4000,14 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114649164426837600
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1723358471618130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -4105,6 +4104,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114692907419148566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4185,6 +4185,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114718777491051700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4197,6 +4198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.01
+  ScrollContent: {fileID: 0}
 --- !u!114 &114728584781498066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4211,6 +4213,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114730524041121260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4238,6 +4241,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114742148191113880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4320,6 +4324,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114759347033900272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4397,6 +4402,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114772433659487366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4439,6 +4445,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114822139969117272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4466,6 +4473,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114832116992085278
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4514,6 +4522,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
+--- !u!114 &114837416946677524
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1723358471618130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 1347992105135240}
+  isMiniNode: 0
+  contentStartLoc: {fileID: 4923510843919730}
+  distanceThreshold: 4
+  moveSpeed: 0.01
 --- !u!114 &114857082700011016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4673,6 +4697,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114928662069013824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4837,6 +4862,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114981170993912890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4904,6 +4930,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114994232286994006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4918,6 +4945,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &212436440482106782
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -18,8 +18,8 @@ namespace HoloToolkit.Unity
         int offsetCounter;
 
         //gaze position and rotation
-        public Vector3 lookPos;
-        public Quaternion lookRot;
+        Vector3 lookPos;
+        Quaternion lookRot;
 
 
 
@@ -41,12 +41,15 @@ namespace HoloToolkit.Unity
 
         public void spawnNode(int nodeIndex)
         {
+            //set status indicator
+            mediaManager.Instance.setStatusIndicator("Tap to place node");
+
             //spawn the right node
             spawnedIndex = nodeIndex;
             spawnedNode = Instantiate(nodePrefab[spawnedIndex], getNodeLoc(lookPos), getNodeRot(lookRot));
             
             //add node to active node list and set the parent
-            annotationManager.Instance.activeAnnotations.Add(spawnedNode);
+            mediaManager.Instance.activeNodes.Add(spawnedNode);
             spawnedNode.transform.SetParent(transform);
 
             //turn off the collider so we dont activate it when placing
@@ -84,7 +87,9 @@ namespace HoloToolkit.Unity
         public void lockNodePlacement()
         {
             placingInProgress = false;
-            annotationManager.Instance.currentAnnotation = spawnedNode;
+            spawnedNode.GetComponent<BoxCollider>().enabled = true;
+            mediaManager.Instance.currentNode = spawnedNode;
+            mediaManager.Instance.disableStatusIndicator();
 
             //get minimap components, scale and offset it to real space
             minimapSpawn miniMapComponent = minimapSpawn.Instance;
@@ -95,14 +100,19 @@ namespace HoloToolkit.Unity
             rotatorGroup.position = boilerPos;
 
             //spawn miniNode and parent it correctly
-            GameObject miniNode = Instantiate(miniNodePrefab[spawnedIndex], spawnedNode.transform.position, Quaternion.identity);
-            annotationManager.Instance.activeAnnotations.Add(miniNode);
+            GameObject miniNode = Instantiate(miniNodePrefab[spawnedIndex], spawnedNode.transform.position, spawnedNode.transform.rotation);
+            miniNode.GetComponent<nodeOpener>().parentNode = spawnedNode;
+            
 
             //reset rotator group to position miniNode
             miniNode.transform.SetParent(miniMap);
             rotatorGroup.localPosition = Vector3.zero;
             rotatorGroup.localScale = Vector3.one;
             miniNode.SetActive(miniMapToggle.Instance.active);
+
+            
+
+            mediaManager.Instance.activateMedia();
         }
 
 

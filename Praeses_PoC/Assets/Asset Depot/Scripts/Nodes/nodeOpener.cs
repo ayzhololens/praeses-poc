@@ -10,11 +10,11 @@ namespace HoloToolkit.Unity
     {
 
         public GameObject contentHolder;
-        private GameObject parentNode;
+        public GameObject parentNode { get; set; }
         public bool isMiniNode;
-        Vector3 contentStartLoc;
+        public Transform contentStartLoc;
         SimpleTagalong nodeTagalong;
-        public bool contentOpen;
+        bool contentOpen;
         public float distanceThreshold;
         public float moveSpeed;
         
@@ -23,10 +23,16 @@ namespace HoloToolkit.Unity
         void Start()
         {
             // set initial location of the node content
+
+        }
+
+        public void setUpNode()
+        {
+            //essentially our start function but called when node is placed
             if (!isMiniNode)
             {
-                contentStartLoc = contentHolder.transform.position;
                 nodeTagalong = contentHolder.GetComponent<SimpleTagalong>();
+                openNode();
             }
         }
         
@@ -60,11 +66,9 @@ namespace HoloToolkit.Unity
                 //open node content
                 if (!contentOpen)
                 {
-                    
                     contentOpen = true;
                     contentHolder.SetActive(true);
-                    contentHolder.transform.position = contentStartLoc;
-                    contentStartLoc = contentHolder.transform.position;
+                    contentHolder.transform.position = contentStartLoc.position;
 
                 }
             }
@@ -118,9 +122,9 @@ namespace HoloToolkit.Unity
                     nodeTagalong.enabled = false;
                     contentHolder.GetComponent<Interpolator>().enabled = false;
                 }
-                if (contentPos != contentStartLoc)
+                if (contentPos != contentStartLoc.position)
                 {
-                    contentHolder.transform.position = Vector3.MoveTowards(contentPos, contentStartLoc, moveSpeed);
+                    contentHolder.transform.position = Vector3.MoveTowards(contentPos, contentStartLoc.position, moveSpeed);
                 }
             }
         }
