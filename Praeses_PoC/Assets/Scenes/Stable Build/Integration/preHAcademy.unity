@@ -676,7 +676,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1071622073431788, guid: 6a695fa918182f74a8a5c856aaf3dcd3, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a695fa918182f74a8a5c856aaf3dcd3, type: 2}
@@ -727,11 +727,76 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912272421857672, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114906202981309662, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1277859892}
+    - target: {fileID: 114906202981309662, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 114691322457365280, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1277859892}
+    - target: {fileID: 114691322457365280, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: closeNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822431757891052, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618209068714102, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: PositionUpdateSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618209068714102, guid: be75c3a893693db4fbc61a2ef6151fb5,
+        type: 2}
+      propertyPath: TagalongDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114560484821578878, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1277859890 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1822431757891052, guid: be75c3a893693db4fbc61a2ef6151fb5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1277859889}
+--- !u!1 &1277859891 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1277859889}
+--- !u!114 &1277859892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1277859891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 1277859890}
+  isMiniNode: 0
+  distanceThreshold: 4
+  moveSpeed: 0.1
 --- !u!114 &1321159826 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114762939697747612, guid: 6b9c14fcc8025f543bf3a867845d521d,
