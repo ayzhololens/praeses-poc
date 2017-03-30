@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 114121968258808104}
   - component: {fileID: 114838384887733444}
   - component: {fileID: 114270910925068720}
+  - component: {fileID: 114136675656035522}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -4094,6 +4095,18 @@ MonoBehaviour:
   SmoothPositionLerpRatio: 0.5
   SmoothRotationLerpRatio: 0.5
   SmoothScaleLerpRatio: 0.5
+--- !u!114 &114136675656035522
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699194472853180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db431ff1fc119745b351d01d50befaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fitBox: {fileID: 0}
 --- !u!114 &114145896918451298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4200,7 +4213,7 @@ MonoBehaviour:
   FieldInspectionParent: {fileID: 0}
   EquipmentDataParent: {fileID: 0}
   LocationDataParent: {fileID: 0}
-  fieldPrefab: {fileID: 1191887073528030, guid: a5b42e12867554646a275135edb15da2,
+  fieldPrefab: {fileID: 1191887073528030, guid: 454832914a1369a4f97fb2c90c26effd,
     type: 2}
   fieldStartPos: {fileID: 0}
   offsetDist: 0.046
@@ -4238,7 +4251,7 @@ MonoBehaviour:
   photoNode: {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
   videoNode: {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
   simpleNode: {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
-  fieldNode: {fileID: 1424359974238574, guid: 7abfbedf71c025d458cf58bb6b63f515, type: 2}
+  fieldNode: {fileID: 0}
   violationNode: {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38,
     type: 2}
   Minimap: {fileID: 0}
@@ -4252,7 +4265,7 @@ MonoBehaviour:
     type: 2}
   miniFieldNode: {fileID: 1683667537878540, guid: 997be7a5b3e055b4b873a628b476c291,
     type: 2}
-  miniViolationNode: {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38,
+  miniViolationNode: {fileID: 1804684044155840, guid: 33de3cc9bb2f40a408c2186f16549889,
     type: 2}
 --- !u!114 &114258153837352508
 MonoBehaviour:
@@ -4414,7 +4427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab65eee199255e4d94ef942f5d8fab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boiler: {fileID: 1466636709281654, guid: 502fa1b6494b0a74ca94c06a4fd2de09, type: 2}
+  boiler: {fileID: 1497392805783088, guid: 2b0503661aa38374a9546bd43bd36f18, type: 2}
   desk: {fileID: 0}
   SpatialMapping: {fileID: 0}
   isObj: 0
@@ -4449,7 +4462,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_MethodName: toggleForm
+        m_MethodName: openForm
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4813,7 +4826,7 @@ MonoBehaviour:
   rowLengthBox: 4
   hOffsetBox: 50
   vOffsetBox: 35
-  vOffsetField: 13
+  vOffsetField: 11.5
   VioCat:
   - Boiler Controls
   - Boiler Piping
@@ -5453,7 +5466,8 @@ MonoBehaviour:
   - {fileID: 1970791156755716}
   subButtonsOn: 0
   timeOutCounter: 0.29999998
-  hide: {fileID: 0}
+  hide:
+  - {fileID: 0}
 --- !u!114 &114714568606772148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5819,8 +5833,8 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114630983598103544}
-          m_MethodName: enableSimpleCapture
+        - m_Target: {fileID: 114243023302203750}
+          m_MethodName: spawnSimpleAnnotation
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6030,24 +6044,13 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - Keyword: load form
+  - Keyword: violation
     KeyCode: 122
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114734879544203838}
-          m_MethodName: loadDefCmd
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 114224805855449132}
-          m_MethodName: populateFields
+        - m_Target: {fileID: 114243023302203750}
+          m_MethodName: spawnViolationNode
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6060,7 +6063,7 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - Keyword: fetch data
-    KeyCode: 0
+    KeyCode: 107
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -6115,8 +6118,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114243023302203750}
-          m_MethodName: spawnViolationNode
+        - m_Target: {fileID: 114464335170318188}
+          m_MethodName: populateCategories
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6125,6 +6128,24 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: begin
+    KeyCode: 120
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
@@ -6220,7 +6241,8 @@ MonoBehaviour:
   - {fileID: 1946624758725326}
   subButtonsOn: 0
   timeOutCounter: 0.3
-  hide: {fileID: 0}
+  hide:
+  - {fileID: 0}
 --- !u!114 &114984567627295744
 MonoBehaviour:
   m_ObjectHideFlags: 1
