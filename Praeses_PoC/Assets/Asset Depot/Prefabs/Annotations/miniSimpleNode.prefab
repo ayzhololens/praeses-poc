@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 114345805981848518}
   - component: {fileID: 114878295806040872}
   - component: {fileID: 114918686193466352}
+  - component: {fileID: 114274392639695098}
   m_Layer: 0
   m_Name: miniSimpleNode
   m_TagString: Node
@@ -300,7 +301,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1626210597515476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -317,6 +318,22 @@ MonoBehaviour:
   speed: 0
   reviewState: 0
   reviewButtons: {fileID: 0}
+--- !u!114 &114274392639695098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626210597515476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 0}
+  isMiniNode: 1
+  contentOpen: 0
+  distanceThreshold: 0
+  moveSpeed: 0
 --- !u!114 &114345805981848518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -429,8 +446,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114116116646553312}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114274392639695098}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -442,3 +459,4 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0

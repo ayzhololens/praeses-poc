@@ -14,7 +14,7 @@ namespace HoloToolkit.Unity
         public bool isMiniNode;
         Vector3 contentStartLoc;
         SimpleTagalong nodeTagalong;
-        bool contentOpen;
+        public bool contentOpen;
         public float distanceThreshold;
         public float moveSpeed;
         
@@ -23,9 +23,11 @@ namespace HoloToolkit.Unity
         void Start()
         {
             // set initial location of the node content
-            contentStartLoc = contentHolder.transform.position;
-
-            nodeTagalong = contentHolder.GetComponent<SimpleTagalong>();
+            if (!isMiniNode)
+            {
+                contentStartLoc = contentHolder.transform.position;
+                nodeTagalong = contentHolder.GetComponent<SimpleTagalong>();
+            }
         }
         
         void Update()
@@ -49,6 +51,8 @@ namespace HoloToolkit.Unity
                 if (!parentOpener.contentOpen)
                 {
                     parentOpener.openNode();
+                    miniMapToggle.Instance.toggleMiniMap();
+                    
                 }
             }
             else
@@ -56,10 +60,12 @@ namespace HoloToolkit.Unity
                 //open node content
                 if (!contentOpen)
                 {
+                    
+                    contentOpen = true;
                     contentHolder.SetActive(true);
                     contentHolder.transform.position = contentStartLoc;
                     contentStartLoc = contentHolder.transform.position;
-                    contentOpen = true;
+
                 }
             }
         }
