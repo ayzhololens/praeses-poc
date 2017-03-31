@@ -100,7 +100,7 @@ namespace HoloToolkit.Unity
 
             //spawn miniNode and parent it correctly
             GameObject miniNode = Instantiate(miniNodePrefab[spawnedIndex], spawnedNode.transform.position, spawnedNode.transform.rotation);
-            miniNode.GetComponent<nodeOpener>().parentNode = spawnedNode;
+            miniNode.GetComponent<nodeController>().parentNode = spawnedNode;
             
 
             //reset rotator group to position miniNode

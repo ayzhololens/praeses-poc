@@ -6,7 +6,7 @@ using HoloToolkit.Unity.InputModule;
 
 namespace HoloToolkit.Unity
 {
-    public class nodeOpener : MonoBehaviour
+    public class nodeController : MonoBehaviour
     {
 
         public GameObject contentHolder;
@@ -53,7 +53,7 @@ namespace HoloToolkit.Unity
             // if mini node, open the parent
             if (isMiniNode)
             {
-                nodeOpener parentOpener = parentNode.GetComponent<nodeOpener>();
+                nodeController parentOpener = parentNode.GetComponent<nodeController>();
                 if (!parentOpener.contentOpen)
                 {
                     parentOpener.openNode();

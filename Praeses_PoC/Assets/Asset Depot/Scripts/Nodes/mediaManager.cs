@@ -67,7 +67,7 @@ namespace HoloToolkit.Unity
             //set user and date
             nodeMedia.User = metaManager.Instance.user;
             nodeMedia.Date = System.DateTime.Now.ToString();
-            currentNode.GetComponent<nodeOpener>().setUpNode();
+            currentNode.GetComponent<nodeController>().setUpNode();
 
 
         }
