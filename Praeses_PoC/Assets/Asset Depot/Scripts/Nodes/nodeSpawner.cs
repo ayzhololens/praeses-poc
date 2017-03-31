@@ -52,7 +52,7 @@ namespace HoloToolkit.Unity
             mediaManager.Instance.activeNodes.Add(spawnedNode);
             spawnedNode.transform.SetParent(transform);
 
-            //turn off the collider so we dont activate it when placing
+            //turn off the collider so we dont activate it when placing or capturing
             spawnedNode.GetComponent<BoxCollider>().enabled = false;
             placingInProgress = true;
         }
@@ -87,7 +87,6 @@ namespace HoloToolkit.Unity
         public void lockNodePlacement()
         {
             placingInProgress = false;
-            spawnedNode.GetComponent<BoxCollider>().enabled = true;
             mediaManager.Instance.currentNode = spawnedNode;
             mediaManager.Instance.disableStatusIndicator();
 
@@ -110,9 +109,22 @@ namespace HoloToolkit.Unity
             rotatorGroup.localScale = Vector3.one;
             miniNode.SetActive(miniMapToggle.Instance.active);
 
-            
+            if(spawnedIndex == 0)
+            {
+                //simple node so activate it immediately
+                mediaManager.Instance.activateMedia();
+            }
+            if(spawnedIndex == 1)
+            {
+                //photo node so enable photo capture
+                mediaManager.Instance.enablePhotoCapture();
+            }
+            if(spawnedIndex == 2)
+            {
+                mediaManager.Instance.enableVideoRecording();
+            }
 
-            mediaManager.Instance.activateMedia();
+
         }
 
 

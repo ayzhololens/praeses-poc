@@ -13,6 +13,7 @@ namespace HoloToolkit.Unity
 
         public List<string> filepath;
         public string activeFilepath { get; set; }
+        MediaPlayer videoPlayer;
         public List<GameObject> activeComments;
         public GameObject playIcon;
         public GameObject pauseIcon;
@@ -38,6 +39,7 @@ namespace HoloToolkit.Unity
             NodeIndex = mediaManager.Instance.nodeIndex;
             mediaManager.Instance.nodeIndex += 1;
 
+            videoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
 
         }
 
@@ -89,8 +91,8 @@ namespace HoloToolkit.Unity
 
         public void LoadVideo()
         {
-            MediaPlayer.Instance.m_VideoPath = activeFilepath;
-            MediaPlayer.Instance.LoadVideoPlayer();
+            videoPlayer.m_VideoPath = activeFilepath;
+            videoPlayer.LoadVideoPlayer();
 
         }
 
@@ -99,7 +101,7 @@ namespace HoloToolkit.Unity
         {
             if (!startedVideo)
             {
-                MediaPlayer.Instance.Control.Play();
+                videoPlayer.Control.Play();
                 startedVideo = true;
                 playIcon.SetActive(false);
                 pauseIcon.SetActive(true);
@@ -111,7 +113,7 @@ namespace HoloToolkit.Unity
         {
             if (startedVideo)
             {
-                MediaPlayer.Instance.Control.Pause();
+                videoPlayer.Control.Pause();
                 startedVideo = false;
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);
@@ -120,7 +122,7 @@ namespace HoloToolkit.Unity
 
         void videoChecker()
         {
-            if (MediaPlayer.Instance.Control.IsFinished())
+            if (videoPlayer.Control.IsFinished())
             {
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);

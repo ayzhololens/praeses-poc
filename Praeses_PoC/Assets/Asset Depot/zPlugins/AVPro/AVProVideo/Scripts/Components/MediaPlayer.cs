@@ -10,7 +10,6 @@
 
 using UnityEngine;
 using System.Collections;
-using HoloToolkit.Unity;
 using System.Collections.Generic;
 
 //-----------------------------------------------------------------------------
@@ -20,7 +19,7 @@ using System.Collections.Generic;
 namespace RenderHeads.Media.AVProVideo
 {
 	[AddComponentMenu("AVPro Video/Media Player", -100)]
-	public class MediaPlayer : Singleton<MediaPlayer>
+	public class MediaPlayer : MonoBehaviour
 	{
 		// These fields are just used to setup the default properties for a new video that is about to be loaded
 		// Once a video has been loaded you should use the interfaces exposed in the properties to

@@ -40,7 +40,8 @@ namespace HoloToolkit.Unity
 
         public void activateMedia()
         {
-            //set 
+
+            setStatusIndicator("got here");
             nodeMediaHolder nodeMedia = currentNode.GetComponent<nodeMediaHolder>();
 
             if (nodeMedia.photoNode)
@@ -51,11 +52,17 @@ namespace HoloToolkit.Unity
             }
             if (nodeMedia.videoNode)
             {
+                setStatusIndicator("tried to load video");
                 //send video name to node and load it
                 //using filename instead of path because the media player is set to persistent data path
                 nodeMedia.activeFilepath = vidRecorder.filename;
                 nodeMedia.LoadVideo();
+
             }
+
+            setStatusIndicator("tried to activate");
+            //reenable selection so it's clickable
+            currentNode.GetComponent<BoxCollider>().enabled = true;
 
             //set user and date
             nodeMedia.User = metaManager.Instance.user;
@@ -99,19 +106,22 @@ namespace HoloToolkit.Unity
         void startVideoRecording()
         {
             vidRecorder.startRecordingVideo();
-            setStatusIndicator("Recording in progress. Tap to stop");
             recordingEnabled = false;
             recordingInProgress = true;
+            setStatusIndicator("Recording in progress. Tap to stop");
+            //clear source manager
+            sourceManager.Instance.sourcePressed = false;
         }
 
         void stopVideoRecording()
-        {
-            disableStatusIndicator();
+        {   
+            //stop recording, finish encoding then calling activateMedia() when done
+            vidRecorder.StopRecordingVideo();
+            //disableStatusIndicator();
             recordingInProgress = false;
             isCapturing = false;
 
-            //stop recording, finish encoding then calling activateMedia() when done
-            vidRecorder.StopRecordingVideo();
+
         }
 
         public void setStatusIndicator(string curStatus)
@@ -138,6 +148,8 @@ namespace HoloToolkit.Unity
             {
                 if (recordingEnabled)
                 {
+
+                    
                     startVideoRecording();
                 }
                 if (recordingInProgress)

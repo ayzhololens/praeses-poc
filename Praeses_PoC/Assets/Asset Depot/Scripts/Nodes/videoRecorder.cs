@@ -98,6 +98,11 @@ namespace HoloToolkit.Unity
         public void StopRecordingVideo()
         {
             m_VideoCapture.StopRecordingAsync(OnStoppedRecordingVideo);
+
+            mediaManager.Instance.setStatusIndicator("stopped 1");
+
+            mediaManager.Instance.activateMedia();
+            mediaManager.Instance.setStatusIndicator("stopped 2");
         }
 
         void OnStoppedRecordingVideo(VideoCapture.VideoCaptureResult result)
@@ -108,9 +113,9 @@ namespace HoloToolkit.Unity
             m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
             vidCounter += 1;
 
-            mediaManager.Instance.activateMedia();
 
-            
+
+
         }
 
         void OnStoppedVideoCaptureMode(VideoCapture.VideoCaptureResult result)
