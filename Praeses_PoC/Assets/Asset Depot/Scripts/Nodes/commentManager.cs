@@ -8,49 +8,69 @@ using HoloToolkit.Unity.InputModule;
 public class commentManager : MonoBehaviour {
 
     public List<GameObject> activeComments;
-    public Collider scrollBoxCollider;
+    public List<GameObject> activeSimpleComments;
     public int commentCount;
     public Transform commentParent;
     public Transform CommmentStartPos;
     Vector3 startPos;
-    public GameObject newCommentBox;
+    public GameObject simpleCommentPrefab;
+    public GameObject videoCommentPrefab;
+    GameObject spawnedComment;
     public float offsetDist;
     InputField activeInputField;
-    
+    bool isCapturing;
+    bool recordingEnabled;
+    bool recordingInProgress;
 
-	// Use this for initialization
-	void Start () {
-        
-        //GameObject comment1 = Instantiate(newCommentBox, transform.position, Quaternion.identity);
-        //comment1.transform.SetParent(commentParent);
-        //comment1.transform.localScale = newCommentBox.transform.localScale;
-        //comment1.transform.position = CommmentStartPos.position;
-        //GameObject comment2 = Instantiate(newCommentBox, transform.position, Quaternion.identity);
-        //comment2.transform.SetParent(commentParent);
-        //comment2.transform.localScale = newCommentBox.transform.localScale;
-        //comment2.transform.position = new Vector3 (comment1.transform.position.x, comment1.transform.position.y-offsetDist, comment1.transform.position.z);
 
+    // Use this for initialization
+    void Start () {
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isCapturing)
+        {
+            stopCapturing();
+        }
 
     }
 
-
-    public void spawnNewComment()
+    public void spawnSimpleComment()
     {
-        startPos = CommmentStartPos.position;
-        if (commentCount == 0)
-        {
-            commentParent.parent.gameObject.SetActive(true);
-        }
+        //shift all comments down
+        repositionComments();
 
-        if (commentCount == 2)
-        {
-            scrollBoxCollider.enabled = true;
-        }
+        //spawn simple comment
+        spawnedComment = Instantiate(simpleCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+        //define the comment type and open the keyboard
+        spawnedComment.GetComponent<commentContents>().isSimple = true;
+        spawnedComment.GetComponent<inputFieldManager>().activateField();
+
+    }
+
+    void commentSetup(commentContents newComment)
+    {
+        //set position and parenting
+        newComment.transform.SetParent(commentParent);
+        newComment.transform.localPosition = CommmentStartPos.localPosition;
+
+        //define comment metas
+        newComment.Date = System.DateTime.Now.ToString();
+        newComment.user = metaManager.Instance.user;
+        newComment.commentMeta.text = (newComment.user + " " + newComment.Date);
+        
+        //link comment to gameObject
+        newComment.linkedComponent = this.gameObject;
+    }
+    
+    void repositionComments()
+    {
 
         for (int i = 0; i < activeComments.Count; i++)
         {
@@ -58,25 +78,77 @@ public class commentManager : MonoBehaviour {
                                                                 activeComments[i].transform.position.y - offsetDist,
                                                                 activeComments[i].transform.position.z);
         }
-
-        activeComments.Add((GameObject)Instantiate(newCommentBox, transform.position, Quaternion.identity));
-        activeComments[commentCount].transform.SetParent(commentParent);
-        activeComments[commentCount].transform.localScale = newCommentBox.transform.localScale;
-        activeComments[commentCount].transform.position = startPos;
-        activeComments[commentCount].transform.localRotation = CommmentStartPos.localRotation;
-        //activeComments[commentCount].AddComponent<inputFieldManager>();
-        //activeInputField = activeComments[commentCount].GetComponent<commentContents>().inputField;
-        //activeComments[commentCount].AddComponent<inputFieldManager>().mainInputField = activeInputField;
-        Invoke("fieldActivator", .2f);
-        GetComponent<nodeMediaHolder>().activeComments.Add(activeComments[commentCount]);
-        activeComments[commentCount].GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
-        activeComments[commentCount].GetComponent<commentContents>().user = metaManager.Instance.user;
-        activeComments[commentCount].GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
-        activeComments[commentCount].GetComponent<commentContents>().linkedComponent = this.gameObject;
-
-        //activeComments[commentCount].GetComponent<commentContents>().commentMain.text = ("Comment "+ commentCount);
-        //startPos = new Vector3(startPos.x, startPos.y - offsetDist, startPos.z);
     }
+
+
+    public void enableVideoCapture()
+    {
+        isCapturing = true;
+        mediaManager.Instance.setStatusIndicator("Tap to start recording video");
+        recordingEnabled = true;
+
+        //clear source manager
+        sourceManager.Instance.sourcePressed = false;
+    }
+
+    void startVideoCapture()
+    {
+        mediaManager.Instance.vidRecorder.startRecordingVideo();
+        recordingEnabled = false;
+        recordingInProgress = true;
+        mediaManager.Instance.setStatusIndicator("Recording in progress. Tap to stop");
+
+        //clear source manager
+        sourceManager.Instance.sourcePressed = false;
+    }
+
+    void stopVideoRecording()
+    {
+        //stop recording, finish encoding then spawn video frame when done
+        mediaManager.Instance.vidRecorder.StopRecordingVideo(false);
+        mediaManager.Instance.disableStatusIndicator();
+        recordingInProgress = false;
+        isCapturing = false;
+
+        spawnVideoComment();
+    }
+
+    public void spawnVideoComment()
+    {        
+        //shift all comments down
+        repositionComments();
+
+        //spawn simple comment
+        spawnedComment = Instantiate(videoCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+        //define the comment type
+        commentContents videoContent = spawnedComment.GetComponent<commentContents>();
+        videoContent.isVideo = true;
+        videoContent.filepath = mediaManager.Instance.vidRecorder.filename;
+        videoContent.LoadVideo();
+
+
+    }
+
+    void stopCapturing()
+    {
+        if (sourceManager.Instance.sourcePressed)
+        {
+            if (recordingEnabled)
+            {
+                startVideoCapture();
+            }
+            if (recordingInProgress)
+            {
+                stopVideoRecording();
+            }
+        }
+
+    }
+
 
     public virtual  GameObject spawnNewCommentFromJSon()
     {
@@ -90,7 +162,7 @@ public class commentManager : MonoBehaviour {
 
         if (commentCount == 2)
         {
-            scrollBoxCollider.enabled = true;
+            //scrollBoxCollider.enabled = true;
         }
 
         for (int i = 0; i < activeComments.Count; i++)
@@ -100,9 +172,9 @@ public class commentManager : MonoBehaviour {
                                                                 activeComments[i].transform.position.z);
         }
 
-        activeComments.Add((GameObject)Instantiate(newCommentBox, transform.position, Quaternion.identity));
+        activeComments.Add((GameObject)Instantiate(simpleCommentPrefab, transform.position, Quaternion.identity));
         activeComments[commentCount].transform.SetParent(commentParent);
-        activeComments[commentCount].transform.localScale = newCommentBox.transform.localScale;
+        activeComments[commentCount].transform.localScale = simpleCommentPrefab.transform.localScale;
         activeComments[commentCount].transform.position = startPos;
         activeComments[commentCount].transform.localRotation = CommmentStartPos.localRotation;
         output = activeComments[commentCount];

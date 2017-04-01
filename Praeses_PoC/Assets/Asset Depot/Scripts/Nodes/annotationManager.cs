@@ -180,7 +180,7 @@ namespace HoloToolkit.Unity
         public void StopVideoRecording()
         {
             stateIndicator.SetActive(false);
-            vidRecorder.StopRecordingVideo();
+            vidRecorder.StopRecordingVideo(true);
             videoRecordingInProgress = false;
             annotating = false;
             Debug.Log("stopped");

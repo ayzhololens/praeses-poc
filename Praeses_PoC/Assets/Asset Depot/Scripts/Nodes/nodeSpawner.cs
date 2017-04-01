@@ -7,8 +7,9 @@ using HoloToolkit.Examples.GazeRuler;
 namespace HoloToolkit.Unity
 {
 
-    public class nodeSpawner : MonoBehaviour
+    public class nodeSpawner : Singleton<nodeSpawner>
     {
+
         public GameObject[] nodePrefab;
         public GameObject[] miniNodePrefab;
 
@@ -21,8 +22,7 @@ namespace HoloToolkit.Unity
         Vector3 lookPos;
         Quaternion lookRot;
 
-
-
+        formFieldController linkedField;
 
         void Start()
         {
@@ -67,7 +67,6 @@ namespace HoloToolkit.Unity
             camRot = Quaternion.FromToRotation(Vector3.up, GazeManager.Instance.HitInfo.normal);
             return camRot;
         }
-
 
         void nodePlacement()
         {
@@ -114,19 +113,48 @@ namespace HoloToolkit.Unity
                 //simple node so activate it immediately
                 mediaManager.Instance.activateMedia();
             }
+
             if(spawnedIndex == 1)
             {
                 //photo node so enable photo capture
                 mediaManager.Instance.enablePhotoCapture();
             }
+
             if(spawnedIndex == 2)
             {
+                //video node
                 mediaManager.Instance.enableVideoRecording();
+            }
+
+            if(spawnedIndex == 3)
+            {
+                //violation node, pass it into violation spawner
+                violatoinSpawner.Instance.spawnViolation(spawnedNode);
+                mediaManager.Instance.activateMedia();
+            }
+
+            if(spawnedIndex == 4)
+            {
+                //get content holder of masterform
+                spawnedNode.GetComponent<nodeController>().contentHolder = fieldSpawner.Instance.MasterForm.GetComponent<formController>().contentHolder;
+                fieldSpawner.Instance.MasterForm.GetComponent<formController>().fieldNodes.Add(spawnedNode);
+
+                //activate media to store user and date
+                mediaManager.Instance.activateMedia();
+
+                //link field and node then enable attachment capture
+                linkedField.linkedNode = spawnedNode;
+                linkedField.enableAttachmentCapture();
             }
 
 
         }
 
+        //get linked form field
+        public void getLinkedField(formFieldController curField)
+        {
+            linkedField = curField;
+        }
 
     }
 }

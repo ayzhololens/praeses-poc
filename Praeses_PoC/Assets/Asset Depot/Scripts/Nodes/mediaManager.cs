@@ -10,13 +10,20 @@ namespace HoloToolkit.Unity
 
     public class mediaManager : Singleton<mediaManager>
     {
+        //video 
         public videoRecorder vidRecorder;
+        public MediaPlayer videoPlayer;
         bool recordingEnabled;
         bool recordingInProgress;
+
+        //photo
         public photoRecorder photoRecorder;
         bool photoCaptureEnabled;
+
+
         public GameObject stateIndicator;
         public GameObject currentNode { get; set; }
+        public GameObject activeField { get; set; }
         public List<GameObject> activeNodes;
         public bool isCapturing { get; set; }
         public int nodeIndex { get; set; }
@@ -40,8 +47,7 @@ namespace HoloToolkit.Unity
 
         public void activateMedia()
         {
-
-            setStatusIndicator("got here");
+            
             nodeMediaHolder nodeMedia = currentNode.GetComponent<nodeMediaHolder>();
 
             if (nodeMedia.photoNode)
@@ -52,15 +58,12 @@ namespace HoloToolkit.Unity
             }
             if (nodeMedia.videoNode)
             {
-                setStatusIndicator("tried to load video");
                 //send video name to node and load it
                 //using filename instead of path because the media player is set to persistent data path
                 nodeMedia.activeFilepath = vidRecorder.filename;
                 nodeMedia.LoadVideo();
-
             }
-
-            setStatusIndicator("tried to activate");
+            
             //reenable selection so it's clickable
             currentNode.GetComponent<BoxCollider>().enabled = true;
 
@@ -109,6 +112,7 @@ namespace HoloToolkit.Unity
             recordingEnabled = false;
             recordingInProgress = true;
             setStatusIndicator("Recording in progress. Tap to stop");
+
             //clear source manager
             sourceManager.Instance.sourcePressed = false;
         }
@@ -116,12 +120,10 @@ namespace HoloToolkit.Unity
         void stopVideoRecording()
         {   
             //stop recording, finish encoding then calling activateMedia() when done
-            vidRecorder.StopRecordingVideo();
-            //disableStatusIndicator();
+            vidRecorder.StopRecordingVideo(true);
+            disableStatusIndicator();
             recordingInProgress = false;
             isCapturing = false;
-
-
         }
 
         public void setStatusIndicator(string curStatus)
@@ -148,8 +150,6 @@ namespace HoloToolkit.Unity
             {
                 if (recordingEnabled)
                 {
-
-                    
                     startVideoRecording();
                 }
                 if (recordingInProgress)

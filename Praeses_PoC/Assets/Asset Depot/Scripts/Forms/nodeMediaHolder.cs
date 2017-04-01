@@ -39,7 +39,6 @@ namespace HoloToolkit.Unity
             NodeIndex = mediaManager.Instance.nodeIndex;
             mediaManager.Instance.nodeIndex += 1;
 
-            videoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
 
         }
 
@@ -91,6 +90,10 @@ namespace HoloToolkit.Unity
 
         public void LoadVideo()
         {
+            if(videoPlayer == null)
+            {
+                videoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+            }
             videoPlayer.m_VideoPath = activeFilepath;
             videoPlayer.LoadVideoPlayer();
 

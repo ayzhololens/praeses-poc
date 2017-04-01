@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 114190320729332212}
   - component: {fileID: 114365789196834642}
   - component: {fileID: 114378233421718664}
+  - component: {fileID: 114412389356661962}
   m_Layer: 0
   m_Name: fieldNode
   m_TagString: Node
@@ -513,15 +514,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
-  activeFilepath: 
-  activeFileName: 
   activeComments: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
   photoNode: 0
@@ -530,9 +525,6 @@ MonoBehaviour:
   violationNode: 0
   Title: {fileID: 0}
   Description: {fileID: 0}
-  Date: 
-  User: 
-  audioPath: 
   type: 0
   NodeIndex: 0
 --- !u!114 &114392324652434544
@@ -549,8 +541,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114365789196834642}
-        m_MethodName: openForm
+      - m_Target: {fileID: 114412389356661962}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -563,6 +555,22 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   gazeExit: 0
+--- !u!114 &114412389356661962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424359974238574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 0}
+  contentStartLoc: {fileID: 4281664747656126}
+  isMiniNode: 0
+  distanceThreshold: 4
+  moveSpeed: 0.01
 --- !u!114 &114679653308147288
 MonoBehaviour:
   m_ObjectHideFlags: 1

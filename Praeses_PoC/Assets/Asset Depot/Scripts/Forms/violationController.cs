@@ -227,11 +227,11 @@ namespace HoloToolkit.Unity
         public void openViolation()
         {
             contentHolder.transform.position = frontHolder.position;
-            contentHolder.SetActive(true);
+            linkedNode.GetComponent<nodeController>().openNode();
         }
         public void closeViolation()
         {
-            contentHolder.SetActive(false);
+            linkedNode.GetComponent<nodeController>().closeNode();
         }
 
         public void showTabs(bool active)

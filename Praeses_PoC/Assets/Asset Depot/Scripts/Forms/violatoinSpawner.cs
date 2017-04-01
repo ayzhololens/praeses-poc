@@ -7,6 +7,7 @@ using HoloToolkit.Unity.InputModule;
 public class violatoinSpawner :  Singleton<violatoinSpawner>{
 
     public violationController activeViolationController;
+    public GameObject violationPrefab;
     public GameObject violationCategoryPrefab;
     public GameObject violationSubCategoryPrefab;
     public GameObject violationFieldPrefab;
@@ -23,13 +24,27 @@ public class violatoinSpawner :  Singleton<violatoinSpawner>{
 
     // Use this for initialization
     void Start () {
-        //populateSubCategories();
     }
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void spawnViolation(GameObject vioNode)
+    {
+        //spawn violation
+        GameObject spawnedViolation = Instantiate(violationPrefab, transform.position, Quaternion.identity);
+        
+        //link violation and node
+        violationController curVio = spawnedViolation.GetComponent<violationController>();
+        vioNode.GetComponent<nodeController>().contentHolder = curVio.contentHolder;
+        curVio.linkedNode = vioNode;
+
+        //store violation during categorization
+        activeViolationController = curVio;
+        populateCategories();
+    }
 
     public void populateCategories()
     {

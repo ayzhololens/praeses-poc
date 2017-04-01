@@ -27,17 +27,7 @@ namespace HoloToolkit.Unity
 
         // Use this for initialization
         void Start() {
-            if (linkedComponent.GetComponent<formFieldController>() != null)
-            {
-
-                mediaPlayer = linkedComponent.GetComponent<formFieldController>().VideoPlayer;
-            }
-
-            if (linkedComponent.GetComponent<violationController>() != null)
-            {
-
-                mediaPlayer = linkedComponent.GetComponent<violationController>().VideoPlayer;
-            }
+            mediaPlayer = mediaManager.Instance.videoPlayer;
         }
 
         // Update is called once per frame
@@ -54,9 +44,6 @@ namespace HoloToolkit.Unity
         {
             mediaPlayer.m_VideoPath = filepath;
             mediaPlayer.LoadVideoPlayer();
-            linkedComponent.GetComponent<formFieldController>().VideoPlayer.m_VideoPath = filepath;
-            linkedComponent.GetComponent<formFieldController>().VideoPlayer.LoadVideoPlayer();
-            //PlayVideo();
 
         }
 

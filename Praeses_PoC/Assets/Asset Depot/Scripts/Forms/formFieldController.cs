@@ -42,13 +42,6 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            //for (int i=0; i<transform.parent.childCount; i++)
-            //{
-            //    if(transform.parent.GetChild(i).gameObject.name == "commentLocator")
-            //    {
-            //        thumbPos.transform.position = transform.parent.GetChild(i).position;
-            //    }
-            //}
         }
 
         // Update is called once per frame
@@ -61,8 +54,8 @@ namespace HoloToolkit.Unity
         {
             if (linkedNode == null)
             {
-                annotationSpawner.Instance.spawnFieldAnnotation();
-                annotationManager.Instance.activeField = this.gameObject;
+                nodeSpawner.Instance.spawnNode(4);
+                nodeSpawner.Instance.getLinkedField(gameObject.GetComponent<formFieldController>());
             }
             else
             {
@@ -82,7 +75,7 @@ namespace HoloToolkit.Unity
         {
 
             GetComponent<subMenu>().turnOnSubButtons();
-            attachmentParent.gameObject.SetActive(false);
+            //attachmentParent.gameObject.SetActive(false);
             for(int i = 0; i<transform.parent.childCount; i++)
             {
                 if (transform.parent.GetChild(i).gameObject != this.gameObject && transform.parent.GetChild(i).gameObject.GetComponent<subMenu>() != null)

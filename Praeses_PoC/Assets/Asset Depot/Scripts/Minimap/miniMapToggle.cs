@@ -29,7 +29,7 @@ namespace HoloToolkit.Unity
 
         public void toggleMiniMap()
         {
-            Debug.Log("toggledyo");
+
             for (int i = 0; i < MiniMapHolder.transform.childCount; i++)
             {
                 MiniMapHolder.transform.GetChild(i).gameObject.SetActive(!MiniMapHolder.transform.GetChild(i).gameObject.activeSelf);

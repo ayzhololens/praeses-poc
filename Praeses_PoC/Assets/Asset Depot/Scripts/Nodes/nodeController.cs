@@ -9,12 +9,14 @@ namespace HoloToolkit.Unity
     public class nodeController : MonoBehaviour
     {
 
+        [Header("Content and Location")]
         public GameObject contentHolder;
+        public Transform contentStartLoc;
         public GameObject parentNode { get; set; }
         public bool isMiniNode;
-        public Transform contentStartLoc;
         SimpleTagalong nodeTagalong;
         bool contentOpen;
+        [Header("Follow Controls")]
         public float distanceThreshold;
         public float moveSpeed;
         
@@ -54,22 +56,34 @@ namespace HoloToolkit.Unity
             if (isMiniNode)
             {
                 nodeController parentOpener = parentNode.GetComponent<nodeController>();
-                if (!parentOpener.contentOpen)
-                {
-                    parentOpener.openNode();
-                    miniMapToggle.Instance.toggleMiniMap();
-                    
-                }
+                parentOpener.openNode();
+                //miniMapToggle.Instance.toggleMiniMap();
+
+                //close every node that could be open
+                closeAllNodes(parentNode);
             }
             else
             {
                 //open node content
-                if (!contentOpen)
-                {
-                    contentOpen = true;
-                    contentHolder.SetActive(true);
-                    contentHolder.transform.position = contentStartLoc.position;
+                contentOpen = true;
+                contentHolder.SetActive(true);
+                contentHolder.transform.position = contentStartLoc.position;
 
+                //close every node that could be open
+                closeAllNodes(gameObject);
+            }
+
+
+        }
+
+        void closeAllNodes(GameObject thisNode)
+        {
+
+            foreach (GameObject nodes in mediaManager.Instance.activeNodes)
+            {
+                if (nodes != thisNode)
+                {
+                    nodes.GetComponent<nodeController>().closeNode();
                 }
             }
         }
@@ -77,11 +91,8 @@ namespace HoloToolkit.Unity
         public void closeNode()
         {
             //close node content
-            if (contentOpen)
-            {
-                contentHolder.SetActive(false);
-                contentOpen = false;
-            }
+            contentHolder.SetActive(false);
+            contentOpen = false;
         }
 
 

@@ -1039,7 +1039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1983955614141720
 GameObject:
   m_ObjectHideFlags: 1
@@ -3264,7 +3264,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114417259723294608}
-        m_MethodName: spawnNewComment
+        m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3454,8 +3454,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114353580311240332}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114629911391182568}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3811,13 +3811,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeComments: []
-  scrollBoxCollider: {fileID: 65984960754134368}
+  activeSimpleComments: []
   commentCount: 0
   commentParent: {fileID: 224644654234756902}
   CommmentStartPos: {fileID: 224930496201331804}
-  newCommentBox: {fileID: 1115960859750630, guid: 040c36b8b1c95c444ae5fb3535064c96,
+  simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
-  offsetDist: 0.125
+  offsetDist: 0.075
 --- !u!114 &114446178700109054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4228,8 +4228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 1908089109972462}
-  isMiniNode: 0
   contentStartLoc: {fileID: 4436757531566736}
+  isMiniNode: 0
   distanceThreshold: 4
   moveSpeed: 0.01
 --- !u!114 &114642736292500118
@@ -4734,8 +4734,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114353580311240332}
-        m_MethodName: closeContent
+      - m_Target: {fileID: 114629911391182568}
+        m_MethodName: closeNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5612,6 +5612,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0002975, y: 97.30099}
+  m_AnchoredPosition: {x: 55.6, y: 122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -209,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1125679206860344
 GameObject:
   m_ObjectHideFlags: 1
@@ -566,7 +566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1391744566699286
 GameObject:
   m_ObjectHideFlags: 1
@@ -3269,13 +3269,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeComments: []
-  scrollBoxCollider: {fileID: 65856780162855428}
+  activeSimpleComments: []
   commentCount: 0
   commentParent: {fileID: 224569449840046492}
   CommmentStartPos: {fileID: 224837182461757152}
-  newCommentBox: {fileID: 1115960859750630, guid: 040c36b8b1c95c444ae5fb3535064c96,
+  simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
-  offsetDist: 0.125
+  offsetDist: 0.075
 --- !u!114 &114280431650788890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3290,8 +3290,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114649164426837600}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114837416946677524}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3373,7 +3373,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114273245772557832}
-        m_MethodName: spawnNewComment
+        m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4432,8 +4432,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114649164426837600}
-        m_MethodName: closeContent
+      - m_Target: {fileID: 114837416946677524}
+        m_MethodName: closeNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4534,8 +4534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contentHolder: {fileID: 1347992105135240}
-  isMiniNode: 0
   contentStartLoc: {fileID: 4923510843919730}
+  isMiniNode: 0
   distanceThreshold: 4
   moveSpeed: 0.01
 --- !u!114 &114857082700011016
@@ -5503,7 +5503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0002975, y: 97.30099}
+  m_AnchoredPosition: {x: 55.6, y: 122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224845675322489472

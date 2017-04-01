@@ -908,7 +908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224123901651772086}
   m_Layer: 5
-  m_Name: Content
+  m_Name: InspectionFieldParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,17 +1030,16 @@ GameObject:
   - component: {fileID: 114139676258500054}
   - component: {fileID: 114816699466946456}
   - component: {fileID: 114519857435065578}
-  - component: {fileID: 65182228125998774}
   - component: {fileID: 114023760196221204}
   - component: {fileID: 114191531443859644}
-  - component: {fileID: 114580919994700626}
+  - component: {fileID: 114983702369549696}
   m_Layer: 5
   m_Name: Field
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1596132871203186
 GameObject:
   m_ObjectHideFlags: 1
@@ -1359,7 +1358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1740780857661080
 GameObject:
   m_ObjectHideFlags: 1
@@ -2995,18 +2994,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 6.71}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65182228125998774
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593474614476526}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.23, y: 0.035, z: 0.0001}
-  m_Center: {x: -0.005, y: 0.0065, z: 0}
 --- !u!65 &65239483145636334
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -5217,6 +5204,7 @@ MonoBehaviour:
   locationTab: {fileID: 1063602551469834}
   contentHolder: {fileID: 1734258115892488}
   frontHolder: {fileID: 0}
+  fieldNodes: []
 --- !u!114 &114393468269258790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6009,19 +5997,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Pressure Vessel
---- !u!114 &114580919994700626
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1593474614476526}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 0.0025
-  ScrollContent: {fileID: 1496522714227730}
 --- !u!114 &114601501394452026
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6493,7 +6468,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6572,7 +6547,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114816699466946456}
+      - m_Target: {fileID: 114983702369549696}
         m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
@@ -6727,8 +6702,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114816699466946456}
-        m_MethodName: enableVideoCapture
+      - m_Target: {fileID: 114983702369549696}
+        m_MethodName: spawnVideoComment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7734,6 +7709,26 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 453125
+--- !u!114 &114983702369549696
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593474614476526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b9bae83f0275e42b4595bde123cf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeComments: []
+  activeSimpleComments: []
+  commentCount: 0
+  commentParent: {fileID: 224492370400480276}
+  CommmentStartPos: {fileID: 4360383235973932}
+  simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
+    type: 2}
+  videoCommentPrefab: {fileID: 0}
+  offsetDist: 0.07
 --- !u!114 &114986264081018782
 MonoBehaviour:
   m_ObjectHideFlags: 1
