@@ -27,6 +27,7 @@ namespace HoloToolkit.Unity
         public List<GameObject> activeNodes;
         public bool isCapturing { get; set; }
         public int nodeIndex { get; set; }
+        public commentManager commentManager { get; set; }
 
 
 
@@ -77,19 +78,18 @@ namespace HoloToolkit.Unity
 
         }
 
-        public void activateComment(commentContents activeComment)
+        public void activateComment()
         {
-            if (activeComment.isPhoto)
-            {
-
-                activeComment.filepath = photoRecorder.filePath;
-                activeComment.loadPhoto();
-            }
-            if (activeComment.isVideo)
-            {
-                activeComment.filepath = vidRecorder.filename;
-                activeComment.LoadVideo();
-            }
+            //if (activeComment.isPhoto)
+            //{
+            //    activeComment.filepath = photoRecorder.filePath;
+            //    activeComment.loadPhoto();
+            //}
+            //if (activeComment.isVideo)
+            //{
+            //    activeComment.filepath = vidRecorder.filename;
+            //    activeComment.LoadVideo();
+            //}
         }
         
         public void enablePhotoCapture()

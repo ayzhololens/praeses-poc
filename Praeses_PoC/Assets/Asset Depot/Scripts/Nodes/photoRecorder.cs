@@ -120,6 +120,10 @@ namespace HoloToolkit.Unity
             {
                 mediaManager.Instance.activateMedia();
             }
+            if (!activateMedia)
+            {
+                mediaManager.Instance.activateComment();
+            }
             activateMedia = false;
 
         }

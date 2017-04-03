@@ -98,6 +98,7 @@ public class commentManager : MonoBehaviour {
         mediaManager.Instance.vidRecorder.startRecordingVideo();
         recordingEnabled = false;
         recordingInProgress = true;
+        mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Recording in progress. Tap to stop");
 
         //clear source manager
@@ -139,6 +140,7 @@ public class commentManager : MonoBehaviour {
     {
         isCapturing = true;
         photoCaptureEnabled = true;
+        mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Tap to capture photo");
 
         //clear source manager
