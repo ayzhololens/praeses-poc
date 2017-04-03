@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 224833989666749806}
   - component: {fileID: 222159741012834772}
   - component: {fileID: 114875758556346136}
+  - component: {fileID: 23344467564984606}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -83,6 +84,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!23 &23344467564984606
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130388658956200}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: c072768a9d7741343b8c1a336fc30d34, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!65 &65297635387434004
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -176,6 +208,7 @@ MonoBehaviour:
   date: 
   path: 
   nodeIndex: 0
+  thumbnail: {fileID: 1130388658956200}
 --- !u!114 &114695687012444440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 8b7587243355e70479ba4444c6046818, type: 2}
+  m_Material: {fileID: 2100000, guid: c072768a9d7741343b8c1a336fc30d34, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

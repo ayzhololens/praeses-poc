@@ -14,6 +14,7 @@ public class offsiteFieldItemValueHolder : MonoBehaviour {
     public string date;
     public string path;
     public int nodeIndex;
+    public GameObject thumbnail;
 
     public void onEditChangeUpdateJSon()
     {
