@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using HoloToolkit.Unity;
-using System.IO;
 
 public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
 
@@ -35,23 +34,16 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
 
     //for media playing
     public GameObject offsiteMediaWindow;
+    public GameObject mainWindow;
     public GameObject mediaPlane;
-    //public Material photoMaterial;
+    public Material photoMaterial;
     public Material videoMaterial;
     public GameObject minimapGrp;
     public GameObject descObject;
     public CameraControlOffsite nodesMinimapCam;
     public GameObject metaObject;
-    public bool isViewing;
 
-    public void populateOffsiteForm()
-    {
-        populateEquipment();
-        populateFieldDeltas();
-        populateNodes();
-    }
-
-    void populateEquipment()
+    public void populateEquipment()
     {
         //definitions
         float yOffset = -23.11f;
@@ -99,7 +91,7 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
             }
     }
 
-    void populateFieldDeltas()
+    public void populateFieldDeltas()
     {
         deltaCollection.Clear();
         float yOffset = -136;
@@ -174,7 +166,7 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
         }
     }
 
-    void populateNodes()
+    public void populateNodes()
     {
         List<JU_databaseMan.nodeItem> nodesList = new List<JU_databaseMan.nodeItem>();
         foreach(JU_databaseMan.nodeItem nodeItem in JU_databaseMan.Instance.nodesManager.nodes)
@@ -226,13 +218,13 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
         else if(nodeItem.type == 1)
         {
             newItem = Instantiate(photoNodePrefab);
-            newItem.GetComponent<offsiteFieldItemValueHolder>().path = Path.Combine(Application.persistentDataPath, nodeItem.photos[0].path);
-            loadPhoto(newItem);
+            newItem.GetComponent<offsiteFieldItemValueHolder>().path = nodeItem.photos[0].path;
+            newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = photoMaterial;
         }
         else if(nodeItem.type == 4)
         {
             newItem = Instantiate(videoNodePrefab);
-            newItem.GetComponent<offsiteFieldItemValueHolder>().path =  nodeItem.videos[0].path;
+            newItem.GetComponent<offsiteFieldItemValueHolder>().path = nodeItem.videos[0].path;
             newItem.GetComponent<offsiteMediaPlayer>().videoMaterial = videoMaterial;
         }
         else
@@ -263,6 +255,7 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
             newItem.GetComponent<offsiteMediaPlayer>().minimapGrp = minimapGrp;
             newItem.GetComponent<offsiteMediaPlayer>().descObject = descObject;
             newItem.GetComponent<offsiteMediaPlayer>().metaobject = metaObject;
+            newItem.GetComponent<offsiteMediaPlayer>().mainWindow = mainWindow;
             newItem.GetComponent<offsiteMediaPlayer>().commentBoxObject = commentBox;
             //fieldItemCollection.Add(fieldItem.Name, newItem);
         }
@@ -305,16 +298,5 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
         commentHolder.Add(newItem);
     }
 
-    public void loadPhoto(GameObject newItem)
-    {
-        string filepath = newItem.GetComponent<offsiteFieldItemValueHolder>().path;
-        //Debug.Log(filepath);
-        Texture2D targetTexture = new Texture2D(2048, 1152);
-
-        var bytesRead = System.IO.File.ReadAllBytes(filepath);
-        targetTexture.LoadImage(bytesRead);
-        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material.mainTexture = targetTexture;
-        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material;
-        newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material;
-    }
+    
 }

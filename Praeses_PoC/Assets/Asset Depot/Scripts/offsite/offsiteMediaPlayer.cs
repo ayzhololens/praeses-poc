@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 
 public class offsiteMediaPlayer : MonoBehaviour {
 
     public GameObject mediaWindow;
     public GameObject mediaPlane;
     public CameraControlOffsite nodesMinimapCam;
+    public GameObject mainWindow;
 
     public bool closer;
     public Material photoMaterial;
@@ -43,11 +43,10 @@ public class offsiteMediaPlayer : MonoBehaviour {
         if (closer)
         {
             mediaWindow.SetActive(false);
-            offsiteJSonLoader.Instance.isViewing = false;
+            mainWindow.SetActive(true);
         }
         else
         {
-            if (offsiteJSonLoader.Instance.isViewing) { return; };
             int nodeIndex = gameObject.GetComponent<offsiteFieldItemValueHolder>().nodeIndex;
             foreach(JU_databaseMan.nodeItem node in JU_databaseMan.Instance.nodesManager.nodes)
             {
@@ -83,7 +82,7 @@ public class offsiteMediaPlayer : MonoBehaviour {
             metaobject.GetComponent<Text>().text = (currentNode.date + " - " + currentNode.user);
             nodesMinimapCam.focus(currentNode.indexNum);
             mediaWindow.SetActive(true);
-            offsiteJSonLoader.Instance.isViewing = true;
+            mainWindow.SetActive(false);
         }
     }
     
@@ -105,7 +104,4 @@ public class offsiteMediaPlayer : MonoBehaviour {
         commentBoxObject.GetComponent<RectTransform>().sizeDelta = initSizeCommentBox;
         commentBoxObject.GetComponent<RectTransform>().localPosition = initPosCommentBox;
     }
-
-
-
 }
