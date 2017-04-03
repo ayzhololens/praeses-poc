@@ -412,7 +412,7 @@ MonoBehaviour:
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114599425361706096, guid: 396900ef8ff5e37479e155869d781415,
     type: 2}
-  m_PrefabInternal: {fileID: 1571121976}
+  m_PrefabInternal: {fileID: 1595643867}
   m_Script: {fileID: 11500000, guid: 9731ab1959d92374485b020b6628cdad, type: 3}
 --- !u!114 &382993016 stripped
 MonoBehaviour:
@@ -522,7 +522,7 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 4751641195810804, guid: 396900ef8ff5e37479e155869d781415,
     type: 2}
-  m_PrefabInternal: {fileID: 1571121976}
+  m_PrefabInternal: {fileID: 1595643867}
 --- !u!1 &503678501 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1455328868444208, guid: b2db04283121ca74495c2ee000fb4243,
@@ -1088,17 +1088,6 @@ Prefab:
       propertyPath: frontHolder
       value: 
       objectReference: {fileID: 1912778992}
-    - target: {fileID: 114983702369549696, guid: b5dc17dbd901f7540b87f9b5ee681cd5,
-        type: 2}
-      propertyPath: videoCommentPrefab
-      value: 
-      objectReference: {fileID: 1410952836486740, guid: bbc47ff66660a4641a22000861c0507d,
-        type: 2}
-    - target: {fileID: 114761188341124474, guid: b5dc17dbd901f7540b87f9b5ee681cd5,
-        type: 2}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: enableVideoCapture
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5dc17dbd901f7540b87f9b5ee681cd5, type: 2}
   m_IsPrefabParent: 0
@@ -1145,7 +1134,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1353889391}
   m_Script: {fileID: 11500000, guid: bf488ce6b75e0e44f90b39dd8361fe83, type: 3}
---- !u!1001 &1571121976
+--- !u!1001 &1595643867
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1184,21 +1173,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114261800693856704, guid: 396900ef8ff5e37479e155869d781415,
-        type: 2}
-      propertyPath: subButtonParent
-      value: 
-      objectReference: {fileID: 604225635}
-    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
-        type: 2}
-      propertyPath: subButtonParent
-      value: 
-      objectReference: {fileID: 604225635}
-    - target: {fileID: 114974371999832708, guid: 396900ef8ff5e37479e155869d781415,
-        type: 2}
-      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114609328960067754, guid: 396900ef8ff5e37479e155869d781415,
         type: 2}
       propertyPath: subButtonParent
@@ -1209,10 +1183,16 @@ Prefab:
       propertyPath: frontHolder
       value: 
       objectReference: {fileID: 1912778992}
-    - target: {fileID: 1118935304195676, guid: 396900ef8ff5e37479e155869d781415, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114261800693856704, guid: 396900ef8ff5e37479e155869d781415,
+        type: 2}
+      propertyPath: subButtonParent
+      value: 
+      objectReference: {fileID: 604225635}
+    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
+        type: 2}
+      propertyPath: subButtonParent
+      value: 
+      objectReference: {fileID: 604225635}
     - target: {fileID: 1818028388281626, guid: 396900ef8ff5e37479e155869d781415, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1573,7 +1553,7 @@ Prefab:
         type: 2}
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1353889399}
     - target: {fileID: 114121968258808104, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: cursorTimer
@@ -2799,6 +2779,31 @@ Prefab:
       propertyPath: KeywordsAndResponses.Array.data[0].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 134893819}
+    - target: {fileID: 114445574135416832, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 134893819}
+    - target: {fileID: 114445574135416832, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spawnNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 114445574135416832, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114445574135416832, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350402223935514, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: openForm
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114464335170318188, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}

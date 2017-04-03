@@ -15,12 +15,14 @@ public class commentManager : MonoBehaviour {
     Vector3 startPos;
     public GameObject simpleCommentPrefab;
     public GameObject videoCommentPrefab;
+    public GameObject photoCommentPrefab;
     GameObject spawnedComment;
     public float offsetDist;
     InputField activeInputField;
     bool isCapturing;
     bool recordingEnabled;
     bool recordingInProgress;
+    bool photoCaptureEnabled;
 
 
     // Use this for initialization
@@ -127,12 +129,49 @@ public class commentManager : MonoBehaviour {
         //define the comment type
         commentContents videoContent = spawnedComment.GetComponent<commentContents>();
         videoContent.isVideo = true;
-        videoContent.filepath = mediaManager.Instance.vidRecorder.filename;
-        videoContent.LoadVideo();
+        mediaManager.Instance.activateComment(videoContent);
+
 
 
     }
+    
+    public void enablePhotoCapture()
+    {
+        isCapturing = true;
+        photoCaptureEnabled = true;
+        mediaManager.Instance.setStatusIndicator("Tap to capture photo");
 
+        //clear source manager
+        sourceManager.Instance.sourcePressed = false;
+
+    }
+
+    void capturePhoto()
+    {
+        mediaManager.Instance.disableStatusIndicator();
+        photoCaptureEnabled = false;
+        isCapturing = false;
+
+        //capture photo, save it, activeMedia() when done
+        mediaManager.Instance.photoRecorder.CapturePhoto();
+    }
+
+    public void spawnPhotoComment()
+    {
+        //shift all comments down
+        repositionComments();
+
+        //spawn simple comment
+        spawnedComment = Instantiate(photoCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+        //define the comment type
+        commentContents photoContent = spawnedComment.GetComponent<commentContents>();
+        photoContent.isPhoto = true;
+        mediaManager.Instance.activateComment(photoContent);
+    }
     void stopCapturing()
     {
         if (sourceManager.Instance.sourcePressed)
@@ -144,6 +183,10 @@ public class commentManager : MonoBehaviour {
             if (recordingInProgress)
             {
                 stopVideoRecording();
+            }
+            if (photoCaptureEnabled)
+            {
+                capturePhoto();
             }
         }
 

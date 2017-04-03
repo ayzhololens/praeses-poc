@@ -159,9 +159,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224438894489677780}
+  - component: {fileID: 65882699911862474}
+  - component: {fileID: 114491167766629110}
   m_Layer: 5
-  m_Name: ReviewHolder
-  m_TagString: Untagged
+  m_Name: ReviewScroller
+  m_TagString: ScrollContent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1979,6 +1981,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1714764714766052
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224279632990744886}
+  m_Layer: 5
+  m_Name: ReviewHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1723513768397730
 GameObject:
   m_ObjectHideFlags: 1
@@ -2273,6 +2290,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751641195810804}
   - component: {fileID: 114599425361706096}
+  - component: {fileID: 114921364373175614}
   m_Layer: 2
   m_Name: ViolationForm
   m_TagString: Untagged
@@ -3958,6 +3976,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65882699911862474
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059177242840932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 189.8, y: 81.1, z: 4.89}
+  m_Center: {x: 31.78, y: 42.5, z: 0}
 --- !u!65 &65897383760403166
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4078,7 +4108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.02
-  ScrollContent: {fileID: 1059177242840932}
+  ScrollContent: {fileID: 1714764714766052}
 --- !u!114 &114008070826964958
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4459,7 +4489,7 @@ MonoBehaviour:
   - {fileID: 1813479965965646}
   - {fileID: 1050183337846902}
   ReviewHolder: {fileID: 1259009618261246}
-  submittedViolationHolder: {fileID: 1059177242840932}
+  submittedViolationHolder: {fileID: 1714764714766052}
   commentHolder: {fileID: 1156870729204386}
   headerOffset: 0.02
 --- !u!114 &114033514183175054
@@ -5244,7 +5274,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114599425361706096}
+      - m_Target: {fileID: 114921364373175614}
         m_MethodName: enableVideoCapture
         m_Mode: 1
         m_Arguments:
@@ -5450,7 +5480,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114599425361706096}
+      - m_Target: {fileID: 114921364373175614}
         m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
@@ -5554,7 +5584,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114599425361706096}
+      - m_Target: {fileID: 114921364373175614}
         m_MethodName: enablePhotoCapture
         m_Mode: 1
         m_Arguments:
@@ -6870,7 +6900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.02
+  sensitivity: 15
   ScrollContent: {fileID: 1800591298241528}
 --- !u!114 &114392108210512628
 MonoBehaviour:
@@ -7510,6 +7540,19 @@ MonoBehaviour:
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
   panelHighlight: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114491167766629110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1059177242840932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensitivity: 15
+  ScrollContent: {fileID: 1800591298241528}
 --- !u!114 &114495591450786134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8268,7 +8311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.01
+  sensitivity: 15
   ScrollContent: {fileID: 1484478622733702}
 --- !u!114 &114589748982184512
 MonoBehaviour:
@@ -10385,6 +10428,29 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   gazeExit: 0
+--- !u!114 &114921364373175614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818028388281626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b9bae83f0275e42b4595bde123cf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeComments: []
+  activeSimpleComments: []
+  commentCount: 0
+  commentParent: {fileID: 224181817789425544}
+  CommmentStartPos: {fileID: 224394825202245544}
+  simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
+    type: 2}
+  videoCommentPrefab: {fileID: 1410952836486740, guid: bbc47ff66660a4641a22000861c0507d,
+    type: 2}
+  photoCommentPrefab: {fileID: 1100938329339992, guid: 8a4f8e8d6eb0ac746a5575957a0db584,
+    type: 2}
+  offsetDist: 0.07
 --- !u!114 &114923616854050440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12597,6 +12663,24 @@ RectTransform:
   m_AnchoredPosition: {x: 126.5, y: -1.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224279632990744886
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714764714766052}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224438894489677780}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.0004581101, y: -0.00008054683}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224279854989148198
 RectTransform:
   m_ObjectHideFlags: 1
@@ -13030,16 +13114,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1059177242840932}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 224279632990744886}
   m_Father: {fileID: 224144333413194258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.0004709959, y: 0.00007570349}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224458134653512132

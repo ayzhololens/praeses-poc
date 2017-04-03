@@ -622,7 +622,7 @@ MonoBehaviour:
   contentHolder: {fileID: 0}
   contentStartLoc: {fileID: 4842617547686576}
   isMiniNode: 0
-  distanceThreshold: 4
+  distanceThreshold: 2
   moveSpeed: 0.01
 --- !u!114 &114954608297638274
 MonoBehaviour:

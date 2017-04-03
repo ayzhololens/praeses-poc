@@ -29,6 +29,8 @@ namespace HoloToolkit.Unity
         public int nodeIndex { get; set; }
 
 
+
+
         // Use this for initialization
         void Start()
         {
@@ -74,6 +76,21 @@ namespace HoloToolkit.Unity
 
 
         }
+
+        public void activateComment(commentContents activeComment)
+        {
+            if (activeComment.isPhoto)
+            {
+
+                activeComment.filepath = photoRecorder.filePath;
+                activeComment.loadPhoto();
+            }
+            if (activeComment.isVideo)
+            {
+                activeComment.filepath = vidRecorder.filename;
+                activeComment.LoadVideo();
+            }
+        }
         
         public void enablePhotoCapture()
         {
@@ -93,6 +110,7 @@ namespace HoloToolkit.Unity
             isCapturing = false;
 
             //capture photo, save it, activeMedia() when done
+            photoRecorder.activateMedia = true;
             photoRecorder.CapturePhoto();
         } 
 

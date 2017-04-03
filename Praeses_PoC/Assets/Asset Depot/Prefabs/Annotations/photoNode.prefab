@@ -3817,6 +3817,7 @@ MonoBehaviour:
   CommmentStartPos: {fileID: 224930496201331804}
   simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
+  videoCommentPrefab: {fileID: 0}
   offsetDist: 0.075
 --- !u!114 &114446178700109054
 MonoBehaviour:
@@ -4230,7 +4231,7 @@ MonoBehaviour:
   contentHolder: {fileID: 1908089109972462}
   contentStartLoc: {fileID: 4436757531566736}
   isMiniNode: 0
-  distanceThreshold: 4
+  distanceThreshold: 2
   moveSpeed: 0.01
 --- !u!114 &114642736292500118
 MonoBehaviour:

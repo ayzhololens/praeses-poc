@@ -1358,7 +1358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1740780857661080
 GameObject:
   m_ObjectHideFlags: 1
@@ -3496,7 +3496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 0.02
+  sensitivity: 15
   ScrollContent: {fileID: 1532077293591170}
 --- !u!114 &114022334464796562
 MonoBehaviour:
@@ -4598,7 +4598,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114816699466946456}
+      - m_Target: {fileID: 114983702369549696}
         m_MethodName: enablePhotoCapture
         m_Mode: 1
         m_Arguments:
@@ -6703,7 +6703,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114983702369549696}
-        m_MethodName: spawnVideoComment
+        m_MethodName: enableVideoCapture
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7727,7 +7727,10 @@ MonoBehaviour:
   CommmentStartPos: {fileID: 4360383235973932}
   simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
-  videoCommentPrefab: {fileID: 0}
+  videoCommentPrefab: {fileID: 1410952836486740, guid: bbc47ff66660a4641a22000861c0507d,
+    type: 2}
+  photoCommentPrefab: {fileID: 1100938329339992, guid: 8a4f8e8d6eb0ac746a5575957a0db584,
+    type: 2}
   offsetDist: 0.07
 --- !u!114 &114986264081018782
 MonoBehaviour:
