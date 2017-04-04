@@ -528,6 +528,11 @@ GameObject:
   m_PrefabParentObject: {fileID: 1455328868444208, guid: b2db04283121ca74495c2ee000fb4243,
     type: 2}
   m_PrefabInternal: {fileID: 1613055824}
+--- !u!1 &568049870 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1071622073431788, guid: 6a695fa918182f74a8a5c856aaf3dcd3,
+    type: 2}
+  m_PrefabInternal: {fileID: 939844674}
 --- !u!1 &604225635 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1379157504611408, guid: 6b9c14fcc8025f543bf3a867845d521d,
@@ -1173,7 +1178,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114609328960067754, guid: 396900ef8ff5e37479e155869d781415,
+    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
         type: 2}
       propertyPath: subButtonParent
       value: 
@@ -1188,14 +1193,23 @@ Prefab:
       propertyPath: subButtonParent
       value: 
       objectReference: {fileID: 604225635}
-    - target: {fileID: 114353724589794438, guid: 396900ef8ff5e37479e155869d781415,
+    - target: {fileID: 114609328960067754, guid: 396900ef8ff5e37479e155869d781415,
         type: 2}
       propertyPath: subButtonParent
       value: 
       objectReference: {fileID: 604225635}
     - target: {fileID: 1818028388281626, guid: 396900ef8ff5e37479e155869d781415, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114156743701492422, guid: 396900ef8ff5e37479e155869d781415,
+        type: 2}
+      propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: spawnVideoComment
+      objectReference: {fileID: 0}
+    - target: {fileID: 1259009618261246, guid: 396900ef8ff5e37479e155869d781415, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 396900ef8ff5e37479e155869d781415, type: 2}
@@ -1475,7 +1489,7 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
@@ -1490,7 +1504,7 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].Response.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
@@ -1695,7 +1709,7 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].Keyword
-      value: setup
+      value: begin
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
@@ -2103,17 +2117,17 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].KeyCode
-      value: 120
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 756932301}
+      objectReference: {fileID: 568049870}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopObserver
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
@@ -2645,7 +2659,7 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[12].Response.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
@@ -2804,6 +2818,21 @@ Prefab:
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: openForm
       objectReference: {fileID: 0}
+    - target: {fileID: 114608681545669052, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: m_VideoLocation
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608681545669052, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: m_VideoPath
+      value: AVProVideoSamples/BigBuckBunny_360p30.mp4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114886577506375506, guid: 6b9c14fcc8025f543bf3a867845d521d,
+        type: 2}
+      propertyPath: filename
+      value: AVProVideoSamples/BigBuckBunny_360p30.mp4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114464335170318188, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6b9c14fcc8025f543bf3a867845d521d, type: 2}
@@ -2813,6 +2842,27 @@ Transform:
   m_PrefabParentObject: {fileID: 4807349710458002, guid: 6b9c14fcc8025f543bf3a867845d521d,
     type: 2}
   m_PrefabInternal: {fileID: 1977516531}
+--- !u!1 &1977516533 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1769204271471286, guid: 6b9c14fcc8025f543bf3a867845d521d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1977516531}
+--- !u!114 &1977516534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977516533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfe4eaf264074b43a6224bab247c269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mediaPlayer: {fileID: 382993016}
+  _accurateSeek: 0
+  _timeoutMs: 1
+  _texture: {fileID: 0}
+  filePath: 
 --- !u!4 &1998481526 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4252524908237508, guid: be75c3a893693db4fbc61a2ef6151fb5,

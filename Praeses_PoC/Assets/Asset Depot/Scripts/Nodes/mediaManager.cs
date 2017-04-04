@@ -80,16 +80,16 @@ namespace HoloToolkit.Unity
 
         public void activateComment()
         {
-            //if (activeComment.isPhoto)
-            //{
-            //    activeComment.filepath = photoRecorder.filePath;
-            //    activeComment.loadPhoto();
-            //}
-            //if (activeComment.isVideo)
-            //{
-            //    activeComment.filepath = vidRecorder.filename;
-            //    activeComment.LoadVideo();
-            //}
+            if (commentManager.capturingPhoto)
+            {
+                commentManager.spawnPhotoComment();
+            }
+            if (commentManager.capturingVideo)
+            {
+                Debug.Log("activated comment");
+                commentManager.spawnVideoComment();
+                Debug.Log("sent spawn");
+            }
         }
         
         public void enablePhotoCapture()
@@ -160,6 +160,7 @@ namespace HoloToolkit.Unity
                 stateIndicator.SetActive(false);
             }
             stateIndicator.GetComponent<TextMesh>().text = null;
+            Debug.Log("disabled status");
         }
 
         void stopCapturing()

@@ -4,6 +4,7 @@ using UnityEngine;
 using HoloToolkit.Unity;
 using UnityEngine.UI;
 using HoloToolkit.Unity.InputModule;
+using RenderHeads.Media.AVProVideo.Demos;
 
 public class commentManager : MonoBehaviour {
 
@@ -19,7 +20,8 @@ public class commentManager : MonoBehaviour {
     GameObject spawnedComment;
     public float offsetDist;
     InputField activeInputField;
-    bool isCapturing;
+    public bool capturingPhoto { get; set; }
+    public bool capturingVideo { get; set; }
     bool recordingEnabled;
     bool recordingInProgress;
     bool photoCaptureEnabled;
@@ -32,7 +34,7 @@ public class commentManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (isCapturing)
+        if (capturingVideo || capturingPhoto)
         {
             stopCapturing();
         }
@@ -85,39 +87,41 @@ public class commentManager : MonoBehaviour {
 
     public void enableVideoCapture()
     {
-        isCapturing = true;
+        capturingVideo = true;
         mediaManager.Instance.setStatusIndicator("Tap to start recording video");
-        recordingEnabled = true;
 
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
+        recordingEnabled = true;
     }
 
     void startVideoCapture()
     {
         mediaManager.Instance.vidRecorder.startRecordingVideo();
         recordingEnabled = false;
-        recordingInProgress = true;
         mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Recording in progress. Tap to stop");
 
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
+        recordingInProgress = true;
     }
 
     void stopVideoRecording()
     {
         //stop recording, finish encoding then spawn video frame when done
         mediaManager.Instance.vidRecorder.StopRecordingVideo(false);
+        Debug.Log("before status disable");
         mediaManager.Instance.disableStatusIndicator();
         recordingInProgress = false;
-        isCapturing = false;
 
-        spawnVideoComment();
     }
 
     public void spawnVideoComment()
-    {        
+    {
+
+        mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
+        Debug.Log("started Spawn");
         //shift all comments down
         repositionComments();
 
@@ -127,10 +131,15 @@ public class commentManager : MonoBehaviour {
 
         commentSetup(spawnedComment.GetComponent<commentContents>());
 
+        Debug.Log("prefab spawned");
+
         //define the comment type
         commentContents videoContent = spawnedComment.GetComponent<commentContents>();
         videoContent.isVideo = true;
-        mediaManager.Instance.activateComment(videoContent);
+        capturingVideo = false;
+
+        videoContent.filepath = mediaManager.Instance.vidRecorder.filename;
+        videoContent.LoadVideo();
 
 
 
@@ -138,21 +147,19 @@ public class commentManager : MonoBehaviour {
     
     public void enablePhotoCapture()
     {
-        isCapturing = true;
-        photoCaptureEnabled = true;
+        capturingPhoto = true;
         mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Tap to capture photo");
 
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
-
+        photoCaptureEnabled = true;
     }
 
     void capturePhoto()
     {
         mediaManager.Instance.disableStatusIndicator();
         photoCaptureEnabled = false;
-        isCapturing = false;
 
         //capture photo, save it, activeMedia() when done
         mediaManager.Instance.photoRecorder.CapturePhoto();
@@ -172,7 +179,10 @@ public class commentManager : MonoBehaviour {
         //define the comment type
         commentContents photoContent = spawnedComment.GetComponent<commentContents>();
         photoContent.isPhoto = true;
-        mediaManager.Instance.activateComment(photoContent);
+        capturingPhoto = false;
+
+        photoContent.filepath = mediaManager.Instance.photoRecorder.filePath;
+        photoContent.loadPhoto();
     }
     void stopCapturing()
     {
@@ -184,6 +194,7 @@ public class commentManager : MonoBehaviour {
             }
             if (recordingInProgress)
             {
+                Debug.Log("stopped recording");
                 stopVideoRecording();
             }
             if (photoCaptureEnabled)

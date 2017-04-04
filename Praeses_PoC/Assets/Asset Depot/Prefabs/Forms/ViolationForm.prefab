@@ -4491,6 +4491,7 @@ MonoBehaviour:
   ReviewHolder: {fileID: 1259009618261246}
   submittedViolationHolder: {fileID: 1714764714766052}
   commentHolder: {fileID: 1156870729204386}
+  SubmittedMainHolder: {fileID: 1047345451694770}
   headerOffset: 0.02
 --- !u!114 &114033514183175054
 MonoBehaviour:
@@ -4782,6 +4783,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114082567437809564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5233,6 +5235,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114156719935843604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9518,6 +9521,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 1567118148827144}
   pauseIcon: {fileID: 1957004229695396}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114810671727695008
 MonoBehaviour:
   m_ObjectHideFlags: 1
