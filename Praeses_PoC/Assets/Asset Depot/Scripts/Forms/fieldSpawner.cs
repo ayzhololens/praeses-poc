@@ -84,6 +84,7 @@ namespace HoloToolkit.Unity
                 GameObject spawnedField;
                 if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 1)
                 {
+                    Debug.Log("yo");
                     spawnedField = Instantiate(buttonFieldPrefab, transform.position, Quaternion.identity);
                     spawnedField.GetComponent<formFieldController>().populateButtons(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count);
                     List<string> keyCollection = new List<string>();

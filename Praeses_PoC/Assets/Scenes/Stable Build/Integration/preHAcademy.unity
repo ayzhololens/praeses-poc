@@ -812,6 +812,47 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 756932294}
   m_Script: {fileID: 11500000, guid: d587b71ba3b55e44f9654cec8898c32f, type: 3}
+--- !u!1 &800542433 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1771440602139932, guid: 6b9c14fcc8025f543bf3a867845d521d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1977516531}
+--- !u!114 &800542435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 800542433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c7d16f94670a14ba6f96e3b634d2d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldItemPrefab: {fileID: 0}
+  equipmentDataParent: {fileID: 0}
+  equipmentCollapse: {fileID: 0}
+  fieldDeltaPrefab: {fileID: 0}
+  changedFieldParent: {fileID: 0}
+  fieldDeltaCollapse: {fileID: 0}
+  compareItemList: []
+  simpleNodePrefab: {fileID: 0}
+  photoNodePrefab: {fileID: 0}
+  videoNodePrefab: {fileID: 0}
+  nodesParent: {fileID: 0}
+  nodesCollapsable: {fileID: 0}
+  commentSimplePrefab: {fileID: 0}
+  commentParent: {fileID: 0}
+  commentHolder: []
+  commentBox: {fileID: 0}
+  offsiteMediaWindow: {fileID: 0}
+  mainWindow: {fileID: 0}
+  mediaPlane: {fileID: 0}
+  photoMaterial: {fileID: 0}
+  videoMaterial: {fileID: 0}
+  minimapGrp: {fileID: 0}
+  descObject: {fileID: 0}
+  nodesMinimapCam: {fileID: 0}
+  metaObject: {fileID: 0}
 --- !u!1001 &826527502
 Prefab:
   m_ObjectHideFlags: 0
@@ -934,6 +975,10 @@ Prefab:
       propertyPath: preloadedDataFields.Array.data[6]
       value: 
       objectReference: {fileID: 1353889393}
+    - target: {fileID: 1071622073431788, guid: 6a695fa918182f74a8a5c856aaf3dcd3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a695fa918182f74a8a5c856aaf3dcd3, type: 2}
   m_IsPrefabParent: 0
@@ -1223,6 +1268,14 @@ Prefab:
     - target: {fileID: 1004737780789844, guid: b5dc17dbd901f7540b87f9b5ee681cd5, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658794610746130, guid: b5dc17dbd901f7540b87f9b5ee681cd5, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1965570530057172, guid: b5dc17dbd901f7540b87f9b5ee681cd5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b5dc17dbd901f7540b87f9b5ee681cd5, type: 2}
@@ -1636,7 +1689,7 @@ Prefab:
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
       propertyPath: KeywordsAndResponses.Array.data[9].Response.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114955019297564206, guid: 6b9c14fcc8025f543bf3a867845d521d,
         type: 2}
