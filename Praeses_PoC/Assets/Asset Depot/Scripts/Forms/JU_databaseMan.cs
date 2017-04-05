@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 using UnityEngine.UI;
 using HoloToolkit.Unity;
@@ -105,8 +106,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     [System.Serializable]
     public class ValuesClass
     {
-        public List<valueItem> presentData = new List<valueItem>();
+        public List<valueItem> equipmentData = new List<valueItem>();
         public List<valueItem> historicData = new List<valueItem>();
+        public List<valueItem> currentData = new List<valueItem>();
     }
 
     [System.Serializable]
@@ -114,6 +116,16 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     {
         public string name;
         public string value;
+        public int nodeIndex;
+    }
+
+    [System.Serializable]
+    public class compareItem
+    {
+        public string name;
+        public string displayName;
+        public string value;
+        public string oldValue;
         public int nodeIndex;
     }
 
@@ -227,13 +239,16 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
     public void loadValCmd()
     {
-        loadPresent();
+        loadEquipmentData();
         loadHistoric();
+        loadCurrentData();
     }
 
     public void loadNodesCmd()
     {
         nodesManager.nodes.Clear();
+        List<nodeItem> tempNodeList = new List<nodeItem>();
+
         databaseMan.ObjectsClass objectItem = databaseMan.Instance.values.Location.Equipment[0];
         foreach (databaseMan.NodeClass node in objectItem.Nodes)
         {
@@ -271,8 +286,13 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
             newNodeItem.indexNum = node.indexNum;
             newNodeItem.type = node.type;
 
-            nodesManager.nodes.Add(newNodeItem);
+            tempNodeList.Add(newNodeItem);
         }
+        foreach(nodeItem nodeItem in tempNodeList.OrderBy(si => si.date).ToList().Reverse<nodeItem>())
+        {
+            nodesManager.nodes.Add(nodeItem);
+        }
+        
     }
 
     void loadViolationsCmd()
@@ -326,9 +346,9 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         }
     }
 
-    public void loadPresent()
+    public void loadEquipmentData()
     {
-        values.presentData.Clear();
+        values.equipmentData.Clear();
         foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].EquipmentData)
         {
             valueItem newValueItem = new valueItem();
@@ -336,7 +356,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
             newValueItem.value = item.value;
             newValueItem.nodeIndex = item.nodeIndex;
 
-            values.presentData.Add(newValueItem);
+            values.equipmentData.Add(newValueItem);
         }
     }
 
@@ -351,7 +371,21 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
             values.historicData.Add(newValueItem);
         }
-    } 
+    }
+
+    public void loadCurrentData()
+    {
+        values.currentData.Clear();
+        foreach (databaseMan.ItemClass item in databaseMan.Instance.values.Location.Equipment[0].CurrentInspection)
+        {
+            valueItem newValueItem = new valueItem();
+            newValueItem.name = item.name;
+            newValueItem.value = item.value;
+            newValueItem.nodeIndex = item.nodeIndex;
+
+            values.currentData.Add(newValueItem);
+        }
+    }
 
     public virtual ViolationsItem scriptedViolation(ViolationsItem incomingItem)
     {

@@ -51,7 +51,7 @@ namespace HoloToolkit.Unity
 
 
             //distribute present values in field
-            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
             {
                 if (ActiveFields.ContainsKey(valueItem.name))
                 {
