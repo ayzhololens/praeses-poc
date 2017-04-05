@@ -57,6 +57,7 @@ namespace HoloToolkit.Unity
             {
                 nodeController parentOpener = parentNode.GetComponent<nodeController>();
                 parentOpener.openNode();
+                parentNode.GetComponent<AudioSource>().Play();
                 //miniMapToggle.Instance.toggleMiniMap();
 
                 //close every node that could be open
@@ -67,6 +68,7 @@ namespace HoloToolkit.Unity
                 //open node content
                 contentOpen = true;
                 contentHolder.SetActive(true);
+                contentHolder.GetComponent<DirectionIndicator>().enabled = true;
                 contentHolder.transform.position = contentStartLoc.position;
 
                 //close every node that could be open
@@ -83,7 +85,9 @@ namespace HoloToolkit.Unity
             {
                 if (nodes != thisNode)
                 {
-                    nodes.GetComponent<nodeController>().closeNode();
+                    nodeController nodeControl = nodes.GetComponent<nodeController>();
+                    nodeControl.closeNode();
+                    nodeControl.contentHolder.GetComponent<DirectionIndicator>().enabled = false;
                 }
             }
         }

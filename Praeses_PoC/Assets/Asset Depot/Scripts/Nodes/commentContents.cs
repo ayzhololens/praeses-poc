@@ -56,7 +56,7 @@ namespace HoloToolkit.Unity
             }
             mediaPlayer.m_VideoPath = filepath;
             mediaPlayer.LoadVideoPlayer();
-            GetComponent<Renderer>().material.mainTexture = mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>()._texture;
+            //GetComponent<Renderer>().material.mainTexture = mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>()._texture;
 
         }
 

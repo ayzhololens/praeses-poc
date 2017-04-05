@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 114207993656426160}
   - component: {fileID: 114526910064789362}
   - component: {fileID: 114190194404039976}
+  - component: {fileID: 114304978721511454}
   m_Layer: 2
   m_Name: contentHolder
   m_TagString: Untagged
@@ -3996,7 +3997,7 @@ BoxCollider:
   m_GameObject: {fileID: 1156870729204386}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 83.4, y: 102.2, z: 6.34}
   m_Center: {x: 52.37, y: 36.8, z: 0}
@@ -6255,6 +6256,23 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114304978721511454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118935304195676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a72bdb251e5ce488e5c51f0a9c657b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cursor: {fileID: 0}
+  DirectionIndicatorObject: {fileID: 1204202692450140, guid: da3b6e027e0d2c04e925e54ab3fcec09,
+    type: 2}
+  DirectionIndicatorColor: {r: 0, g: 0, b: 1, a: 1}
+  VisibilitySafeFactor: -0.08
+  MetersFromCursor: 0.029
 --- !u!114 &114316568753017532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6475,7 +6493,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0.26666668, b: 0.78823537, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7555,7 +7573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 15
-  ScrollContent: {fileID: 1800591298241528}
+  ScrollContent: {fileID: 1714764714766052}
 --- !u!114 &114495591450786134
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8309,7 +8327,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1156870729204386}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32e880ea1726a8c4a8d87cbbc3f1fd3d, type: 3}
   m_Name: 

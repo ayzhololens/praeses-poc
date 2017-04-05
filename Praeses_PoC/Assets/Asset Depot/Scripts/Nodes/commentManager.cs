@@ -120,7 +120,7 @@ public class commentManager : MonoBehaviour {
     public void spawnVideoComment()
     {
 
-        mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
+        //mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
         Debug.Log("started Spawn");
         //shift all comments down
         repositionComments();

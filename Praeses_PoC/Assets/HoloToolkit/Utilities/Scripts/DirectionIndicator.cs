@@ -25,8 +25,8 @@ namespace HoloToolkit.Unity
         public float VisibilitySafeFactor = 0.1f;
 
         [Tooltip("Multiplier to decrease the distance from the cursor center an object is rendered to keep it in view.")]
-        [Range(0.1f, 1.0f)]
-        public float MetersFromCursor = 0.3f;
+        [Range(0.01f, 1.0f)]
+        public float MetersFromCursor = 0.04f;
 
         // The default rotation of the cursor direction indicator.
         private Quaternion directionIndicatorDefaultRotation = Quaternion.identity;
@@ -44,6 +44,7 @@ namespace HoloToolkit.Unity
         {
             if (Cursor == null)
             {
+                Cursor = GameObject.Find("Cursor");
                 Debug.LogError("Please include a GameObject for the cursor.");
             }
 
