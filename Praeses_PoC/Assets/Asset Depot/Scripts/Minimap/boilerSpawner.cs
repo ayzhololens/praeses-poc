@@ -96,12 +96,12 @@ namespace HoloToolkit.Unity
 
         void repositionNodeHolder()
         {
-            Transform initParent = annotationManager.Instance.gameObject.transform.parent;
-            annotationManager.Instance.gameObject.transform.SetParent(boilerClone.transform);
-            annotationManager.Instance.gameObject.transform.localPosition = Vector3.zero;
-            annotationManager.Instance.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            annotationManager.Instance.gameObject.transform.localScale = Vector3.one;
-            annotationManager.Instance.gameObject.transform.SetParent(initParent);
+            Transform initParent = mediaManager.Instance.gameObject.transform.parent;
+            mediaManager.Instance.gameObject.transform.SetParent(boilerClone.transform);
+            mediaManager.Instance.gameObject.transform.localPosition = Vector3.zero;
+            mediaManager.Instance.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
+            mediaManager.Instance.gameObject.transform.localScale = Vector3.one;
+            mediaManager.Instance.gameObject.transform.SetParent(initParent);
         }
     }
 }

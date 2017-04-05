@@ -164,7 +164,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 0}
+  commentMain: {fileID: 114353306870644986}
   commentMeta: {fileID: 114260772065706710}
   Date: 
   user: 
@@ -174,6 +174,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114103592904664656
 MonoBehaviour:
   m_ObjectHideFlags: 1
