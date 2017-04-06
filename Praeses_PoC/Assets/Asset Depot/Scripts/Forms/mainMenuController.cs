@@ -37,7 +37,7 @@ namespace HoloToolkit.Unity
 
         public void preloadData()
         {
-            Debug.Log("yo333");
+
             for (int i = 0; i < preloadedDataFields.Length; i++)
             {
                 preloadedDataFields[i].loadDetails();

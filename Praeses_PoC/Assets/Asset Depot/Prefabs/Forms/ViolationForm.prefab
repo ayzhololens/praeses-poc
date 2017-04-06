@@ -8292,8 +8292,8 @@ MonoBehaviour:
   recCharSize: 0
   charPanel: {fileID: 0}
   scaleMult: 0
-  useKeypad: 1
-  useNumpad: 0
+  useKeypad: 0
+  useNumpad: 1
 --- !u!114 &114581648986950628
 MonoBehaviour:
   m_ObjectHideFlags: 1

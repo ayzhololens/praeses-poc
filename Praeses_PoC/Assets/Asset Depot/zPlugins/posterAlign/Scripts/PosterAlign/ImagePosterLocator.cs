@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.VR.WSA.WebCam;
+using HoloToolkit.Unity;
 namespace PosterAlignment
 {
     /// <summary>
@@ -39,6 +40,7 @@ namespace PosterAlignment
         private static List<byte> cameraImageListBuffer = null; // color webcam data buffer as list
         private static GCHandle cameraImageGCHandle;
         private static IntPtr cameraImagePtrToData;
+        
 
         public void StartProcessing()
         {

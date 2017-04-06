@@ -40,6 +40,8 @@ namespace HoloToolkit.Unity
         // Check if the cursor direction indicator is visible.
         private bool isDirectionIndicatorVisible;
 
+        public bool hasGazed { get; set; }
+
         public void Awake()
         {
             if (Cursor == null)
@@ -104,7 +106,7 @@ namespace HoloToolkit.Unity
 
         public void Update()
         {
-            if (DirectionIndicatorObject == null)
+            if (DirectionIndicatorObject == null || hasGazed)
             {
                 return;
             }
@@ -116,6 +118,11 @@ namespace HoloToolkit.Unity
             // The cursor indicator should only be visible if the target is not visible.
             isDirectionIndicatorVisible = !IsTargetVisible();
             directionIndicatorRenderer.enabled = isDirectionIndicatorVisible;
+
+            if (IsTargetVisible())
+            {
+                hasGazed = true;
+            }
 
             if (isDirectionIndicatorVisible)
             {

@@ -58,6 +58,24 @@ public class commentManager : MonoBehaviour {
 
     }
 
+    public virtual GameObject spawnSimpleCommentFromJSON()
+    {
+        //shift all comments down
+        repositionComments();
+
+        //spawn simple comment
+        spawnedComment = Instantiate(simpleCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+        //define the comment type and open the keyboard
+        spawnedComment.GetComponent<commentContents>().isSimple = true;
+
+        return spawnedComment;
+
+    }
+
     void commentSetup(commentContents newComment)
     {
         //set position and parenting
@@ -144,7 +162,35 @@ public class commentManager : MonoBehaviour {
 
 
     }
-    
+
+    public virtual GameObject spawnVideoCommentFromJSON()
+    {
+
+        //mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
+
+        //shift all comments down
+        repositionComments();
+
+        //spawn simple comment
+        spawnedComment = Instantiate(videoCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+
+
+        //define the comment type
+        commentContents videoContent = spawnedComment.GetComponent<commentContents>();
+        videoContent.isVideo = true;
+        capturingVideo = false;
+
+
+        return spawnedComment;
+
+
+
+    }
+
     public void enablePhotoCapture()
     {
         capturingPhoto = true;
@@ -184,6 +230,29 @@ public class commentManager : MonoBehaviour {
         photoContent.filepath = mediaManager.Instance.photoRecorder.filePath;
         photoContent.loadPhoto();
     }
+
+    public virtual GameObject spawnPhotoCommentFromJSON()
+    {
+        
+        //shift all comments down
+        repositionComments();
+
+        //spawn simple comment
+        spawnedComment = Instantiate(photoCommentPrefab, transform.position, Quaternion.identity);
+        activeComments.Add(spawnedComment);
+
+        commentSetup(spawnedComment.GetComponent<commentContents>());
+
+        //define the comment type
+        commentContents photoContent = spawnedComment.GetComponent<commentContents>();
+        photoContent.isPhoto = true;
+        capturingPhoto = false;
+        
+
+
+        return spawnedComment;
+    }
+
     void stopCapturing()
     {
         if (sourceManager.Instance.sourcePressed)

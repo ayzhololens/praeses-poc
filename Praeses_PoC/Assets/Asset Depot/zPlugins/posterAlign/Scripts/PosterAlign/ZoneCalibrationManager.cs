@@ -2,6 +2,7 @@
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 using UnityEngine;
 using System.Collections.Generic;
+using HoloToolkit.Unity;
 using System;
 
 namespace PosterAlignment
@@ -103,6 +104,7 @@ namespace PosterAlignment
 
             currentZone.LockZone(placeAnchor);
             ToggleOverlay(false);
+            OnDestroy();
         }
     }
 }

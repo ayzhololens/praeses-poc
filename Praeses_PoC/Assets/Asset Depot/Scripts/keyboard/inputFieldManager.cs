@@ -58,6 +58,10 @@ namespace HoloToolkit.Unity
             {
                 Invoke("turnOnKeyboard", .1f);
             }
+            if (useNumpad)
+            {
+                Invoke("turnOnNumpad", .1f);
+            }
             
             engaged = true;
         }
@@ -70,6 +74,14 @@ namespace HoloToolkit.Unity
             keyboardScript.Instance.currentField = mainInputField;
             keyboardScript.Instance.useKeypad = true;
             keyboardScript.Instance.keyboardToggle();
+        }
+
+        void turnOnNumpad()
+        {
+            keyboardScript.Instance.currentField = mainInputField;
+            keyboardScript.Instance.useNumpad = true;
+            keyboardScript.Instance.keyboardToggle();
+
         }
 
         public void deactivateField()

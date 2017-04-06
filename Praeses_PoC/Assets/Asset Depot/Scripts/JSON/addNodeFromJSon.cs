@@ -26,10 +26,10 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
         spawnedNode.transform.localScale = sca;
         spawnedNode.GetComponent<nodeMediaHolder>().type = nodeClass.type;
         mediaManager.Instance.activeNodes.Add(spawnedNode);
-
         spawnedNode.GetComponent<nodeMediaHolder>().User = nodeClass.user;
         spawnedNode.GetComponent<nodeMediaHolder>().Date = nodeClass.date;
         spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = nodeClass.indexNum;
+        //spawnedNode.GetComponent<nodeController>().fromJSON = true;
 
         if (nodeClass.type == 2)//type = 2 field
         {
@@ -38,8 +38,21 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                 if (valueJU.nodeIndex != 0)
                 {
                     //print(valueJU.name + "has node!");
-                    spawnedNode.GetComponent<formNodeController>().linkedField = fieldSpawner.Instance.ActiveFields[valueJU.name];
-                    spawnedNode.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().linkedNode = spawnedNode;
+                    //spawnedNode.GetComponent<formNodeController>().linkedField = fieldSpawner.Instance.ActiveFields[valueJU.name];
+                    //spawnedNode.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().linkedNode = spawnedNode;
+
+                    //get content holder of masterform
+                    spawnedNode.GetComponent<nodeController>().contentHolder = fieldSpawner.Instance.MasterForm.GetComponent<formController>().contentHolder;
+                    fieldSpawner.Instance.MasterForm.GetComponent<formController>().fieldNodes.Add(spawnedNode);
+
+                    nodeSpawner.Instance.spawnMiniNode(spawnedNode, 4);
+
+                    //link field and node then enable attachment capture
+                    spawnedNode.GetComponent<nodeController>().linkedField = fieldSpawner.Instance.ActiveFields[valueJU.name];
+                    spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<formFieldController>().linkedNode = spawnedNode;
+                    //spawnedNode.GetComponent<formFieldController>().linkedNode = spawnedNode;
+
+
                     List<databaseMan.tempComment> tempList = new List<databaseMan.tempComment>();
                     List<databaseMan.tempComment> spawnList = new List<databaseMan.tempComment>();
                     foreach (JU_databaseMan.comment commentJU in nodeClass.comments)
@@ -73,7 +86,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                     {
                         if (comment.type == 1)
                         {
-                            GameObject comment3D = spawnedNode.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().spawnSimpleCommentFromJSon();
+                            GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnSimpleCommentFromJSON();
 
                             comment3D.GetComponent<commentContents>().Date = comment.date;
                             comment3D.GetComponent<commentContents>().user = comment.user;
@@ -82,7 +95,8 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                         }
                         else if (comment.type == 2)
                         {
-                            GameObject comment3D = spawnedNode.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().spawnPhotoPaneFromJSon();
+                            GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnPhotoCommentFromJSON();
+
 
                             comment3D.GetComponent<commentContents>().Date = comment.date;
                             comment3D.GetComponent<commentContents>().user = comment.user;
@@ -92,7 +106,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                         }
                         else if (comment.type == 3)
                         {
-                            GameObject comment3D = spawnedNode.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().spawnVideoPaneFromJSon();
+                            GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnVideoCommentFromJSON();
 
                             comment3D.GetComponent<commentContents>().Date = comment.date;
                             comment3D.GetComponent<commentContents>().user = comment.user;
@@ -128,22 +142,33 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
 
         if (nodeClass.type == 0)//simple type=0
         {
-            spawnedNode.GetComponent<nodeController>().closeNode();
-        }else if(nodeClass.type == 1)//photo type=1
+            nodeSpawner.Instance.spawnMiniNode(spawnedNode, 0);
+            //spawnedNode.GetComponent<nodeController>().closeNode();
+        }
+        else if(nodeClass.type == 1)//photo type=1
         {
+
+            nodeSpawner.Instance.spawnMiniNode(spawnedNode, 1);
             spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = nodeClass.photos[0].path;
             //spawnedNode.GetComponent<nodeMediaHolder>().activeFileName = shortNameProcessor(nodeClass.photos[0].path);
             spawnedNode.GetComponent<nodeMediaHolder>().loadPhoto(System.IO.Path.Combine(Application.persistentDataPath, nodeClass.photos[0].path));
             //print(System.IO.Path.Combine(Application.persistentDataPath, nodeClass.photos[0].path));
-            spawnedNode.GetComponent<nodeController>().closeNode();
+            //spawnedNode.GetComponent<nodeController>().closeNode();
         }
         else if (nodeClass.type == 4)//video type=4
         {
+
+            nodeSpawner.Instance.spawnMiniNode(spawnedNode, 2);
             spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = nodeClass.videos[0].path;
             //spawnedNode.GetComponent<nodeMediaHolder>().activeFileName = nodeClass.videos[0].path;
             spawnedNode.GetComponent<nodeMediaHolder>().LoadVideo();
-            spawnedNode.GetComponent<nodeController>().closeNode();
+            
         }
+
+
+        spawnedNode.GetComponent<nodeController>().setUpNode();
+        spawnedNode.GetComponent<nodeController>().closeNode();
+        spawnedNode.GetComponent<BoxCollider>().enabled = true;
 
     }
 

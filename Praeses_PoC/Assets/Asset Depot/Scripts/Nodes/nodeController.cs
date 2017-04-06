@@ -19,7 +19,9 @@ namespace HoloToolkit.Unity
         [Header("Follow Controls")]
         public float distanceThreshold;
         public float moveSpeed;
-        
+        public bool fromJSON { get; set; }
+        public GameObject linkedField;
+
 
 
         void Start()
@@ -58,21 +60,23 @@ namespace HoloToolkit.Unity
                 nodeController parentOpener = parentNode.GetComponent<nodeController>();
                 parentOpener.openNode();
                 parentNode.GetComponent<AudioSource>().Play();
-                //miniMapToggle.Instance.toggleMiniMap();
+               
 
                 //close every node that could be open
                 closeAllNodes(parentNode);
             }
             else
             {
+                //close every node that could be open
+                closeAllNodes(gameObject);
+
                 //open node content
                 contentOpen = true;
                 contentHolder.SetActive(true);
                 contentHolder.GetComponent<DirectionIndicator>().enabled = true;
+                contentHolder.GetComponent<DirectionIndicator>().hasGazed = false;
                 contentHolder.transform.position = contentStartLoc.position;
 
-                //close every node that could be open
-                closeAllNodes(gameObject);
             }
 
 

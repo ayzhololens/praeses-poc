@@ -65,12 +65,32 @@ namespace HoloToolkit.Unity
 
             }
 
-            //distribute historic values in field parentheses
-            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
+           // distribute historic values in field parentheses
+           foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
             {
                 if (ActiveFields.ContainsKey(valueItem.name))
                 {
-                    ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
+                    //correct naming
+                    foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.EquipmentData.fields)
+                    {
+                        if (field.Options.ContainsKey(valueItem.value))
+                        {
+                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + field.Options[valueItem.value] + ")");
+                        }
+                        else
+                        {
+                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
+                        }
+                    }
+
+                    foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.InspectionFields.fields)
+                    {
+                        if (field.Options.ContainsKey(valueItem.value))
+                        {
+
+                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + field.Options[valueItem.value] + ")");
+                        }
+                    }
                 }
             }
         }
@@ -81,12 +101,34 @@ namespace HoloToolkit.Unity
             int fieldCount = JU_databaseMan.Instance.definitions.InspectionFields.fields.Count;
             for (int i = 0; i < fieldCount; i++)
             {
+
                 GameObject spawnedField;
                 if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 1)
                 {
-                    Debug.Log("yo");
+
                     spawnedField = Instantiate(buttonFieldPrefab, transform.position, Quaternion.identity);
+
                     spawnedField.GetComponent<formFieldController>().populateButtons(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count);
+                    //Debug.Log(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count + " " + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].DisplayName);
+
+
+
+                    //if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count > 0)
+                    //{
+                    //    foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
+                    //    {
+                    //        if (ActiveFields.ContainsKey(valueItem.name))
+                    //        {
+                    //            Debug.Log(ActiveFields[valueItem.name].name);
+                    //            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[valueItem.value] + ")");
+                    //        }
+                    //    }
+                    //    //Debug.Log(spawnedField.name);
+                    //    //spawnedField.GetComponent<formFieldController>().previousValue.text = ("(" + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[JU_databaseMan.Instance.values.historicData[i].value] + ")");
+
+                    //}
+
+
                     List<string> keyCollection = new List<string>();
                     foreach(string keyIn in JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Keys)
                     {
@@ -104,7 +146,10 @@ namespace HoloToolkit.Unity
                         spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonText.text = (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[keyCollection[m]]);
                         spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonIndex = keyInts[m];
                     }
-                    
+
+
+
+
                 }
                 else if(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 16)
                 {
@@ -112,6 +157,12 @@ namespace HoloToolkit.Unity
                     spawnedField.GetComponent<formFieldController>().populateButtons(2);
                     spawnedField.GetComponent<formFieldController>().curButtons[0].GetComponent<formButtonController>().buttonText.text = "yes";
                     spawnedField.GetComponent<formFieldController>().curButtons[1].GetComponent<formButtonController>().buttonText.text = "no";
+                }
+                else if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 14)
+                {
+                    spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
+                    spawnedField.GetComponent<formFieldController>().Value.text = System.DateTime.Now.ToString("MM/dd/yyyy");
+
                 }
                 else
                 {
@@ -125,6 +176,9 @@ namespace HoloToolkit.Unity
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = JU_databaseMan.Instance.definitions.InspectionFields.fields[i].DisplayName;
                 spawnedField.GetComponent<formFieldController>().trueName = JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Name;
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
+
+
+
                 IFCollection.Add(spawnedField);
             }
             //FieldInspectionParent.gameObject.SetActive(false);

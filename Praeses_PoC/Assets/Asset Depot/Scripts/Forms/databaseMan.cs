@@ -187,7 +187,7 @@ public class databaseMan : Singleton<databaseMan>
         loadValCmd();
         JU_databaseMan.Instance.loadDefCmd();
 
-        print("jsonDefinitionsLoaded2222");
+
     }
 
     public void loadValCmd()

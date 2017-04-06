@@ -48,7 +48,7 @@ namespace HoloToolkit.Unity
 
         public void loadDetails()
         {
-            Debug.Log("up");
+
             JU_databaseMan database = JU_databaseMan.Instance;
 
             //LOCATION DETAILS

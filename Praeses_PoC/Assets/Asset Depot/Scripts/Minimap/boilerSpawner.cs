@@ -18,11 +18,12 @@ namespace HoloToolkit.Unity
         GameObject activeObj;
 
         public GameObject frontHolder;
+        Vector3 initBoilerPos;
 
         // Use this for initialization
         void Start()
         {
-
+            initBoilerPos = boiler.transform.GetChild(0).localPosition;
         }
 
         // Update is called once per frame
@@ -63,7 +64,21 @@ namespace HoloToolkit.Unity
 
         public void PlaceBoiler()
         {
-            tapToPlaceBoiler = true;
+            if(activeObj == null)
+            {
+                activeObj = boiler;
+            }
+            if(tapToPlaceBoiler == false)
+            {
+                activeObj.transform.GetChild(0).localPosition = initBoilerPos;
+                activeObj.transform.GetChild(0).localRotation = new Quaternion(0, 0, 0, 0);
+                for (int i = 0; i < activeObj.transform.GetChild(0).GetChild(0).childCount; i++)
+                {
+                    activeObj.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<MeshCollider>().enabled = false;
+                }
+                tapToPlaceBoiler = true;
+
+            }
             if (isObj)
             {
                 activeObj.transform.position = frontHolder.transform.position;
@@ -80,28 +95,18 @@ namespace HoloToolkit.Unity
         public void LockBoiler()
         {
             tapToPlaceBoiler = false;
-            for (int i = 0; i < activeObj.transform.childCount; i++)
+            for (int i = 0; i < activeObj.transform.GetChild(0).GetChild(0).childCount; i++)
             {
-                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = true;
+                activeObj.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<MeshCollider>().enabled = true;
             }
-            activeObj.transform.SetParent(SpatialMapping.transform);
 
             if (isObj)
             {
                 activeObj.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
             }
-            repositionNodeHolder();
 
         }
 
-        void repositionNodeHolder()
-        {
-            Transform initParent = mediaManager.Instance.gameObject.transform.parent;
-            mediaManager.Instance.gameObject.transform.SetParent(boilerClone.transform);
-            mediaManager.Instance.gameObject.transform.localPosition = Vector3.zero;
-            mediaManager.Instance.gameObject.transform.localRotation = new Quaternion(0, 0, 0, 0);
-            mediaManager.Instance.gameObject.transform.localScale = Vector3.one;
-            mediaManager.Instance.gameObject.transform.SetParent(initParent);
-        }
+
     }
 }
