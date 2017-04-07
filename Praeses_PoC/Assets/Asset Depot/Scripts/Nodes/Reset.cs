@@ -9,9 +9,7 @@ namespace HoloToolkit.Unity
     public class Reset : MonoBehaviour
     {
 
-        public videoRecorder vidRecorder;
-        public annotationManager annotManager;
-
+        public List<GameObject> clearedNodes;
         // Use this for initialization
         void Start()
         {
@@ -24,25 +22,90 @@ namespace HoloToolkit.Unity
 
         }
 
+       
+
         public void clearNodes()
         {
-            foreach (GameObject a in annotManager.activeAnnotations)
+            foreach(GameObject node in mediaManager.Instance.activeNodes)
             {
-                DestroyImmediate(a);
-            }
-            annotManager.activeAnnotations.Clear();
-
-            for (int i = 0; i < vidRecorder.vidCounter; i++)
-            {
-                if (File.Exists(vidRecorder.fileList[i]))
+                if (!node.GetComponent<nodeController>().fromJSON)
                 {
-                    File.Delete(vidRecorder.fileList[i]);
+                    if (node.GetComponent<nodeMediaHolder>().fieldNode)
+                    {
+                            foreach (GameObject comment in node.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().activeComments)
+                            {
+                                if (comment.GetComponent<commentContents>().filepath != null)
+                                {
+                                    if (comment.GetComponent<commentContents>().isVideo && File.Exists(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath)))
+                                    {
+                                        File.Delete(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath));
+                                    }
+                                    else if (comment.GetComponent<commentContents>().isPhoto && File.Exists(comment.GetComponent<commentContents>().filepath))
+                                    {
+                                        File.Delete(comment.GetComponent<commentContents>().filepath);
+                                    }
+                                }
+                            }
+                    }
+                    if (node.GetComponent<nodeMediaHolder>().violationNode)
+                    {
+                        foreach (GameObject comment in node.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().activeComments)
+                        {
+                            if (comment.GetComponent<commentContents>().filepath != null)
+                            {
+                               
+                                if (comment.GetComponent<commentContents>().isVideo && File.Exists(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath)))
+                                {
+                                    File.Delete(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath));
+                                }
+                                else if (comment.GetComponent<commentContents>().isPhoto && File.Exists(comment.GetComponent<commentContents>().filepath))
+                                {
+                                    File.Delete(comment.GetComponent<commentContents>().filepath);
+                                }
+                            }
+                        }
+                        node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview.GetComponent<viewViolationContent>().viewViolationHolder.GetComponent<viewViolationController>().vioFields.Remove(node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview);
+                        DestroyImmediate(node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview);
+                        DestroyImmediate(node.GetComponent<nodeController>().linkedField);
+
+                    }
+
+                    if (node.GetComponent<nodeMediaHolder>().activeFilepath.Length>1)
+                    {
+                        Debug.Log(Path.Combine(Application.persistentDataPath, node.GetComponent<nodeMediaHolder>().activeFilepath));
+
+                        if (File.Exists(node.GetComponent<nodeMediaHolder>().activeFilepath))
+                        {
+                            //File.Delete(Path.Combine(Application.persistentDataPath, node.GetComponent<nodeMediaHolder>().activeFilepath));
+
+                        }
+                    }
+
+
+
+                    clearedNodes.Add(node);
                 }
             }
+            if (clearedNodes.Count > 0)
+            {
+                wipeList();
 
-            //vidRecorder.vidCounter = 0;
+            }
 
 
+
+        }
+
+        void wipeList()
+        {
+            foreach(GameObject node in clearedNodes)
+            {
+                mediaManager.Instance.activeNodes.Remove(node);
+                //databaseMan.Instance.removeNode(node);
+                DestroyImmediate(node);
+            }
+
+            clearedNodes.Clear();
         }
     }
 }

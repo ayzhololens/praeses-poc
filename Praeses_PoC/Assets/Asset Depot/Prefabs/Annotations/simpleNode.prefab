@@ -548,7 +548,6 @@ GameObject:
   - component: {fileID: 33182508287622998}
   - component: {fileID: 65219115470606710}
   - component: {fileID: 23908326079109358}
-  - component: {fileID: 114992138510325124}
   m_Layer: 0
   m_Name: Title
   m_TagString: Node
@@ -567,7 +566,6 @@ GameObject:
   - component: {fileID: 33840228799128978}
   - component: {fileID: 65631541066153782}
   - component: {fileID: 23470110954170252}
-  - component: {fileID: 114115069590216298}
   m_Layer: 0
   m_Name: Description
   m_TagString: Node
@@ -636,6 +634,7 @@ GameObject:
   - component: {fileID: 222764491362674294}
   - component: {fileID: 114467615591594022}
   - component: {fileID: 114295422893972472}
+  - component: {fileID: 114692247778960496}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -706,6 +705,7 @@ GameObject:
   - component: {fileID: 222882096076752730}
   - component: {fileID: 114521877280286828}
   - component: {fileID: 114561911120028370}
+  - component: {fileID: 114017609977721486}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -729,8 +729,9 @@ GameObject:
   - component: {fileID: 114284174955068448}
   - component: {fileID: 114848484132885940}
   - component: {fileID: 114726478977023936}
-  - component: {fileID: 114211248512029846}
   - component: {fileID: 114423341530271140}
+  - component: {fileID: 82515405366319634}
+  - component: {fileID: 114190061367997334}
   m_Layer: 0
   m_Name: simpleNode
   m_TagString: Node
@@ -799,6 +800,7 @@ GameObject:
   - component: {fileID: 65539049278485742}
   - component: {fileID: 114618209068714102}
   - component: {fileID: 114858368523381640}
+  - component: {fileID: 114246855425860606}
   m_Layer: 2
   m_Name: ContentHolder
   m_TagString: Node
@@ -2407,6 +2409,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 11.92}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82515405366319634
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749729230984222}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65de49df12efd0240ae3e5ce748cb548, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!102 &102064043472845026
 TextMesh:
   serializedVersion: 3
@@ -2569,6 +2651,24 @@ MonoBehaviour:
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
   panelHighlight: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114017609977721486
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1708568639442916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainInputField: {fileID: 114561911120028370}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114052611893869384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2583,7 +2683,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114115069590216298}
+      - m_Target: {fileID: 114017609977721486}
         m_MethodName: activateField
         m_Mode: 1
         m_Arguments:
@@ -2643,24 +2743,6 @@ MonoBehaviour:
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
   panelHighlight: {r: 0, g: 0, b: 0, a: 0}
---- !u!114 &114115069590216298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1575476799831276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainInputField: {fileID: 114561911120028370}
-  panelResize: 0
-  recCharSize: 0
-  charPanel: {fileID: 0}
-  scaleMult: 0
-  useKeypad: 1
-  useNumpad: 0
 --- !u!114 &114126705109857980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2751,6 +2833,32 @@ MonoBehaviour:
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
   panelHighlight: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114190061367997334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1749729230984222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31838df003609442b14ddc2eac43b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeComments: []
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
+  photoVideoPane: {fileID: 0}
+  videoNode: 0
+  photoNode: 0
+  simpleNode: 1
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114295422893972472}
+  Description: {fileID: 114561911120028370}
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114204042018157276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2772,31 +2880,6 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 9.49
---- !u!114 &114211248512029846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1749729230984222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filepath: []
-  activeComments: []
-  playIcon: {fileID: 0}
-  pauseIcon: {fileID: 0}
-  photoVideoPane: {fileID: 0}
-  videoNode: 0
-  photoNode: 0
-  simpleNode: 1
-  fieldNode: 0
-  violationNode: 0
-  Title: {fileID: 114295422893972472}
-  Description: {fileID: 114561911120028370}
-  type: 0
-  NodeIndex: 0
 --- !u!114 &114211448949069388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2824,6 +2907,23 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114246855425860606
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1822431757891052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a72bdb251e5ce488e5c51f0a9c657b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cursor: {fileID: 0}
+  DirectionIndicatorObject: {fileID: 1204202692450140, guid: da3b6e027e0d2c04e925e54ab3fcec09,
+    type: 2}
+  DirectionIndicatorColor: {r: 0, g: 0, b: 1, a: 1}
+  VisibilitySafeFactor: -0.08
+  MetersFromCursor: 0.029
 --- !u!114 &114247372494653610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2838,7 +2938,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114992138510325124}
+      - m_Target: {fileID: 114692247778960496}
         m_MethodName: activateField
         m_Mode: 1
         m_Arguments:
@@ -2925,7 +3025,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114726478977023936}
-        m_MethodName: DeleteNode
+        m_MethodName: NodeDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3013,7 +3113,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: onEditChangeUpdateJSon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
@@ -3348,8 +3459,9 @@ MonoBehaviour:
   contentHolder: {fileID: 1822431757891052}
   contentStartLoc: {fileID: 4383998521054646}
   isMiniNode: 0
-  distanceThreshold: 4
+  distanceThreshold: 2
   moveSpeed: 0.1
+  linkedField: {fileID: 0}
 --- !u!114 &114454293680085728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3593,7 +3705,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: onEditChangeUpdateJSon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
@@ -3856,6 +3979,24 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   gazeExit: 0
+--- !u!114 &114692247778960496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1606161274496684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainInputField: {fileID: 114295422893972472}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
 --- !u!114 &114726478977023936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4012,6 +4153,8 @@ MonoBehaviour:
   CommmentStartPos: {fileID: 224244265553030242}
   simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
+  videoCommentPrefab: {fileID: 0}
+  photoCommentPrefab: {fileID: 0}
   offsetDist: 0.075
 --- !u!114 &114848484132885940
 MonoBehaviour:
@@ -4356,6 +4499,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114963254975882022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4427,24 +4571,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114992138510325124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1562360795175770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainInputField: {fileID: 114295422893972472}
-  panelResize: 0
-  recCharSize: 0
-  charPanel: {fileID: 0}
-  scaleMult: 0
-  useKeypad: 1
-  useNumpad: 0
 --- !u!114 &114995352036976452
 MonoBehaviour:
   m_ObjectHideFlags: 1

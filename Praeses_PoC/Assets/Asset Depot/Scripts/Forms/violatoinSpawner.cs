@@ -38,6 +38,7 @@ public class violatoinSpawner :  Singleton<violatoinSpawner>{
         
         //link violation and node
         violationController curVio = spawnedViolation.GetComponent<violationController>();
+        vioNode.GetComponent<nodeController>().linkedField = spawnedViolation;
         vioNode.GetComponent<nodeController>().contentHolder = curVio.contentHolder;
         curVio.linkedNode = vioNode;
 

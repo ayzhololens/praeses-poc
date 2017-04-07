@@ -305,8 +305,9 @@ GameObject:
   - component: {fileID: 114569150335033364}
   - component: {fileID: 114487820996126554}
   - component: {fileID: 114922585429606876}
-  - component: {fileID: 114593180182353228}
   - component: {fileID: 114629911391182568}
+  - component: {fileID: 82431458057733010}
+  - component: {fileID: 114718177442030112}
   m_Layer: 0
   m_Name: photoNode
   m_TagString: Node
@@ -959,6 +960,7 @@ GameObject:
   - component: {fileID: 65579689838910202}
   - component: {fileID: 114967978063841558}
   - component: {fileID: 114360911289890854}
+  - component: {fileID: 114770249802345610}
   m_Layer: 2
   m_Name: ContentHolder
   m_TagString: Node
@@ -2783,6 +2785,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82431458057733010
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65de49df12efd0240ae3e5ce748cb548, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!102 &102000975925850930
 TextMesh:
   serializedVersion: 3
@@ -3817,6 +3899,8 @@ MonoBehaviour:
   CommmentStartPos: {fileID: 224930496201331804}
   simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
+  videoCommentPrefab: {fileID: 0}
+  photoCommentPrefab: {fileID: 0}
   offsetDist: 0.075
 --- !u!114 &114446178700109054
 MonoBehaviour:
@@ -3990,6 +4074,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114474854228617722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4176,31 +4261,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &114593180182353228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filepath: []
-  activeComments: []
-  playIcon: {fileID: 0}
-  pauseIcon: {fileID: 0}
-  photoVideoPane: {fileID: 1936230943857402}
-  videoNode: 0
-  photoNode: 1
-  simpleNode: 0
-  fieldNode: 0
-  violationNode: 0
-  Title: {fileID: 114763280025997680}
-  Description: {fileID: 114451384423896488}
-  type: 0
-  NodeIndex: 0
 --- !u!114 &114601420634443252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4230,8 +4290,9 @@ MonoBehaviour:
   contentHolder: {fileID: 1908089109972462}
   contentStartLoc: {fileID: 4436757531566736}
   isMiniNode: 0
-  distanceThreshold: 4
+  distanceThreshold: 2
   moveSpeed: 0.01
+  linkedField: {fileID: 0}
 --- !u!114 &114642736292500118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4387,6 +4448,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivity: 0.01
   ScrollContent: {fileID: 0}
+--- !u!114 &114718177442030112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31838df003609442b14ddc2eac43b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeComments: []
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
+  photoVideoPane: {fileID: 1936230943857402}
+  videoNode: 0
+  photoNode: 1
+  simpleNode: 0
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114763280025997680}
+  Description: {fileID: 114451384423896488}
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114749040697930454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4507,6 +4594,23 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &114770249802345610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908089109972462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a72bdb251e5ce488e5c51f0a9c657b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cursor: {fileID: 0}
+  DirectionIndicatorObject: {fileID: 1204202692450140, guid: da3b6e027e0d2c04e925e54ab3fcec09,
+    type: 2}
+  DirectionIndicatorColor: {r: 0, g: 0, b: 1, a: 1}
+  VisibilitySafeFactor: -0.08
+  MetersFromCursor: 0.029
 --- !u!114 &114777429954442636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4796,7 +4900,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114922585429606876}
-        m_MethodName: DeleteNode
+        m_MethodName: NodeDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,13 +13,16 @@ namespace HoloToolkit.Unity
         public GameObject contentHolder;
         public Transform contentStartLoc;
         public GameObject parentNode { get; set; }
+        public GameObject miniNode { get; set; }
         public bool isMiniNode;
         SimpleTagalong nodeTagalong;
         bool contentOpen;
         [Header("Follow Controls")]
         public float distanceThreshold;
         public float moveSpeed;
-        
+        public bool fromJSON { get; set; }
+        public GameObject linkedField;
+
 
 
         void Start()
@@ -57,20 +60,24 @@ namespace HoloToolkit.Unity
             {
                 nodeController parentOpener = parentNode.GetComponent<nodeController>();
                 parentOpener.openNode();
-                //miniMapToggle.Instance.toggleMiniMap();
+                parentNode.GetComponent<AudioSource>().Play();
+               
 
                 //close every node that could be open
                 closeAllNodes(parentNode);
             }
             else
             {
+                //close every node that could be open
+                closeAllNodes(gameObject);
+
                 //open node content
                 contentOpen = true;
                 contentHolder.SetActive(true);
+                contentHolder.GetComponent<DirectionIndicator>().enabled = true;
+                contentHolder.GetComponent<DirectionIndicator>().hasGazed = false;
                 contentHolder.transform.position = contentStartLoc.position;
 
-                //close every node that could be open
-                closeAllNodes(gameObject);
             }
 
 
@@ -83,7 +90,9 @@ namespace HoloToolkit.Unity
             {
                 if (nodes != thisNode)
                 {
-                    nodes.GetComponent<nodeController>().closeNode();
+                    nodeController nodeControl = nodes.GetComponent<nodeController>();
+                    nodeControl.closeNode();
+                    nodeControl.contentHolder.GetComponent<DirectionIndicator>().enabled = false;
                 }
             }
         }

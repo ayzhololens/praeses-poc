@@ -10,7 +10,8 @@ namespace HoloToolkit.Unity
         public Transform FieldInspectionParent;
         public Transform EquipmentDataParent;
         public Transform LocationDataParent;
-        public GameObject fieldPrefab;
+        public GameObject stringFieldPrefab;
+        public GameObject buttonFieldPrefab;
         public Transform fieldStartPos;
         Vector3 fieldInitPos;
         public float offsetDist;
@@ -50,12 +51,13 @@ namespace HoloToolkit.Unity
 
 
             //distribute present values in field
-            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.presentData)
+            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.equipmentData)
             {
                 if (ActiveFields.ContainsKey(valueItem.name))
                 {
                     //print(valueItem.value+" applied to "+ ActiveFields[valueItem.name].GetComponent<formFieldController>().DisplayName.text);
                     ActiveFields[valueItem.name].GetComponent<formFieldController>().Value.text = valueItem.value;
+                    ActiveFields[valueItem.name].GetComponent<formFieldController>().nodeIndex = valueItem.nodeIndex;
                 }
                 else
                 {
@@ -64,12 +66,27 @@ namespace HoloToolkit.Unity
 
             }
 
-            //distribute historic values in field parentheses
-            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
+           // distribute historic values in field parentheses
+           foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
             {
+                ActiveFields[valueItem.name].GetComponent<formFieldController>().nodeIndex = valueItem.nodeIndex;
+
                 if (ActiveFields.ContainsKey(valueItem.name))
                 {
-                    ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
+                    //correct naming
+                    foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.EquipmentData.fields)
+                    {
+                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
+                    }
+
+                    foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.InspectionFields.fields)
+                    {
+                        if (field.Options.ContainsKey(valueItem.value))
+                        {
+
+                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + field.Options[valueItem.value] + ")");
+                        }
+                    }
                 }
             }
         }
@@ -80,19 +97,64 @@ namespace HoloToolkit.Unity
             int fieldCount = JU_databaseMan.Instance.definitions.InspectionFields.fields.Count;
             for (int i = 0; i < fieldCount; i++)
             {
-                GameObject spawnedField = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+
+                GameObject spawnedField;
+                if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 1)
+                {
+
+                    spawnedField = Instantiate(buttonFieldPrefab, transform.position, Quaternion.identity);
+
+                    spawnedField.GetComponent<formFieldController>().populateButtons(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count);
+
+                    List<string> keyCollection = new List<string>();
+                    foreach(string keyIn in JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Keys)
+                    {
+                        keyCollection.Add(keyIn);
+                       
+                    }
+                    List<int> keyInts = new List<int>();
+                    foreach(string keyStr in keyCollection)
+                    {
+                        int temp = int.Parse(keyStr);
+                        keyInts.Add(temp);
+                    }
+                    for (int m = 0; m<keyCollection.Count; m++)
+                    {
+                        spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonText.text = (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[keyCollection[m]]);
+                        spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonIndex = keyInts[m];
+                    }
+                    
+                }
+                else if(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 16)
+                {
+                    spawnedField = Instantiate(buttonFieldPrefab, transform.position, Quaternion.identity);
+                    spawnedField.GetComponent<formFieldController>().populateButtons(2);
+                    spawnedField.GetComponent<formFieldController>().curButtons[0].GetComponent<formButtonController>().buttonText.text = "yes";
+                    spawnedField.GetComponent<formFieldController>().curButtons[1].GetComponent<formButtonController>().buttonText.text = "no";
+                }
+                else if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 14)
+                {
+                    spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
+                    spawnedField.GetComponent<formFieldController>().Value.text = System.DateTime.Now.ToString("MM/dd/yyyy");
+
+                }
+                else
+                {
+                    spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
+                }
                 spawnedField.transform.SetParent(FieldInspectionParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
-                spawnedField.transform.localScale = fieldPrefab.transform.localScale;
-                //spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
-                spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
+                spawnedField.transform.localScale = stringFieldPrefab.transform.localScale;
+                spawnedField.transform.localRotation = stringFieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = JU_databaseMan.Instance.definitions.InspectionFields.fields[i].DisplayName;
                 spawnedField.GetComponent<formFieldController>().trueName = JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Name;
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
+
+
+
                 IFCollection.Add(spawnedField);
             }
-            //FieldInspectionParent.gameObject.SetActive(false);
         }
 
         void populateED()
@@ -101,19 +163,18 @@ namespace HoloToolkit.Unity
             int fieldCount = JU_databaseMan.Instance.definitions.EquipmentData.fields.Count;
             for (int i = 0; i < fieldCount; i++)
             {
-                GameObject spawnedField = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+
+                GameObject spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
                 spawnedField.transform.SetParent(EquipmentDataParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
-                spawnedField.transform.localScale = fieldPrefab.transform.localScale;
-                //spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
-                spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
+                spawnedField.transform.localScale = stringFieldPrefab.transform.localScale;
+                spawnedField.transform.localRotation = stringFieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = JU_databaseMan.Instance.definitions.EquipmentData.fields[i].DisplayName;
                 spawnedField.GetComponent<formFieldController>().trueName = JU_databaseMan.Instance.definitions.EquipmentData.fields[i].Name;
                 ActiveFields.Add(spawnedField.GetComponent<formFieldController>().trueName, spawnedField);
                 EDCollection.Add(spawnedField);
             }
-            //EquipmentDataParent.gameObject.SetActive(false);
         }
 
         void populateLD()
@@ -124,12 +185,11 @@ namespace HoloToolkit.Unity
 
             foreach (string key in keys)
             {
-                GameObject spawnedField = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+                GameObject spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
                 spawnedField.transform.SetParent(LocationDataParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
-                spawnedField.transform.localScale = fieldPrefab.transform.localScale;
-                //spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
-                spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
+                spawnedField.transform.localScale = stringFieldPrefab.transform.localScale;
+                spawnedField.transform.localRotation = stringFieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 spawnedField.GetComponent<formFieldController>().DisplayName.text = key;
                 spawnedField.GetComponent<formFieldController>().trueName = key;
@@ -145,16 +205,14 @@ namespace HoloToolkit.Unity
             fieldStartPos.localPosition = fieldInitPos;
             for (int i = 0; i < 10; i++)
             {
-                GameObject spawnedField = Instantiate(fieldPrefab, transform.position, Quaternion.identity);
+                GameObject spawnedField = Instantiate(stringFieldPrefab, transform.position, Quaternion.identity);
                 spawnedField.transform.SetParent(FieldInspectionParent);
                 spawnedField.transform.localPosition = fieldStartPos.localPosition;
-                spawnedField.transform.localScale = fieldPrefab.transform.localScale;
-                //spawnedField.GetComponent<scrollController>().ScrollContent = spawnedField.transform.parent.gameObject;
-                spawnedField.transform.localRotation = fieldPrefab.transform.localRotation;
+                spawnedField.transform.localScale = stringFieldPrefab.transform.localScale;
+               spawnedField.transform.localRotation = stringFieldPrefab.transform.localRotation;
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 IFCollection.Add(spawnedField);
             }
-            //FieldInspectionParent.gameObject.SetActive(false);
         }
     }
 }

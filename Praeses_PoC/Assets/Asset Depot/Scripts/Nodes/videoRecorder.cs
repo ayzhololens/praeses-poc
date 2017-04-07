@@ -102,6 +102,11 @@ namespace HoloToolkit.Unity
             {
                 mediaManager.Instance.activateMedia();
             }
+            else
+            {
+                Debug.Log("eel");
+                mediaManager.Instance.activateComment();
+            }
             
         }
 

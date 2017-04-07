@@ -83,12 +83,8 @@ namespace HoloToolkit.Unity
             }
         }
 
-        public void lockNodePlacement()
+        public void spawnMiniNode(GameObject parentNode, int spawnIndex)
         {
-            placingInProgress = false;
-            mediaManager.Instance.currentNode = spawnedNode;
-            mediaManager.Instance.disableStatusIndicator();
-
             //get minimap components, scale and offset it to real space
             minimapSpawn miniMapComponent = minimapSpawn.Instance;
             Vector3 boilerPos = miniMapComponent.boilerPivot;
@@ -98,9 +94,9 @@ namespace HoloToolkit.Unity
             rotatorGroup.position = boilerPos;
 
             //spawn miniNode and parent it correctly
-            GameObject miniNode = Instantiate(miniNodePrefab[spawnedIndex], spawnedNode.transform.position, spawnedNode.transform.rotation);
-            miniNode.GetComponent<nodeController>().parentNode = spawnedNode;
-            
+            GameObject miniNode = Instantiate(miniNodePrefab[spawnIndex], parentNode.transform.position, parentNode.transform.rotation);
+            miniNode.GetComponent<nodeController>().parentNode = parentNode;
+
 
             //reset rotator group to position miniNode
             miniNode.transform.SetParent(miniMap);
@@ -108,7 +104,27 @@ namespace HoloToolkit.Unity
             rotatorGroup.localScale = Vector3.one;
             miniNode.SetActive(miniMapToggle.Instance.active);
 
-            if(spawnedIndex == 0)
+            parentNode.GetComponent<nodeController>().miniNode = miniNode;
+        }
+
+        public void lockNodePlacement()
+        {
+            placingInProgress = false;
+            mediaManager.Instance.currentNode = spawnedNode;
+            mediaManager.Instance.disableStatusIndicator();
+
+
+
+            spawnMiniNode(spawnedNode, spawnedIndex);
+            //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = JU_databaseMan.Instance.nodesManager.nodes.Count;
+            print(JU_databaseMan.Instance.nodesManager.nodes.Count);
+            //databaseMan.Instance.addAnnotation(spawnedNode);
+
+            //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = mediaManager.Instance.nodeIndex;
+            //mediaManager.Instance.nodeIndex += 1;
+
+
+            if (spawnedIndex == 0)
             {
                 //simple node so activate it immediately
                 mediaManager.Instance.activateMedia();

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using RenderHeads.Media.AVProVideo.Demos;
 using RenderHeads.Media.AVProVideo;
 using UnityEngine.UI;
+
 
 namespace HoloToolkit.Unity
 {
@@ -23,11 +25,10 @@ namespace HoloToolkit.Unity
         bool startedVideo;
         public GameObject playIcon;
         public GameObject pauseIcon;
-        MediaPlayer mediaPlayer;
+        public MediaPlayer mediaPlayer;
 
         // Use this for initialization
         void Start() {
-            mediaPlayer = mediaManager.Instance.videoPlayer;
         }
 
         // Update is called once per frame
@@ -40,10 +41,18 @@ namespace HoloToolkit.Unity
 
         }
 
+
         public void LoadVideo()
         {
+
+            mediaPlayer = mediaManager.Instance.videoPlayer;
+            if (mediaPlayer == null)
+            {
+                Debug.Log("oh no");
+            }
             mediaPlayer.m_VideoPath = filepath;
             mediaPlayer.LoadVideoPlayer();
+            //GetComponent<Renderer>().material.mainTexture = mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>()._texture;
 
         }
 

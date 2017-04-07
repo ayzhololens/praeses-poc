@@ -27,6 +27,9 @@ namespace HoloToolkit.Unity
         public List<GameObject> activeNodes;
         public bool isCapturing { get; set; }
         public int nodeIndex { get; set; }
+        public commentManager commentManager { get; set; }
+
+
 
 
         // Use this for initialization
@@ -74,6 +77,20 @@ namespace HoloToolkit.Unity
 
 
         }
+
+        public void activateComment()
+        {
+            if (commentManager.capturingPhoto)
+            {
+                commentManager.spawnPhotoComment();
+            }
+            if (commentManager.capturingVideo)
+            {
+                Debug.Log("activated comment");
+                commentManager.spawnVideoComment();
+                Debug.Log("sent spawn");
+            }
+        }
         
         public void enablePhotoCapture()
         {
@@ -93,6 +110,7 @@ namespace HoloToolkit.Unity
             isCapturing = false;
 
             //capture photo, save it, activeMedia() when done
+            photoRecorder.activateMedia = true;
             photoRecorder.CapturePhoto();
         } 
 
@@ -142,6 +160,7 @@ namespace HoloToolkit.Unity
                 stateIndicator.SetActive(false);
             }
             stateIndicator.GetComponent<TextMesh>().text = null;
+            Debug.Log("disabled status");
         }
 
         void stopCapturing()

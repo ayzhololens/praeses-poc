@@ -3,6 +3,9 @@
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+
+using HoloToolkit.Unity;
+using HoloToolkit.Unity.InputModule;
 namespace PosterAlignment
 {
     [RequireComponent(typeof(ImagePosterLocator))]
@@ -27,6 +30,10 @@ namespace PosterAlignment
         public GameObject ImageIndicator;
 
         private bool isInitialized = false;
+        bool hasPlaced;
+
+
+        public mainMenuController mainMenu;
 
         private void Start()
         {
@@ -78,7 +85,7 @@ namespace PosterAlignment
             posterLocator.enabled = true;
             posterLocator.StartProcessing();
             DisplayCorners(true);
-            statusIndicator.text = "Please locate tag";
+            mediaManager.Instance.setStatusIndicator("Please locate tag");
             ImageIndicator.SetActive(true);
         }
 
@@ -145,12 +152,17 @@ namespace PosterAlignment
 
             var corners = posterLocator.DetectedPositions.Select(k => k.EstimatedWorldPos).ToList();
 
+
             Debug.Log("Applying placement...");
 
             // First recenter the object:
             var toCenter = corners.Aggregate((a, b) => (a + b))
                 / corners.Count;
-            AlignCorners(cornerObjects, toCenter);
+            if (!hasPlaced)
+            {
+                AlignCorners(cornerObjects, toCenter);
+
+            }
 
             // Now for rotation:
             Quaternion avgRot = Quaternion.identity;
@@ -170,17 +182,24 @@ namespace PosterAlignment
             transform.rotation *= avgRot;
 
             // And do a final re-center:
-            AlignCorners(cornerObjects, toCenter);
+            if (!hasPlaced)
+            {
+                AlignCorners(cornerObjects, toCenter);
+            }
 
             
             if (this.posterLocator.DetectedPositions[0].HasWorldPos)
             {
-                statusIndicator.text = "Success!";
+                //statusIndicator.text = "Success!";
+                mediaManager.Instance.setStatusIndicator("Success");
+                Invoke("turnOffStatus", 3);
+
+
 
                 ZoneManager.LockZone(true);
+                OnDisable();
                 Poster.GetComponent<MeshRenderer>().enabled = false;
                 Poster.transform.GetChild(0).gameObject.SetActive(true);
-
                 for (int i = 0; i < ImageIndicator.transform.childCount; i++)
                 {
                     ImageIndicator.transform.GetChild(i).gameObject.SetActive(false);
@@ -190,10 +209,17 @@ namespace PosterAlignment
                 ImageIndicator.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .2f);
                 ImageIndicator.SetActive(false);
 
+                if (hasPlaced)
+                {
+                    mainMenu.gameObject.SetActive(true);
+                    mainMenu.goToTab(6);
+                }
+
             }
             else
             {
-                statusIndicator.text = "Move head to get alignment";
+                //statusIndicator.text = "Move head to get alignment";
+                mediaManager.Instance.setStatusIndicator("Move head to get alignment");
 
                 ImageIndicator.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .8f);
                 for (int i =0; i<ImageIndicator.transform.childCount; i++)
@@ -202,6 +228,18 @@ namespace PosterAlignment
                     ImageIndicator.transform.GetChild(i).gameObject.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .8f);
                 }
             }
+        }
+
+        void turnOffStatus()
+        {
+            mediaManager.Instance.disableStatusIndicator();
+            hasPlaced = true;
+        }
+
+        public void resetPlacement()
+        {
+            hasPlaced = false;
+            ZoneManager.AlignZone(0);
         }
 
         private void UpdateDebugObjects()
