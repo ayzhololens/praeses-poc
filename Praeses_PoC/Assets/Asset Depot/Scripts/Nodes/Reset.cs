@@ -22,59 +22,76 @@ namespace HoloToolkit.Unity
 
         }
 
+       
+
         public void clearNodes()
         {
             foreach(GameObject node in mediaManager.Instance.activeNodes)
             {
                 if (!node.GetComponent<nodeController>().fromJSON)
                 {
-
-                    if (node.GetComponent<nodeMediaHolder>().activeFilepath.Length>1)
+                    if (node.GetComponent<nodeMediaHolder>().fieldNode)
                     {
-                        Debug.Log(node.name + " " + node.GetComponent<nodeMediaHolder>().activeFilepath);
-                        //File.Delete(node.GetComponent<nodeMediaHolder>().activeFilepath);
-                        //if (File.Exists(node.GetComponent<nodeMediaHolder>().activeFilepath))
-                        //{
-                        //    Debug.Log(node.name + " " + node.GetComponent<nodeMediaHolder>().activeFilepath);
-
-                        //}
-                    }
-
-                    if (node.GetComponent<commentManager>() != null)
-                    {
-                        foreach (GameObject comment in node.GetComponent<commentManager>().activeComments)
-                        {
-                            if (comment.GetComponent<commentContents>().filepath != null && File.Exists(comment.GetComponent<commentContents>().filepath))
+                            foreach (GameObject comment in node.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().activeComments)
                             {
-                                //Debug.Log(comment.GetComponent<commentContents>().filepath);
-                                //File.Delete(comment.GetComponent<commentContents>().filepath);
+                                if (comment.GetComponent<commentContents>().filepath != null)
+                                {
+                                    if (comment.GetComponent<commentContents>().isVideo && File.Exists(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath)))
+                                    {
+                                        File.Delete(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath));
+                                    }
+                                    else if (comment.GetComponent<commentContents>().isPhoto && File.Exists(comment.GetComponent<commentContents>().filepath))
+                                    {
+                                        File.Delete(comment.GetComponent<commentContents>().filepath);
+                                    }
+                                }
                             }
-
-                        }
                     }
-                    else if (node.GetComponent<nodeController>().linkedField.GetComponent<commentManager>() != null)
+                    if (node.GetComponent<nodeMediaHolder>().violationNode)
                     {
                         foreach (GameObject comment in node.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().activeComments)
                         {
-                            if (comment.GetComponent<commentContents>().filepath != null && File.Exists(comment.GetComponent<commentContents>().filepath))
+                            if (comment.GetComponent<commentContents>().filepath != null)
                             {
-                                //Debug.Log(comment.GetComponent<commentContents>().filepath);
-                                //File.Delete(comment.GetComponent<commentContents>().filepath);
+                               
+                                if (comment.GetComponent<commentContents>().isVideo && File.Exists(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath)))
+                                {
+                                    File.Delete(Path.Combine(Application.persistentDataPath, comment.GetComponent<commentContents>().filepath));
+                                }
+                                else if (comment.GetComponent<commentContents>().isPhoto && File.Exists(comment.GetComponent<commentContents>().filepath))
+                                {
+                                    File.Delete(comment.GetComponent<commentContents>().filepath);
+                                }
                             }
+                        }
+                        node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview.GetComponent<viewViolationContent>().viewViolationHolder.GetComponent<viewViolationController>().vioFields.Remove(node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview);
+                        DestroyImmediate(node.GetComponent<nodeController>().linkedField.GetComponent<violationController>().linkedPreview);
+                        DestroyImmediate(node.GetComponent<nodeController>().linkedField);
+
+                    }
+
+                    if (node.GetComponent<nodeMediaHolder>().activeFilepath.Length>1)
+                    {
+                        Debug.Log(Path.Combine(Application.persistentDataPath, node.GetComponent<nodeMediaHolder>().activeFilepath));
+
+                        if (File.Exists(node.GetComponent<nodeMediaHolder>().activeFilepath))
+                        {
+                            //File.Delete(Path.Combine(Application.persistentDataPath, node.GetComponent<nodeMediaHolder>().activeFilepath));
 
                         }
                     }
 
 
+
                     clearedNodes.Add(node);
-                    //mediaManager.Instance.activeNodes.Remove(node);
-                    //DestroyImmediate(node);
-                    //clearNodes();
                 }
             }
+            if (clearedNodes.Count > 0)
+            {
+                wipeList();
 
-            wipeList();
-            //vidRecorder.vidCounter = 0;
+            }
+
 
 
         }
@@ -84,7 +101,8 @@ namespace HoloToolkit.Unity
             foreach(GameObject node in clearedNodes)
             {
                 mediaManager.Instance.activeNodes.Remove(node);
-                //DestroyImmediate(node);
+                //databaseMan.Instance.removeNode(node);
+                DestroyImmediate(node);
             }
 
             clearedNodes.Clear();

@@ -103,6 +103,8 @@ namespace HoloToolkit.Unity
             rotatorGroup.localPosition = Vector3.zero;
             rotatorGroup.localScale = Vector3.one;
             miniNode.SetActive(miniMapToggle.Instance.active);
+
+            parentNode.GetComponent<nodeController>().miniNode = miniNode;
         }
 
         public void lockNodePlacement()
@@ -114,10 +116,15 @@ namespace HoloToolkit.Unity
 
 
             spawnMiniNode(spawnedNode, spawnedIndex);
+            //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = JU_databaseMan.Instance.nodesManager.nodes.Count;
+            print(JU_databaseMan.Instance.nodesManager.nodes.Count);
+            //databaseMan.Instance.addAnnotation(spawnedNode);
+
+            //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = mediaManager.Instance.nodeIndex;
+            //mediaManager.Instance.nodeIndex += 1;
 
 
-
-            if(spawnedIndex == 0)
+            if (spawnedIndex == 0)
             {
                 //simple node so activate it immediately
                 mediaManager.Instance.activateMedia();

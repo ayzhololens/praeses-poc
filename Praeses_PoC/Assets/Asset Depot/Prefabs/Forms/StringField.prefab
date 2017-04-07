@@ -121,7 +121,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224505142251631962}
-  - component: {fileID: 114072301224971288}
   - component: {fileID: 114095693617207272}
   - component: {fileID: 114071983537270126}
   - component: {fileID: 65143824481787354}
@@ -504,6 +503,7 @@ GameObject:
   - component: {fileID: 222247625593291072}
   - component: {fileID: 114813753385548166}
   - component: {fileID: 114103713282777854}
+  - component: {fileID: 114104562349919236}
   m_Layer: 5
   m_Name: Value InputField
   m_TagString: inputField
@@ -985,24 +985,6 @@ MonoBehaviour:
   timeOutCounter: 0.03
   hide:
   - {fileID: 1965875945483262}
---- !u!114 &114072301224971288
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1191887073528030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainInputField: {fileID: 114103713282777854}
-  panelResize: 1
-  recCharSize: 12
-  charPanel: {fileID: 1791952836399964}
-  scaleMult: 0.3
-  useKeypad: 0
-  useNumpad: 1
 --- !u!114 &114082576777055930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1173,7 +1155,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114072301224971288}
+      - m_Target: {fileID: 0}
         m_MethodName: onEditChangeUpdateJSon
         m_Mode: 1
         m_Arguments:
@@ -1198,6 +1180,24 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &114104562349919236
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1780612196666980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainInputField: {fileID: 114103713282777854}
+  panelResize: 1
+  recCharSize: 12
+  charPanel: {fileID: 1791952836399964}
+  scaleMult: 0.3
+  useKeypad: 0
+  useNumpad: 1
 --- !u!114 &114135886569676924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2916,7 +2916,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114072301224971288}
+      - m_Target: {fileID: 114104562349919236}
         m_MethodName: activateField
         m_Mode: 1
         m_Arguments:

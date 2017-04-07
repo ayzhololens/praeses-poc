@@ -64,11 +64,12 @@ namespace HoloToolkit.Unity
 
         public void PlaceBoiler()
         {
-            if(activeObj == null)
+            if (activeObj == null)
             {
                 activeObj = boiler;
             }
-            if(tapToPlaceBoiler == false)
+
+            if (tapToPlaceBoiler == false)
             {
                 activeObj.transform.GetChild(0).localPosition = initBoilerPos;
                 activeObj.transform.GetChild(0).localRotation = new Quaternion(0, 0, 0, 0);
@@ -76,9 +77,16 @@ namespace HoloToolkit.Unity
                 {
                     activeObj.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<MeshCollider>().enabled = false;
                 }
-                tapToPlaceBoiler = true;
+
 
             }
+            if (!tapToPlaceBoiler)
+            {
+                sourceManager.Instance.sourcePressed = false;
+                tapToPlaceBoiler = true;
+            }
+
+
             if (isObj)
             {
                 activeObj.transform.position = frontHolder.transform.position;
@@ -88,6 +96,11 @@ namespace HoloToolkit.Unity
             {
                 Vector3 pos = GazeManager.Instance.HitPosition;
                 activeObj.transform.position = pos;
+            }
+
+            if(sourceManager.Instance.sourcePressed && tapToPlaceBoiler)
+            {
+                LockBoiler();
             }
 
         }

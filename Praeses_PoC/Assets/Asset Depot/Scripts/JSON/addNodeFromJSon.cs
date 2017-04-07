@@ -29,11 +29,22 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
         spawnedNode.GetComponent<nodeMediaHolder>().User = nodeClass.user;
         spawnedNode.GetComponent<nodeMediaHolder>().Date = nodeClass.date;
         spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = nodeClass.indexNum;
-        //spawnedNode.GetComponent<nodeController>().fromJSON = true;
+
+        spawnedNode.GetComponent<nodeController>().fromJSON = true;
 
         if (nodeClass.type == 2)//type = 2 field
         {
+            List<JU_databaseMan.valueItem> tempvalues = new List<JU_databaseMan.valueItem>();
             foreach (JU_databaseMan.valueItem valueJU in JU_databaseMan.Instance.values.equipmentData)
+            {
+                tempvalues.Add(valueJU);
+            }
+            foreach (JU_databaseMan.valueItem valueJU in JU_databaseMan.Instance.values.historicData)
+            {
+                tempvalues.Add(valueJU);
+            }
+
+            foreach (JU_databaseMan.valueItem valueJU in tempvalues)
             {
                 if (valueJU.nodeIndex != 0)
                 {
@@ -47,9 +58,15 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
 
                     nodeSpawner.Instance.spawnMiniNode(spawnedNode, 4);
 
-                    //link field and node then enable attachment capture
-                    spawnedNode.GetComponent<nodeController>().linkedField = fieldSpawner.Instance.ActiveFields[valueJU.name];
-                    spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<formFieldController>().linkedNode = spawnedNode;
+                    //link field 
+                    if (valueJU.nodeIndex == nodeClass.indexNum)
+                    {
+                        //print(nodeClass.title + " node index: " + nodeClass.indexNum + " is trying to link to " + valueJU.name + " node index " + valueJU.nodeIndex);
+                        spawnedNode.GetComponent<nodeController>().linkedField = fieldSpawner.Instance.ActiveFields[valueJU.name];
+                        spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<formFieldController>().linkedNode = spawnedNode;
+
+                    }
+
                     //spawnedNode.GetComponent<formFieldController>().linkedNode = spawnedNode;
 
 
@@ -84,7 +101,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
 
                     foreach (databaseMan.tempComment comment in spawnList.Reverse<databaseMan.tempComment>())
                     {
-                        if (comment.type == 1)
+                        if (comment.type == 1 && spawnedNode.GetComponent<nodeController>().linkedField!=null)
                         {
                             GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnSimpleCommentFromJSON();
 
@@ -93,7 +110,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                             comment3D.GetComponent<commentContents>().commentMeta.text = (comment.user + " " + comment.date);
                             comment3D.GetComponent<commentContents>().commentMain.text = comment.content;
                         }
-                        else if (comment.type == 2)
+                        else if (comment.type == 2 && spawnedNode.GetComponent<nodeController>().linkedField != null)
                         {
                             GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnPhotoCommentFromJSON();
 
@@ -104,7 +121,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
                             comment3D.GetComponent<commentContents>().filepath = System.IO.Path.Combine(Application.persistentDataPath, comment.path);
                             comment3D.GetComponent<commentContents>().loadPhoto();
                         }
-                        else if (comment.type == 3)
+                        else if (comment.type == 3 && spawnedNode.GetComponent<nodeController>().linkedField != null)
                         {
                             GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnVideoCommentFromJSON();
 

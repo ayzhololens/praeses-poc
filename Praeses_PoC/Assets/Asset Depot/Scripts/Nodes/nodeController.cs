@@ -13,6 +13,7 @@ namespace HoloToolkit.Unity
         public GameObject contentHolder;
         public Transform contentStartLoc;
         public GameObject parentNode { get; set; }
+        public GameObject miniNode { get; set; }
         public bool isMiniNode;
         SimpleTagalong nodeTagalong;
         bool contentOpen;

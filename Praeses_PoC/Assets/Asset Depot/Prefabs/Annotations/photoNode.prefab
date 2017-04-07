@@ -4292,6 +4292,7 @@ MonoBehaviour:
   isMiniNode: 0
   distanceThreshold: 2
   moveSpeed: 0.01
+  linkedField: {fileID: 0}
 --- !u!114 &114642736292500118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4459,6 +4460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
+  activeFilepath: 
   activeComments: []
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
@@ -4898,7 +4900,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114922585429606876}
-        m_MethodName: DeleteNode
+        m_MethodName: NodeDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

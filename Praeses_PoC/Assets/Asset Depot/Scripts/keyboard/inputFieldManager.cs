@@ -114,9 +114,11 @@ namespace HoloToolkit.Unity
 
         public void onEditChangeUpdateJSon()
         {
+            print("dip");
             string keyword;
-            keyword = gameObject.GetComponent<formFieldController>().trueName;
+            keyword = transform.parent.gameObject.GetComponent<formFieldController>().trueName;
             databaseMan.Instance.formToClassValueSync(keyword, mainInputField.text);
+            print("sup");
         }
     }
 }

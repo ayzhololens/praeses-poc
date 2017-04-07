@@ -29,10 +29,6 @@ namespace HoloToolkit.Unity
 
         // Use this for initialization
         void Start() {
-            if(mediaPlayer == null)
-            {
-                Debug.Log("oh no");
-            }
         }
 
         // Update is called once per frame

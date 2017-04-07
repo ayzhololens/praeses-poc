@@ -57,6 +57,7 @@ namespace HoloToolkit.Unity
                 {
                     //print(valueItem.value+" applied to "+ ActiveFields[valueItem.name].GetComponent<formFieldController>().DisplayName.text);
                     ActiveFields[valueItem.name].GetComponent<formFieldController>().Value.text = valueItem.value;
+                    ActiveFields[valueItem.name].GetComponent<formFieldController>().nodeIndex = valueItem.nodeIndex;
                 }
                 else
                 {
@@ -68,19 +69,14 @@ namespace HoloToolkit.Unity
            // distribute historic values in field parentheses
            foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
             {
+                ActiveFields[valueItem.name].GetComponent<formFieldController>().nodeIndex = valueItem.nodeIndex;
+
                 if (ActiveFields.ContainsKey(valueItem.name))
                 {
                     //correct naming
                     foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.EquipmentData.fields)
                     {
-                        if (field.Options.ContainsKey(valueItem.value))
-                        {
-                            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + field.Options[valueItem.value] + ")");
-                        }
-                        else
-                        {
                             ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
-                        }
                     }
 
                     foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.InspectionFields.fields)
@@ -109,25 +105,6 @@ namespace HoloToolkit.Unity
                     spawnedField = Instantiate(buttonFieldPrefab, transform.position, Quaternion.identity);
 
                     spawnedField.GetComponent<formFieldController>().populateButtons(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count);
-                    //Debug.Log(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count + " " + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].DisplayName);
-
-
-
-                    //if (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Count > 0)
-                    //{
-                    //    foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.historicData)
-                    //    {
-                    //        if (ActiveFields.ContainsKey(valueItem.name))
-                    //        {
-                    //            Debug.Log(ActiveFields[valueItem.name].name);
-                    //            ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[valueItem.value] + ")");
-                    //        }
-                    //    }
-                    //    //Debug.Log(spawnedField.name);
-                    //    //spawnedField.GetComponent<formFieldController>().previousValue.text = ("(" + JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[JU_databaseMan.Instance.values.historicData[i].value] + ")");
-
-                    //}
-
 
                     List<string> keyCollection = new List<string>();
                     foreach(string keyIn in JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options.Keys)
@@ -146,10 +123,7 @@ namespace HoloToolkit.Unity
                         spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonText.text = (JU_databaseMan.Instance.definitions.InspectionFields.fields[i].Options[keyCollection[m]]);
                         spawnedField.GetComponent<formFieldController>().curButtons[m].GetComponent<formButtonController>().buttonIndex = keyInts[m];
                     }
-
-
-
-
+                    
                 }
                 else if(JU_databaseMan.Instance.definitions.InspectionFields.fields[i].FieldType == 16)
                 {
@@ -181,7 +155,6 @@ namespace HoloToolkit.Unity
 
                 IFCollection.Add(spawnedField);
             }
-            //FieldInspectionParent.gameObject.SetActive(false);
         }
 
         void populateED()
@@ -240,7 +213,6 @@ namespace HoloToolkit.Unity
                 fieldStartPos.position = new Vector3(fieldStartPos.position.x, fieldStartPos.position.y - offsetDist, fieldStartPos.position.z);
                 IFCollection.Add(spawnedField);
             }
-            //FieldInspectionParent.gameObject.SetActive(false);
         }
     }
 }

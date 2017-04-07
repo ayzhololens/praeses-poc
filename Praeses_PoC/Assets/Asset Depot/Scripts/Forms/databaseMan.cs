@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using System.Collections;
 #endif
 
-using Newtonsoft.Json;
-using System.Collections;
+//using Newtonsoft.Json;
+//using System.Collections;
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -167,8 +167,8 @@ public class databaseMan : Singleton<databaseMan>
         System.IO.File.WriteAllText(saveDir, json);
 #endif
 
-        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        System.IO.File.WriteAllText(saveDir, json);
+        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        //System.IO.File.WriteAllText(saveDir, json);
 
         print("jsonSaved");
     }
@@ -180,8 +180,8 @@ public class databaseMan : Singleton<databaseMan>
         definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 #endif
 
-        defJsonText = File.ReadAllText(definitionsDir);
-        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        //defJsonText = File.ReadAllText(definitionsDir);
+        //definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 
         print("jsonDefinitionsLoaded");
         loadValCmd();
@@ -198,8 +198,8 @@ public class databaseMan : Singleton<databaseMan>
         values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 #endif
 
-        valJsonText = File.ReadAllText(valuesDir);
-        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        //valJsonText = File.ReadAllText(valuesDir);
+        //values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 
         print("jsonValuesLoaded");
     }
@@ -310,10 +310,15 @@ public class databaseMan : Singleton<databaseMan>
 
         if (newNode.type == 2)
         {
-            newNode.title = nodeObj.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().DisplayName.text;
-            newNode.description = nodeObj.GetComponent<formNodeController>().linkedField.GetComponent<formFieldController>().Value.text;
+            newNode.title = nodeObj.GetComponent<nodeController>().linkedField.GetComponent<formFieldController>().DisplayName.text;
+            newNode.description = nodeObj.GetComponent<nodeController>().linkedField.GetComponent<formFieldController>().Value.text;
             newNode.audioPath = "";
         }
+        else if(newNode.type == 3)
+        {
+            Debug.Log("hello");
+        }
+
         else
         {
 
@@ -325,6 +330,27 @@ public class databaseMan : Singleton<databaseMan>
         newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;       
 
         values.Location.Equipment[0].Nodes.Add(newNode);
+        JU_databaseMan.Instance.loadNodesCmd();
+    }
+    public void removeNode(GameObject nodeObj)
+    {
+        List<NodeClass> tempNodeList = new List<NodeClass>();
+
+        foreach (NodeClass node in values.Location.Equipment[0].Nodes)
+        {
+            if (nodeObj.GetComponent<nodeMediaHolder>().NodeIndex != node.indexNum)
+            {
+                tempNodeList.Add(node);
+            }
+        }
+
+        values.Location.Equipment[0].Nodes.Clear();
+
+        foreach (NodeClass node in tempNodeList)
+        {
+            values.Location.Equipment[0].Nodes.Add(node);
+        }
+
         JU_databaseMan.Instance.loadNodesCmd();
     }
 

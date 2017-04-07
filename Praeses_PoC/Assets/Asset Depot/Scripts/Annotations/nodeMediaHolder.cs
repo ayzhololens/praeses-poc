@@ -36,8 +36,7 @@ namespace HoloToolkit.Unity
         // Use this for initialization
         void Start()
         {
-            NodeIndex = mediaManager.Instance.nodeIndex;
-            mediaManager.Instance.nodeIndex += 1;
+
 
 
         }

@@ -103,9 +103,22 @@ namespace HoloToolkit.Unity
             MiniMapHolderParent.transform.localScale = Vector3.one;
             GetComponent<miniMapToggle>().active = true;
 
+
+
             if (useAvatar)
             {
                 avatar.GetComponent<minimize>().miniThis();
+
+
+                for (int u = 0; u < boiler.transform.childCount; u++)
+                {
+                    if (boiler.transform.GetChild(u).gameObject.activeSelf && boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>() != null)
+                    {
+                        boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>().enabled = false;
+                        Debug.Log("yo" + boiler.transform.GetChild(u).gameObject.name + " " + boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>().enabled);
+
+                    }
+                }
 
             }
         }

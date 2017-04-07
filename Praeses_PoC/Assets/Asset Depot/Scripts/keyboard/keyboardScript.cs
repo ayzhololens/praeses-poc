@@ -73,6 +73,11 @@ namespace HoloToolkit.Unity
 
         }
 
+        public void editChangeSync()
+        {
+            //currentField.gameObject.GetComponent<inputFieldManager>().onEditChangeUpdateJSon();
+        }
+
         void textSync()
         {
             if (keyboardField.text.Length > textLength)

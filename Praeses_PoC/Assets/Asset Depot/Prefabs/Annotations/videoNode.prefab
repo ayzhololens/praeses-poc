@@ -3272,6 +3272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
+  activeFilepath: 
   activeComments: []
   playIcon: {fileID: 1865320774385740}
   pauseIcon: {fileID: 1224971330552542}
@@ -4258,7 +4259,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114319608210254228}
-        m_MethodName: DeleteNode
+        m_MethodName: NodeDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
