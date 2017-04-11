@@ -128,7 +128,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
         }else if(nodeClass.type == 1)//photo type=1
         {
             spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = nodeClass.photos[0].path;
-            spawnedNode.GetComponent<nodeMediaHolder>().activeFileName = shortNameProcessor(nodeClass.photos[0].path);
+            spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = shortNameProcessor(nodeClass.photos[0].path);
             spawnedNode.GetComponent<nodeMediaHolder>().loadPhoto(System.IO.Path.Combine(Application.persistentDataPath, nodeClass.photos[0].path));
             //print(System.IO.Path.Combine(Application.persistentDataPath, nodeClass.photos[0].path));
             spawnedNode.GetComponent<openAnnotationNode>().closeContent();
@@ -136,7 +136,7 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
         else if (nodeClass.type == 4)//video type=4
         {
             spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = nodeClass.videos[0].path;
-            spawnedNode.GetComponent<nodeMediaHolder>().activeFileName = nodeClass.videos[0].path;
+            spawnedNode.GetComponent<nodeMediaHolder>().activeFilepath = nodeClass.videos[0].path;
             spawnedNode.GetComponent<nodeMediaHolder>().LoadVideo();
             spawnedNode.GetComponent<openAnnotationNode>().closeContent();
         }

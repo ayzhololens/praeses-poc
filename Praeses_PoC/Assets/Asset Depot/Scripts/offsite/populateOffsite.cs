@@ -10,7 +10,7 @@ public class populateOffsite : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         databaseMan.Instance.loadDefCmd();
-        offsiteJSonLoader.Instance.populateOffsiteForm();
+        //offsiteJSonLoader.Instance.populateOffsiteForm();
         addNodeFromJSon.Instance.spawnNodeList();
         foreach (GameObject cam in cameras)
         {

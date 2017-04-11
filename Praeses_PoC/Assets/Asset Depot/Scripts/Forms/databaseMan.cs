@@ -174,9 +174,7 @@ public class databaseMan : Singleton<databaseMan>
 
         string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         System.IO.File.WriteAllText(saveDir, json);
-
-        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        System.IO.File.WriteAllText(saveDir, json);
+        
 
         print("jsonSaved");
     }
