@@ -48,7 +48,11 @@ Material:
     - first:
         name: _EmissionTex
       second:
+<<<<<<< HEAD
         m_Texture: {fileID: 2800000, guid: e96ae70e61718f741a1a06a9e57dbe5c, type: 3}
+=======
+        m_Texture: {fileID: 2800000, guid: 6e63462c1786e254e85c33aa715c9762, type: 3}
+>>>>>>> annJSon
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -178,7 +182,11 @@ Material:
       second: {r: 0.74264705, g: 0.6299696, b: 0, a: 1}
     - first:
         name: _Color
+<<<<<<< HEAD
       second: {r: 0.09411766, g: 0.39607847, b: 0.9921569, a: 1}
+=======
+      second: {r: 0.28762975, g: 0.48651704, b: 0.5147059, a: 1}
+>>>>>>> annJSon
     - first:
         name: _EmissionColor
       second: {r: 0.7352941, g: 0.56288034, b: 0, a: 1}

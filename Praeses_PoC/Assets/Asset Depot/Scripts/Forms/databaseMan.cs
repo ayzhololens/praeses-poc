@@ -23,8 +23,6 @@ public class databaseMan : Singleton<databaseMan>
     public MainForm definitions;
     public ValuesClass values;
 
-    public GameObject testItem;
-
     public Dictionary<string, GameObject> formPairs = new Dictionary<string, GameObject>();
 
     private void Start()
@@ -173,9 +171,9 @@ public class databaseMan : Singleton<databaseMan>
        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
        System.IO.File.WriteAllText(saveDir, json);
 #endif
-        
-        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //System.IO.File.WriteAllText(saveDir, json);
+
+        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        System.IO.File.WriteAllText(saveDir, json);
 
         string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         System.IO.File.WriteAllText(saveDir, json);
@@ -343,6 +341,7 @@ public class databaseMan : Singleton<databaseMan>
     }
 
     public void removeNode(GameObject nodeObj)
+
     {
         List<NodeClass> tempNodeList = new List<NodeClass>();
 

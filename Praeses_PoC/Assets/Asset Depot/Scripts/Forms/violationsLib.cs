@@ -5,11 +5,11 @@ using HoloToolkit.Unity;
 
 public class violationsLib : Singleton<violationsLib> {
 
-    public Dictionary<int, string> violationsCategory = new Dictionary<int, string>();
-    public Dictionary<int, string> violationsSubCategory4 = new Dictionary<int, string>();
-    public Dictionary<int, string> violationsSpecific41 = new Dictionary<int, string>();
-    public Dictionary<int, string> violationsSeverity = new Dictionary<int, string>();
-    public Dictionary<int, string> violationsStatus =new Dictionary<int, string>();
+    Dictionary<int, string> violationsCategory = new Dictionary<int, string>();
+    Dictionary<int, string> violationsSubCategory4 = new Dictionary<int, string>();
+    Dictionary<int, string> violationsSpecific41 = new Dictionary<int, string>();
+    Dictionary<int, string> violationsSeverity = new Dictionary<int, string>();
+    Dictionary<int, string> violationsStatus =new Dictionary<int, string>();
 
     public CategoryContainer categoryLib = new CategoryContainer();
 

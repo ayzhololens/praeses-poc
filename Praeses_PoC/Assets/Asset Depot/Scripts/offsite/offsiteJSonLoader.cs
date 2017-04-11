@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using HoloToolkit.Unity;
 
+using RenderHeads.Media.AVProVideo;
+
 public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
 
     public GameObject fieldItemPrefab;
@@ -36,8 +38,9 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
     public GameObject offsiteMediaWindow;
     public GameObject mainWindow;
     public GameObject mediaPlane;
-    public Material photoMaterial;
     public Material videoMaterial;
+    public MediaPlayer videoPlayer;
+    public GameObject playButton;
     public GameObject minimapGrp;
     public GameObject descObject;
     public CameraControlOffsite nodesMinimapCam;
@@ -257,6 +260,8 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
             newItem.GetComponent<offsiteMediaPlayer>().metaobject = metaObject;
             newItem.GetComponent<offsiteMediaPlayer>().mainWindow = mainWindow;
             newItem.GetComponent<offsiteMediaPlayer>().commentBoxObject = commentBox;
+            newItem.GetComponent<offsiteMediaPlayer>().videoPlayer = videoPlayer;
+            newItem.GetComponent<offsiteMediaPlayer>().playButton = playButton;
             //fieldItemCollection.Add(fieldItem.Name, newItem);
         }
 
@@ -298,5 +303,17 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
         commentHolder.Add(newItem);
     }
 
-    
+    public void loadPhoto(GameObject newItem)
+    {
+        string filepath = newItem.GetComponent<offsiteFieldItemValueHolder>().path;
+        //Debug.Log(filepath);
+        Texture2D targetTexture = new Texture2D(2048, 1152);
+
+        var bytesRead = System.IO.File.ReadAllBytes(filepath);
+        targetTexture.LoadImage(bytesRead);
+        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material.mainTexture = targetTexture;
+        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material;
+        newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material;
+    }
+
 }

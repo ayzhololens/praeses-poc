@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using RenderHeads.Media.AVProVideo;
+
 public class offsiteMediaPlayer : MonoBehaviour {
 
     public GameObject mediaWindow;
@@ -24,6 +26,9 @@ public class offsiteMediaPlayer : MonoBehaviour {
     Vector2 initSizeCommentBox;
 
     JU_databaseMan.nodeItem currentNode;
+
+    public MediaPlayer videoPlayer;
+    public GameObject playButton;
 
     private void Start()
     {
@@ -60,20 +65,24 @@ public class offsiteMediaPlayer : MonoBehaviour {
             {
                 mediaPlane.SetActive(false);
                 offsetMinimap();
+                playButton.SetActive(false);
                 //print("simple");
             }
             else if (currentNode.type == 1)
             {
                 mediaPlane.SetActive(true);
                 resetMinimap();
-                mediaPlane.GetComponent<Image>().material = photoMaterial;
+                mediaPlane.GetComponent<Renderer>().material = photoMaterial;
+                playButton.SetActive(false);
                 //print("photo");
             }
             else if (currentNode.type == 4)
             {
                 mediaPlane.SetActive(true);
                 resetMinimap();
-                mediaPlane.GetComponent<Image>().material = videoMaterial;
+                mediaPlane.GetComponent<Renderer>().material = videoMaterial;
+                loadVideo();
+                playButton.SetActive(true);
                 //print("video");
             }
 
@@ -103,5 +112,28 @@ public class offsiteMediaPlayer : MonoBehaviour {
 
         commentBoxObject.GetComponent<RectTransform>().sizeDelta = initSizeCommentBox;
         commentBoxObject.GetComponent<RectTransform>().localPosition = initPosCommentBox;
+    }
+
+    void loadVideo()
+    {
+        videoPlayer.m_VideoPath = gameObject.GetComponent<offsiteFieldItemValueHolder>().path;
+        videoPlayer.LoadVideoPlayer();
+    }
+
+    public void playVideo()
+    {
+        if (videoPlayer.m_VideoPath != gameObject.GetComponent<offsiteFieldItemValueHolder>().path)
+        {
+            loadVideo();
+        }
+        videoPlayer.Control.Play();
+    }
+
+    public void pauseVideo()
+    {
+        if (videoPlayer.Control.IsPlaying())
+        {
+            videoPlayer.Control.Pause();
+        }
     }
 }

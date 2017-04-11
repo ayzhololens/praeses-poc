@@ -149,6 +149,7 @@ MonoBehaviour:
   date: 
   path: 
   nodeIndex: 0
+  thumbnail: {fileID: 0}
 --- !u!114 &114386668322122612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -175,7 +176,6 @@ MonoBehaviour:
   mediaWindow: {fileID: 0}
   mediaPlane: {fileID: 0}
   nodesMinimapCam: {fileID: 0}
-  mainWindow: {fileID: 0}
   closer: 0
   photoMaterial: {fileID: 0}
   videoMaterial: {fileID: 0}
@@ -183,6 +183,7 @@ MonoBehaviour:
   commentBoxObject: {fileID: 0}
   descObject: {fileID: 0}
   metaobject: {fileID: 0}
+  videoPlayer: {fileID: 0}
 --- !u!114 &114797257074047690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: 73e470de24564124dbf5fba202ad5664, type: 2}
+  m_Material: {fileID: 2100000, guid: 40d52c679136afa47b84c82b28c489ad, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:

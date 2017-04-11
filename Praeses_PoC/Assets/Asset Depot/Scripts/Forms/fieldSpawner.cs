@@ -77,13 +77,13 @@ namespace HoloToolkit.Unity
                     foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.EquipmentData.fields)
                     {
                             ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + valueItem.value + ")");
+
                     }
 
                     foreach (JU_databaseMan.fieldItem field in JU_databaseMan.Instance.definitions.InspectionFields.fields)
                     {
                         if (field.Options.ContainsKey(valueItem.value))
                         {
-
                             ActiveFields[valueItem.name].GetComponent<formFieldController>().previousValue.text = ("(" + field.Options[valueItem.value] + ")");
                         }
                     }
