@@ -1,5 +1,0 @@
-Assembly-CSharp.dll
-Newtonsoft.Json.dll
-UnityEngine.Analytics.dll
-UnityEngine.UI.dll
-UnityEngine.Networking.dll
