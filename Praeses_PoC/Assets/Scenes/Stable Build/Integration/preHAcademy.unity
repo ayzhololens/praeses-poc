@@ -1514,9 +1514,10 @@ Transform:
   - {fileID: 1940615252}
   - {fileID: 113768332}
   - {fileID: 1131065039}
-  - {fileID: 135159449}
+  - {fileID: 1957125022}
   - {fileID: 83201434}
   - {fileID: 1338411480}
+  - {fileID: 661745073}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1587,19 +1588,19 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 620458108}
     m_Modifications:
     - target: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.053707875
       objectReference: {fileID: 0}
     - target: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.337
+      value: -0.5224013
       objectReference: {fileID: 0}
     - target: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.232
+      value: 1.3699648
       objectReference: {fileID: 0}
     - target: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1619,7 +1620,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1683667537878540, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
       propertyPath: m_IsActive
@@ -1628,6 +1629,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &661745073 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4591750755532026, guid: 997be7a5b3e055b4b873a628b476c291,
+    type: 2}
+  m_PrefabInternal: {fileID: 661745072}
 --- !u!1001 &681627957
 Prefab:
   m_ObjectHideFlags: 0
@@ -2233,7 +2239,7 @@ MonoBehaviour:
   nodeprefabs:
   - {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
   - {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
-  - {fileID: 0}
+  - {fileID: 1924190988760956, guid: 4c4cb75ca1c315847b16675db4c57703, type: 2}
   - {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38, type: 2}
   - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
   changedText: {fileID: 0}
