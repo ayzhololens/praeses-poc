@@ -508,7 +508,7 @@ Transform:
   m_Children:
   - {fileID: 1957125022}
   m_Father: {fileID: 620458108}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &144560033
 Prefab:
@@ -1594,8 +1594,8 @@ Transform:
   - {fileID: 144560034}
   - {fileID: 1940615252}
   - {fileID: 113768332}
-  - {fileID: 135159449}
   - {fileID: 1131065039}
+  - {fileID: 135159449}
   - {fileID: 83201434}
   - {fileID: 1338411480}
   m_Father: {fileID: 0}
@@ -2292,9 +2292,8 @@ MonoBehaviour:
   nodeprefabs:
   - {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
   - {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
-  - {fileID: 1424359974238574, guid: 388ee402cb31e734daffb1f606b7acf3, type: 2}
+  - {fileID: 0}
   - {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38, type: 2}
-  - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
   - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
   changedText: {fileID: 0}
   offSiteHolder: {fileID: 0}
@@ -2955,7 +2954,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 620458108}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1131065040
 MeshRenderer:
