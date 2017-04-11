@@ -1,4 +1,0 @@
-C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\app\GeneratedProjects\UWP\Assembly-CSharp\Assembly-CSharp.csproj;x86
-C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\app\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
-C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\app\GeneratedProjects\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj;x86
-C:\Users\jjohar\Documents\GitHub\praeses-poc\Praeses_PoC\app\Praeses_PoC\Praeses_PoC.csproj;x86
