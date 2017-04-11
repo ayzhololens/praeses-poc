@@ -34,7 +34,8 @@ namespace HoloToolkit.Unity
         public Text actualText;
         public int textLength;
 
-        public GameObject micOff;
+        public GameObject keypad;
+        public GameObject numpad;
         public GameObject micOn;
         bool isRecording;
 
@@ -72,6 +73,11 @@ namespace HoloToolkit.Unity
 
         }
 
+        public void editChangeSync()
+        {
+            //currentField.gameObject.GetComponent<inputFieldManager>().onEditChangeUpdateJSon();
+        }
+
         void textSync()
         {
             if (keyboardField.text.Length > textLength)
@@ -101,13 +107,20 @@ namespace HoloToolkit.Unity
         {
             if (useKeypad)
             {
-                keyboardActivator.SetActive(true);
+                keypad.SetActive(true);
+                numpad.SetActive(false);
             }
+            else if (useNumpad)
+            {
+                keypad.SetActive(false);
+                numpad.SetActive(true);
+            }
+            keyboardActivator.SetActive(true);
 
 
             //canvasOriPos = canvasObj.GetComponent<RectTransform>().position;
             //canvasOffset = canvasOriPos + new Vector3(0, .2f, 0);
-            
+
             keyboardField.ActivateInputField();
             onOff = true;
             cameraParent();
@@ -147,6 +160,8 @@ namespace HoloToolkit.Unity
             onOff = false;
             currentField = null;
             keyboardField.text = "";
+            useNumpad = false;
+            useKeypad = false;
             //canvasObj.transform.position = Vector3.MoveTowards(canvasOriPos,canvasOffset, animMult);
         }
 
@@ -308,14 +323,14 @@ namespace HoloToolkit.Unity
 
         public void startRecording()
         {
-            micOff.SetActive(false);
+            keypad.SetActive(false);
             micOn.SetActive(true);
             isRecording = true;
         }
 
         public void finishRecording()
         {
-            micOff.SetActive(true);
+            keypad.SetActive(true);
             micOn.SetActive(false);
             isRecording = false;
         }

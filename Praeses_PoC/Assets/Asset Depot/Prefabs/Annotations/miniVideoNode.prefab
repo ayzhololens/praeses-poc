@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114250910643539598}
   - component: {fileID: 114820960199300674}
   - component: {fileID: 114550007628984080}
+  - component: {fileID: 114574013328901328}
   m_Layer: 0
   m_Name: miniVideoNode
   m_TagString: Node
@@ -118,8 +119,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358996027637648}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.053707875, y: -0.5224013, z: 1.3699648}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4655293716229026}
@@ -327,7 +328,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358996027637648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 
@@ -337,19 +338,27 @@ MonoBehaviour:
   filepath: 
   filename: 
   playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
   photoTexture: {fileID: 0}
   photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 1
   photoNode: 0
   simpleNode: 0
+  Title: {fileID: 0}
+  Description: {fileID: 0}
+  Date: 
+  User: 
+  audioPath: 
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114447765640173050
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1358996027637648}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -364,6 +373,8 @@ MonoBehaviour:
   distanceThreshold: 0
   openNodeCounter: 0
   speed: 0
+  reviewState: 0
+  reviewButtons: {fileID: 0}
 --- !u!114 &114550007628984080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -378,8 +389,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114447765640173050}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114574013328901328}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -391,6 +402,23 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
+--- !u!114 &114574013328901328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358996027637648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 0}
+  contentStartLoc: {fileID: 0}
+  isMiniNode: 1
+  distanceThreshold: 0
+  moveSpeed: 0
 --- !u!114 &114707165348320524
 MonoBehaviour:
   m_ObjectHideFlags: 1

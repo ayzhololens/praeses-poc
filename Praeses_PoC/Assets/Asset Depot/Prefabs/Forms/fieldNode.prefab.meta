@@ -1,11 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Praeses_PoC/Assets/Asset Depot/Prefabs/Minimap/person.prefab.meta
-guid: f33d8ef15fdade84998ddbd2c4280975
-timeCreated: 1488930367
-=======
-guid: 7abfbedf71c025d458cf58bb6b63f515
-timeCreated: 1489188133
->>>>>>> FrontEndForms:Praeses_PoC/Assets/Asset Depot/Prefabs/Forms/fieldNode.prefab.meta
+guid: 4c4cb75ca1c315847b16675db4c57703
+timeCreated: 1491931170
 licenseType: Free
 NativeFormatImporter:
   userData: 

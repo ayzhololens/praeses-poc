@@ -157,6 +157,7 @@ GameObject:
   - component: {fileID: 114063208235871218}
   - component: {fileID: 114476545275035760}
   - component: {fileID: 114779219604454076}
+  - component: {fileID: 114133881944110230}
   m_Layer: 0
   m_Name: miniViolationNode
   m_TagString: Node
@@ -439,15 +440,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   filepath: []
-  activeFilepath: 
-  activeFileName: 
   activeComments: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
   photoVideoPane: {fileID: 0}
   videoNode: 0
   photoNode: 0
@@ -456,11 +451,24 @@ MonoBehaviour:
   violationNode: 1
   Title: {fileID: 0}
   Description: {fileID: 0}
-  Date: 
-  User: 
-  audioPath: 
   type: 0
   NodeIndex: 0
+--- !u!114 &114133881944110230
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1804684044155840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 0}
+  contentStartLoc: {fileID: 0}
+  isMiniNode: 1
+  distanceThreshold: 0
+  moveSpeed: 0
 --- !u!114 &114264630480779458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -568,8 +576,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114476545275035760}
-        m_MethodName: openViolation
+      - m_Target: {fileID: 114133881944110230}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

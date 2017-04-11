@@ -23,9 +23,14 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
     public Dictionary<string, GameObject> formPairs = new Dictionary<string, GameObject>();
 
-    private void Start()
+    private void Update()
     {
-
+        if (Input.GetButtonDown("Jump"))
+        {
+            print(categoryStringer(violationsManager.violations[0])[0]);
+            print(categoryStringer(violationsManager.violations[0])[1]);
+            print(categoryStringer(violationsManager.violations[0])[2]);
+        }
     }
 
     [System.Serializable]
@@ -138,92 +143,16 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     [System.Serializable]
     public class ViolationsItem
     {
-        public int index;
-        public ViolationCategories categories = new ViolationCategories();
-        public ViolationSeverity severity;
-        public string date;
-        public conditionsAndRequirements conditionsAndRequirements;
-        public string comment;
-        public int nodeIndex;
-    }
-
-    [System.Serializable]
-    public class ViolationCategories
-    {
-        public int selection;
-        public ViolationCategory category1 = new ViolationCategory();
-        public ViolationCategory category2 = new ViolationCategory();
-        public ViolationCategory category3 = new ViolationCategory();
-        public ViolationCategoryA category4 = new ViolationCategoryA();
-        public ViolationCategory category5 = new ViolationCategory();
-        public ViolationCategory category6 = new ViolationCategory();
-        public ViolationCategory category7 = new ViolationCategory();
-    }
-
-    [System.Serializable]
-    public class ViolationCategoryA
-    {
-        public string value;
-        public int selection;
-        public ViolationSubCategoryA subCategory1 = new ViolationSubCategoryA();
-        public ViolationSubCategory subCategory2 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory3 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory4 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory5 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory6 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory7 = new ViolationSubCategory();
-        public ViolationSubCategory subCategory8 = new ViolationSubCategory();
-    }
-
-    [System.Serializable]
-    public class ViolationCategory
-    {
-        public string value;
-    }
-
-    [System.Serializable]
-    public class ViolationSubCategoryA
-    {
-        public string value;
-        public int selection;
-        public ViolationSpecificA speCategory1 = new ViolationSpecificA();
-        public ViolationSpecific speCategory2 = new ViolationSpecific();
-        public ViolationSpecific speCategory3 = new ViolationSpecific();
-        public ViolationSpecific speCategory4 = new ViolationSpecific();
-        public ViolationSpecific speCategory5 = new ViolationSpecific();
-        public ViolationSpecific speCategory6 = new ViolationSpecific();
-        public ViolationSpecific speCategory7 = new ViolationSpecific();
-    }
-
-    [System.Serializable]
-    public class ViolationSubCategory
-    {
-        public string value;
-    }
-
-    [System.Serializable]
-    public class ViolationSpecificA
-    {
-        public string value;
-    }
-
-    [System.Serializable]
-    public class ViolationSpecific
-    {
-        public string value;
-    }
-
-    [System.Serializable]
-    public class ViolationSeverity
-    {
-        public fieldItem field;
-    }
-
-    [System.Serializable]
-    public class conditionsAndRequirements
-    {
+        public int category;
+        public int subCategory;
+        public int specific;
+        public int severity;
+        public string violationDate;
+        public string resolveDate;
+        public int status;
         public string conditions;
         public string requirements;
+        public int nodeIndex;
     }
 
     public void loadDefCmd()
@@ -231,7 +160,6 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         readLocationFields();
         readEquipmentFields();
         readInspectionFields();
-        //print("JU_jsonDefinitionsLoaded");
         loadNodesCmd();
         loadViolationsCmd();
         loadValCmd();
@@ -299,9 +227,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
     {
         foreach (databaseMan.ViolationsClass violation in databaseMan.Instance.values.Location.Equipment[0].Violations)
         {
-            ViolationsItem newViolationItem = new ViolationsItem();
-
-            violationsManager.violations.Add(scriptedViolation(newViolationItem));
+            violationsManager.violations.Add(violationParser(violation));
         }
     }
 
@@ -387,8 +313,60 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
         }
     }
 
-    public virtual ViolationsItem scriptedViolation(ViolationsItem incomingItem)
+    public virtual string categoryParser(string numbers, int category)
     {
-        return incomingItem;
+        string[] result = numbers.Split('.');
+        return result[category];
+    }
+
+    public virtual ViolationsItem violationParser(databaseMan.ViolationsClass incomingItem)
+    {
+        ViolationsItem newViolation = new ViolationsItem();
+
+        newViolation.category = int.Parse(categoryParser(incomingItem.category,0));
+        newViolation.subCategory = int.Parse(categoryParser(incomingItem.category, 1));
+        newViolation.specific = int.Parse(categoryParser(incomingItem.category, 2));
+        newViolation.severity = incomingItem.classifications;
+        newViolation.violationDate = incomingItem.violationDate;
+        newViolation.resolveDate = incomingItem.resolveDate;
+        newViolation.status = incomingItem.status;
+        newViolation.conditions = incomingItem.conditions;
+        newViolation.requirements = incomingItem.requirements;
+        newViolation.nodeIndex = incomingItem.nodeIndex;
+        return newViolation;
+    }
+
+    public virtual List<string> categoryStringer(ViolationsItem violation)
+    {
+        List<string> categoryString = new List<string>();
+        if (violationsLib.Instance.categoryLib.categoryList.ContainsKey(violation.category))
+        {
+            string tempString = violationsLib.Instance.categoryLib.categoryList[violation.category].name;
+            categoryString.Add(tempString);
+            if (violationsLib.Instance.categoryLib.categoryList[violation.category].subCategoryList.ContainsKey(violation.subCategory))
+            {
+                string tempString1 = violationsLib.Instance.categoryLib.categoryList[violation.category].subCategoryList[violation.subCategory].name;
+                categoryString.Add(tempString1);
+                if (violationsLib.Instance.categoryLib.categoryList[violation.category].subCategoryList[violation.subCategory].specificList.ContainsKey(violation.specific))
+                {
+                    string tempString2 = violationsLib.Instance.categoryLib.categoryList[violation.category].subCategoryList[violation.subCategory].specificList[violation.specific].name;
+                    categoryString.Add(tempString2);
+                }
+                else
+                {
+                    print("key : " + violation.specific + " in specific doesn't exist");
+                }
+            }
+            else
+            {
+                print("key : " + violation.subCategory + " in subcategory doesn't exist");
+            }
+        }
+        else
+        {
+            print ("key : " + violation.category + " in category doesn't exist");
+        }
+
+        return (categoryString);
     }
 }

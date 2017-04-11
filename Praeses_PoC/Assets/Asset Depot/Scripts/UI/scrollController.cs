@@ -15,6 +15,7 @@ public class scrollController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+         
 		
 	}
 	
@@ -37,7 +38,7 @@ public class scrollController : MonoBehaviour {
                 curPos = HandsManager.Instance.ManipulationHandPosition;
 
                 offset = (curPos.y - startPos.y) * sensitivity;
-                ScrollContent.transform.position = new Vector3(ScrollContent.transform.position.x, ScrollContent.transform.position.y + offset, ScrollContent.transform.position.z);
+                ScrollContent.transform.localPosition = new Vector3(ScrollContent.transform.localPosition.x, ScrollContent.transform.localPosition.y + offset, ScrollContent.transform.localPosition.z);
                 if (curPos.y > startPos.y)
                 {
                     if (lastPos > curPos.y)

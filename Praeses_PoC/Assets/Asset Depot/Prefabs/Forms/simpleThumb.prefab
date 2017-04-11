@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114785160556704878}
   - component: {fileID: 114036393833897532}
   - component: {fileID: 114282309710185152}
+  - component: {fileID: 114826231605057396}
   m_Layer: 5
   m_Name: simpleThumb
   m_TagString: Untagged
@@ -163,7 +164,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 0}
+  commentMain: {fileID: 114353306870644986}
   commentMeta: {fileID: 114260772065706710}
   Date: 
   user: 
@@ -173,6 +174,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114103592904664656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -407,7 +409,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086963000631786}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2d5d5f6bd7521e478939cf2295e9e29, type: 3}
   m_Name: 
@@ -488,6 +490,17 @@ MonoBehaviour:
   linkedField: {fileID: 0}
   breakOutScale: 2.5
   breakOutPos: {fileID: 0}
+--- !u!114 &114826231605057396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086963000631786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e59060cf4d9bf47a01d1fa3a899a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114921870576927848
 MonoBehaviour:
   m_ObjectHideFlags: 1

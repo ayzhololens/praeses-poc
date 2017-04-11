@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114316329733346058}
   - component: {fileID: 114723591204096526}
   - component: {fileID: 114525113279490002}
+  - component: {fileID: 114466504203194128}
   m_Layer: 0
   m_Name: miniPhotoNode
   m_TagString: Node
@@ -160,8 +161,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.053707875, y: -0.5224013, z: 1.3699648}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4875413148603318}
@@ -308,8 +309,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114353580311240332}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114466504203194128}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -321,13 +322,14 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114353580311240332
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -344,6 +346,22 @@ MonoBehaviour:
   speed: 0
   reviewState: 0
   reviewButtons: {fileID: 0}
+--- !u!114 &114466504203194128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 0}
+  contentStartLoc: {fileID: 0}
+  isMiniNode: 1
+  distanceThreshold: 0
+  moveSpeed: 0
 --- !u!114 &114525113279490002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,7 +436,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d0f2d41a2a48c149acea65a4aa35363, type: 3}
   m_Name: 
