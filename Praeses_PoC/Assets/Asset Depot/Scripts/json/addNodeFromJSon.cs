@@ -107,6 +107,76 @@ public class addNodeFromJSon : Singleton<addNodeFromJSon> {
             }
 
         }
+        else if (nodeClass.type == 3)
+        {
+            violatoinSpawner.Instance.spawnViolationFromJSON(spawnedNode);
+
+
+
+            List<databaseMan.tempComment> tempList = new List<databaseMan.tempComment>();
+            List<databaseMan.tempComment> spawnList = new List<databaseMan.tempComment>();
+            foreach (JU_databaseMan.comment commentJU in nodeClass.comments)
+            {
+                databaseMan.tempComment newItem = new databaseMan.tempComment();
+                newItem.date = commentJU.date;
+                newItem.type = 1;
+                newItem.content = commentJU.content;
+                tempList.Add(newItem);
+            }
+            foreach (JU_databaseMan.media photoJU in nodeClass.photos)
+            {
+                databaseMan.tempComment newItem = new databaseMan.tempComment();
+                newItem.date = photoJU.date;
+                newItem.type = 2;
+                newItem.path = photoJU.path;
+                tempList.Add(newItem);
+            }
+            foreach (JU_databaseMan.media videoJU in nodeClass.videos)
+            {
+                databaseMan.tempComment newItem = new databaseMan.tempComment();
+                newItem.date = videoJU.date;
+                newItem.type = 3;
+                newItem.path = videoJU.path;
+                tempList.Add(newItem);
+            }
+
+            spawnList = tempList.OrderBy(si => si.date).ToList();
+
+            foreach (databaseMan.tempComment comment in spawnList.Reverse<databaseMan.tempComment>())
+            {
+                if (comment.type == 1 && spawnedNode.GetComponent<nodeController>().linkedField != null)
+                {
+                    GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnSimpleCommentFromJSON();
+
+                    comment3D.GetComponent<commentContents>().Date = comment.date;
+                    comment3D.GetComponent<commentContents>().user = comment.user;
+                    comment3D.GetComponent<commentContents>().commentMeta.text = (comment.user + " " + comment.date);
+                    comment3D.GetComponent<commentContents>().commentMain.text = comment.content;
+                }
+                else if (comment.type == 2 && spawnedNode.GetComponent<nodeController>().linkedField != null)
+                {
+                    GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnPhotoCommentFromJSON();
+
+
+                    comment3D.GetComponent<commentContents>().Date = comment.date;
+                    comment3D.GetComponent<commentContents>().user = comment.user;
+                    comment3D.GetComponent<commentContents>().commentMeta.text = (comment.user + " " + comment.date);
+                    comment3D.GetComponent<commentContents>().filepath = System.IO.Path.Combine(Application.persistentDataPath, comment.path);
+                    comment3D.GetComponent<commentContents>().loadPhoto();
+                }
+                else if (comment.type == 3 && spawnedNode.GetComponent<nodeController>().linkedField != null)
+                {
+                    GameObject comment3D = spawnedNode.GetComponent<nodeController>().linkedField.GetComponent<commentManager>().spawnVideoCommentFromJSON();
+
+                    comment3D.GetComponent<commentContents>().Date = comment.date;
+                    comment3D.GetComponent<commentContents>().user = comment.user;
+                    comment3D.GetComponent<commentContents>().commentMeta.text = (comment.user + " " + comment.date);
+                    comment3D.GetComponent<commentContents>().filepath = comment.path;
+                    comment3D.GetComponent<commentContents>().LoadVideo();
+                }
+            }
+
+        }
         else
         {
             spawnedNode.GetComponent<nodeMediaHolder>().Title.text = nodeClass.title;
