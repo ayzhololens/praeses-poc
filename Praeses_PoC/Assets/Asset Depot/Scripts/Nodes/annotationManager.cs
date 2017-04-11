@@ -106,14 +106,14 @@ namespace HoloToolkit.Unity
 
                 if (activeField != null)
                 {
-                    if (activeField.GetComponent<violationController>().capturingPhoto)
-                    {
-                        activeField.GetComponent<violationController>().loadPhotoMedia();
-                    }
-                    if (activeField.GetComponent<violationController>().capturingVideo)
-                    {
-                        activeField.GetComponent<violationController>().loadVideoMedia();
-                    }
+                    //if (activeField.GetComponent<violationController>().capturingPhoto)
+                    //{
+                    //    activeField.GetComponent<violationController>().loadPhotoMedia();
+                    //}
+                    //if (activeField.GetComponent<violationController>().capturingVideo)
+                    //{
+                    //    activeField.GetComponent<violationController>().loadVideoMedia();
+                    //}
                 }
             }
             if (activeField != null)
