@@ -73,7 +73,7 @@ namespace HoloToolkit.Unity
             {
                 currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-                currentAnnotation.GetComponent<nodeMediaHolder>().loadPhotoMedia();
+                //currentAnnotation.GetComponent<nodeMediaHolder>().loadPhotoMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
@@ -82,7 +82,7 @@ namespace HoloToolkit.Unity
             {
                 currentAnnotation.GetComponent<selectEvent>().enabled = true;
 
-                currentAnnotation.GetComponent<nodeMediaHolder>().loadVideoMedia();
+                //currentAnnotation.GetComponent<nodeMediaHolder>().loadVideoMedia();
                 currentAnnotation.GetComponent<openAnnotationNode>().openContent();
                 currentAnnotation.GetComponent<openAnnotationNode>().enableReview();
             }
@@ -106,14 +106,14 @@ namespace HoloToolkit.Unity
 
                 if (activeField != null)
                 {
-                    if (activeField.GetComponent<violationController>().capturingPhoto)
-                    {
-                        activeField.GetComponent<violationController>().loadPhotoMedia();
-                    }
-                    if (activeField.GetComponent<violationController>().capturingVideo)
-                    {
-                        activeField.GetComponent<violationController>().loadVideoMedia();
-                    }
+                    //if (activeField.GetComponent<violationController>().capturingPhoto)
+                    //{
+                    //    activeField.GetComponent<violationController>().loadPhotoMedia();
+                    //}
+                    //if (activeField.GetComponent<violationController>().capturingVideo)
+                    //{
+                    //    activeField.GetComponent<violationController>().loadVideoMedia();
+                    //}
                 }
             }
             if (activeField != null)
@@ -180,7 +180,7 @@ namespace HoloToolkit.Unity
         public void StopVideoRecording()
         {
             stateIndicator.SetActive(false);
-            vidRecorder.StopRecordingVideo();
+            vidRecorder.StopRecordingVideo(true);
             videoRecordingInProgress = false;
             annotating = false;
             Debug.Log("stopped");

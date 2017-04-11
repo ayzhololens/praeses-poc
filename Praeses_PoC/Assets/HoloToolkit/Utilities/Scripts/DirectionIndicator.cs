@@ -25,8 +25,8 @@ namespace HoloToolkit.Unity
         public float VisibilitySafeFactor = 0.1f;
 
         [Tooltip("Multiplier to decrease the distance from the cursor center an object is rendered to keep it in view.")]
-        [Range(0.1f, 1.0f)]
-        public float MetersFromCursor = 0.3f;
+        [Range(0.01f, 1.0f)]
+        public float MetersFromCursor = 0.04f;
 
         // The default rotation of the cursor direction indicator.
         private Quaternion directionIndicatorDefaultRotation = Quaternion.identity;
@@ -40,11 +40,14 @@ namespace HoloToolkit.Unity
         // Check if the cursor direction indicator is visible.
         private bool isDirectionIndicatorVisible;
 
+        public bool hasGazed { get; set; }
+
         public void Awake()
         {
             if (Cursor == null)
             {
-                Debug.LogError("Please include a GameObject for the cursor.");
+                Cursor = GameObject.Find("Cursor");
+
             }
 
             if (DirectionIndicatorObject == null)
@@ -103,7 +106,7 @@ namespace HoloToolkit.Unity
 
         public void Update()
         {
-            if (DirectionIndicatorObject == null)
+            if (DirectionIndicatorObject == null || hasGazed)
             {
                 return;
             }
@@ -115,6 +118,11 @@ namespace HoloToolkit.Unity
             // The cursor indicator should only be visible if the target is not visible.
             isDirectionIndicatorVisible = !IsTargetVisible();
             directionIndicatorRenderer.enabled = isDirectionIndicatorVisible;
+
+            if (IsTargetVisible())
+            {
+                hasGazed = true;
+            }
 
             if (isDirectionIndicatorVisible)
             {

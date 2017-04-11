@@ -37,18 +37,17 @@ namespace HoloToolkit.Unity
         photoRecorder photoRecorder;
         public bool capturingVideo;
         public bool capturingPhoto;
+        public GameObject fieldButton;
+        public Transform buttonPos;
+        public float buttonXOffset;
+        public float buttonYOffset;
+        public List<GameObject> curButtons;
+
 
 
         // Use this for initialization
         void Start()
         {
-            //for (int i=0; i<transform.parent.childCount; i++)
-            //{
-            //    if(transform.parent.GetChild(i).gameObject.name == "commentLocator")
-            //    {
-            //        thumbPos.transform.position = transform.parent.GetChild(i).position;
-            //    }
-            //}
         }
 
         // Update is called once per frame
@@ -61,8 +60,8 @@ namespace HoloToolkit.Unity
         {
             if (linkedNode == null)
             {
-                annotationSpawner.Instance.spawnFieldAnnotation();
-                annotationManager.Instance.activeField = this.gameObject;
+                nodeSpawner.Instance.spawnNode(4);
+                nodeSpawner.Instance.getLinkedField(gameObject.GetComponent<formFieldController>());
             }
             else
             {
@@ -82,7 +81,7 @@ namespace HoloToolkit.Unity
         {
 
             GetComponent<subMenu>().turnOnSubButtons();
-            attachmentParent.gameObject.SetActive(false);
+            //attachmentParent.gameObject.SetActive(false);
             for(int i = 0; i<transform.parent.childCount; i++)
             {
                 if (transform.parent.GetChild(i).gameObject != this.gameObject && transform.parent.GetChild(i).gameObject.GetComponent<subMenu>() != null)
@@ -96,6 +95,29 @@ namespace HoloToolkit.Unity
             {
                 linkedNode.GetComponent<selectEvent>().enabled = true;
             }
+        }
+
+        public void populateButtons(int buttonAmount)
+        {
+            Vector3 buttonLoc = buttonPos.position;
+            for (int i = 0; i<buttonAmount; i++)
+            {
+                if (i == 2)
+                {
+                    buttonLoc = new Vector3(buttonPos.position.x, buttonPos.position.y + buttonYOffset, buttonLoc.z); ;
+                }
+
+                curButtons.Add( Instantiate(fieldButton, buttonLoc, Quaternion.identity));
+                curButtons[i].transform.SetParent(transform);
+                curButtons[i].transform.localScale = fieldButton.transform.localScale;
+                curButtons[i].transform.localRotation = fieldButton.transform.localRotation;
+
+                buttonLoc = new Vector3(buttonLoc.x + buttonXOffset, buttonLoc.y, buttonLoc.z) ;
+
+            }
+
+            
+
         }
 
         public void revealAttachments()

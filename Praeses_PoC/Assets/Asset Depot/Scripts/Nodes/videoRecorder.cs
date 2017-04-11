@@ -95,9 +95,19 @@ namespace HoloToolkit.Unity
             // We will stop the video from recording via other input such as a timer or a tap, etc.
         }
 
-        public void StopRecordingVideo()
+        public void StopRecordingVideo(bool activateMedia)
         {
             m_VideoCapture.StopRecordingAsync(OnStoppedRecordingVideo);
+            if (activateMedia)
+            {
+                mediaManager.Instance.activateMedia();
+            }
+            else
+            {
+                Debug.Log("eel");
+                mediaManager.Instance.activateComment();
+            }
+            
         }
 
         void OnStoppedRecordingVideo(VideoCapture.VideoCaptureResult result)
@@ -108,9 +118,9 @@ namespace HoloToolkit.Unity
             m_VideoCapture.StopVideoModeAsync(OnStoppedVideoCaptureMode);
             vidCounter += 1;
 
-            annotationManager.Instance.activateMedia();
 
-            
+
+
         }
 
         void OnStoppedVideoCaptureMode(VideoCapture.VideoCaptureResult result)

@@ -14,6 +14,7 @@ namespace HoloToolkit.Unity
         public GameObject ReviewHolder;
         public GameObject submittedViolationHolder;
         public GameObject commentHolder;
+        public GameObject SubmittedMainHolder;
         public float headerOffset;
         Vector3 headerStartPos;
         GameObject copiedViolationContent;
@@ -53,7 +54,7 @@ namespace HoloToolkit.Unity
             headerStartPos = header.localPosition;
             header.localPosition = new Vector3(header.localPosition.x, header.localPosition.y- headerOffset, header.localPosition.z);
 
-            submittedViolationHolder.transform.parent.gameObject.SetActive(true);
+            SubmittedMainHolder.SetActive(true);
             ReviewHolder.SetActive(false);
 
             violatoinSpawner.Instance.populatePreviewField();
@@ -67,7 +68,7 @@ namespace HoloToolkit.Unity
             header.localPosition = headerStartPos;
             DestroyImmediate(copiedViolationContent);
             violationControl.showTabs(true);
-            submittedViolationHolder.transform.parent.gameObject.SetActive(false);
+            SubmittedMainHolder.SetActive(false);
             ReviewHolder.SetActive(true);
         }
 

@@ -8,9 +8,9 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: Wireframe
   m_Shader: {fileID: 4800000, guid: 0d08dd59087697b44a68a02cc9a7c3a2, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _USEWIREFRAME_ON
   m_LightmapFlags: 5
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
@@ -104,6 +104,12 @@ Material:
         name: _Parallax
       second: 0.02
     - first:
+        name: _PulseWidth
+      second: 1
+    - first:
+        name: _Radius
+      second: 1.89
+    - first:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
@@ -116,15 +122,24 @@ Material:
         name: _UVSec
       second: 0
     - first:
+        name: _UseWireframe
+      second: 1
+    - first:
         name: _WireThickness
-      second: 100
+      second: 466
+    - first:
+        name: _WireframeFill
+      second: 0.1
     - first:
         name: _ZWrite
       second: 1
     m_Colors:
     - first:
         name: _BaseColor
-      second: {r: 0, g: 0, b: 0, a: 1}
+      second: {r: 0.11402467, g: 0.13758056, b: 0.1397059, a: 1}
+    - first:
+        name: _Center
+      second: {r: 0, g: 0, b: 0, a: -1}
     - first:
         name: _Color
       second: {r: 1, g: 1, b: 1, a: 1}
@@ -132,5 +147,11 @@ Material:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
     - first:
+        name: _PulseColor
+      second: {r: 0.145, g: 0.447, b: 0.922, a: 1}
+    - first:
         name: _WireColor
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0, g: 0.54482746, b: 1, a: 1}
+    - first:
+        name: _WireframeColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}

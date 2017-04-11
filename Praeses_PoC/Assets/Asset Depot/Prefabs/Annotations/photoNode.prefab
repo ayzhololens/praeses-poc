@@ -305,7 +305,9 @@ GameObject:
   - component: {fileID: 114569150335033364}
   - component: {fileID: 114487820996126554}
   - component: {fileID: 114922585429606876}
-  - component: {fileID: 114593180182353228}
+  - component: {fileID: 114629911391182568}
+  - component: {fileID: 82431458057733010}
+  - component: {fileID: 114718177442030112}
   m_Layer: 0
   m_Name: photoNode
   m_TagString: Node
@@ -958,13 +960,14 @@ GameObject:
   - component: {fileID: 65579689838910202}
   - component: {fileID: 114967978063841558}
   - component: {fileID: 114360911289890854}
+  - component: {fileID: 114770249802345610}
   m_Layer: 2
   m_Name: ContentHolder
   m_TagString: Node
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1936230943857402
 GameObject:
   m_ObjectHideFlags: 1
@@ -1038,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1983955614141720
 GameObject:
   m_ObjectHideFlags: 1
@@ -1593,8 +1596,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.337, z: 2.232}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.053707875, y: -0.5224013, z: 1.3699648}
   m_LocalScale: {x: 0.4451675, y: 0.4451674, z: 0.4451674}
   m_Children:
   - {fileID: 4875413148603318}
@@ -2782,6 +2785,86 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!82 &82431458057733010
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 65de49df12efd0240ae3e5ce748cb548, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!102 &102000975925850930
 TextMesh:
   serializedVersion: 3
@@ -3025,6 +3108,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114031690799627046
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3164,6 +3248,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114088865968362522
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3218,6 +3303,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114123933726212340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3260,7 +3346,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114417259723294608}
-        m_MethodName: spawnNewComment
+        m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3272,6 +3358,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114156450700869930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3407,6 +3494,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114219600467163630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3448,8 +3536,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114353580311240332}
-        m_MethodName: openContent
+      - m_Target: {fileID: 114629911391182568}
+        m_MethodName: openNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3461,6 +3549,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114235204241355850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3598,6 +3687,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114342114485460082
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3612,6 +3702,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114342682335204256
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3666,7 +3757,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e03d432179b8045af91086cab87e2a, type: 3}
   m_Name: 
@@ -3789,6 +3880,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114417259723294608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3801,12 +3893,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeComments: []
-  scrollBoxCollider: {fileID: 65984960754134368}
+  activeSimpleComments: []
+  commentCount: 0
   commentParent: {fileID: 224644654234756902}
   CommmentStartPos: {fileID: 224930496201331804}
-  newCommentBox: {fileID: 1115960859750630, guid: 040c36b8b1c95c444ae5fb3535064c96,
+  simpleCommentPrefab: {fileID: 1086963000631786, guid: c609422b45147b04ba435ba72b95e045,
     type: 2}
-  offsetDist: 0.125
+  videoCommentPrefab: {fileID: 0}
+  photoCommentPrefab: {fileID: 0}
+  offsetDist: 0.075
 --- !u!114 &114446178700109054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3821,6 +3916,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114446602831327944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3953,6 +4049,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114473120117613238
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3967,7 +4064,7 @@ MonoBehaviour:
   isSimple: 0
   isPhoto: 0
   isVideo: 0
-  commentMain: {fileID: 114204348037966732}
+  commentMain: {fileID: 0}
   commentMeta: {fileID: 114643714739855350}
   Date: 
   user: 
@@ -3977,6 +4074,7 @@ MonoBehaviour:
   linkedComponent: {fileID: 0}
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
+  mediaPlayer: {fileID: 0}
 --- !u!114 &114474854228617722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4147,6 +4245,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114571897169940810
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4162,41 +4261,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &114593180182353228
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271331746875164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1c65e73d3923a44db8b6b247031a045, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filepath: []
-  activeFilepath: 
-  activeFileName: 
-  commentDescriptions: []
-  commentMetas: []
-  VideoPlayer: {fileID: 0}
-  vidRecorder: {fileID: 0}
-  playIcon: {fileID: 0}
-  pauseIcon: {fileID: 0}
-  photoTexture: {fileID: 0}
-  photoRecorder: {fileID: 0}
-  photoVideoPane: {fileID: 1936230943857402}
-  videoNode: 0
-  photoNode: 1
-  simpleNode: 0
-  fieldNode: 0
-  violationNode: 0
-  Title: {fileID: 114763280025997680}
-  Description: {fileID: 114451384423896488}
-  Date: 
-  User: 
-  audioPath: 
-  type: 0
-  NodeIndex: 0
 --- !u!114 &114601420634443252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4211,6 +4275,24 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &114629911391182568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3062fdea940165c4ab3d44b2fad84083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentHolder: {fileID: 1908089109972462}
+  contentStartLoc: {fileID: 4436757531566736}
+  isMiniNode: 0
+  distanceThreshold: 2
+  moveSpeed: 0.01
+  linkedField: {fileID: 0}
 --- !u!114 &114642736292500118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4337,6 +4419,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114701428476195794
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4351,6 +4434,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114711603199545296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4363,6 +4447,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.01
+  ScrollContent: {fileID: 0}
+--- !u!114 &114718177442030112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1271331746875164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31838df003609442b14ddc2eac43b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filepath: []
+  activeFilepath: 
+  activeComments: []
+  playIcon: {fileID: 0}
+  pauseIcon: {fileID: 0}
+  photoVideoPane: {fileID: 1936230943857402}
+  videoNode: 0
+  photoNode: 1
+  simpleNode: 0
+  fieldNode: 0
+  violationNode: 0
+  Title: {fileID: 114763280025997680}
+  Description: {fileID: 114451384423896488}
+  type: 0
+  NodeIndex: 0
 --- !u!114 &114749040697930454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4483,6 +4594,23 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+--- !u!114 &114770249802345610
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908089109972462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52a72bdb251e5ce488e5c51f0a9c657b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cursor: {fileID: 0}
+  DirectionIndicatorObject: {fileID: 1204202692450140, guid: da3b6e027e0d2c04e925e54ab3fcec09,
+    type: 2}
+  DirectionIndicatorColor: {r: 0, g: 0, b: 1, a: 1}
+  VisibilitySafeFactor: -0.08
+  MetersFromCursor: 0.029
 --- !u!114 &114777429954442636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4695,6 +4823,7 @@ MonoBehaviour:
   mainMat: {fileID: 2100000, guid: 984d7bd7f14663d4fb347cd58e392b1c, type: 2}
   highlightMat: {fileID: 2100000, guid: 14ebb126784058a4bb56d8241c441a5d, type: 2}
   isPanel: 0
+  panelHighlight: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114893831506593828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4709,8 +4838,8 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114353580311240332}
-        m_MethodName: closeContent
+      - m_Target: {fileID: 114629911391182568}
+        m_MethodName: closeNode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4722,6 +4851,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114915745294196914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4770,7 +4900,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114922585429606876}
-        m_MethodName: DeleteNode
+        m_MethodName: NodeDelete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4782,6 +4912,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114922585429606876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4963,6 +5094,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  gazeExit: 0
 --- !u!114 &114974455637654434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5584,6 +5716,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.0002975, y: 97.30099}
+  m_AnchoredPosition: {x: 55.6, y: 122}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}

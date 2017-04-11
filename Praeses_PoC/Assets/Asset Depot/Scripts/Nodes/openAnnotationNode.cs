@@ -119,7 +119,7 @@ namespace HoloToolkit.Unity
                 if (contentHoler.GetComponent<SimpleTagalong>().enabled != true)
                 {
                     contentHoler.GetComponent<SimpleTagalong>().enabled = true;
-                    Debug.Log("hello");
+
                 }
                 
                 for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
