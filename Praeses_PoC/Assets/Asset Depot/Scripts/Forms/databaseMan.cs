@@ -3,8 +3,8 @@ using Newtonsoft.Json;
 using System.Collections;
 #endif
 
-//using Newtonsoft.Json;
-//using System.Collections;
+using Newtonsoft.Json;
+using System.Collections;
 
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +22,6 @@ public class databaseMan : Singleton<databaseMan>
     public string valJsonText;
     public MainForm definitions;
     public ValuesClass values;
-
-    public GameObject testItem;
 
     public Dictionary<string, GameObject> formPairs = new Dictionary<string, GameObject>();
 
@@ -103,8 +101,15 @@ public class databaseMan : Singleton<databaseMan>
     [System.Serializable]
     public class ViolationsClass
     {
-        public Dictionary<string, string> ViolationData = new Dictionary<string, string>();
+        public string category;
+        public int classifications;
+        public string violationDate;
+        public int status;
+        public string resolveDate;
+        public string requirements;
+        public string conditions;
         public int nodeIndex;
+        
     }
 
     [System.Serializable]
@@ -167,8 +172,8 @@ public class databaseMan : Singleton<databaseMan>
         System.IO.File.WriteAllText(saveDir, json);
 #endif
 
-        //string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-        //System.IO.File.WriteAllText(saveDir, json);
+        string json = JsonConvert.SerializeObject(values, Formatting.Indented);
+        System.IO.File.WriteAllText(saveDir, json);
 
         print("jsonSaved");
     }
@@ -180,8 +185,8 @@ public class databaseMan : Singleton<databaseMan>
         definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 #endif
 
-        //defJsonText = File.ReadAllText(definitionsDir);
-        //definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
+        defJsonText = File.ReadAllText(definitionsDir);
+        definitions = JsonConvert.DeserializeObject<MainForm>(defJsonText);
 
         print("jsonDefinitionsLoaded");
         loadValCmd();
@@ -196,8 +201,8 @@ public class databaseMan : Singleton<databaseMan>
         values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 #endif
 
-        //valJsonText = File.ReadAllText(valuesDir);
-        //values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
+        valJsonText = File.ReadAllText(valuesDir);
+        values = JsonConvert.DeserializeObject<ValuesClass>(valJsonText);
 
         print("jsonValuesLoaded");
     }
@@ -322,6 +327,28 @@ public class databaseMan : Singleton<databaseMan>
         newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;       
 
         values.Location.Equipment[0].Nodes.Add(newNode);
+        JU_databaseMan.Instance.loadNodesCmd();
+    }
+
+    public void removeAnnotation(GameObject nodeObj)
+    {
+        List<NodeClass> tempNodeList = new List<NodeClass>();
+
+        foreach (NodeClass node in values.Location.Equipment[0].Nodes)
+        {
+            if (nodeObj.GetComponent<nodeMediaHolder>().type != node.type)
+            {
+                tempNodeList.Add(node);
+            }
+        }
+
+        values.Location.Equipment[0].Nodes.Clear();
+
+        foreach (NodeClass node in tempNodeList)
+        {
+            values.Location.Equipment[0].Nodes.Add(node);
+        }
+
         JU_databaseMan.Instance.loadNodesCmd();
     }
 

@@ -11,6 +11,7 @@ public class followCam : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         initHeight = transform.position.y;
+        cameraTra = Camera.main.transform;
     }
 	
 	// Update is called once per frame

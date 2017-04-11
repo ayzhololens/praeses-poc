@@ -19,5 +19,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stable Build/Integration/formNodes.unity
   - enabled: 0
     path: Assets/Scenes/Stable Build/Integration/offsiteScene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stable Build/Integration/sharedOffsite.unity
+  - enabled: 1
+    path: Assets/Scenes/Working Prototypes/Jeff/offsite/scenes/sharedOffsiteDevice.unity
