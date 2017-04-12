@@ -132,6 +132,22 @@ namespace HoloToolkit.Unity
             }
         }
 
+        public void reCapture()
+        {
+            if (videoNode)
+            {
+                mediaManager.Instance.currentNode = this.gameObject;
+                mediaManager.Instance.enableVideoRecording();
+                GetComponent<nodeController>().closeNode();
+            }
+            if (photoNode)
+            {
+                mediaManager.Instance.currentNode = this.gameObject;
+                mediaManager.Instance.enablePhotoCapture();
+                GetComponent<nodeController>().closeNode();
+            }
+        }
+
 
     }
 }

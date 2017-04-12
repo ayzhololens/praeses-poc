@@ -102,6 +102,10 @@ namespace HoloToolkit.Unity
             miniMapHolder.transform.SetParent(MiniMapHolderParent.transform);
             MiniMapHolderParent.transform.localPosition = Vector3.zero;
             MiniMapHolderParent.transform.localScale = Vector3.one;
+
+            //turn on and parent lock buttons
+            MiniMapHolderParent.transform.GetChild(0).gameObject.SetActive(true);
+            MiniMapHolderParent.transform.GetChild(0).SetParent(miniMapHolder.transform);
             GetComponent<miniMapToggle>().active = true;
 
 
@@ -115,7 +119,7 @@ namespace HoloToolkit.Unity
                 {
                     if (boiler.transform.GetChild(u).gameObject.activeSelf && boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>() != null)
                     {
-                        //boiler.transform.GetChild(u).gameObject.GetComponent<Renderer>().material = occlusionMat;
+                        boiler.transform.GetChild(u).gameObject.GetComponent<Renderer>().material = occlusionMat;
 
                     }
                 }

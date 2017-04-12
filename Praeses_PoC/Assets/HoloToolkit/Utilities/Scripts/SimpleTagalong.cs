@@ -46,6 +46,8 @@ namespace HoloToolkit.Unity
         public float YLimitMax;
         public float YLimitMin;
 
+        public GameObject[] lockSprites;
+
         protected virtual void Start()
         {
             // Make sure the Tagalong object has a BoxCollider.
@@ -181,5 +183,24 @@ namespace HoloToolkit.Unity
             // If we got here, needsToMove will be true.
             return needsToMove;
         }
+
+        public void toggleTagalong()
+        {
+            GetComponent<SimpleTagalong>().enabled = (!GetComponent<SimpleTagalong>().isActiveAndEnabled);
+            if (lockSprites[0].activeSelf)
+            {
+                lockSprites[1].SetActive(true);
+                lockSprites[0].SetActive(false);
+                return;
+            }
+            if (lockSprites[1].activeSelf)
+            {
+                lockSprites[0].SetActive(true);
+                lockSprites[1].SetActive(false);
+                return;
+            }
+        }
     }
+
+
 }
