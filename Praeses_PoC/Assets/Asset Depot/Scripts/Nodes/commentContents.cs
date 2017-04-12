@@ -26,9 +26,16 @@ namespace HoloToolkit.Unity
         public GameObject playIcon;
         public GameObject pauseIcon;
         public MediaPlayer mediaPlayer;
+        public Texture vidThumbnail;
+        public Material vidMat;
+        public Material vidThumbMat;
 
         // Use this for initialization
         void Start() {
+            if (isVideo)
+            {
+                
+            }
         }
 
         // Update is called once per frame
@@ -52,7 +59,16 @@ namespace HoloToolkit.Unity
             }
             mediaPlayer.m_VideoPath = filepath;
             mediaPlayer.LoadVideoPlayer();
-            //GetComponent<Renderer>().material.mainTexture = mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>()._texture;
+            vidThumbMat = GetComponent<Renderer>().material;
+            if (vidThumbnail == null)
+            {
+                mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().activeComment = this.gameObject;
+                mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
+                //vidThumbnail = mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>()._texture;
+                //vidThumbMat.mainTexture = vidThumbnail;
+                //GetComponent<Renderer>().material = vidThumbMat;
+
+            }
 
         }
 
@@ -72,6 +88,11 @@ namespace HoloToolkit.Unity
             if (mediaPlayer.m_VideoPath != filepath)
             {
                 LoadVideo();
+                
+            }
+            if(GetComponent<Renderer>().material != vidMat)
+            {
+                GetComponent<Renderer>().material = vidMat;
             }
             if (!startedVideo)
             {
@@ -103,6 +124,8 @@ namespace HoloToolkit.Unity
                 playIcon.SetActive(true);
                 pauseIcon.SetActive(false);
                 startedVideo = false;
+                GetComponent<Renderer>().material = vidThumbMat;
+
             }
         }
     }

@@ -167,7 +167,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 40d52c679136afa47b84c82b28c489ad, type: 2}
+  - {fileID: 2100000, guid: e95a922f0483fe644b152474cfa971a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -520,6 +520,9 @@ MonoBehaviour:
   playIcon: {fileID: 1588918397858714}
   pauseIcon: {fileID: 1025619925350006}
   mediaPlayer: {fileID: 0}
+  vidThumbnail: {fileID: 0}
+  vidMat: {fileID: 2100000, guid: 40d52c679136afa47b84c82b28c489ad, type: 2}
+  vidThumbMat: {fileID: 2100000, guid: e95a922f0483fe644b152474cfa971a2, type: 2}
 --- !u!114 &114606885386697824
 MonoBehaviour:
   m_ObjectHideFlags: 1
