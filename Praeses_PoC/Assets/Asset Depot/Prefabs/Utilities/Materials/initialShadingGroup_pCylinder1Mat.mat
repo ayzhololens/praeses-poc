@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: fieldNodeMat
-  m_Shader: {fileID: 4800000, guid: b21aa08825c93084cb4072b24fc90532, type: 3}
-  m_ShaderKeywords: _EMISSION _USECOLOR_ON _USEDIFFUSE_ON _USEEMISSIONCOLOR_ON _USEEMISSIONTEX_ON
-  m_LightmapFlags: 1
+  m_Name: initialShadingGroup_pCylinder1Mat
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -46,16 +46,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
-        name: _EmissionTex
-      second:
-<<<<<<< HEAD
-        m_Texture: {fileID: 2800000, guid: e96ae70e61718f741a1a06a9e57dbe5c, type: 3}
-=======
-        m_Texture: {fileID: 2800000, guid: 6e63462c1786e254e85c33aa715c9762, type: 3}
->>>>>>> annJSon
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - first:
         name: _MainTex
       second:
         m_Texture: {fileID: 0}
@@ -84,12 +74,6 @@ Material:
         name: _BumpScale
       second: 1
     - first:
-        name: _ColorWriteMask
-      second: 15
-    - first:
-        name: _Cull
-      second: 2
-    - first:
         name: _Cutoff
       second: 0.5
     - first:
@@ -98,18 +82,6 @@ Material:
     - first:
         name: _DstBlend
       second: 0
-    - first:
-        name: _Falloff_Dst_Max
-      second: 6
-    - first:
-        name: _Falloff_Dst_Min
-      second: 2
-    - first:
-        name: _Falloff_Scale
-      second: 0.5
-    - first:
-        name: _GlossAmount
-      second: 0.1
     - first:
         name: _GlossMapScale
       second: 1
@@ -135,9 +107,6 @@ Material:
         name: _SmoothnessTextureChannel
       second: 0
     - first:
-        name: _SpecularAmount
-      second: 0.05
-    - first:
         name: _SpecularHighlights
       second: 1
     - first:
@@ -147,55 +116,12 @@ Material:
         name: _UVSec
       second: 0
     - first:
-        name: _UseBumpMap
-      second: 0
-    - first:
-        name: _UseColor
-      second: 1
-    - first:
-        name: _UseDiffuse
-      second: 1
-    - first:
-        name: _UseEmissionColor
-      second: 1
-    - first:
-        name: _UseEmissionTex
-      second: 1
-    - first:
-        name: _UseMainTex
-      second: 0
-    - first:
-        name: _UseSpecular
-      second: 0
-    - first:
-        name: _WireThickness
-      second: 319
-    - first:
-        name: _ZTest
-      second: 4
-    - first:
         name: _ZWrite
       second: 1
     m_Colors:
     - first:
-        name: _BaseColor
-      second: {r: 0.74264705, g: 0.6299696, b: 0, a: 1}
-    - first:
         name: _Color
-<<<<<<< HEAD
-      second: {r: 0.09411766, g: 0.39607847, b: 0.9921569, a: 1}
-=======
-      second: {r: 0.28762975, g: 0.48651704, b: 0.5147059, a: 1}
->>>>>>> annJSon
+      second: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - first:
         name: _EmissionColor
-      second: {r: 0.7352941, g: 0.56288034, b: 0, a: 1}
-    - first:
-        name: _MainColor
-      second: {r: 1, g: 0.9724138, b: 0, a: 1}
-    - first:
-        name: _SpecularColor
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-    - first:
-        name: _WireColor
-      second: {r: 1, g: 0.912854, b: 0.41176468, a: 1}
+      second: {r: 0, g: 0, b: 0, a: 1}

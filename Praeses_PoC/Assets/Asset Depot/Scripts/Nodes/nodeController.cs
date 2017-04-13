@@ -22,6 +22,7 @@ namespace HoloToolkit.Unity
         public float moveSpeed;
         public bool fromJSON { get; set; }
         public GameObject linkedField;
+        public GameObject reviewButtons;
 
 
 
@@ -102,6 +103,34 @@ namespace HoloToolkit.Unity
             //close node content
             contentHolder.SetActive(false);
             contentOpen = false;
+        }
+
+        public void enableReview()
+        {
+            if (!isMiniNode)
+            {
+                reviewButtons.SetActive(true);
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    //GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(true);
+                }
+            }
+
+        }
+
+        public void completeReview()
+        {
+            if (!isMiniNode)
+            {
+                reviewButtons.SetActive(false);
+                for (int i = 0; i < GetComponent<commentManager>().activeComments.Count; i++)
+                {
+                    //GetComponent<commentManager>().activeComments[i].GetComponent<commentContents>().editButton.SetActive(false);
+                }
+                BroadcastMessage("OnFocusExit", SendMessageOptions.DontRequireReceiver);
+
+
+            }
         }
 
 

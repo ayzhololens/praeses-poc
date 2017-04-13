@@ -23,6 +23,8 @@ public class databaseMan : Singleton<databaseMan>
     public MainForm definitions;
     public ValuesClass values;
 
+    public GameObject testItem;
+
     public Dictionary<string, GameObject> formPairs = new Dictionary<string, GameObject>();
 
     private void Start()
@@ -168,12 +170,9 @@ public class databaseMan : Singleton<databaseMan>
     public void saveCmd()
     {
 #if WINDOWS_UWP
-       string json = JsonConvert.SerializeObject(values, Formatting.Indented);
-       System.IO.File.WriteAllText(saveDir, json);
-#endif
-
         string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         System.IO.File.WriteAllText(saveDir, json);
+#endif
 
         string json = JsonConvert.SerializeObject(values, Formatting.Indented);
         System.IO.File.WriteAllText(saveDir, json);
@@ -328,10 +327,11 @@ public class databaseMan : Singleton<databaseMan>
         }
 
         else
-        { 
-        newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;       
-        newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
-        newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;   
+        {
+
+                newNode.title = nodeObj.GetComponent<nodeMediaHolder>().Title.text;
+                newNode.description = nodeObj.GetComponent<nodeMediaHolder>().Description.text;
+                newNode.audioPath = nodeObj.GetComponent<nodeMediaHolder>().audioPath;
         }
 
         newNode.indexNum = nodeObj.GetComponent<nodeMediaHolder>().NodeIndex;       
@@ -339,9 +339,7 @@ public class databaseMan : Singleton<databaseMan>
         values.Location.Equipment[0].Nodes.Add(newNode);
         JU_databaseMan.Instance.loadNodesCmd();
     }
-
     public void removeNode(GameObject nodeObj)
-
     {
         List<NodeClass> tempNodeList = new List<NodeClass>();
 

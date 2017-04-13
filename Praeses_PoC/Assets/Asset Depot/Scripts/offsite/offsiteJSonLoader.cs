@@ -222,7 +222,7 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
         {
             newItem = Instantiate(photoNodePrefab);
             newItem.GetComponent<offsiteFieldItemValueHolder>().path = nodeItem.photos[0].path;
-            newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = photoMaterial;
+            //newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = photoMaterial;
         }
         else if(nodeItem.type == 4)
         {
@@ -311,9 +311,9 @@ public class offsiteJSonLoader : Singleton<offsiteJSonLoader> {
 
         var bytesRead = System.IO.File.ReadAllBytes(filepath);
         targetTexture.LoadImage(bytesRead);
-        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material.mainTexture = targetTexture;
-        newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material;
-        newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material;
+        //newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material.mainTexture = targetTexture;
+        //newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Renderer>().material;
+        //newItem.GetComponent<offsiteMediaPlayer>().photoMaterial = newItem.GetComponent<offsiteFieldItemValueHolder>().thumbnail.GetComponent<Image>().material;
     }
 
 }

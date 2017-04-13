@@ -21,7 +21,6 @@ namespace HoloToolkit.Unity
         sourceManager sourceManager;
         GazeManager gazeManager;
         public bool isActive;
-        public annotationManager annotManager;
         public GameObject focusedButton;
         public bool radialOpenNotClicked;
         public GameObject lineCenter;
@@ -51,7 +50,7 @@ namespace HoloToolkit.Unity
         {
             
             //radial turn on counter
-            if (sourceManager.sourcePressed && !isActive && !annotManager.annotating)
+            if (sourceManager.sourcePressed && !isActive)
             {
                 if (gazeManager.HitObject != null)
                 {
@@ -147,7 +146,7 @@ namespace HoloToolkit.Unity
 
             }
             //released so keep it open
-            if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag != "Button")
+            if (!sourceManager.sourcePressed && isActive && gazeManager.HitObject.tag != "Button")
             {
                 radialOpenNotClicked = true;
 
@@ -169,7 +168,7 @@ namespace HoloToolkit.Unity
             }
 
             //released over button 
-            if (!sourceManager.sourcePressed && isActive && !annotManager.annotating && gazeManager.HitObject.tag == "Button" && !radialOpenNotClicked)
+            if (!sourceManager.sourcePressed && isActive && gazeManager.HitObject.tag == "Button" && !radialOpenNotClicked)
             {
                 turnOffRadialMenu();
             }
@@ -217,7 +216,7 @@ namespace HoloToolkit.Unity
             //}
 
             //released over button 
-            if (!sourceManager.sourcePressed && isActive && !annotManager.annotating)
+            if (!sourceManager.sourcePressed && isActive)
             {
                 turnOffRadialMenu();
             }

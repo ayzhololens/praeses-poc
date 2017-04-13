@@ -10,6 +10,7 @@ namespace HoloToolkit.Unity
         public GameObject miniMapHolder;
         public List<GameObject> miniMapMeshes;
         public GameObject MiniMapHolderParent;
+        public Material occlusionMat;
         public Material miniMapMat;
         public float scaleOffset;
         GameObject desk;
@@ -80,7 +81,7 @@ namespace HoloToolkit.Unity
 
                 if (miniMapMeshes[i].GetComponent<MeshRenderer>() != null)
                 {
-                    transform.GetChild(i).GetComponent<MeshRenderer>().enabled = false;
+                    transform.GetChild(i).GetComponent<Renderer>().material = occlusionMat;
                 }
 
                 if (miniMapMeshes[i].GetComponent<WorldAnchor>() != null)
@@ -101,6 +102,10 @@ namespace HoloToolkit.Unity
             miniMapHolder.transform.SetParent(MiniMapHolderParent.transform);
             MiniMapHolderParent.transform.localPosition = Vector3.zero;
             MiniMapHolderParent.transform.localScale = Vector3.one;
+
+            //turn on and parent lock buttons
+            MiniMapHolderParent.transform.GetChild(0).gameObject.SetActive(true);
+            MiniMapHolderParent.transform.GetChild(0).SetParent(miniMapHolder.transform);
             GetComponent<miniMapToggle>().active = true;
 
 
@@ -114,8 +119,7 @@ namespace HoloToolkit.Unity
                 {
                     if (boiler.transform.GetChild(u).gameObject.activeSelf && boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>() != null)
                     {
-                        boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>().enabled = false;
-                        Debug.Log("yo" + boiler.transform.GetChild(u).gameObject.name + " " + boiler.transform.GetChild(u).gameObject.GetComponent<MeshRenderer>().enabled);
+                        //boiler.transform.GetChild(u).gameObject.GetComponent<Renderer>().material = occlusionMat;
 
                     }
                 }
