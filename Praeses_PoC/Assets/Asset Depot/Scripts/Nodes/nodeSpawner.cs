@@ -162,11 +162,11 @@ namespace HoloToolkit.Unity
                 linkedField.linkedNode = spawnedNode;
                 linkedField.enableAttachmentCapture();
             }
-            //print("locPos, X: " + spawnedNode.transform.localPosition.x + ", Y: " + spawnedNode.transform.localPosition.y + ", Z: " + spawnedNode.transform.localPosition.z);
-            //print("locRot, X: " + spawnedNode.transform.localRotation.x + ", Y: " + spawnedNode.transform.localRotation.y + ", Z: " + spawnedNode.transform.localRotation.z + ", W: " + spawnedNode.transform.localRotation.w);
-            //print("locScale, X: " + spawnedNode.transform.localScale.x + ", Y: " + spawnedNode.transform.localScale.y + ", Z: " + spawnedNode.transform.localScale.z);
-            //print("wPos, X: " + spawnedNode.transform.position.x + ", Y: " + spawnedNode.transform.position.y + ", Z: " + spawnedNode.transform.position.z);
-            //print("wRot, X: " + spawnedNode.transform.rotation.x + ", Y: " + spawnedNode.transform.rotation.y + ", Z: " + spawnedNode.transform.rotation.z + ", W: " + spawnedNode.transform.rotation.w);
+            print("locPos, X: " + spawnedNode.transform.localPosition.x + ", Y: " + spawnedNode.transform.localPosition.y + ", Z: " + spawnedNode.transform.localPosition.z);
+            print("locRot, X: " + spawnedNode.transform.localRotation.x + ", Y: " + spawnedNode.transform.localRotation.y + ", Z: " + spawnedNode.transform.localRotation.z + ", W: " + spawnedNode.transform.localRotation.w);
+            print("locScale, X: " + spawnedNode.transform.localScale.x + ", Y: " + spawnedNode.transform.localScale.y + ", Z: " + spawnedNode.transform.localScale.z);
+            print("wPos, X: " + spawnedNode.transform.position.x + ", Y: " + spawnedNode.transform.position.y + ", Z: " + spawnedNode.transform.position.z);
+            print("wRot, X: " + spawnedNode.transform.rotation.x + ", Y: " + spawnedNode.transform.rotation.y + ", Z: " + spawnedNode.transform.rotation.z + ", W: " + spawnedNode.transform.rotation.w);
 
 
 

@@ -39,6 +39,7 @@ ModelImporter:
     100062: initialShadingGroup_group1_top_piece1
     100064: initialShadingGroup_group1_top_piece2
     100066: initialShadingGroup_pCube1_group1
+    100068: initialShadingGroup_boiler_model
     400000: //RootNode
     400002: initialShadingGroup_base
     400004: initialShadingGroup_control_pad
@@ -73,6 +74,7 @@ ModelImporter:
     400062: initialShadingGroup_group1_top_piece1
     400064: initialShadingGroup_group1_top_piece2
     400066: initialShadingGroup_pCube1_group1
+    400068: initialShadingGroup_boiler_model
     2300000: initialShadingGroup_base
     2300002: initialShadingGroup_control_pad
     2300004: initialShadingGroup_main_cylinder
@@ -106,6 +108,7 @@ ModelImporter:
     2300060: initialShadingGroup_group1_top_piece1
     2300062: initialShadingGroup_group1_top_piece2
     2300064: initialShadingGroup_pCube1_group1
+    2300066: initialShadingGroup_boiler_model
     3300000: initialShadingGroup_base
     3300002: initialShadingGroup_control_pad
     3300004: initialShadingGroup_main_cylinder
@@ -139,6 +142,7 @@ ModelImporter:
     3300060: initialShadingGroup_group1_top_piece1
     3300062: initialShadingGroup_group1_top_piece2
     3300064: initialShadingGroup_pCube1_group1
+    3300066: initialShadingGroup_boiler_model
     4300000: initialShadingGroup_base
     4300002: initialShadingGroup_control_pad
     4300004: initialShadingGroup_main_cylinder
@@ -172,6 +176,7 @@ ModelImporter:
     4300060: initialShadingGroup_group1_top_piece1
     4300062: initialShadingGroup_group1_top_piece2
     4300064: initialShadingGroup_pCube1_group1
+    4300066: initialShadingGroup_boiler_model
   materials:
     importMaterials: 1
     materialName: 0
