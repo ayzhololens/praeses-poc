@@ -223,24 +223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1147000566959318
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4729378634608640}
-  - component: {fileID: 114243023302203750}
-  - component: {fileID: 114630983598103544}
-  - component: {fileID: 114861695659610276}
-  m_Layer: 0
-  m_Name: AnnotationManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &1147549825139264
 GameObject:
   m_ObjectHideFlags: 1
@@ -252,6 +234,23 @@ GameObject:
   - component: {fileID: 114613917241150938}
   m_Layer: 0
   m_Name: XZTranslationAxis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1155727431081466
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4088955464668464}
+  - component: {fileID: 114678660940798644}
+  - component: {fileID: 114762934073757698}
+  m_Layer: 0
+  m_Name: NodeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -360,6 +359,22 @@ GameObject:
   - component: {fileID: 114391019216030586}
   m_Layer: 0
   m_Name: PhotoManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1275774076860550
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4179037297807388}
+  - component: {fileID: 114629866635016842}
+  m_Layer: 0
+  m_Name: ViolationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -844,6 +859,7 @@ GameObject:
   - component: {fileID: 114838384887733444}
   - component: {fileID: 114270910925068720}
   - component: {fileID: 114136675656035522}
+  - component: {fileID: 114687028349529796}
   m_Layer: 0
   m_Name: OtherManager
   m_TagString: Untagged
@@ -899,6 +915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4035285203647568}
   - component: {fileID: 114886577506375506}
+  - component: {fileID: 114470239810710796}
   m_Layer: 0
   m_Name: VideoManager
   m_TagString: Untagged
@@ -918,7 +935,8 @@ GameObject:
   - component: {fileID: 114734879544203838}
   - component: {fileID: 114011658342896368}
   - component: {fileID: 114663073116832346}
-  - component: {fileID: 114464335170318188}
+  - component: {fileID: 114608379302469190}
+  - component: {fileID: 114719492792192690}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -1217,7 +1235,7 @@ Transform:
   m_LocalPosition: {x: -0.03475997, y: 0.24722989, z: -2.2158816}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4729378634608640}
+  m_Father: {fileID: 4088955464668464}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4051708473706486
@@ -1258,7 +1276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4083700875980204
 Transform:
@@ -1272,6 +1290,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4685048123542570}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4088955464668464
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155727431081466}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4601664794658292}
+  - {fileID: 4035285203647568}
+  - {fileID: 4375532541135774}
+  m_Father: {fileID: 4807349710458002}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4129212525850404
 Transform:
@@ -1311,6 +1345,19 @@ Transform:
   m_Children:
   - {fileID: 4778823514223130}
   m_Father: {fileID: 4373036109135006}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4179037297807388
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1275774076860550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4761663470052606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4183545189344880
@@ -1426,7 +1473,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4252370643414844
 Transform:
@@ -1442,7 +1489,7 @@ Transform:
   - {fileID: 4373383201574430}
   - {fileID: 4689773139348620}
   m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4275043619895826
 Transform:
@@ -1530,7 +1577,7 @@ Transform:
   - {fileID: 4281323550627710}
   - {fileID: 4205395622877156}
   m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4362698714112816
 Transform:
@@ -1578,11 +1625,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1196031761808562}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4729378634608640}
+  m_Father: {fileID: 4088955464668464}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4402209768483032
@@ -1701,7 +1748,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4729378634608640}
+  m_Father: {fileID: 4088955464668464}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4611502305053124
@@ -1859,22 +1906,6 @@ Transform:
   m_Father: {fileID: 4992958590827958}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4729378634608640
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147000566959318}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4601664794658292}
-  - {fileID: 4035285203647568}
-  - {fileID: 4375532541135774}
-  m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4740159492878554
 Transform:
   m_ObjectHideFlags: 1
@@ -1898,9 +1929,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4179037297807388}
   m_Father: {fileID: 4807349710458002}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4778823514223130
 Transform:
@@ -1938,12 +1970,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4729378634608640}
   - {fileID: 4252370643414844}
   - {fileID: 4083145697895086}
   - {fileID: 4249949166484822}
   - {fileID: 4361247113370522}
   - {fileID: 4761663470052606}
+  - {fileID: 4088955464668464}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3706,8 +3738,9 @@ MonoBehaviour:
     InspectionFields:
       fields: []
   values:
-    presentData: []
+    equipmentData: []
     historicData: []
+    currentData: []
   nodesManager:
     nodes: []
   violationsManager:
@@ -3764,13 +3797,13 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114243023302203750}
-        m_MethodName: spawnVideoAnnotation
-        m_Mode: 1
+      - m_Target: {fileID: 114762934073757698}
+        m_MethodName: spawnNode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4160,8 +4193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d413620bad6d64686c0448e6559230, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vidRecorder: {fileID: 114886577506375506}
-  annotManager: {fileID: 114630983598103544}
+  clearedNodes: []
 --- !u!114 &114215081549168030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4213,7 +4245,9 @@ MonoBehaviour:
   FieldInspectionParent: {fileID: 0}
   EquipmentDataParent: {fileID: 0}
   LocationDataParent: {fileID: 0}
-  fieldPrefab: {fileID: 1191887073528030, guid: 454832914a1369a4f97fb2c90c26effd,
+  stringFieldPrefab: {fileID: 1186812807636144, guid: 55e354b88a5b9ef4abbc73c4dcfb5d19,
+    type: 2}
+  buttonFieldPrefab: {fileID: 1799070088993876, guid: 2318faf97541bec4eb6ff4c35cfc1d79,
     type: 2}
   fieldStartPos: {fileID: 0}
   offsetDist: 0.046
@@ -4235,38 +4269,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &114243023302203750
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147000566959318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 920288cd814e30f479bde887b2ce07e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnedAnnotation: {fileID: 0}
-  tapToPlaceInProgress: 0
-  photoNode: {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
-  videoNode: {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
-  simpleNode: {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
-  fieldNode: {fileID: 0}
-  violationNode: {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38,
-    type: 2}
-  Minimap: {fileID: 0}
-  anchDist: {x: 0, y: 0, z: 0}
-  SpatialMapping: {fileID: 0}
-  miniPhotoNode: {fileID: 1271331746875164, guid: 08d52c31d50f0344cb9993b831c26d68,
-    type: 2}
-  miniVideoNode: {fileID: 1358996027637648, guid: bf5a0c16d4fa44a47a1b1e98dcb22a5d,
-    type: 2}
-  miniSimpleNode: {fileID: 1626210597515476, guid: 983923aafb4c34047a8ee444a269c06a,
-    type: 2}
-  miniFieldNode: {fileID: 1683667537878540, guid: 997be7a5b3e055b4b873a628b476c291,
-    type: 2}
-  miniViolationNode: {fileID: 1804684044155840, guid: 33de3cc9bb2f40a408c2186f16549889,
-    type: 2}
 --- !u!114 &114258153837352508
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4402,13 +4404,13 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114243023302203750}
-        m_MethodName: spawnPhotoAnnotation
-        m_Mode: 1
+      - m_Target: {fileID: 114762934073757698}
+        m_MethodName: spawnNode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4427,7 +4429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab65eee199255e4d94ef942f5d8fab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boiler: {fileID: 1497392805783088, guid: 2b0503661aa38374a9546bd43bd36f18, type: 2}
+  boiler: {fileID: 0}
   desk: {fileID: 0}
   SpatialMapping: {fileID: 0}
   isObj: 0
@@ -4542,7 +4544,7 @@ MonoBehaviour:
   RadialMenu: {fileID: 1421365408267060}
   RadialHolder: {fileID: 0}
   isActive: 0
-  annotManager: {fileID: 114630983598103544}
+  annotManager: {fileID: 0}
   focusedButton: {fileID: 0}
   radialOpenNotClicked: 0
   lineCenter: {fileID: 1182366759600836}
@@ -4775,13 +4777,13 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114243023302203750}
-        m_MethodName: spawnViolationNode
-        m_Mode: 1
+      - m_Target: {fileID: 114762934073757698}
+        m_MethodName: spawnNode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4801,59 +4803,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonType: 18
---- !u!114 &114464335170318188
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1771440602139932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c2d3e6cf0461524087ae067c1cc7053, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeViolationController: {fileID: 0}
-  violationCategoryPrefab: {fileID: 1463467345107940, guid: e4890f4c13985404792608fcded9cfac,
-    type: 2}
-  violationSubCategoryPrefab: {fileID: 1463467345107940, guid: 9a5d1db1bac078741a5cdc59f49640e0,
-    type: 2}
-  violationFieldPrefab: {fileID: 1669649067651166, guid: 2b938eba4e9a58643aabdd7529627f7f,
-    type: 2}
-  violationPreview: {fileID: 0}
-  violationPreviewField: {fileID: 1346665285803976, guid: e6fac1182eedc524aac072f9caa047f7,
-    type: 2}
-  amount: 10
-  rowLengthBox: 4
-  hOffsetBox: 50
-  vOffsetBox: 35
-  vOffsetField: 11.5
-  VioCat:
-  - Boiler Controls
-  - Boiler Piping
-  - Boiler MDR
-  - Boiler Components
-  - Boiler Pressure Relief Device
-  - Pressure Vessels
-  - Repairs and Alterations
-  VioSubCat:
-  - Water Leaks
-  - Baffles and/or Refractory
-  - Furnace and Fireside
-  - Waterside
-  - Superheaters
-  - Economizers
-  - Installation
-  - Undefined Violations
-  Vios:
-  - Handhole or gasket or gasket seat installation is not satisfactory
-  - Head is not installed or installed incorrectly or inoperable or damaged or leaking.
-  - Shell is not installed or installed incorrectly or inoperable or damaged or leaking.
-  - Tubesheet is not installed or installed incorrectly or inoperable or damaged or
-    leaking
-  - Tube/tube ends is not installed or installed incorrectly or inoperable or damaged
-    or leaking
-  - Manway gasket is not installed or installed incorrectly or inoperable or damaged
-    or leaking
 --- !u!114 &114469934457883706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4892,6 +4841,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114470239810710796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1769204271471286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfe4eaf264074b43a6224bab247c269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mediaPlayer: {fileID: 114608681545669052}
+  _accurateSeek: 0
+  _timeoutMs: 1
+  _texture: {fileID: 0}
+  filePath: 
 --- !u!114 &114478695369127160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5041,6 +5006,25 @@ MonoBehaviour:
   upHolder: {fileID: 0}
   speed: 0
   moving: 0
+--- !u!114 &114608379302469190
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771440602139932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 390f0d4acd0d3494d9cff73304df1bb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeprefabs:
+  - {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
+  - {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
+  - {fileID: 1332994365205722, guid: 364b17d8f0ecaad4c886e0d68ff68ee9, type: 2}
+  - {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38, type: 2}
+  - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
+  changedText: {fileID: 0}
+  offSiteHolder: {fileID: 0}
 --- !u!114 &114608681545669052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5167,9 +5151,9 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114243023302203750}
-        m_MethodName: spawnSimpleAnnotation
-        m_Mode: 1
+      - m_Target: {fileID: 114762934073757698}
+        m_MethodName: spawnNode
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5199,30 +5183,63 @@ MonoBehaviour:
   manipulating: 0
   sensitivity: 0.0025
   focusedObj: {fileID: 0}
---- !u!114 &114630983598103544
+--- !u!114 &114629866635016842
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147000566959318}
+  m_GameObject: {fileID: 1275774076860550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94e658b3a18fd6842a046fc75403306d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c2d3e6cf0461524087ae067c1cc7053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stateIndicator: {fileID: 0}
-  videoReordingEnabled: 0
-  videoRecordingInProgress: 0
-  photoCaptureEnabled: 0
-  dictationInProgress: 0
-  activeAnnotations: []
-  currentAnnotation: {fileID: 0}
-  vidManager: {fileID: 1769204271471286}
-  photoManager: {fileID: 1196031761808562}
-  activeDictationBox: {fileID: 0}
-  activeField: {fileID: 0}
-  nodeIndex: 0
-  annotating: 0
+  activeViolationController: {fileID: 0}
+  violationPrefab: {fileID: 1818028388281626, guid: 396900ef8ff5e37479e155869d781415,
+    type: 2}
+  preexistingViolationPrefab: {fileID: 1347819634683288, guid: ddb3ab93449b9b24ea092da04f9be921,
+    type: 2}
+  violationCategoryPrefab: {fileID: 1463467345107940, guid: e4890f4c13985404792608fcded9cfac,
+    type: 2}
+  violationSubCategoryPrefab: {fileID: 1463467345107940, guid: 9a5d1db1bac078741a5cdc59f49640e0,
+    type: 2}
+  violationFieldPrefab: {fileID: 1669649067651166, guid: 2b938eba4e9a58643aabdd7529627f7f,
+    type: 2}
+  violationPreview: {fileID: 0}
+  violationPreviewField: {fileID: 1346665285803976, guid: e6fac1182eedc524aac072f9caa047f7,
+    type: 2}
+  amount: 10
+  rowLengthBox: 4
+  hOffsetBox: 50
+  vOffsetBox: 35
+  vOffsetField: 11.5
+  VioCat:
+  - Boiler Controls
+  - Boiler Piping
+  - Boiler MDR
+  - Boiler Components
+  - Boiler Pressure Relief Device
+  - Pressure Vessels
+  - Repairs and Alterations
+  VioSubCat:
+  - Water Leaks
+  - Baffles and/or Refractory
+  - Furnace and Fireside
+  - Waterside
+  - Superheaters
+  - Economizers
+  - Installation
+  - Undefined Violations
+  Vios:
+  - Handhole or gasket or gasket seat installation is not satisfactory
+  - Head is not installed or installed incorrectly or inoperable or damaged or leaking.
+  - Shell is not installed or installed incorrectly or inoperable or damaged or leaking.
+  - Tubesheet is not installed or installed incorrectly or inoperable or damaged or
+    leaking
+  - Tube/tube ends is not installed or installed incorrectly or inoperable or damaged
+    or leaking
+  - Manway gasket is not installed or installed incorrectly or inoperable or damaged
+    or leaking
 --- !u!114 &114657390290485146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5346,6 +5363,22 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114678660940798644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155727431081466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c77780eb56343d4ba48146d0fa61109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vidRecorder: {fileID: 114886577506375506}
+  videoPlayer: {fileID: 114608681545669052}
+  photoRecorder: {fileID: 114391019216030586}
+  stateIndicator: {fileID: 0}
+  activeNodes: []
 --- !u!114 &114686538084882364
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5384,6 +5417,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114687028349529796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699194472853180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1efd4ca23799111439eef70fdc2e6168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UseInEditor: 0
+  MinWidth: 1000
 --- !u!114 &114691644308265646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5466,8 +5512,7 @@ MonoBehaviour:
   - {fileID: 1970791156755716}
   subButtonsOn: 0
   timeOutCounter: 0.29999998
-  hide:
-  - {fileID: 0}
+  hide: []
 --- !u!114 &114714568606772148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5506,6 +5551,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114719492792192690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1771440602139932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c20ac940591ea44785cc1b29008e790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114725547331049604
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5579,6 +5635,29 @@ MonoBehaviour:
   upHolder: {fileID: 0}
   speed: 0
   moving: 0
+--- !u!114 &114762934073757698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155727431081466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc036228719a814a9dd3897c7b9401c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodePrefab:
+  - {fileID: 1749729230984222, guid: be75c3a893693db4fbc61a2ef6151fb5, type: 2}
+  - {fileID: 1271331746875164, guid: c3a4428584fc6b849944f0f9219ec60b, type: 2}
+  - {fileID: 1723358471618130, guid: b89775811fc7ed0438b34acb3a60f311, type: 2}
+  - {fileID: 1991752197719450, guid: fb9dc23a55385da4093b7aa035f23b38, type: 2}
+  - {fileID: 1332994365205722, guid: 364b17d8f0ecaad4c886e0d68ff68ee9, type: 2}
+  miniNodePrefab:
+  - {fileID: 1626210597515476, guid: 983923aafb4c34047a8ee444a269c06a, type: 2}
+  - {fileID: 1271331746875164, guid: 08d52c31d50f0344cb9993b831c26d68, type: 2}
+  - {fileID: 1358996027637648, guid: bf5a0c16d4fa44a47a1b1e98dcb22a5d, type: 2}
+  - {fileID: 1804684044155840, guid: 33de3cc9bb2f40a408c2186f16549889, type: 2}
+  - {fileID: 1683667537878540, guid: 997be7a5b3e055b4b873a628b476c291, type: 2}
 --- !u!114 &114762939697747612
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5591,7 +5670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DictationDisplay: {fileID: 0}
-  annotMananger: {fileID: 114630983598103544}
+  annotMananger: {fileID: 0}
   keyWordManager: {fileID: 114955019297564206}
 --- !u!114 &114765240606970208
 MonoBehaviour:
@@ -5720,19 +5799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc66632ebaa49844eb2e2c8bfefababc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114861695659610276
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1147000566959318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d413620bad6d64686c0448e6559230, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vidRecorder: {fileID: 114886577506375506}
-  annotManager: {fileID: 114630983598103544}
 --- !u!114 &114869056048042630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5791,7 +5857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0d22110b0eb18459c9a38d8dd7c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filename: AVProVideoSamples/BigBuckBunny_720p30.mp4
+  filename: 
   filepath: 
   vidCounter: 0
   fileList: []
@@ -5828,14 +5894,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RecognizerStart: 0
   KeywordsAndResponses:
-  - Keyword: simple
-    KeyCode: 97
+  - Keyword: capture simple
+    KeyCode: 8
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114243023302203750}
-          m_MethodName: spawnSimpleAnnotation
-          m_Mode: 1
+        - m_Target: {fileID: 114762934073757698}
+          m_MethodName: spawnNode
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5846,31 +5912,13 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - Keyword: video
-    KeyCode: 98
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114630983598103544}
-          m_MethodName: enableVideoRecording
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - Keyword: spawn boiler
+  - Keyword: place boiler
     KeyCode: 99
     Response:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114307663094771496}
-          m_MethodName: SpawnBoiler
+          m_MethodName: PlaceBoiler
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5883,30 +5931,12 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - Keyword: lock boiler
-    KeyCode: 100
+    KeyCode: 0
     Response:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 114307663094771496}
           m_MethodName: LockBoiler
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - Keyword: start scan
-    KeyCode: 100
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: StartObserving
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5925,24 +5955,6 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 0}
           m_MethodName: StopObserving
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - Keyword: photo
-    KeyCode: 103
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114630983598103544}
-          m_MethodName: enablePhotoCapture
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5977,8 +5989,8 @@ MonoBehaviour:
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114243023302203750}
-          m_MethodName: finishPlacingAnnotNode
+        - m_Target: {fileID: 114762934073757698}
+          m_MethodName: lockNodePlacement
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6008,54 +6020,18 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - Keyword: reset
-    KeyCode: 112
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114194279099476762}
-          m_MethodName: clearNodes
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - Keyword: next
-    KeyCode: 111
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1699194472853180}
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - Keyword: violation
+  - Keyword: capture violation
     KeyCode: 122
     Response:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 114243023302203750}
-          m_MethodName: spawnViolationNode
-          m_Mode: 1
+        - m_Target: {fileID: 114762934073757698}
+          m_MethodName: spawnNode
+          m_Mode: 3
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
+            m_IntArgument: 3
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -6081,7 +6057,7 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - Keyword: populate
-    KeyCode: 120
+    KeyCode: 108
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -6118,8 +6094,77 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 114464335170318188}
-          m_MethodName: populateCategories
+        - m_Target: {fileID: 114608379302469190}
+          m_MethodName: spawnNodeList
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: setup
+    KeyCode: 120
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: StopObserver
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 114307663094771496}
+          m_MethodName: PlaceBoiler
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 114307663094771496}
+          m_MethodName: LockBoiler
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_MethodName: spawnMiniMap
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: form
+    KeyCode: 116
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: openForm
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6132,7 +6177,7 @@ MonoBehaviour:
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - Keyword: begin
-    KeyCode: 120
+    KeyCode: 116
     Response:
       m_PersistentCalls:
         m_Calls:
@@ -6143,6 +6188,132 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: open form
+    KeyCode: 116
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: 
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: test
+    KeyCode: 46
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114194279099476762}
+          m_MethodName: clearNodes
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: align to space
+    KeyCode: 0
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: AlignZone
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: capture video
+    KeyCode: 0
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114762934073757698}
+          m_MethodName: spawnNode
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: capture photo
+    KeyCode: 0
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 114762934073757698}
+          m_MethodName: spawnNode
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: reset boiler
+    KeyCode: 0
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: resetPlacement
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - Keyword: admin
+    KeyCode: 0
+    Response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
@@ -6241,8 +6412,7 @@ MonoBehaviour:
   - {fileID: 1946624758725326}
   subButtonsOn: 0
   timeOutCounter: 0.3
-  hide:
-  - {fileID: 0}
+  hide: []
 --- !u!114 &114984567627295744
 MonoBehaviour:
   m_ObjectHideFlags: 1

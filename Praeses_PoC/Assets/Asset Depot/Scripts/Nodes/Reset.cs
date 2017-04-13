@@ -101,6 +101,7 @@ namespace HoloToolkit.Unity
             foreach(GameObject node in clearedNodes)
             {
                 mediaManager.Instance.activeNodes.Remove(node);
+                DestroyImmediate(node.GetComponent<nodeController>().miniNode);
                 //databaseMan.Instance.removeNode(node);
                 DestroyImmediate(node);
             }

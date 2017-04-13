@@ -1,10 +1,13 @@
 ﻿#if !UNITY_WEBPLAYER
 #if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_EDITOR
-	#define AVPRO_FILESYSTEM_SUPPORT
+#define AVPRO_FILESYSTEM_SUPPORT
 #endif
 #endif
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using HoloToolkit.Unity;
 
 namespace RenderHeads.Media.AVProVideo.Demos
 {
@@ -18,12 +21,13 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		private float _timeStepSeconds;
 		private int _frameIndex = 0;
 		public  Texture2D _texture;
+        public GameObject activeComment;
         public string filePath;
 
 		public void makeThumbnail()
 		{
             OnNewMediaReady();
-            //_mediaPlayer.Events.AddListener(OnMediaPlayerEvent);
+            _mediaPlayer.Events.AddListener(OnMediaPlayerEvent);
 
 
 
@@ -79,8 +83,11 @@ namespace RenderHeads.Media.AVProVideo.Demos
 			// Extract the frame to Texture2D
 			float timeSeconds = _frameIndex * _timeStepSeconds;
 			_texture = _mediaPlayer.ExtractFrame(_texture, timeSeconds, _accurateSeek, _timeoutMs);
-		}
+            activeComment.GetComponent<commentContents>().vidThumbnail = _texture;
+            activeComment.GetComponent<commentContents>().vidThumbMat.mainTexture = activeComment.GetComponent<commentContents>().vidThumbnail;
+            activeComment.GetComponent<Renderer>().material = activeComment.GetComponent<commentContents>().vidThumbMat;
+        }
 
 
-	}
+    }
 }
