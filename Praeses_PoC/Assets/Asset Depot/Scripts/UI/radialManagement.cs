@@ -26,7 +26,6 @@ namespace HoloToolkit.Unity
         public GameObject lineCenter;
         public GameObject radialCountIndicator;
         public float radialCounter;
-        public float countMax;
         public bool counting;
         public bool hands;
         radialHands radHands;
@@ -48,13 +47,13 @@ namespace HoloToolkit.Unity
         // Update is called once per frame
         void FixedUpdate()
         {
-            
+
             //radial turn on counter
             if (sourceManager.sourcePressed && !isActive)
             {
                 if (gazeManager.HitObject != null)
                 {
-                    if(gazeManager.HitObject.tag == "SpatialMapping")
+                    if (gazeManager.HitObject.tag == "SpatialMapping" || gazeManager.HitObject.tag == "boilerPrefab")
                     {
                         timerManager.Instance.radialCountDown();
                     }
