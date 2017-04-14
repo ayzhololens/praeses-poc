@@ -73,9 +73,9 @@ namespace HoloToolkit.Unity
             {
                 activeObj.transform.GetChild(0).localPosition = initBoilerPos;
                 activeObj.transform.GetChild(0).localRotation = new Quaternion(0, 0, 0, 0);
-                for (int i = 0; i < activeObj.transform.GetChild(0).GetChild(0).childCount; i++)
+                for (int i = 0; i < activeObj.transform.childCount; i++)
                 {
-                    activeObj.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<MeshCollider>().enabled = false;
+                    activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = false;
                 }
 
 
@@ -109,9 +109,9 @@ namespace HoloToolkit.Unity
         public void LockBoiler()
         {
             tapToPlaceBoiler = false;
-            for (int i = 0; i < activeObj.transform.GetChild(0).GetChild(0).childCount; i++)
+            for (int i = 0; i < activeObj.transform.childCount; i++)
             {
-                activeObj.transform.GetChild(0).GetChild(0).GetChild(i).GetComponent<MeshCollider>().enabled = true;
+                activeObj.transform.GetChild(i).GetComponent<MeshCollider>().enabled = true;
             }
 
             if (isObj)

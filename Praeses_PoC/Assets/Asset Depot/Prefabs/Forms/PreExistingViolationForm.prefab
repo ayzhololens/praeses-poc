@@ -7468,7 +7468,10 @@ MonoBehaviour:
   SmoothingFactor: 0.75
   YLimitMax: 0
   YLimitMin: 0
-  lockSprites: []
+  lockSprites:
+  - {fileID: 1707195009367954}
+  - {fileID: 1051826518569040}
+  locked: 0
 --- !u!114 &114416151975502076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -9975,7 +9978,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114411493098353578}
         m_MethodName: toggleTagalong
         m_Mode: 1
         m_Arguments:

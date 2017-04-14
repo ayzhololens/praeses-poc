@@ -30,7 +30,6 @@ namespace PosterAlignment
         public GameObject ImageIndicator;
 
         private bool isInitialized = false;
-        bool hasPlaced;
 
 
         public mainMenuController mainMenu;
@@ -158,11 +157,7 @@ namespace PosterAlignment
             // First recenter the object:
             var toCenter = corners.Aggregate((a, b) => (a + b))
                 / corners.Count;
-            if (!hasPlaced)
-            {
                 AlignCorners(cornerObjects, toCenter);
-
-            }
 
             // Now for rotation:
             Quaternion avgRot = Quaternion.identity;
@@ -182,24 +177,22 @@ namespace PosterAlignment
             transform.rotation *= avgRot;
 
             // And do a final re-center:
-            if (!hasPlaced)
-            {
                 AlignCorners(cornerObjects, toCenter);
-            }
 
             
             if (this.posterLocator.DetectedPositions[0].HasWorldPos)
             {
                 //statusIndicator.text = "Success!";
                 mediaManager.Instance.setStatusIndicator("Success");
+                minimapSpawn.Instance.gameObject.GetComponent<spatialRadiate>().spatRadiate();
                 Invoke("turnOffStatus", 3);
 
 
 
                 ZoneManager.LockZone(true);
                 OnDisable();
-                Poster.GetComponent<MeshRenderer>().enabled = false;
-                Poster.transform.GetChild(0).gameObject.SetActive(true);
+                //Poster.GetComponent<MeshRenderer>().enabled = false;
+                //Poster.transform.GetChild(0).gameObject.SetActive(true);
                 for (int i = 0; i < ImageIndicator.transform.childCount; i++)
                 {
                     ImageIndicator.transform.GetChild(i).gameObject.SetActive(false);
@@ -208,12 +201,9 @@ namespace PosterAlignment
                 }
                 ImageIndicator.GetComponent<Renderer>().material.color = new Color(1, 1, 1, .2f);
                 ImageIndicator.SetActive(false);
-
-                if (hasPlaced)
-                {
-                    mainMenu.gameObject.SetActive(true);
-                    mainMenu.goToTab(6);
-                }
+                
+                mainMenu.gameObject.SetActive(true);
+                mainMenu.goToTab(6);
 
             }
             else
@@ -233,12 +223,10 @@ namespace PosterAlignment
         void turnOffStatus()
         {
             mediaManager.Instance.disableStatusIndicator();
-            hasPlaced = true;
         }
 
         public void resetPlacement()
         {
-            hasPlaced = false;
             ZoneManager.AlignZone(0);
         }
 

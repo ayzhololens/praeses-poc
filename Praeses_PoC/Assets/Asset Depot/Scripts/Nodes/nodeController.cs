@@ -44,7 +44,7 @@ namespace HoloToolkit.Unity
         
         void Update()
         {
-            if (contentOpen)
+            if (contentOpen && !nodeTagalong.locked)
             {
                 distanceChecker();
             }

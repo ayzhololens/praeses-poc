@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Occlusion
-  m_Shader: {fileID: 4800000, guid: 86a383aa28d6d9d438388de19d876240, type: 3}
+  m_Name: spatTap
+  m_Shader: {fileID: 4800000, guid: 23beda61782381042848d512379b9e11, type: 3}
   m_ShaderKeywords: _USEWIREFRAME_ON
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -108,7 +108,7 @@ Material:
       second: 1
     - first:
         name: _Radius
-      second: 1
+      second: 21.104952
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -133,7 +133,7 @@ Material:
     m_Colors:
     - first:
         name: _Center
-      second: {r: 0, g: 0, b: 0, a: -1}
+      second: {r: 1.7701986, g: -1.6390749, b: -3.518379, a: 0}
     - first:
         name: _Color
       second: {r: 1, g: 1, b: 1, a: 1}

@@ -55,7 +55,6 @@ namespace PosterAlignment
                 return;
             }
             aligner.Poster.GetComponent<MeshRenderer>().enabled = true;
-            aligner.Poster.transform.GetChild(0).gameObject.SetActive(false);
             IsCalibrating = true;
             Debug.Log("AlignZone: " + this.name);
             aligner.Poster.SetActive(true);

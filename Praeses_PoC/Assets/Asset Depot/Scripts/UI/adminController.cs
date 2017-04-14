@@ -20,14 +20,15 @@ public class adminController : MonoBehaviour {
 	void Update () {
 
 
-        if (controllerInput.GetButtonDown(ControllerButton.Menu))
+        if (controllerInput.GetButtonDown(ControllerButton.A))
         {
+            Debug.Log("pressed AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             toggleMenu();
         }
 
     }
 
-    void toggleMenu()
+    public void toggleMenu()
     {
         contentHolder.SetActive(!contentHolder.activeSelf);
     }

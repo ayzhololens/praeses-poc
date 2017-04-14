@@ -47,6 +47,7 @@ namespace HoloToolkit.Unity
         public float YLimitMin;
 
         public GameObject[] lockSprites;
+        public bool locked;
 
         protected virtual void Start()
         {
@@ -187,6 +188,7 @@ namespace HoloToolkit.Unity
         public void toggleTagalong()
         {
             GetComponent<SimpleTagalong>().enabled = (!GetComponent<SimpleTagalong>().isActiveAndEnabled);
+            locked = !GetComponent<SimpleTagalong>().enabled;
             if (lockSprites[0].activeSelf)
             {
                 lockSprites[1].SetActive(true);
