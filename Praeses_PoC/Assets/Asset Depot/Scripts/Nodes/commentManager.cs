@@ -111,6 +111,16 @@ public class commentManager : MonoBehaviour {
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
         recordingEnabled = true;
+
+        //open/close content on violations and forms
+        if (GetComponent<violationController>() != null)
+        {
+            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().closeNode();
+        }
+        if (GetComponent<formFieldController>() != null)
+        {
+            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().closeNode();
+        }
     }
 
     void startVideoCapture()
@@ -132,6 +142,16 @@ public class commentManager : MonoBehaviour {
         Debug.Log("before status disable");
         mediaManager.Instance.disableStatusIndicator();
         recordingInProgress = false;
+
+        //open/close content on violations and forms
+        if (GetComponent<violationController>() != null)
+        {
+            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().openNode();
+        }
+        if (GetComponent<formFieldController>() != null)
+        {
+            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().openNode();
+        }
 
     }
 
@@ -200,6 +220,16 @@ public class commentManager : MonoBehaviour {
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
         photoCaptureEnabled = true;
+
+        //open/close content on violations and forms
+        if (GetComponent<violationController>() != null)
+        {
+            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().closeNode();
+        }
+        if (GetComponent<formFieldController>() != null)
+        {
+            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().closeNode();
+        }
     }
 
     void capturePhoto()
@@ -213,6 +243,17 @@ public class commentManager : MonoBehaviour {
 
     public void spawnPhotoComment()
     {
+
+        //open/close content on violations and forms
+        if (GetComponent<violationController>() != null)
+        {
+            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().openNode();
+        }
+        if (GetComponent<formFieldController>() != null)
+        {
+            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().openNode();
+        }
+
         //shift all comments down
         repositionComments();
 
