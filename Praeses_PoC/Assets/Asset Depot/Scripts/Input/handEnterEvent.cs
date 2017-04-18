@@ -3,35 +3,55 @@ using System.Collections.Generic;
 
 using UnityEngine.Events;
 using UnityEngine;
-
-public class handEnterEvent : MonoBehaviour {
-    
-    public UnityEvent Event;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void OnFocusEnter()
+namespace HoloToolkit.Unity.InputModule
+{
+    public class handEnterEvent : MonoBehaviour
     {
-        if (this.enabled == false) return;
-        if (Event != null)
+
+        public UnityEvent Event;
+        AudioSource aud;
+        // Use this for initialization
+        void Start()
         {
-            Event.Invoke();
+            if (GetComponent<AudioSource>() == null)
+            {
+                gameObject.AddComponent<AudioSource>();
+            }
+            if (aud == null)
+            {
+                aud = GetComponent<AudioSource>();
+                aud.playOnAwake = false;
+                aud.spatialBlend = 1;
+                aud.minDistance = 1;
+                aud.maxDistance = 5;
+
+            }
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "handCursor")
+        // Update is called once per frame
+        void Update()
         {
 
-            OnFocusEnter();
+        }
+
+        void OnFocusEnter()
+        {
+            if (this.enabled == false) return;
+            if (Event != null)
+            {
+                aud.clip = audioManager.Instance.highlightSound;
+                aud.Play();
+                Event.Invoke();
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag == "handCursor")
+            {
+
+                OnFocusEnter();
+            }
         }
     }
 }

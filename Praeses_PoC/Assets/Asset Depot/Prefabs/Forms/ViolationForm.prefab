@@ -548,7 +548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1193104666890242
 GameObject:
   m_ObjectHideFlags: 1
@@ -6015,6 +6015,7 @@ MonoBehaviour:
   lockSprites:
   - {fileID: 1590787818916188}
   - {fileID: 1620162892798986}
+  locked: 0
 --- !u!114 &114210529289871536
 MonoBehaviour:
   m_ObjectHideFlags: 1

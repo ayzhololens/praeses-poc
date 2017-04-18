@@ -4258,6 +4258,7 @@ MonoBehaviour:
   lockSprites:
   - {fileID: 1961834386622012}
   - {fileID: 1939103707175136}
+  locked: 0
 --- !u!114 &114629066256968532
 MonoBehaviour:
   m_ObjectHideFlags: 1

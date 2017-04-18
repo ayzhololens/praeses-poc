@@ -22,6 +22,7 @@ namespace HoloToolkit.Unity
 
 
         public GameObject stateIndicator;
+        public GameObject recordingIndicator;
         public GameObject currentNode { get; set; }
         public GameObject activeField { get; set; }
         public List<GameObject> activeNodes;
@@ -130,6 +131,7 @@ namespace HoloToolkit.Unity
             recordingEnabled = false;
             recordingInProgress = true;
             setStatusIndicator("Recording in progress. Tap to stop");
+            recordingIndicator.SetActive(true);
 
             //clear source manager
             sourceManager.Instance.sourcePressed = false;
@@ -140,6 +142,7 @@ namespace HoloToolkit.Unity
             //stop recording, finish encoding then calling activateMedia() when done
             vidRecorder.StopRecordingVideo(true);
             disableStatusIndicator();
+            recordingIndicator.SetActive(false);
             recordingInProgress = false;
             isCapturing = false;
         }

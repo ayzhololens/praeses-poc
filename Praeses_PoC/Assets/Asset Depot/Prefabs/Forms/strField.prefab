@@ -1237,7 +1237,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114316648069629734}
+      - m_Target: {fileID: 114271308594639356}
         m_MethodName: enablePhotoCapture
         m_Mode: 1
         m_Arguments:
@@ -1440,6 +1440,9 @@ MonoBehaviour:
   playIcon: {fileID: 1243189815549590}
   pauseIcon: {fileID: 1530245878745906}
   mediaPlayer: {fileID: 0}
+  vidThumbnail: {fileID: 0}
+  vidMat: {fileID: 0}
+  vidThumbMat: {fileID: 0}
 --- !u!114 &114194546155294840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1992,7 +1995,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114316648069629734}
+      - m_Target: {fileID: 114271308594639356}
         m_MethodName: spawnSimpleComment
         m_Mode: 1
         m_Arguments:
@@ -2075,7 +2078,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114316648069629734}
+      - m_Target: {fileID: 114271308594639356}
         m_MethodName: enableVideoCapture
         m_Mode: 1
         m_Arguments:
@@ -2114,6 +2117,9 @@ MonoBehaviour:
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
   mediaPlayer: {fileID: 0}
+  vidThumbnail: {fileID: 0}
+  vidMat: {fileID: 0}
+  vidThumbMat: {fileID: 0}
 --- !u!114 &114561646386059230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2762,6 +2768,9 @@ MonoBehaviour:
   playIcon: {fileID: 0}
   pauseIcon: {fileID: 0}
   mediaPlayer: {fileID: 0}
+  vidThumbnail: {fileID: 0}
+  vidMat: {fileID: 0}
+  vidThumbMat: {fileID: 0}
 --- !u!114 &114852128133540454
 MonoBehaviour:
   m_ObjectHideFlags: 1

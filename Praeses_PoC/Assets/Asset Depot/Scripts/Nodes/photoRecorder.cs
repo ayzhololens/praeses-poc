@@ -22,6 +22,7 @@ namespace HoloToolkit.Unity
         public Texture2D targetTexture;
         public string filePath;
         public string filename;
+        int index;
 
         //activate media if a photo node
         public bool activateMedia { get; set; }
@@ -64,7 +65,7 @@ namespace HoloToolkit.Unity
             if (result.success)
             {
                 Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
-                filename = string.Format(@"newPhoto.jpg", Time.time);
+                filename = string.Format(@"newPhoto"+ index+ ".jpg", Time.time);
                 filePath = Path.Combine(Application.persistentDataPath , filename);
                 photoCaptureObject.TakePhotoAsync(filePath, PhotoCaptureFileOutputFormat.JPG, OnCapturedPhotoToDisk);
                 

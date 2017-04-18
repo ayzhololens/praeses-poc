@@ -125,10 +125,11 @@ public class commentManager : MonoBehaviour {
 
     void startVideoCapture()
     {
-        mediaManager.Instance.vidRecorder.startRecordingVideo();
+        //mediaManager.Instance.vidRecorder.startRecordingVideo();
         recordingEnabled = false;
         mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Recording in progress. Tap to stop");
+        //mediaManager.Instance.recordingIndicator.SetActive(true);
 
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
@@ -141,6 +142,7 @@ public class commentManager : MonoBehaviour {
         mediaManager.Instance.vidRecorder.StopRecordingVideo(false);
         Debug.Log("before status disable");
         mediaManager.Instance.disableStatusIndicator();
+        //mediaManager.Instance.recordingIndicator.SetActive(false);
         recordingInProgress = false;
 
         //open/close content on violations and forms
@@ -158,7 +160,7 @@ public class commentManager : MonoBehaviour {
     public void spawnVideoComment()
     {
 
-        //mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
+        mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
         Debug.Log("started Spawn");
         //shift all comments down
         repositionComments();

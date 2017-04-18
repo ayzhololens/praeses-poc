@@ -8,11 +8,30 @@ namespace HoloToolkit.Unity.InputModule
     public class gazeEnterEvent : MonoBehaviour, IFocusable
     {
         public UnityEvent Event;
+        AudioSource aud;
+
+
 
         void Start()
         {
+            if (Event != null)
+            {
+                if (GetComponent<AudioSource>() == null)
+                {
+                    gameObject.AddComponent<AudioSource>();
+                }
+                if (aud == null)
+                {
+                    aud = GetComponent<AudioSource>();
+                    aud.playOnAwake = false;
+                    aud.spatialBlend = 1;
+                    aud.minDistance = 2;
+                    aud.maxDistance = 5;
 
-            // dummy Start function so we can use this.enabled
+                }
+            }
+
+            
         }
 
         void GazeEnter()
@@ -20,7 +39,11 @@ namespace HoloToolkit.Unity.InputModule
             if (this.enabled == false) return;
             if (Event != null)
             {
+                aud.clip = audioManager.Instance.highlightSound;
+                aud.Play();
                 Event.Invoke();
+
+
             }
         }
 
