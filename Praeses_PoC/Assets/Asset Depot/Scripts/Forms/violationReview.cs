@@ -37,7 +37,7 @@ namespace HoloToolkit.Unity
             }
         }
 
-        public void submitReview()
+        public void submitReview(bool fromJson)
         {
             commentHolder.transform.SetParent(submittedViolationHolder.transform.parent);
 
@@ -58,6 +58,11 @@ namespace HoloToolkit.Unity
             ReviewHolder.SetActive(false);
 
             violatoinSpawner.Instance.populatePreviewField();
+            if (!fromJson)
+            {
+                databaseMan.Instance.syncViolation(violationControl);
+
+            }
         }
 
         public void enableEditing()

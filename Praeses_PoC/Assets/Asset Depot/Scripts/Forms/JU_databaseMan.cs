@@ -1,11 +1,3 @@
-#if WINDOWS_UWP
-using Newtonsoft.Json;
-using System.Collections;
-#endif
-
-//using Newtonsoft.Json;
-//using System.Collections;
-
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
@@ -25,12 +17,7 @@ public class JU_databaseMan : Singleton<JU_databaseMan>
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            print(categoryStringer(violationsManager.violations[0])[0]);
-            print(categoryStringer(violationsManager.violations[0])[1]);
-            print(categoryStringer(violationsManager.violations[0])[2]);
-        }
+
     }
 
     [System.Serializable]

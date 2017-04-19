@@ -54,7 +54,6 @@ GameObject:
   - component: {fileID: 33604506022900646}
   - component: {fileID: 65974531402942696}
   - component: {fileID: 23890959704729538}
-  - component: {fileID: 114357388238630150}
   m_Layer: 0
   m_Name: Description
   m_TagString: Node
@@ -105,6 +104,7 @@ GameObject:
   - component: {fileID: 222638587971997672}
   - component: {fileID: 114964526525586192}
   - component: {fileID: 114451384423896488}
+  - component: {fileID: 114227476433662550}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 222482766747096310}
   - component: {fileID: 114474854228617722}
   - component: {fileID: 114763280025997680}
+  - component: {fileID: 114371233796418268}
   m_Layer: 5
   m_Name: InputField
   m_TagString: Untagged
@@ -637,7 +638,6 @@ GameObject:
   - component: {fileID: 33348058607443318}
   - component: {fileID: 65498044159051426}
   - component: {fileID: 23370660712082478}
-  - component: {fileID: 114213431922084716}
   m_Layer: 0
   m_Name: Title
   m_TagString: Node
@@ -3702,7 +3702,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114357388238630150}
+      - m_Target: {fileID: 0}
         m_MethodName: activateField
         m_Mode: 1
         m_Arguments:
@@ -3861,24 +3861,6 @@ MonoBehaviour:
   moveMult: 0
   scale: 1
   move: 0
---- !u!114 &114213431922084716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1488524630573690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainInputField: {fileID: 114763280025997680}
-  panelResize: 0
-  recCharSize: 0
-  charPanel: {fileID: 0}
-  scaleMult: 0
-  useKeypad: 1
-  useNumpad: 0
 --- !u!114 &114213659833747870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3962,6 +3944,26 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   gazeExit: 0
+--- !u!114 &114227476433662550
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1076922017908528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainInputField: {fileID: 114451384423896488}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 114718177442030112}
 --- !u!114 &114235204241355850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4186,24 +4188,6 @@ MonoBehaviour:
   speed: 0.07
   reviewState: 0
   reviewButtons: {fileID: 1447691235988290}
---- !u!114 &114357388238630150
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1038019559335720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainInputField: {fileID: 114451384423896488}
-  panelResize: 0
-  recCharSize: 0
-  charPanel: {fileID: 0}
-  scaleMult: 0
-  useKeypad: 1
-  useNumpad: 0
 --- !u!114 &114360911289890854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4224,6 +4208,26 @@ MonoBehaviour:
   SmoothPositionLerpRatio: 0.5
   SmoothRotationLerpRatio: 0.5
   SmoothScaleLerpRatio: 0.5
+--- !u!114 &114371233796418268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1148315208886072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea7ab22245e6484ea4838e4c1ff0bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainInputField: {fileID: 114763280025997680}
+  panelResize: 0
+  recCharSize: 0
+  charPanel: {fileID: 0}
+  scaleMult: 0
+  useKeypad: 1
+  useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 114718177442030112}
 --- !u!114 &114379135647331076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4458,7 +4462,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114227476433662550}
+        m_MethodName: onEditChangeUpdateJSon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
@@ -4502,7 +4517,7 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114213431922084716}
+      - m_Target: {fileID: 0}
         m_MethodName: activateField
         m_Mode: 1
         m_Arguments:
@@ -5073,7 +5088,18 @@ MonoBehaviour:
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114371233796418268}
+        m_MethodName: onEditChangeUpdateJSon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.InputField+SubmitEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_OnValueChanged:
@@ -5558,6 +5584,8 @@ MonoBehaviour:
   scaleMult: 0
   useKeypad: 0
   useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 0}
 --- !u!114 &114967978063841558
 MonoBehaviour:
   m_ObjectHideFlags: 1

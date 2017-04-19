@@ -160,7 +160,7 @@ namespace HoloToolkit.Unity
                 stateIndicator.SetActive(false);
             }
             stateIndicator.GetComponent<TextMesh>().text = null;
-            Debug.Log("disabled status");
+
         }
 
         void stopCapturing()

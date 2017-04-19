@@ -19,7 +19,7 @@ public class sharedFollowCam : NetworkBehaviour {
         {
             if (isLocalPlayer)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }else
         {
