@@ -9366,6 +9366,7 @@ MonoBehaviour:
   moveSensitivity: 0.01
   rotateSensitivity: 0.2
   ratchetSensitivity: 0.02
+  mainMenuContent: {fileID: 568049870}
 --- !u!1 &1694856253
 GameObject:
   m_ObjectHideFlags: 0
