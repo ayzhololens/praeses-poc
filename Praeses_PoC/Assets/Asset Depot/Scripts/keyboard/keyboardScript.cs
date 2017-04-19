@@ -17,6 +17,7 @@ namespace HoloToolkit.Unity
         public bool onOff;
         public InputField currentField;
         public InputField keyboardField;
+        public TextMesh previousValue;
         public GameObject numbers;
         public GameObject symbols;
         bool symbolsOn;
@@ -75,7 +76,7 @@ namespace HoloToolkit.Unity
 
         public void editChangeSync()
         {
-            //currentField.gameObject.GetComponent<inputFieldManager>().onEditChangeUpdateJSon();
+            currentField.gameObject.GetComponent<inputFieldManager>().onEditChangeUpdateJSon();
         }
 
         void textSync()
@@ -94,6 +95,7 @@ namespace HoloToolkit.Unity
         public void turnOn()
         {
             getText();
+            getPrevious();
             nestedOn();
             Invoke("adjustCaret",.1f);
         }
@@ -101,6 +103,11 @@ namespace HoloToolkit.Unity
         void getText()
         {
             keyboardField.text = currentField.text;
+        }
+
+        void getPrevious()
+        {
+            //previousButton.
         }
 
         void nestedOn()
@@ -190,7 +197,12 @@ namespace HoloToolkit.Unity
             keyboardField.caretPosition++;
         }
 
-
+        public void typeSuggestion()
+        {
+            cleartext();
+            keyboardField.text = keyboardField.text.Insert(keyboardField.caretPosition, processParentheses(previousValue.text));
+            keyboardField.caretPosition = keyboardField.caretPosition + processParentheses(previousValue.text).Length;
+        }
 
         public void typeCapitalCheck()
         {
@@ -215,6 +227,23 @@ namespace HoloToolkit.Unity
         {
             string outputString;
             outputString = inputString.Split('_')[1];
+            if (inputString.Substring(inputString.Length - 1, 1) == "_")
+            {
+                outputString = "_";
+            }
+            return outputString;
+        }
+
+        public virtual string processParentheses(string inputString)
+        {
+            string outputString;
+            outputString = inputString.Split('(')[1];
+            if (inputString.Substring(inputString.Length - 1, 1) == "_")
+            {
+                outputString = "_";
+            }
+
+            outputString = outputString.Split(')')[0];
             if (inputString.Substring(inputString.Length - 1, 1) == "_")
             {
                 outputString = "_";

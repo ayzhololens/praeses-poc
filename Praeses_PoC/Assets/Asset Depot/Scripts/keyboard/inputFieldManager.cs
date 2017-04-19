@@ -18,6 +18,8 @@ namespace HoloToolkit.Unity
         public float scaleMult;
         public bool useKeypad;
         public bool useNumpad;
+        public formFieldController formItem;
+        public nodeMediaHolder nodeInfo;
         
         private void Update()
         {
@@ -81,7 +83,7 @@ namespace HoloToolkit.Unity
             keyboardScript.Instance.currentField = mainInputField;
             keyboardScript.Instance.useNumpad = true;
             keyboardScript.Instance.keyboardToggle();
-
+            keyboardScript.Instance.previousValue.text = formItem.previousValue.text;
         }
 
         public void deactivateField()
@@ -114,11 +116,30 @@ namespace HoloToolkit.Unity
 
         public void onEditChangeUpdateJSon()
         {
-            print("dip");
-            string keyword;
-            keyword = transform.parent.gameObject.GetComponent<formFieldController>().trueName;
-            databaseMan.Instance.formToClassValueSync(keyword, mainInputField.text);
-            print("sup");
+            if(formItem != null)
+            {
+                string keyword;
+                keyword = formItem.trueName;
+                databaseMan.Instance.formToClassValueSync(keyword, mainInputField.text);
+            }
+            else if(nodeInfo != null)
+            {
+                int nodeIndex;
+
+                //0 = title, 1 = desc
+                int valueType;
+
+                nodeIndex = nodeInfo.NodeIndex;
+                if(mainInputField == nodeInfo.Title)
+                {
+                    valueType = 0;
+                }else
+                {
+                    valueType = 1;
+                }
+                databaseMan.Instance.nodeToClassValueSync(nodeIndex, mainInputField.text, valueType);
+            }
+
         }
     }
 }

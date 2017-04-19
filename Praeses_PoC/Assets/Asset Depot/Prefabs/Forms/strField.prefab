@@ -1307,6 +1307,7 @@ MonoBehaviour:
   scaleMult: 0
   useKeypad: 1
   useNumpad: 0
+  formItem: {fileID: 0}
 --- !u!114 &114156568114383890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2816,6 +2817,7 @@ MonoBehaviour:
   scaleMult: 0.3
   useKeypad: 0
   useNumpad: 1
+  formItem: {fileID: 114316648069629734}
 --- !u!114 &114903518570689988
 MonoBehaviour:
   m_ObjectHideFlags: 1

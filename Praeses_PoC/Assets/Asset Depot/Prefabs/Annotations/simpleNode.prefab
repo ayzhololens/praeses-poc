@@ -3027,6 +3027,8 @@ MonoBehaviour:
   scaleMult: 0
   useKeypad: 1
   useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 114190061367997334}
 --- !u!114 &114052611893869384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3119,6 +3121,8 @@ MonoBehaviour:
   scaleMult: 0
   useKeypad: 0
   useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 0}
 --- !u!114 &114129374492273494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3511,7 +3515,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114692247778960496}
         m_MethodName: onEditChangeUpdateJSon
         m_Mode: 1
         m_Arguments:
@@ -4104,7 +4108,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114017609977721486}
         m_MethodName: onEditChangeUpdateJSon
         m_Mode: 1
         m_Arguments:
@@ -4411,6 +4415,8 @@ MonoBehaviour:
   scaleMult: 0
   useKeypad: 1
   useNumpad: 0
+  formItem: {fileID: 0}
+  nodeInfo: {fileID: 114190061367997334}
 --- !u!114 &114721147248484030
 MonoBehaviour:
   m_ObjectHideFlags: 1

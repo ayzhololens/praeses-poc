@@ -377,7 +377,7 @@ public class violatoinSpawner :  Singleton<violatoinSpawner>{
         linkedText.text = JU_databaseMan.Instance.violationsManager.violations[0].requirements;
         linkedText.color = Color.white;
         activeViolationController.vioReview.loadReview();
-        activeViolationController.vioReview.submitReview();
+        activeViolationController.vioReview.submitReview(true);
         populatePreviewField();
     }
 

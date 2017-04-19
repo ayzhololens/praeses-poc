@@ -116,9 +116,10 @@ namespace HoloToolkit.Unity
 
 
             spawnMiniNode(spawnedNode, spawnedIndex);
-            //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = JU_databaseMan.Instance.nodesManager.nodes.Count;
 
-            //databaseMan.Instance.addAnnotation(spawnedNode);
+            spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = JU_databaseMan.Instance.nodesManager.nodes.Count;
+
+            databaseMan.Instance.addAnnotation(spawnedNode);
 
             //spawnedNode.GetComponent<nodeMediaHolder>().NodeIndex = mediaManager.Instance.nodeIndex;
             //mediaManager.Instance.nodeIndex += 1;

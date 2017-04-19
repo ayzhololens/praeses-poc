@@ -369,10 +369,6 @@ public class databaseMan : Singleton<databaseMan>
         {
             itemClasses.Add(item.name, item);
         };
-        //foreach (ItemClass item in values.Location.Equipment[0].PreviousInspection[0].InspectionData)
-        //{
-        //    itemClasses.Add(item.name, item);
-        //};
 
         foreach (ItemClass item in values.Location.Equipment[0].CurrentInspection)
         {
@@ -387,7 +383,7 @@ public class databaseMan : Singleton<databaseMan>
             ItemClass newItem = new ItemClass();
             newItem.value = value;
             newItem.name = keyword;
-            values.Location.Equipment[0].EquipmentData.Add(newItem);
+            values.Location.Equipment[0].CurrentInspection.Add(newItem);
         }
             
 
@@ -395,4 +391,66 @@ public class databaseMan : Singleton<databaseMan>
         JU_databaseMan.Instance.loadEquipmentData();
     }
 
+    public void nodeToClassValueSync(int nodeIndex, string value, int valueType)
+    {
+        print("values applied to node index: " + nodeIndex.ToString() + " " + value);
+        Dictionary<int, NodeClass> nodeClasses = new Dictionary<int, NodeClass>();
+
+        foreach (NodeClass node in values.Location.Equipment[0].Nodes)
+        {
+            nodeClasses.Add(node.indexNum, node);
+        };
+
+        if (nodeClasses.ContainsKey(nodeIndex))
+        {
+            if(valueType == 0)
+            {
+                nodeClasses[nodeIndex].title = value;
+            }else
+            {
+                nodeClasses[nodeIndex].description = value;
+            }
+
+        }
+
+        JU_databaseMan.Instance.loadCurrentData();
+        JU_databaseMan.Instance.loadEquipmentData();
+    }
+
+    public void commentToClassValueSync(int nodeIndex, comment comment)
+    {
+        Dictionary<int, NodeClass> nodeClasses = new Dictionary<int, NodeClass>();
+
+        foreach (NodeClass node in values.Location.Equipment[0].Nodes)
+        {
+            nodeClasses.Add(node.indexNum, node);
+        };
+
+        if (nodeClasses.ContainsKey(nodeIndex))
+        {
+            comment newComment = new comment();
+            newComment.content = comment.content;
+            newComment.user = comment.user;
+            newComment.date = comment.date;
+            nodeClasses[nodeIndex].comments.Add(newComment);
+        }
+
+        JU_databaseMan.Instance.loadCurrentData();
+        JU_databaseMan.Instance.loadEquipmentData();
+    }
+
+    public void syncViolation(violationController violation)
+    {
+        ViolationsClass vioClass = new ViolationsClass();
+        vioClass.category = (violation.violationIndices[0].ToString()+"."+ violation.violationIndices[1].ToString()+"."+ violation.violationIndices[2].ToString());
+        vioClass.classifications = violation.violationIndices[3];
+        vioClass.violationDate = metaManager.Instance.date;
+        vioClass.status = 1;
+        vioClass.resolveDate = violation.violationData[4];
+        vioClass.conditions = violation.violationData[5];
+        vioClass.requirements = violation.violationData[6];
+        vioClass.nodeIndex = violation.linkedNode.GetComponent<nodeMediaHolder>().NodeIndex;
+
+        values.Location.Equipment[0].Violations.Add(vioClass);
+    }
 }
