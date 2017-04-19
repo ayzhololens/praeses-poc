@@ -6,26 +6,12 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
 {
     public UnityEvent Event;
 
-    AudioSource aud;
+
     bool focused;
     public bool gazeExit;
     void Start()
     {
-        if (Event != null)
-        {
-            if (GetComponent<AudioSource>() == null)
-            {
-                gameObject.AddComponent<AudioSource>();
-            }
-            if (aud == null)
-            {
-                aud = GetComponent<AudioSource>();
-                aud.spatialBlend = 1;
-                aud.minDistance = 2;
-                aud.maxDistance = 5;
 
-            }
-        }
     }
 
     public void OnSelect()
@@ -38,8 +24,7 @@ public class selectEvent : MonoBehaviour,  IInputClickHandler, IFocusable
             Event.Invoke();
 
             Debug.Log("select");
-            aud.clip = audioManager.Instance.selectSound;
-            aud.Play();
+            audioManager.Instance.src.Play();
         }
 
         if (GetComponent<gazeLeaveEvent>() != null && gazeExit)

@@ -88,7 +88,7 @@ namespace HoloToolkit.Unity
                 {
 
                     transform.parent.GetChild(i).gameObject.GetComponent<subMenu>().turnOffCounter();
-                    transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
+                    //transform.parent.GetChild(i).gameObject.GetComponent<formFieldController>().attachmentParent.gameObject.SetActive(false);
                 }
             }
             if(linkedNode.GetComponent<selectEvent>().enabled == false)
@@ -140,168 +140,168 @@ namespace HoloToolkit.Unity
         }
 
 
-        public void enableVideoCapture()
-        {
-            annotationManager.Instance.enableVideoRecording();
-            annotationManager.Instance.currentAnnotation = linkedNode;
+    //    public void enableVideoCapture()
+    //    {
+    //        annotationManager.Instance.enableVideoRecording();
+    //        annotationManager.Instance.currentAnnotation = linkedNode;
 
-            annotationManager.Instance.activeField = this.gameObject;
-            GetComponent<subMenu>().turnOffCounter();
-            attachmentParent.gameObject.SetActive(true);
-            capturingVideo = true;
-        }
+    //        annotationManager.Instance.activeField = this.gameObject;
+    //        GetComponent<subMenu>().turnOffCounter();
+    //        attachmentParent.gameObject.SetActive(true);
+    //        capturingVideo = true;
+    //    }
 
-        public void enablePhotoCapture()
-        {
-            annotationManager.Instance.enablePhotoCapture();
-            annotationManager.Instance.currentAnnotation = linkedNode;
-            annotationManager.Instance.activeField = this.gameObject;
-            GetComponent<subMenu>().turnOffCounter();
-            attachmentParent.gameObject.SetActive(true);
-            capturingPhoto = true;
+    //    public void enablePhotoCapture()
+    //    {
+    //        annotationManager.Instance.enablePhotoCapture();
+    //        annotationManager.Instance.currentAnnotation = linkedNode;
+    //        annotationManager.Instance.activeField = this.gameObject;
+    //        GetComponent<subMenu>().turnOffCounter();
+    //        attachmentParent.gameObject.SetActive(true);
+    //        capturingPhoto = true;
 
-        }
+    //    }
 
-        public void loadVideoMedia()
-        {
-            if (vidRecorder == null)
-            {
-                vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
-                VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            }
-            //
-            attachmentParent.gameObject.SetActive(false);
-            //
-            activeVideoPath = vidRecorder.filepath;
-            VideoPlayer.m_VideoPath = activeVideoPath;
-            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activeVideoPath);
-            videoFilePaths.Add(activeVideoPath);
-            spawnVideoPane();
+    //    public void loadVideoMedia()
+    //    {
+    //        if (vidRecorder == null)
+    //        {
+    //            vidRecorder = GameObject.Find("VideoManager").GetComponent<videoRecorder>();
+    //            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+    //        }
+    //        //
+    //        attachmentParent.gameObject.SetActive(false);
+    //        //
+    //        activeVideoPath = vidRecorder.filepath;
+    //        VideoPlayer.m_VideoPath = activeVideoPath;
+    //        linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activeVideoPath);
+    //        videoFilePaths.Add(activeVideoPath);
+    //        spawnVideoPane();
 
-        }
-
-
-        public void spawnVideoPane()
-        {
-            attachmentParent.gameObject.SetActive(true);
-            GameObject spawnedVideo = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
-            activeVideos.Add(spawnedVideo);
-            spawnedVideo.transform.SetParent(attachmentParent);
-            spawnedVideo.transform.localPosition = thumbPos.localPosition;
-            repositionThumb();
-
-            spawnedVideo.GetComponent<commentContents>().isVideo = true;
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
-            spawnedVideo.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
-            spawnedVideo.GetComponent<commentContents>().user = metaManager.Instance.user;
-            spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
-            spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
-            spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            capturingVideo = false;
-        }
-
-        public virtual GameObject spawnVideoPaneFromJSon()
-        {
-            if (VideoPlayer == null)
-            {
-                VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
-            }
-
-            GameObject spawnedVideo = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
-            activeVideos.Add(spawnedVideo);
-            spawnedVideo.transform.SetParent(attachmentParent);
-            spawnedVideo.transform.localPosition = thumbPos.localPosition;
-            repositionThumb();
-
-            spawnedVideo.GetComponent<commentContents>().isVideo = true;
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
-            spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            return spawnedVideo;
-        }
+    //    }
 
 
-        public void spawnSimpleComment()
-        {
-            GetComponent<subMenu>().turnOffCounter();
-            attachmentParent.gameObject.SetActive(true);
-            GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
-            activeSimpleNotes.Add(spawnedComment);
-            spawnedComment.transform.SetParent(attachmentParent);
-            spawnedComment.transform.position = thumbPos.position;
-            repositionThumb();
-            spawnedComment.GetComponent<commentContents>().isSimple = true;
-            spawnedComment.GetComponent<inputFieldManager>().activateField();
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
-            spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
-            spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
-            spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
-            spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
-        }
+    //    public void spawnVideoPane()
+    //    {
+    //        attachmentParent.gameObject.SetActive(true);
+    //        GameObject spawnedVideo = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
+    //        activeVideos.Add(spawnedVideo);
+    //        spawnedVideo.transform.SetParent(attachmentParent);
+    //        spawnedVideo.transform.localPosition = thumbPos.localPosition;
+    //        repositionThumb();
 
-        public virtual GameObject spawnSimpleCommentFromJSon()
-        {
-            GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
-            activeSimpleNotes.Add(spawnedComment);
-            spawnedComment.transform.SetParent(attachmentParent);
-            spawnedComment.transform.localPosition = thumbPos.localPosition;
-            repositionThumb();
-            spawnedComment.GetComponent<commentContents>().isSimple = true;
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
-            spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            return spawnedComment;
-        }
+    //        spawnedVideo.GetComponent<commentContents>().isVideo = true;
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
+    //        spawnedVideo.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+    //        spawnedVideo.GetComponent<commentContents>().user = metaManager.Instance.user;
+    //        spawnedVideo.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
+    //        spawnedVideo.GetComponent<commentContents>().filepath = activeVideoPath;
+    //        spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //        capturingVideo = false;
+    //    }
 
-        public void loadPhotoMedia()
-        {
-            if (photoRecorder == null)
-            {
-                photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
-            }
-            //
-            attachmentParent.gameObject.SetActive(false);
-            //
-            activePhotoPath = photoRecorder.filePath;
-            photoFilePaths.Add(activePhotoPath);
-            linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activePhotoPath);
-            spawnPhotoPane();
-        }
+    //    public virtual GameObject spawnVideoPaneFromJSon()
+    //    {
+    //        if (VideoPlayer == null)
+    //        {
+    //            VideoPlayer = GameObject.Find("VideoPlayer").GetComponent<MediaPlayer>();
+    //        }
 
-        public void spawnPhotoPane()
-        {
-            attachmentParent.gameObject.SetActive(true);
-            GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
-            activePhotos.Add(spawnedPhoto);
-            spawnedPhoto.transform.SetParent(attachmentParent);
-            spawnedPhoto.transform.localPosition = thumbPos.localPosition;
-            repositionThumb();
-            spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
-            spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
-            spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
-            spawnedPhoto.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
-            spawnedPhoto.GetComponent<commentContents>().user = metaManager.Instance.user;
-            spawnedPhoto.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
-            photoTexture = photoRecorder.targetTexture;
-            spawnedPhoto.GetComponent<Renderer>().material.mainTexture = photoTexture;
-            capturingPhoto = false;
+    //        GameObject spawnedVideo = Instantiate(videoThumbPrefab, transform.position, Quaternion.identity);
+    //        activeVideos.Add(spawnedVideo);
+    //        spawnedVideo.transform.SetParent(attachmentParent);
+    //        spawnedVideo.transform.localPosition = thumbPos.localPosition;
+    //        repositionThumb();
 
-        }
-
-        public virtual GameObject spawnPhotoPaneFromJSon()
-        {
-            GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
-            activePhotos.Add(spawnedPhoto);
-            spawnedPhoto.transform.SetParent(attachmentParent);
-            spawnedPhoto.transform.localPosition = thumbPos.localPosition;
-            repositionThumb();
-            spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
-            spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
-            linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
+    //        spawnedVideo.GetComponent<commentContents>().isVideo = true;
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedVideo);
+    //        spawnedVideo.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //        return spawnedVideo;
+    //    }
 
 
-            return spawnedPhoto;
+    //    public void spawnSimpleComment()
+    //    {
+    //        GetComponent<subMenu>().turnOffCounter();
+    //        attachmentParent.gameObject.SetActive(true);
+    //        GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
+    //        activeSimpleNotes.Add(spawnedComment);
+    //        spawnedComment.transform.SetParent(attachmentParent);
+    //        spawnedComment.transform.position = thumbPos.position;
+    //        repositionThumb();
+    //        spawnedComment.GetComponent<commentContents>().isSimple = true;
+    //        spawnedComment.GetComponent<inputFieldManager>().activateField();
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
+    //        spawnedComment.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+    //        spawnedComment.GetComponent<commentContents>().user = metaManager.Instance.user;
+    //        spawnedComment.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
+    //        spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //    }
 
-        }
+    //    public virtual GameObject spawnSimpleCommentFromJSon()
+    //    {
+    //        GameObject spawnedComment = Instantiate(simpleNotePrefab, transform.position, Quaternion.identity);
+    //        activeSimpleNotes.Add(spawnedComment);
+    //        spawnedComment.transform.SetParent(attachmentParent);
+    //        spawnedComment.transform.localPosition = thumbPos.localPosition;
+    //        repositionThumb();
+    //        spawnedComment.GetComponent<commentContents>().isSimple = true;
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedComment);
+    //        spawnedComment.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //        return spawnedComment;
+    //    }
+
+    //    public void loadPhotoMedia()
+    //    {
+    //        if (photoRecorder == null)
+    //        {
+    //            photoRecorder = GameObject.Find("PhotoManager").GetComponent<photoRecorder>();
+    //        }
+    //        //
+    //        attachmentParent.gameObject.SetActive(false);
+    //        //
+    //        activePhotoPath = photoRecorder.filePath;
+    //        photoFilePaths.Add(activePhotoPath);
+    //        linkedNode.GetComponent<nodeMediaHolder>().filepath.Add(activePhotoPath);
+    //        spawnPhotoPane();
+    //    }
+
+    //    public void spawnPhotoPane()
+    //    {
+    //        attachmentParent.gameObject.SetActive(true);
+    //        GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
+    //        activePhotos.Add(spawnedPhoto);
+    //        spawnedPhoto.transform.SetParent(attachmentParent);
+    //        spawnedPhoto.transform.localPosition = thumbPos.localPosition;
+    //        repositionThumb();
+    //        spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
+    //        spawnedPhoto.GetComponent<commentContents>().filepath = activePhotoPath;
+    //        spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
+    //        spawnedPhoto.GetComponent<commentContents>().Date = System.DateTime.Now.ToString();
+    //        spawnedPhoto.GetComponent<commentContents>().user = metaManager.Instance.user;
+    //        spawnedPhoto.GetComponent<commentContents>().commentMeta.text = (metaManager.Instance.user + " " + System.DateTime.Now);
+    //        photoTexture = photoRecorder.targetTexture;
+    //        spawnedPhoto.GetComponent<Renderer>().material.mainTexture = photoTexture;
+    //        capturingPhoto = false;
+
+    //    }
+
+    //    public virtual GameObject spawnPhotoPaneFromJSon()
+    //    {
+    //        GameObject spawnedPhoto = Instantiate(photoThumbPrefab, transform.position, Quaternion.identity);
+    //        activePhotos.Add(spawnedPhoto);
+    //        spawnedPhoto.transform.SetParent(attachmentParent);
+    //        spawnedPhoto.transform.localPosition = thumbPos.localPosition;
+    //        repositionThumb();
+    //        spawnedPhoto.GetComponent<commentContents>().isPhoto = true;
+    //        spawnedPhoto.GetComponent<commentContents>().linkedComponent = this.gameObject;
+    //        linkedNode.GetComponent<nodeMediaHolder>().activeComments.Add(spawnedPhoto);
+
+
+    //        return spawnedPhoto;
+
+    //    }
 
     }
 }

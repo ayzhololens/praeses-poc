@@ -114,7 +114,7 @@ namespace HoloToolkit.Unity
                             }
                         }
                     }
-                } 
+                }
                 foreach (JU_databaseMan.valueItem valueItem in JU_databaseMan.Instance.values.currentData)
                 {
                     if (valueItem.name == "dtCertExpire")
@@ -124,6 +124,42 @@ namespace HoloToolkit.Unity
                 }
 
             }
+            if (Annotations != null)
+            {
+                int annotIndex = 0;
+                for (int i = 0; i < mediaManager.Instance.activeNodes.Count; i++)
+                {
+                    if (!mediaManager.Instance.activeNodes[i].GetComponent<nodeMediaHolder>().fieldNode && !mediaManager.Instance.activeNodes[i].GetComponent<nodeMediaHolder>().violationNode)
+                    {
+                        annotIndex += 1;
+                    }
+                }
+                Annotations.text = "x" + annotIndex + " Annotations";
+
+                int vioIndex = 0;
+                for (int v = 0; v < mediaManager.Instance.activeNodes.Count; v++)
+                {
+                    if (mediaManager.Instance.activeNodes[v].GetComponent<nodeMediaHolder>().violationNode)
+                    {
+                        vioIndex += 1;
+                    }
+                }
+                Violations.text = "x" + vioIndex + " Violations";
+
+                int fieldIndex = 0;
+                for (int f = 0; f < mediaManager.Instance.activeNodes.Count; f++)
+                {
+                    if (mediaManager.Instance.activeNodes[f].GetComponent<nodeMediaHolder>().fieldNode)
+                    {
+                        fieldIndex += 1;
+                    }
+                }
+                DataFields.text = "x" + fieldIndex + " Data Fields";
+
+            }
+
+
+
 
             #endregion
 

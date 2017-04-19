@@ -30,6 +30,7 @@ namespace HoloToolkit.Unity
         public int nodeIndex { get; set; }
         public commentManager commentManager { get; set; }
 
+        int nodeInd;
 
 
 
@@ -75,8 +76,7 @@ namespace HoloToolkit.Unity
             nodeMedia.User = metaManager.Instance.user;
             nodeMedia.Date = System.DateTime.Now.ToString();
             currentNode.GetComponent<nodeController>().setUpNode();
-
-
+            
         }
 
         public void activateComment()
@@ -87,9 +87,9 @@ namespace HoloToolkit.Unity
             }
             if (commentManager.capturingVideo)
             {
-                Debug.Log("activated comment");
+
                 commentManager.spawnVideoComment();
-                Debug.Log("sent spawn");
+
             }
         }
         
@@ -145,6 +145,7 @@ namespace HoloToolkit.Unity
             recordingIndicator.SetActive(false);
             recordingInProgress = false;
             isCapturing = false;
+            activateMedia();
         }
 
         public void setStatusIndicator(string curStatus)
@@ -163,7 +164,7 @@ namespace HoloToolkit.Unity
                 stateIndicator.SetActive(false);
             }
             stateIndicator.GetComponent<TextMesh>().text = null;
-            Debug.Log("disabled status");
+
         }
 
         void stopCapturing()

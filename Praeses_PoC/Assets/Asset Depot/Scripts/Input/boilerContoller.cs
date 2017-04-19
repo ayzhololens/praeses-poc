@@ -10,6 +10,7 @@ public class boilerContoller : MonoBehaviour {
     public float moveSensitivity;
     public float rotateSensitivity;
     public float ratchetSensitivity;
+    public GameObject mainMenuContent;
     private ControllerInput controllerInput;
 
     // Use this for initialization
@@ -61,6 +62,16 @@ public class boilerContoller : MonoBehaviour {
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - ratchetSensitivity, transform.position.z);
         }
-        
+
+        if (controllerInput.GetButtonDown(ControllerButton.A))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - ratchetSensitivity, transform.position.z);
+        }
+
+    }
+
+    public void toggleMenu()
+    {
+        mainMenuContent.SetActive(!mainMenuContent.activeSelf);
     }
 }

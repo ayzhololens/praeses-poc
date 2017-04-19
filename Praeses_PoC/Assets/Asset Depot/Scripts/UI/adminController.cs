@@ -6,25 +6,30 @@ using HoloLensXboxController;
 
 public class adminController : MonoBehaviour {
 
-    private ControllerInput controllerInput;
+    //private ControllerInput controllerInput;
     public GameObject contentHolder;
 
     // Use this for initialization
     void Start () {
 
-        controllerInput = new ControllerInput(0, 0.19f);
+        //controllerInput = new ControllerInput(0, 0.19f);
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-
-        if (controllerInput.GetButtonDown(ControllerButton.A))
+        if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("pressed AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             toggleMenu();
+
         }
+
+        //if (controllerInput.GetButtonDown(ControllerButton.LeftThumbstick))
+        //{
+        //    toggleMenu();
+        //}
 
     }
 

@@ -18,7 +18,7 @@ namespace HoloToolkit.Unity
         public float scaleMult;
         public bool useKeypad;
         public bool useNumpad;
-
+        
         private void Update()
         {
             if (engaged && sourceManager.Instance.sourcePressed)

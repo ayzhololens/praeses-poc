@@ -79,6 +79,11 @@ namespace HoloToolkit.Unity
                 contentHolder.GetComponent<DirectionIndicator>().hasGazed = false;
                 contentHolder.transform.position = contentStartLoc.position;
 
+                if (GetComponent<nodeMediaHolder>().videoNode)
+                {
+                    GetComponent<nodeMediaHolder>().LoadVideo();
+                }
+
             }
 
 

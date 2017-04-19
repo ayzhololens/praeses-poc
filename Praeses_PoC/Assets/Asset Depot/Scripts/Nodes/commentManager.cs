@@ -112,24 +112,16 @@ public class commentManager : MonoBehaviour {
         sourceManager.Instance.sourcePressed = false;
         recordingEnabled = true;
 
-        //open/close content on violations and forms
-        if (GetComponent<violationController>() != null)
-        {
-            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().closeNode();
-        }
-        if (GetComponent<formFieldController>() != null)
-        {
-            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().closeNode();
-        }
+        fovHider.Instance.toggleFOVHider(true);
     }
 
     void startVideoCapture()
     {
-        //mediaManager.Instance.vidRecorder.startRecordingVideo();
+        mediaManager.Instance.vidRecorder.startRecordingVideo();
         recordingEnabled = false;
         mediaManager.Instance.commentManager = GetComponent<commentManager>();
         mediaManager.Instance.setStatusIndicator("Recording in progress. Tap to stop");
-        //mediaManager.Instance.recordingIndicator.SetActive(true);
+        mediaManager.Instance.recordingIndicator.SetActive(true);
 
         //clear source manager
         sourceManager.Instance.sourcePressed = false;
@@ -142,26 +134,18 @@ public class commentManager : MonoBehaviour {
         mediaManager.Instance.vidRecorder.StopRecordingVideo(false);
         Debug.Log("before status disable");
         mediaManager.Instance.disableStatusIndicator();
-        //mediaManager.Instance.recordingIndicator.SetActive(false);
+        mediaManager.Instance.recordingIndicator.SetActive(false);
         recordingInProgress = false;
 
-        //open/close content on violations and forms
-        if (GetComponent<violationController>() != null)
-        {
-            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().openNode();
-        }
-        if (GetComponent<formFieldController>() != null)
-        {
-            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().openNode();
-        }
+        mediaManager.Instance.activateComment();
 
     }
 
     public void spawnVideoComment()
     {
 
-        mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
-        Debug.Log("started Spawn");
+        fovHider.Instance.toggleFOVHider(false);
+
         //shift all comments down
         repositionComments();
 
@@ -171,7 +155,7 @@ public class commentManager : MonoBehaviour {
 
         commentSetup(spawnedComment.GetComponent<commentContents>());
 
-        Debug.Log("prefab spawned");
+
 
         //define the comment type
         commentContents videoContent = spawnedComment.GetComponent<commentContents>();
@@ -182,13 +166,10 @@ public class commentManager : MonoBehaviour {
         videoContent.LoadVideo();
 
 
-
     }
 
     public virtual GameObject spawnVideoCommentFromJSON()
     {
-
-        //mediaManager.Instance.vidRecorder.GetComponent<FrameExtract>().makeThumbnail();
 
         //shift all comments down
         repositionComments();
@@ -205,7 +186,7 @@ public class commentManager : MonoBehaviour {
         commentContents videoContent = spawnedComment.GetComponent<commentContents>();
         videoContent.isVideo = true;
         capturingVideo = false;
-
+        videoContent.LoadVideo();
 
         return spawnedComment;
 
@@ -223,15 +204,8 @@ public class commentManager : MonoBehaviour {
         sourceManager.Instance.sourcePressed = false;
         photoCaptureEnabled = true;
 
-        //open/close content on violations and forms
-        if (GetComponent<violationController>() != null)
-        {
-            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().closeNode();
-        }
-        if (GetComponent<formFieldController>() != null)
-        {
-            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().closeNode();
-        }
+
+        fovHider.Instance.toggleFOVHider(true);
     }
 
     void capturePhoto()
@@ -245,16 +219,7 @@ public class commentManager : MonoBehaviour {
 
     public void spawnPhotoComment()
     {
-
-        //open/close content on violations and forms
-        if (GetComponent<violationController>() != null)
-        {
-            GetComponent<violationController>().linkedNode.GetComponent<nodeController>().openNode();
-        }
-        if (GetComponent<formFieldController>() != null)
-        {
-            GetComponent<formFieldController>().linkedNode.GetComponent<nodeController>().openNode();
-        }
+        fovHider.Instance.toggleFOVHider(false);
 
         //shift all comments down
         repositionComments();
@@ -306,7 +271,7 @@ public class commentManager : MonoBehaviour {
             }
             if (recordingInProgress)
             {
-                Debug.Log("stopped recording");
+
                 stopVideoRecording();
             }
             if (photoCaptureEnabled)

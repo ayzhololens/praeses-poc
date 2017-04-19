@@ -122,11 +122,11 @@ namespace HoloToolkit.Unity
                 {
                     if (activeField.GetComponent<formFieldController>().capturingPhoto)
                     {
-                        activeField.GetComponent<formFieldController>().loadPhotoMedia();
+                        //activeField.GetComponent<formFieldController>().loadPhotoMedia();
                     }
                     if (activeField.GetComponent<formFieldController>().capturingVideo)
                     {
-                        activeField.GetComponent<formFieldController>().loadVideoMedia();
+                        //activeField.GetComponent<formFieldController>().loadVideoMedia();
                     }
                 }
 

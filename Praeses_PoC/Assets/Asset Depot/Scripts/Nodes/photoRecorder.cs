@@ -43,7 +43,7 @@ namespace HoloToolkit.Unity
 
         public void CapturePhoto()
         {
-            PhotoCapture.CreateAsync(true, OnPhotoCaptureCreated);
+            PhotoCapture.CreateAsync(false, OnPhotoCaptureCreated);
         }
 
 
@@ -52,7 +52,7 @@ namespace HoloToolkit.Unity
             photoCaptureObject = captureObject;
             Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).Last();
             CameraParameters c = new CameraParameters();
-            c.hologramOpacity = 1.0f;
+            c.hologramOpacity = 0.0f;
             c.cameraResolutionWidth = cameraResolution.width;
             c.cameraResolutionHeight = cameraResolution.height;
             c.pixelFormat = CapturePixelFormat.BGRA32;

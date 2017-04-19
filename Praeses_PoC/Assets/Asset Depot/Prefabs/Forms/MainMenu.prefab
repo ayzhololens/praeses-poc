@@ -250,7 +250,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1076040183375522
 GameObject:
   m_ObjectHideFlags: 1
@@ -1676,7 +1676,7 @@ GameObject:
   - component: {fileID: 222529438815113136}
   - component: {fileID: 114743364243532926}
   m_Layer: 5
-  m_Name: Inspection
+  m_Name: DataFields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8622,6 +8622,8 @@ MonoBehaviour:
   SmoothingFactor: 0.75
   YLimitMax: 0
   YLimitMin: 0
+  lockSprites: []
+  locked: 0
 --- !u!114 &114330395013590496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11782,8 +11784,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114941900978651622}
-        m_MethodName: goToTab
-        m_Mode: 3
+        m_MethodName: beginAlignment
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12851,6 +12853,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   contentHolder: {fileID: 1071622073431788}
+  aligner: {fileID: 0}
+  alignerIndicator: {fileID: 0}
 --- !u!114 &114944679718510616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13190,9 +13194,9 @@ MonoBehaviour:
   Inspector: {fileID: 114527113103706742}
   CurDate: {fileID: 114733614618899536}
   StartTime: {fileID: 114861923585429370}
-  Violations: {fileID: 0}
-  Annotations: {fileID: 0}
-  DataFields: {fileID: 0}
+  Violations: {fileID: 114512467187038318}
+  Annotations: {fileID: 114662659665575950}
+  DataFields: {fileID: 114743364243532926}
 --- !u!114 &114975500751880202
 MonoBehaviour:
   m_ObjectHideFlags: 1

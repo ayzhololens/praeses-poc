@@ -11,6 +11,7 @@ namespace HoloToolkit.Unity.InputModule
 
         public AudioClip highlightSound;
         public AudioClip selectSound;
+        public AudioSource src;
 
         // Use this for initialization
         void Start()

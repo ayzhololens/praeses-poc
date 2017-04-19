@@ -78,14 +78,23 @@ namespace RenderHeads.Media.AVProVideo.Demos
 		{
 		}
 
-		private void ExtractNextFrame()
-		{
-			// Extract the frame to Texture2D
-			float timeSeconds = _frameIndex * _timeStepSeconds;
-			_texture = _mediaPlayer.ExtractFrame(_texture, timeSeconds, _accurateSeek, _timeoutMs);
+        private void ExtractNextFrame()
+        {
+
+
+            // Extract the frame to Texture2D
+            float timeSeconds = _frameIndex * _timeStepSeconds;
+            _texture = _mediaPlayer.ExtractFrame(_texture, timeSeconds, _accurateSeek, _timeoutMs);
             activeComment.GetComponent<commentContents>().vidThumbnail = _texture;
-            activeComment.GetComponent<commentContents>().vidThumbMat.mainTexture = activeComment.GetComponent<commentContents>().vidThumbnail;
-            activeComment.GetComponent<Renderer>().material = activeComment.GetComponent<commentContents>().vidThumbMat;
+            activeComment.GetComponent<commentContents>().thumbMat.mainTexture = activeComment.GetComponent<commentContents>().vidThumbnail;
+            activeComment.GetComponent<Renderer>().material = activeComment.GetComponent<commentContents>().thumbMat;
+            Invoke("clear", 1);
+        }
+
+        void clear()
+        {
+            _mediaPlayer.Events.RemoveListener(OnMediaPlayerEvent);
+            activeComment = null;
         }
 
 

@@ -40,7 +40,7 @@ namespace HoloToolkit.Unity
 
         public void startRecordingVideo()
         {
-            VideoCapture.CreateAsync(true, OnVideoCaptureCreated);
+            VideoCapture.CreateAsync(false, OnVideoCaptureCreated);
         }
 
 
@@ -55,7 +55,7 @@ namespace HoloToolkit.Unity
                 float cameraFramerate = VideoCapture.GetSupportedFrameRatesForResolution(cameraResolution).OrderByDescending((fps) => fps).First();
 
                 CameraParameters cameraParameters = new CameraParameters();
-                cameraParameters.hologramOpacity = 1.0f;
+                cameraParameters.hologramOpacity = 0.0f;
                 cameraParameters.frameRate = cameraFramerate;
                 cameraParameters.cameraResolutionWidth = cameraResolution.width;
                 cameraParameters.cameraResolutionHeight = cameraResolution.height;
