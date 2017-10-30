@@ -36,7 +36,7 @@ namespace HoloToolkit.Unity.InputModule
         // set up the recognizer and add all keywords. The first causes the recognizer to start
         // immediately. The second allows the recognizer to be manually started at a later time.
         public enum RecognizerStartBehavior { AutoStart, ManualStart };
-
+        public bool isEnabled;
         [Tooltip("An enumeration to set whether the recognizer should start on or off.")]
         public RecognizerStartBehavior RecognizerStart;
 
@@ -48,6 +48,10 @@ namespace HoloToolkit.Unity.InputModule
 
         public void Start()
         {
+            if(!isEnabled)
+            {
+                this.enabled = false;
+            }
             int keywordCount = KeywordsAndResponses.Length;
             if (keywordCount > 0)
             {
